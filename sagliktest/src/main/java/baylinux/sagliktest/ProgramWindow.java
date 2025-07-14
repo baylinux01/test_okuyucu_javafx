@@ -1257,26 +1257,39 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					Group root=new Group();
-					Scene scene=new Scene(root);
-					Stage stage=new Stage();
-					stage.setScene(scene);
-					stage.getIcons().add(
-							new Image(UpdatingParticipantAnswerWindow.class
-							.getResourceAsStream(Main.logo)));
-					stage.setTitle("Cevap Güncelleme Sayfası");
-					UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
 					
-					try 
+					if(ONTESTTableView.getSelectionModel().getSelectedItem()!=null)
 					{
-						window.paToBeUpdated=ONTESTTableView.getSelectionModel().getSelectedItem();
-						window.start(stage);
-						primaryStage.hide();
-					} 
-					catch (InterruptedException e) 
-					{
-						e.printStackTrace();
+						Group root=new Group();
+						Scene scene=new Scene(root);
+						Stage stage=new Stage();
+						stage.setScene(scene);
+						stage.getIcons().add(
+								new Image(UpdatingParticipantAnswerWindow.class
+								.getResourceAsStream(Main.logo)));
+						stage.setTitle("Cevap Güncelleme Sayfası");
+						UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
+						
+						try 
+						{
+							window.paToBeUpdated=ONTESTTableView.getSelectionModel().getSelectedItem();
+							window.start(stage);
+							primaryStage.hide();
+						} 
+						catch (InterruptedException e) 
+						{
+							e.printStackTrace();
+						}
 					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir ön test cevabı seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
 					
 					
 				}
@@ -1298,26 +1311,38 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					Group root=new Group();
-					Scene scene=new Scene(root);
-					Stage stage=new Stage();
-					stage.setScene(scene);
-					stage.getIcons().add(
-							new Image(UpdatingParticipantAnswerWindow.class
-							.getResourceAsStream(Main.logo)));
-					stage.setTitle("Cevap Güncelleme Sayfası");
-					UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
-					
-					try 
+					if(SONTESTTableView.getSelectionModel().getSelectedItem()!=null)
 					{
-						window.paToBeUpdated=SONTESTTableView.getSelectionModel().getSelectedItem();
-						window.start(stage);
-						primaryStage.hide();
-					} 
-					catch (InterruptedException e) 
-					{
-						e.printStackTrace();
+						Group root=new Group();
+						Scene scene=new Scene(root);
+						Stage stage=new Stage();
+						stage.setScene(scene);
+						stage.getIcons().add(
+								new Image(UpdatingParticipantAnswerWindow.class
+								.getResourceAsStream(Main.logo)));
+						stage.setTitle("Cevap Güncelleme Sayfası");
+						UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
+						
+						try 
+						{
+							window.paToBeUpdated=SONTESTTableView.getSelectionModel().getSelectedItem();
+							window.start(stage);
+							primaryStage.hide();
+						} 
+						catch (InterruptedException e) 
+						{
+							e.printStackTrace();
+						}
 					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir son test cevabı seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
 					
 					
 				}
@@ -1338,27 +1363,38 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					
-					Group root=new Group();
-					Scene scene=new Scene(root);
-					Stage stage=new Stage();
-					stage.setScene(scene);
-					stage.getIcons().add(
-							new Image(UpdatingParticipantAnswerWindow.class
-							.getResourceAsStream(Main.logo)));
-					stage.setTitle("Cevap Güncelleme Sayfası");
-					UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
-					
-					try 
+					if(TESTTableView.getSelectionModel().getSelectedItem()!=null)
 					{
-						window.paToBeUpdated=TESTTableView.getSelectionModel().getSelectedItem();
-						window.start(stage);
-						primaryStage.hide();
-					} 
-					catch (InterruptedException e) 
-					{
-						e.printStackTrace();
+						Group root=new Group();
+						Scene scene=new Scene(root);
+						Stage stage=new Stage();
+						stage.setScene(scene);
+						stage.getIcons().add(
+								new Image(UpdatingParticipantAnswerWindow.class
+								.getResourceAsStream(Main.logo)));
+						stage.setTitle("Cevap Güncelleme Sayfası");
+						UpdatingParticipantAnswerWindow window=new UpdatingParticipantAnswerWindow();
+						
+						try 
+						{
+							window.paToBeUpdated=TESTTableView.getSelectionModel().getSelectedItem();
+							window.start(stage);
+							primaryStage.hide();
+						} 
+						catch (InterruptedException e) 
+						{
+							e.printStackTrace();
+						}
 					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir test cevabı seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
 					
 					
 					
