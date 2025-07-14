@@ -1059,23 +1059,34 @@ public class ProgramWindow extends Application {
 				public void handle(ActionEvent event) 
 				{
 					
-					Group root=new Group();
-					Scene scene=new Scene(root);
-					Stage stage=new Stage();
-					stage.setScene(scene);
-					stage.getIcons().add(
-							new Image(UpdatingExamWindow.class
-							.getResourceAsStream(Main.logo)));
-					stage.setTitle("Sınav Güncelleme Sayfası");
-					UpdatingExamWindow window=new UpdatingExamWindow();
-					
-					try {
-						window.examToBeUpdated=(Exam)cb_exams.getValue();
-						window.start(stage);
-						primaryStage.hide();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					if(selectedExam!=null)
+					{
+						Group root=new Group();
+						Scene scene=new Scene(root);
+						Stage stage=new Stage();
+						stage.setScene(scene);
+						stage.getIcons().add(
+								new Image(UpdatingExamWindow.class
+								.getResourceAsStream(Main.logo)));
+						stage.setTitle("Sınav Güncelleme Sayfası");
+						UpdatingExamWindow window=new UpdatingExamWindow();
+						
+						try {
+							window.examToBeUpdated=(Exam)cb_exams.getValue();
+							window.start(stage);
+							primaryStage.hide();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir sınav seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
 					}
 					
 					
