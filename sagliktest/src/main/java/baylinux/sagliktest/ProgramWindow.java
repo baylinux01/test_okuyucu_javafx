@@ -1098,78 +1098,90 @@ public class ProgramWindow extends Application {
 				public void handle(ActionEvent event) 
 				{
 					
-					DirectoryChooser dc=new DirectoryChooser();
-					dc.setTitle("Test kağıtlarının fotoğraflarının bulunduğu klasörü seçin");
-					String userHome=System.getProperty("user.home");
-					File f=new File(userHome,"Desktop");
-					dc.setInitialDirectory(f);
-					File selectedDirectory=dc.showDialog(primaryStage);
-					
-					if (selectedDirectory != null && selectedDirectory.isDirectory()) 
+					if(selectedExam!=null)
 					{
-					    File[] files = selectedDirectory.listFiles();
-					    for(File file : files)
-					    {
-					    	ParticipantAnswer pa=null;
-					    	try 
-					    	{
-								pa=ExamEvaluator
-										.createParticipantAnswerWithInformation
-												(ps, file.getAbsolutePath(), selectedExam);
-								
+						DirectoryChooser dc=new DirectoryChooser();
+						dc.setTitle("Test kağıtlarının fotoğraflarının bulunduğu klasörü seçin");
+						String userHome=System.getProperty("user.home");
+						File f=new File(userHome,"Desktop");
+						dc.setInitialDirectory(f);
+						File selectedDirectory=dc.showDialog(primaryStage);
+						
+						if (selectedDirectory != null && selectedDirectory.isDirectory()) 
+						{
+						    File[] files = selectedDirectory.listFiles();
+						    for(File file : files)
+						    {
+						    	ParticipantAnswer pa=null;
+						    	try 
+						    	{
+									pa=ExamEvaluator
+											.createParticipantAnswerWithInformation
+													(ps, file.getAbsolutePath(), selectedExam);
+									
+								} 
+						    	catch (Exception e) 
+						    	{
+									
+									e.printStackTrace();
+								} 
+						    	
+						    	try 
+						    	{
+									dao.insertIntoParticipantAnswerTable(pa);
+								} 
+						    	catch (SQLException e) 
+						    	{
+									
+									e.printStackTrace();
+								}
+						    }
+						    
+						    try 
+							{
+								listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 							} 
-					    	catch (Exception e) 
-					    	{
-								
-								e.printStackTrace();
-							} 
-					    	
-					    	try 
-					    	{
-								dao.insertIntoParticipantAnswerTable(pa);
-							} 
-					    	catch (SQLException e) 
-					    	{
+							catch (SQLException e) 
+							{
 								
 								e.printStackTrace();
 							}
-					    }
-					    
-					    try 
-						{
-							listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
-						} 
-						catch (SQLException e) 
-						{
-							
-							e.printStackTrace();
+							try 
+							{
+								listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+							} catch (SQLException e) 
+							{
+								
+								e.printStackTrace();
+							}
+							try 
+							{
+								listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
+							} 
+							catch (SQLException e) 
+							{
+								
+								e.printStackTrace();
+							}
+							SONTESTTableView.getItems().clear();
+							SONTESTTableView.getItems().addAll(listOfSONTESTS);
+							ONTESTTableView.getItems().clear();
+							ONTESTTableView.getItems().addAll(listOfONTESTS);
+							TESTTableView.getItems().clear();
+							TESTTableView.getItems().addAll(listOfTESTS);
+						  
+						  }
+						
 						}
-						try 
+						else
 						{
-							listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
-						} catch (SQLException e) 
-						{
-							
-							e.printStackTrace();
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Dikkat");
+							alert.setHeaderText("Uyarı");
+							alert.setContentText("Bunu yapmak için önce bir sınav seçmeniz gerekir");
+							alert.showAndWait().orElse(null);
 						}
-						try 
-						{
-							listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
-						} 
-						catch (SQLException e) 
-						{
-							
-							e.printStackTrace();
-						}
-						SONTESTTableView.getItems().clear();
-						SONTESTTableView.getItems().addAll(listOfSONTESTS);
-						ONTESTTableView.getItems().clear();
-						ONTESTTableView.getItems().addAll(listOfONTESTS);
-						TESTTableView.getItems().clear();
-						TESTTableView.getItems().addAll(listOfTESTS);
-					    
-					    
-					}
+					
 					
 				}
 				
