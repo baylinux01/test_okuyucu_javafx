@@ -1065,6 +1065,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 					ProgramWindow window=new ProgramWindow();
 					
 					try {
+						window.selectedExam=null;
 						window.start(stage);
 						primaryStage.hide();
 					} catch (InterruptedException e) {
