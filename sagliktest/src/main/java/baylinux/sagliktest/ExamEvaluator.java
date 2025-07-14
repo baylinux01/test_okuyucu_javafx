@@ -1,0 +1,207 @@
+package baylinux.sagliktest;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExamEvaluator 
+{
+	
+	public static ParticipantAnswer createParticipantAnswerWithInformation
+	(PreferredSettings ps,String imageFullPath,Exam exam) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
+	{
+		ParticipantAnswer pa=new ParticipantAnswer();
+		List<String> title=ImageConverter
+				.convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage(ps, imageFullPath);
+		String test_type=InfoExtractor.extractTestType(title);
+	
+		String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());
+		
+		List<List<String>> tableData=ImageConverter
+					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, imageFullPath);
+		
+		pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("/")+1));
+		pa.setName_surname(name_surname);
+		pa.setTest_type(test_type);
+		pa.setExam_id(exam.getId());
+		List<String> answers=new ArrayList<String>();
+		
+		int i=0;
+		while(i<tableData.size())
+		{
+			String s="";
+			if(tableData.get(i).size()==4)
+			{
+				if(tableData.get(i).get(0).equalsIgnoreCase("+")) s="A";
+				if(tableData.get(i).get(1).equalsIgnoreCase("+")) s="B";
+				if(tableData.get(i).get(2).equalsIgnoreCase("+")) s="C";
+				if(tableData.get(i).get(3).equalsIgnoreCase("+")) s="D";
+			}
+			else if(tableData.get(i).size()==5)
+			{
+				if(tableData.get(i).get(0).equalsIgnoreCase("+")) s="A";
+				if(tableData.get(i).get(1).equalsIgnoreCase("+")) s="B";
+				if(tableData.get(i).get(2).equalsIgnoreCase("+")) s="C";
+				if(tableData.get(i).get(3).equalsIgnoreCase("+")) s="D";
+				if(tableData.get(i).get(4).equalsIgnoreCase("+")) s="E";
+			}
+			answers.add(s);
+			++i;
+		}
+		i=0;
+		int numberOfCorrectAnswers=0;
+		while(i<tableData.size())
+		{
+			if(pa.getTest_type().equalsIgnoreCase("ON TEST"))
+			{
+				String g="getOn"+(i+1);
+				Method method = Exam.class.getMethod(g);
+				String result = (String) method.invoke(exam);
+				
+				String k="setParticipant_answer_"+(i+1);
+				Method method2 = ParticipantAnswer.class.getMethod(k,String.class);
+				method2.invoke(pa,answers.get(i));
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				
+				
+				if(answers.get(i).equalsIgnoreCase(result))
+				{
+					method3.invoke(pa,"D");
+					++numberOfCorrectAnswers;
+				}
+				else
+				{
+					method3.invoke(pa,"Y");
+				}
+			}
+			else if(pa.getTest_type().equalsIgnoreCase("SON TEST"))
+			{
+				String g="getSon"+(i+1);
+				Method method = Exam.class.getMethod(g);
+				String result = (String) method.invoke(exam);
+				
+				String k="setParticipant_answer_"+(i+1);
+				Method method2 = ParticipantAnswer.class.getMethod(k,String.class);
+				method2.invoke(pa,answers.get(i));
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				
+				
+				if(answers.get(i).equalsIgnoreCase(result))
+				{
+					method3.invoke(pa,"D");
+					++numberOfCorrectAnswers;
+				}
+				else
+				{
+					method3.invoke(pa,"Y");
+				}
+			}
+			else
+			{
+				String k="setParticipant_answer_"+(i+1);
+				Method method2 = ParticipantAnswer.class.getMethod(k,String.class);
+				method2.invoke(pa,answers.get(i));
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				method3.invoke(pa,"Y");
+			}
+			++i;
+		}
+		pa.setNumber_of_correct_answers(numberOfCorrectAnswers);
+		pa.setTotal_point(pa.getNumber_of_correct_answers()*100/tableData.size());
+		return pa;
+		
+		
+	}
+	public static ParticipantAnswer updateParticipantAnswerInformation
+	(PreferredSettings ps,ParticipantAnswer pa,Exam exam) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
+	{
+		
+		
+		
+		
+		
+		
+		
+		int i=0;
+		int numberOfCorrectAnswers=0;
+		while(i<30)
+		{
+			if(pa.getTest_type().equalsIgnoreCase("ON TEST"))
+			{
+				String g="getOn"+(i+1);
+				Method method = Exam.class.getMethod(g);
+				String result = (String) method.invoke(exam);
+				
+				String m="getParticipant_answer_"+(i+1);
+				Method method1 = ParticipantAnswer.class.getMethod(m);
+				String participantAnswer=(String)method1.invoke(pa);
+				
+				
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				
+				
+				if(participantAnswer.equalsIgnoreCase(result))
+				{
+					method3.invoke(pa,"D");
+					++numberOfCorrectAnswers;
+				}
+				else
+				{
+					method3.invoke(pa,"Y");
+				}
+			}
+			else if(pa.getTest_type().equalsIgnoreCase("SON TEST"))
+			{
+				String g="getSon"+(i+1);
+				Method method = Exam.class.getMethod(g);
+				String result = (String) method.invoke(exam);
+				
+				String m="getParticipant_answer_"+(i+1);
+				Method method1 = ParticipantAnswer.class.getMethod(m);
+				String participantAnswer=(String)method1.invoke(pa);
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				
+				
+				if(participantAnswer.equalsIgnoreCase(result))
+				{
+					method3.invoke(pa,"D");
+					++numberOfCorrectAnswers;
+				}
+				else
+				{
+					method3.invoke(pa,"Y");
+				}
+			}
+			else
+			{
+				String m="getParticipant_answer_"+(i+1);
+				Method method1 = ParticipantAnswer.class.getMethod(m);
+				String participantAnswer=(String)method1.invoke(pa);
+				
+				String l="setAnswer_correctness_"+(i+1);
+				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
+				method3.invoke(pa,"Y");
+			}
+			++i;
+		}
+		pa.setNumber_of_correct_answers(numberOfCorrectAnswers);
+		pa.setTotal_point(pa.getNumber_of_correct_answers()*100/30);
+		return pa;
+		
+		
+	}
+}
