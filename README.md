@@ -22,7 +22,7 @@ Program bu resimlerden
 Programın hem windows hem de linux ortamında çalışmak üzere tasarlanmış olup linux ortamında kısmen test edilmiştir.
 Program amazon corretto jdk-21 ile geliştirilmiştir. Programın doğru bir şekilde çalışması için  jdk 21 yüklenmesi tavsiye edilir.
 Ayrıca programın doğru bir şekilde çalışabilmesi için tesseract programının
-(tercihen 4.6.0 sürümü) yüklü olması gerekir.
+(tercihen 5.3.0-2 sürümü) yüklü olması gerekir.
 Ayrıca eğer programın kullanılacağı bilgisayar Windows ise 
 Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 yazılımının mutlaka yüklenmesi gerekir. Aksi takdirde program çalışmaz.
 Programın geliştirilmesinde görüntü işlemek amacıyla opencv ve yazı okumak aracıyla tesseract kütüphanelerinden yararlanılmıştır.
