@@ -24,4 +24,6 @@ Program amazon corretto jdk-21 ile geliştirilmiştir. Programın doğru bir şe
 Ayrıca programın doğru bir şekilde çalışabilmesi için tesseract programının
 (tercihen 4.6.0 sürümü) yüklü olması gerekir.
 Programın geliştirilmesinde görüntü işlemek amacıyla opencv ve yazı okumak aracıyla tesseract kütüphanelerinden yararlanılmıştır.
+Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenilen database'e istenilen host ve port numarası ile bağlanmayı desteklemektedir.
+Fakat bazı databaselerde mesela postgrede bazen database'i elle manuel olarak oluşturmak gerekebilir.
 
