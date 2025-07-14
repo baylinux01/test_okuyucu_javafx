@@ -17,6 +17,8 @@ Program bu resimlerden
 -kullanıcının cevaplarını algılayıp doğru cevaplarla karşılaştırıp doğru mu değil mi diye D veya Y şeklinde çktı veriyor.
 -program ayrıca her kullanıcının doğru cevap sayısını 30 soru üzerinden puanını çıktı veriyor.
 -program bunlara ek olarak bir de her soru için kullanıcıların verdiği toplam doğru sayısını tüm kullanıcıların ortalama doğru sayısını ve ortalama puanını da veriyor.
+-program sınav cevap anahtarını güncellemeye veya katılımcının cevaplarını düzeltmeye de
+imkan tanıyor.
 -program bu işlemleri hem ön test hem de son test için ayrı ayrı yapıyor.
 
 Programın hem windows hem de linux ortamında çalışmak üzere tasarlanmış olup linux ortamında kısmen test edilmiştir.
