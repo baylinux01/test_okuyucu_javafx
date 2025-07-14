@@ -1023,10 +1023,12 @@ public class ProgramWindow extends Application {
 							alert.setContentText("Sınav başarıyla silindi");
 							alert.showAndWait().orElse(null);
 							
-							try {
+							try 
+							{
 								examList=dao.getAllExams();
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
+							} 
+							catch (Exception e) 
+							{
 								e.printStackTrace();
 							}
 							cb_exams.getItems().clear();
@@ -1034,6 +1036,9 @@ public class ProgramWindow extends Application {
 							{
 								cb_exams.getItems().addAll(examList);
 							}
+							ONTESTTableView.getItems().clear();
+							SONTESTTableView.getItems().clear();
+							TESTTableView.getItems().clear();
 						}
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -1231,6 +1236,10 @@ public class ProgramWindow extends Application {
 						try 
 						{
 							dao.clearProgramTables();
+							cb_exams.getItems().clear();
+							SONTESTTableView.getItems().clear();
+							ONTESTTableView.getItems().clear();
+							TESTTableView.getItems().clear();
 						} 
 						catch (SQLException e) 
 						{

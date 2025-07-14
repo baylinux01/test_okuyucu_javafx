@@ -2063,6 +2063,7 @@ public class Dao {
 	
 	public int deleteExamById(int id) throws SQLException
 	{
+		this.deleteParticipantAnswersByExamId(id);
 		String query="Delete From ExamTable where id=?";
 		
 		int result=0;
@@ -2128,8 +2129,42 @@ public class Dao {
 		}
 		return result;
 	}
-	
-	public int deleteParticipantAnswerByExamIdAndTestType(int exam_id,String test_type) throws SQLException
+	public int deleteParticipantAnswersByExamId(int exam_id) throws SQLException
+	{
+		String query="Delete From ParticipantAnswerTable where exam_id=?";
+		
+		int result=0;
+		try {
+//			Class.forName(className);
+//			con = DriverManager.getConnection(url);
+//			con = DriverManager.getConnection(url,uname,pass);
+			con=getCon();
+			PreparedStatement st= con.prepareStatement(query);
+			
+			st.setInt(1, exam_id);
+			
+			result=st.executeUpdate();
+			
+		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(con!=null)
+			{
+				con.close();
+			}
+			
+				
+			
+		}
+		return result;
+	}
+	public int deleteParticipantAnswersByExamIdAndTestType(int exam_id,String test_type) throws SQLException
 	{
 		String query="Delete From ParticipantAnswerTable where exam_id=? and test_type=?";
 		
