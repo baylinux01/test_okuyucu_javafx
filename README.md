@@ -27,7 +27,8 @@ Ayrıca programın doğru bir şekilde çalışabilmesi için tesseract program�
 (tercihen 5.3.0-2 sürümü) yüklü olması gerekir.
 Ayrıca eğer programın kullanılacağı bilgisayar Windows ise 
 Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 yazılımının mutlaka yüklenmesi gerekir. Aksi takdirde program çalışmaz.
-Programın geliştirilmesinde görüntü işlemek amacıyla opencv ve yazı okumak aracıyla tesseract kütüphanelerinden yararlanılmıştır.
-Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenilen database'e istenilen host ve port numarası ile bağlanmayı desteklemektedir.
+Bunlara ek olarak sqlite, mysql, mariadb veya postgresql databaselerinden en az birinin
+bilgisayara yüklü olması gerekir.
+Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenilen birisini kullanarak istenilen host ve port numarası ile başka bir bilgisayardaki veritabanına bağlanmayı da desteklemektedir.
 Fakat bazı databaselerde mesela postgrede bazen database'i elle manuel olarak oluşturmak gerekebilir.
 
