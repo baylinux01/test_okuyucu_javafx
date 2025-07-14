@@ -1100,6 +1100,9 @@ public class ProgramWindow extends Application {
 					
 					DirectoryChooser dc=new DirectoryChooser();
 					dc.setTitle("Test kağıtlarının fotoğraflarının bulunduğu klasörü seçin");
+					String userHome=System.getProperty("user.home");
+					File f=new File(userHome,"Desktop");
+					dc.setInitialDirectory(f);
 					File selectedDirectory=dc.showDialog(primaryStage);
 					
 					if (selectedDirectory != null && selectedDirectory.isDirectory()) 
@@ -1113,36 +1116,57 @@ public class ProgramWindow extends Application {
 								pa=ExamEvaluator
 										.createParticipantAnswerWithInformation
 												(ps, file.getAbsolutePath(), selectedExam);
+								
 							} 
-					    	catch (IllegalAccessException e) 
+					    	catch (Exception e) 
 					    	{
 								
 								e.printStackTrace();
 							} 
-					    	catch (InvocationTargetException e) 
-					    	{
-								
-								e.printStackTrace();
-							} 
-					    	catch (NoSuchMethodException e) 
-					    	{
-								
-								e.printStackTrace();
-							} 
-					    	catch (SecurityException e) 
-					    	{
-								
-								e.printStackTrace();
-							}
+					    	
 					    	try 
 					    	{
 								dao.insertIntoParticipantAnswerTable(pa);
-							} catch (SQLException e) 
+							} 
+					    	catch (SQLException e) 
 					    	{
 								
 								e.printStackTrace();
 							}
 					    }
+					    
+					    try 
+						{
+							listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+						} 
+						catch (SQLException e) 
+						{
+							
+							e.printStackTrace();
+						}
+						try 
+						{
+							listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+						} catch (SQLException e) 
+						{
+							
+							e.printStackTrace();
+						}
+						try 
+						{
+							listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
+						} 
+						catch (SQLException e) 
+						{
+							
+							e.printStackTrace();
+						}
+						SONTESTTableView.getItems().clear();
+						SONTESTTableView.getItems().addAll(listOfSONTESTS);
+						ONTESTTableView.getItems().clear();
+						ONTESTTableView.getItems().addAll(listOfONTESTS);
+						TESTTableView.getItems().clear();
+						TESTTableView.getItems().addAll(listOfTESTS);
 					    
 					    
 					}
