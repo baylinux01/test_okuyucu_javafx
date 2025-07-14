@@ -1114,10 +1114,19 @@ public class ProgramWindow extends Application {
 						DirectoryChooser dc=new DirectoryChooser();
 						dc.setTitle("Test kağıtlarının fotoğraflarının bulunduğu klasörü seçin");
 						String userHome=System.getProperty("user.home");
-						File f=new File(userHome,"Desktop");
-						dc.setInitialDirectory(f);
-						File selectedDirectory=dc.showDialog(primaryStage);
-						
+						File initialDirectory1=new File(userHome,"Desktop");
+						File selectedDirectory=null;
+						if (initialDirectory1 != null && initialDirectory1.isDirectory())
+						{
+							dc.setInitialDirectory(initialDirectory1);
+							
+						}
+						else
+						{
+							File initialDirectory2=new File(userHome,"OneDrive/Desktop");
+							dc.setInitialDirectory(initialDirectory2);
+						}
+						selectedDirectory=dc.showDialog(primaryStage);
 						if (selectedDirectory != null && selectedDirectory.isDirectory()) 
 						{
 						    File[] files = selectedDirectory.listFiles();
@@ -1541,34 +1550,61 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					FileChooser fileChooser = new FileChooser();
-					 
-		            fileChooser.setTitle("Kaydedilecek Dosyayı Seçiniz");
-		            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
-		            fileChooser.setInitialFileName("yeni_dosya.xlsx");
+					if(selectedExam!=null)
+					{
+						FileChooser fileChooser = new FileChooser();
+						 
+			            fileChooser.setTitle("Kaydedilecek Dosyayı Seçiniz");
+			            File initialDirectory1=new File(System.getProperty("user.home") + "/Desktop");
+			            File initialDirectory2=new File(System.getProperty("user.home") + "/OneDrive/Desktop");
+			            if(initialDirectory1!=null&&initialDirectory1.exists()&&initialDirectory1.isDirectory())
+			            {
+			            	fileChooser.setInitialDirectory(initialDirectory1);
+			            }
+			            else
+			            {
+			            	fileChooser.setInitialDirectory(initialDirectory2);
+			            }
+			            
+			            fileChooser.setInitialFileName("yeni_dosya_on_test.xlsx");
 
-		            fileChooser.getExtensionFilters().add(
-		                new FileChooser.ExtensionFilter("Dosya Formatları", "*.xlsx")
-		            );
+			            fileChooser.getExtensionFilters().add(
+			                new FileChooser.ExtensionFilter("Dosya Formatları", "*.xlsx")
+			            );
 
-		            File selectedFile = fileChooser.showSaveDialog(primaryStage);
-		            String os = System.getProperty("os.name").toLowerCase();
-		            String pathToSave="";
-		            pathToSave=System.getProperty("user.home")
-		            								+"/Desktop/"
-		            									+fileChooser.getInitialFileName();
-		            if(selectedFile!=null)
-		            {
-		            	pathToSave=selectedFile.getAbsolutePath();
-		            }
-		            try 
-		            {
-						OutputWriter.writeToXlsx(pathToSave, listOfONTESTS);
-					} 
-		            catch (IOException e) 
-		            {
-						e.printStackTrace();
+			            File selectedFile = fileChooser.showSaveDialog(primaryStage);
+			            String os = System.getProperty("os.name").toLowerCase();
+			            String pathToSave="";
+			            pathToSave=System.getProperty("user.home")
+			            								+"/Desktop/"
+			            									+fileChooser.getInitialFileName();
+			            if(selectedFile!=null)
+			            {
+			            	pathToSave=selectedFile.getAbsolutePath();
+			            	try 
+				            {
+								OutputWriter.writeToXlsx(pathToSave, listOfONTESTS);
+							} 
+				            catch (IOException e) 
+				            {
+								e.printStackTrace();
+							}
+			            }
+			            else
+			            {
+			            	
+			            }
+			            
 					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir sınav seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
 					
 					
 				}
@@ -1589,34 +1625,60 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					 	FileChooser fileChooser = new FileChooser();
-					 
+					if(selectedExam!=null)
+					{
+						FileChooser fileChooser = new FileChooser();
+						 
 			            fileChooser.setTitle("Kaydedilecek Dosyayı Seçiniz");
-			            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
-			            fileChooser.setInitialFileName("yeni_dosya.xlsx");
-
-			            fileChooser.getExtensionFilters().add(
-			                new FileChooser.ExtensionFilter("Dosya Formatları", "*.xlsx")
-			            );
-
-			            File selectedFile = fileChooser.showSaveDialog(primaryStage);
-			            String os = System.getProperty("os.name").toLowerCase();
-			            String pathToSave="";
-			            pathToSave=System.getProperty("user.home")
-			            								+"/Desktop/"
-			            									+fileChooser.getInitialFileName();
-			            if(selectedFile!=null)
+			            File initialDirectory1=new File(System.getProperty("user.home") + "/Desktop");
+			            File initialDirectory2=new File(System.getProperty("user.home") + "/OneDrive/Desktop");
+			            if(initialDirectory1!=null&&initialDirectory1.exists()&&initialDirectory1.isDirectory())
 			            {
-			            	pathToSave=selectedFile.getAbsolutePath();
+			            	fileChooser.setInitialDirectory(initialDirectory1);
 			            }
-			            try 
+			            else
 			            {
-							OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS);
-						} 
-			            catch (IOException e) 
-			            {
-							e.printStackTrace();
-						}
+			            	fileChooser.setInitialDirectory(initialDirectory2);
+			            }
+				            fileChooser.setInitialFileName("yeni_dosya_son_test.xlsx");
+
+				            fileChooser.getExtensionFilters().add(
+				                new FileChooser.ExtensionFilter("Dosya Formatları", "*.xlsx")
+				            );
+
+				            File selectedFile = fileChooser.showSaveDialog(primaryStage);
+				            String os = System.getProperty("os.name").toLowerCase();
+				            String pathToSave="";
+				            pathToSave=System.getProperty("user.home")
+				            								+"/Desktop/"
+				            									+fileChooser.getInitialFileName();
+				            if(selectedFile!=null)
+				            {
+				            	pathToSave=selectedFile.getAbsolutePath();
+				            	try 
+					            {
+									OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS);
+								} 
+					            catch (IOException e) 
+					            {
+									e.printStackTrace();
+								}
+				            }
+				            else
+				            {
+				            	
+				            }
+				            
+					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir sınav seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
 			            
 					
 					
