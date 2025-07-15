@@ -56,7 +56,7 @@ public class UpdatingExamWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1400,800);
+			Scene scene = new Scene(root,1100,640);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -74,11 +74,11 @@ public class UpdatingExamWindow extends Application {
 			int base_x=0;
 			int base_y=0;
 			int x_dif=130;
-			int y_dif=30;
+			int y_dif=25;
 			
 			int standard_element_height=20;
 			int standard_element_width=120;
-			int lbdif=10;
+			int lbdif=5;
 			
 			
 			

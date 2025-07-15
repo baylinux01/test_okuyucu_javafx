@@ -67,7 +67,7 @@ public class ProgramWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1300,700);
+			Scene scene = new Scene(root,1295,675);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -150,8 +150,8 @@ public class ProgramWindow extends Application {
 				e.printStackTrace();
 			}
 			
-			int base_x=10;
-			int base_y=10;
+			int base_x=5;
+			int base_y=5;
 			int x_dif=180;
 			int y_dif=30;
 			
@@ -880,7 +880,7 @@ public class ProgramWindow extends Application {
 			lb1.setPrefHeight(standard_element_height);
 			lb1.setPrefWidth(standard_element_width);
 			lb1.setLayoutX(base_x);
-			lb1.setLayoutY(base_y);
+			lb1.setLayoutY(base_y+7);
 			pane.getChildren().add(lb1);
 			
 			
