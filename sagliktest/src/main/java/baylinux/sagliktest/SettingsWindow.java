@@ -57,7 +57,7 @@ public class SettingsWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1300,750);
+			Scene scene = new Scene(root,1260,680);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -748,7 +748,7 @@ public class SettingsWindow extends Application {
 			saveButton.setPrefHeight(standart_element_height);
 			saveButton.setPrefWidth(standart_element_width);
 			saveButton.setLayoutX(base_x+x_dif*3);
-			saveButton.setLayoutY(base_y+y_dif*20);
+			saveButton.setLayoutY(base_y+y_dif*19+10);
 			pane.getChildren().add(saveButton);
 			saveButton.setOnAction(savePreferredSettingsEventHandler);
 			
@@ -787,7 +787,7 @@ public class SettingsWindow extends Application {
 			goToProgramWindowButton.setPrefHeight(standart_element_height);
 			goToProgramWindowButton.setPrefWidth(standart_element_width);
 			goToProgramWindowButton.setLayoutX(base_x+x_dif*3);
-			goToProgramWindowButton.setLayoutY(base_y+y_dif*22);
+			goToProgramWindowButton.setLayoutY(base_y+y_dif*20+20);
 			pane.getChildren().add(goToProgramWindowButton);
 			goToProgramWindowButton.setOnAction(goToProgramWindowEventHandler);
 			

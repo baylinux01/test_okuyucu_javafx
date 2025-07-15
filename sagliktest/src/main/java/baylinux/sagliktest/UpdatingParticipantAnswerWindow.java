@@ -57,7 +57,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1400,800);
+			Scene scene = new Scene(root,1100,630);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -73,11 +73,11 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			int base_x=0;
 			int base_y=0;
 			int x_dif=130;
-			int y_dif=30;
+			int y_dif=25;
 			
 			int standard_element_height=20;
 			int standard_element_width=120;
-			int lbdif=10;
+			int lbdif=5;
 			
 			
 			
@@ -1043,7 +1043,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			updateExamButton=new Button("Cevapları Güncelle");
 			updateExamButton.setPrefHeight(30);
 			updateExamButton.setPrefWidth(200);
-			updateExamButton.setLayoutX(base_x+x_dif*6);
+			updateExamButton.setLayoutX(base_x+x_dif*4);
 			updateExamButton.setLayoutY(base_y+y_dif*12);
 			pane.getChildren().add(updateExamButton);
 			updateExamButton.setOnAction(updatingParticipantAnswerEventHandler);
@@ -1081,7 +1081,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			goBackButton=new Button("Ana Sayfa");
 			goBackButton.setPrefHeight(30);
 			goBackButton.setPrefWidth(200);
-			goBackButton.setLayoutX(base_x+x_dif*6);
+			goBackButton.setLayoutX(base_x+x_dif*4);
 			goBackButton.setLayoutY(base_y+y_dif*14);
 			pane.getChildren().add(goBackButton);
 			goBackButton.setOnAction(goBackToProgramWindowEventHandler);

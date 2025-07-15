@@ -23,8 +23,14 @@ public class ExamEvaluator
 		
 		List<List<String>> tableData=ImageConverter
 					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, imageFullPath);
-		
-		pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("/")+1));
+		if(imageFullPath.contains("/"))
+		{
+			pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("/")+1));
+		}
+		else
+		{
+			pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("\\")+1));
+		}
 		pa.setName_surname(name_surname);
 		pa.setTest_type(test_type);
 		pa.setExam_id(exam.getId());
