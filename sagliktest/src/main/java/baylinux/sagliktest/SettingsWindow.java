@@ -633,6 +633,22 @@ public class SettingsWindow extends Application {
 					cb_margin_y.getSelectionModel()
 										.select(Integer.valueOf(ds.getMargin_y()));
 					tf3.setText(String.valueOf(ds.getNearWords()));
+					if(ds.getDont_read_first_row()==1)
+					{
+						cb_dont_read_first_row.getSelectionModel().select("Evet");
+					}
+					else
+					{
+						cb_dont_read_first_row.getSelectionModel().select("Hayır");
+					}
+					if(ds.getDont_read_first_column()==1)
+					{
+						cb_dont_read_first_column.getSelectionModel().select("Evet");
+					}
+					else
+					{
+						cb_dont_read_first_column.getSelectionModel().select("Hayır");
+					}
 				}
 				
 			};
@@ -679,6 +695,22 @@ public class SettingsWindow extends Application {
 						ps.setMargin_x(cb_margin_x.getValue());
 						ps.setMargin_y(cb_margin_y.getValue());
 						ps.setNearWords(tf3.getText());
+						if(cb_dont_read_first_row.getValue().equalsIgnoreCase("Evet"))
+						{
+							ps.setDont_read_first_row(1);
+						}
+						else
+						{
+							ps.setDont_read_first_row(0);
+						}
+						if(cb_dont_read_first_column.getValue().equalsIgnoreCase("Evet"))
+						{
+							ps.setDont_read_first_column(1);
+						}
+						else
+						{
+							ps.setDont_read_first_column(0);
+						}
 						dao.clearPreferredSettingsTable();
 						int result=dao.insertIntoPreferredSettingsTable(ps);
 						if(result<=0)
