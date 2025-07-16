@@ -1485,7 +1485,7 @@ public class OutputWriter
         ++rowCountSON;
         
         XSSFCell cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCount;
+        ++columnCountSON;
         cellSON.setCellValue("İsim Soyisim");
         
         cellSON=headerRowSON.createCell(columnCountSON);
@@ -1565,7 +1565,7 @@ public class OutputWriter
         cellSON.setCellValue("19");
         
         cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCount;
+        ++columnCountSON;
         cellSON.setCellValue("20");
         
         cellSON=headerRowSON.createCell(columnCountSON);
