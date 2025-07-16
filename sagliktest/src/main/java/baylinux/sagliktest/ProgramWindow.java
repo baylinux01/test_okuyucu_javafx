@@ -1633,7 +1633,18 @@ public class ProgramWindow extends Application {
 			            	pathToSave=selectedFile.getAbsolutePath();
 			            	try 
 				            {
-								OutputWriter.writeToXlsx(pathToSave, listOfONTESTS);
+			            		if(listOfONTESTS.size()>0)
+				            	{
+									OutputWriter.writeToXlsx(pathToSave, listOfONTESTS, "ON TEST");
+				            	}
+				            	else
+				            	{
+				            		Alert alert=new Alert(AlertType.INFORMATION);
+									alert.setTitle("Dikkat");
+									alert.setHeaderText("Uyarı");
+									alert.setContentText("Çıktı alınacak ön test mevcut değil");
+									alert.showAndWait().orElse(null);
+				            	}
 							} 
 				            catch (IOException e) 
 				            {
@@ -1706,8 +1717,18 @@ public class ProgramWindow extends Application {
 				            {
 				            	pathToSave=selectedFile.getAbsolutePath();
 				            	try 
-					            {
-									OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS);
+					            {	if(listOfSONTESTS.size()>0)
+					            	{
+										OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST");
+					            	}
+					            	else
+					            	{
+					            		Alert alert=new Alert(AlertType.INFORMATION);
+										alert.setTitle("Dikkat");
+										alert.setHeaderText("Uyarı");
+										alert.setContentText("Çıktı alınacak son test mevcut değil");
+										alert.showAndWait().orElse(null);
+					            	}
 								} 
 					            catch (IOException e) 
 					            {
@@ -1785,8 +1806,29 @@ public class ProgramWindow extends Application {
 					            {
 									try 
 									{
-										OutputWriter.writeToSameXlsxAllONAndSONTESTES(pathToSave, 
-																		listOfONTESTS, listOfSONTESTS);
+										if(listOfSONTESTS.size()>0&&listOfONTESTS.size()>0)
+						            	{
+											OutputWriter.writeToSameXlsxAllONAndSONTESTES(pathToSave, 
+													listOfONTESTS, listOfSONTESTS);
+											
+						            	}
+										else if(listOfONTESTS.size()>0)
+										{
+											OutputWriter.writeToXlsx(pathToSave, listOfONTESTS,"ON TEST");
+										}
+										else if(listOfSONTESTS.size()>0)
+										{
+											OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST");
+										}
+						            	else
+						            	{
+						            		Alert alert=new Alert(AlertType.INFORMATION);
+											alert.setTitle("Dikkat");
+											alert.setHeaderText("Uyarı");
+											alert.setContentText("Çıktı alınacak ön ve son test mevcut değil");
+											alert.showAndWait().orElse(null);
+						            	}
+										
 									} 
 									catch (Exception e) 
 									{

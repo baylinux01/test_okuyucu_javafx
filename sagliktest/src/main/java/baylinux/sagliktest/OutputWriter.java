@@ -13,11 +13,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class OutputWriter 
 {
-	protected static void writeToXlsx(String exportPath,List<ParticipantAnswer> participantAnswers) throws IOException
+	protected static void writeToXlsx(String exportPath,
+			List<ParticipantAnswer> participantAnswers,
+			String test_type) throws IOException
 	{
 		FileOutputStream fos=new FileOutputStream(exportPath);
 		XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("Deneme");
+        XSSFSheet sheet = workbook.createSheet(test_type);
         
         int rowCount=0;
         int columnCount=0;
