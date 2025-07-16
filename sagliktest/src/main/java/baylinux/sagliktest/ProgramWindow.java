@@ -14,6 +14,7 @@ import java.util.TreeSet;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 import javafx.event.EventHandler;
@@ -52,7 +53,7 @@ public class ProgramWindow extends Application {
 	clearProgramTablesButton,updateSelectedONTESTButton,
 	updateSelectedSONTESTButton,updateSelectedTESTButton,
 	deleteSelectedONTESTButton,deleteSelectedSONTESTButton,deleteSelectedTESTButton,
-	exportONTESTSButton,exportSONTESTSButton;
+	exportONTESTSButton,exportSONTESTSButton,exportAllONAndSONTESTSButton;
 	protected static List<Exam> examList;
 	protected static Exam selectedExam;
 	protected static ParticipantAnswer selectedONTEST,selectedSONTEST,selectedTEST;
@@ -67,7 +68,7 @@ public class ProgramWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1295,675);
+			Scene scene = new Scene(root,1315,675);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -158,7 +159,7 @@ public class ProgramWindow extends Application {
 			int standard_element_height=20;
 			int standard_element_width=170;
 			int standart_table_height=200;
-			int standart_table_width=1100;
+			int standart_table_width=1120;
 			
 			//ONTEST TABLOSUNUN BAŞLANGICI 
 			ONTESTTableView=new TableView<ParticipantAnswer>();
@@ -278,7 +279,8 @@ public class ProgramWindow extends Application {
 			colONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 			colONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
-			colONTEST1.setMaxWidth(20);
+			colONTEST1.setMinWidth(40);
+			colONTEST1.setMaxWidth(40);
 			colONTEST2.setMinWidth(100);
 			colONTEST2.setMaxWidth(100);
 			colONTEST2b.setMaxWidth(80);
@@ -514,7 +516,8 @@ public class ProgramWindow extends Application {
 			colSONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 			colSONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
-			colSONTEST1.setMaxWidth(20);
+			colSONTEST1.setMinWidth(40);
+			colSONTEST1.setMaxWidth(40);
 			colSONTEST2.setMinWidth(100);
 			colSONTEST2.setMaxWidth(100);
 			colSONTEST2b.setMaxWidth(80);
@@ -752,7 +755,8 @@ public class ProgramWindow extends Application {
 			colTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 			colTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
-			colTEST1.setMaxWidth(20);
+			colTEST1.setMinWidth(40);
+			colTEST1.setMaxWidth(40);
 			colTEST2.setMinWidth(100);
 			colTEST2.setMaxWidth(100);
 			colTEST2b.setMaxWidth(80);
@@ -1134,6 +1138,7 @@ public class ProgramWindow extends Application {
 						selectedDirectory=dc.showDialog(primaryStage);
 						if (selectedDirectory != null && selectedDirectory.isDirectory()) 
 						{
+							
 						    File[] files = selectedDirectory.listFiles();
 						    for(File file : files)
 						    {
@@ -1739,6 +1744,90 @@ public class ProgramWindow extends Application {
 			pane.getChildren().add(exportSONTESTSButton);
 			exportSONTESTSButton.setOnAction(exportSONTESTSEventHandler);
 			
+			
+			EventHandler<ActionEvent> exportAllONAndSONTESTSEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					if(selectedExam!=null)
+					{
+						FileChooser fileChooser = new FileChooser();
+						 
+			            fileChooser.setTitle("Kaydedilecek Dosyayı Seçiniz");
+			            File initialDirectory1=new File(System.getProperty("user.home") + "/Desktop");
+			            File initialDirectory2=new File(System.getProperty("user.home") + "/OneDrive/Desktop");
+			            if(initialDirectory1!=null&&initialDirectory1.exists()&&initialDirectory1.isDirectory())
+			            {
+			            	fileChooser.setInitialDirectory(initialDirectory1);
+			            }
+			            else
+			            {
+			            	fileChooser.setInitialDirectory(initialDirectory2);
+			            }
+				            fileChooser.setInitialFileName("yeni_dosya_tum_testler.xlsx");
+
+				            fileChooser.getExtensionFilters().add(
+				                new FileChooser.ExtensionFilter("Dosya Formatları", "*.xlsx")
+				            );
+
+				            File selectedFile = fileChooser.showSaveDialog(primaryStage);
+				            String os = System.getProperty("os.name").toLowerCase();
+				            String pathToSave="";
+				            pathToSave=System.getProperty("user.home")
+				            								+"/Desktop/"
+				            									+fileChooser.getInitialFileName();
+				            if(selectedFile!=null)
+				            {
+				            	pathToSave=selectedFile.getAbsolutePath();
+				            	try 
+					            {
+									try 
+									{
+										OutputWriter.writeToSameXlsxAllONAndSONTESTES(pathToSave, 
+																		listOfONTESTS, listOfSONTESTS);
+									} 
+									catch (Exception e) 
+									{
+										e.printStackTrace();
+									}
+								} 
+					            catch (Exception e) 
+					            {
+									e.printStackTrace();
+								}
+				            }
+				            else
+				            {
+				            	
+				            }
+				            
+					}
+					else
+					{
+						Alert alert=new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yapmak için önce bir sınav seçmeniz gerekir");
+						alert.showAndWait().orElse(null);
+					}
+					
+			            
+					
+					
+				}
+				
+			};
+			
+			exportAllONAndSONTESTSButton=new Button("Tüm Testleri Çıktı Al");
+			exportAllONAndSONTESTSButton.setPrefHeight(standard_element_height);
+			exportAllONAndSONTESTSButton.setPrefWidth(standard_element_width);
+			exportAllONAndSONTESTSButton.setLayoutX(base_x);
+			exportAllONAndSONTESTSButton.setLayoutY(base_y +y_dif*15);
+			pane.getChildren().add(exportAllONAndSONTESTSButton);
+			exportAllONAndSONTESTSButton.setOnAction(exportAllONAndSONTESTSEventHandler);
+			
 			EventHandler<ActionEvent> openSettingsEventHandler=new EventHandler<ActionEvent>()
 			{
 
@@ -1772,7 +1861,7 @@ public class ProgramWindow extends Application {
 			settingsButton.setPrefHeight(standard_element_height);
 			settingsButton.setPrefWidth(standard_element_width);
 			settingsButton.setLayoutX(base_x);
-			settingsButton.setLayoutY(base_y + y_dif*15);
+			settingsButton.setLayoutY(base_y + y_dif*16);
 			pane.getChildren().add(settingsButton);
 			settingsButton.setOnAction(openSettingsEventHandler);
 			
