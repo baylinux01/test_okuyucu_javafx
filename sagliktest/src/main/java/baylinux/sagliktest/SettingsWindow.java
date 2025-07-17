@@ -276,6 +276,8 @@ public class SettingsWindow extends Application {
 			{
 			cb_resized_width_for_title.getItems().add(a);
 			}
+			cb_resized_width_for_title.getItems()
+				.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
 			cb_resized_width_for_title.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_width_for_title()));
 			
@@ -297,6 +299,8 @@ public class SettingsWindow extends Application {
 			{
 			cb_resized_height_for_title.getItems().add(a);
 			}
+			cb_resized_height_for_title.getItems()
+			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
 			cb_resized_height_for_title.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_height_for_title()));
 			
@@ -319,6 +323,8 @@ public class SettingsWindow extends Application {
 			{
 			cb_resized_width_for_table.getItems().add(a);
 			}
+			cb_resized_width_for_table.getItems()
+			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
 			cb_resized_width_for_table.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_width_for_table()));
 			
@@ -340,6 +346,8 @@ public class SettingsWindow extends Application {
 			{
 			cb_resized_height_for_table.getItems().add(a);
 			}
+			cb_resized_height_for_table.getItems()
+			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
 			cb_resized_height_for_table.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_width_for_table()));
 			
