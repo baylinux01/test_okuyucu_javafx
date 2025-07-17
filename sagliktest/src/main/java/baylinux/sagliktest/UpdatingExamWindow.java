@@ -85,8 +85,8 @@ public class UpdatingExamWindow extends Application {
 			lb0=new Label("Sınav Adını Girin");
 			lb0.setPrefHeight(standard_element_height);
 			lb0.setPrefWidth(standard_element_width);
-			lb0.setLayoutX(base_x);
-			lb0.setLayoutY(base_y+lbdif);
+			lb0.setLayoutX(base_x+x_dif*0);
+			lb0.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb0);
 			
 			tf1=new TextField();
@@ -96,22 +96,22 @@ public class UpdatingExamWindow extends Application {
 			}
 			tf1.setPrefHeight(standard_element_height);
 			tf1.setPrefWidth(standard_element_width);
-			tf1.setLayoutX(base_x);
+			tf1.setLayoutX(base_x+x_dif*0);
 			tf1.setLayoutY(base_y+y_dif);
 			pane.getChildren().add(tf1);
 			
 			lb1=new Label("On Test Cevap-1");
 			lb1.setPrefHeight(standard_element_height);
 			lb1.setPrefWidth(standard_element_width);
-			lb1.setLayoutX(base_x);
-			lb1.setLayoutY(base_y+y_dif*2+lbdif);
+			lb1.setLayoutX(base_x+x_dif*1);
+			lb1.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb1);
 			
 			cb_on1=new ComboBox<String>();
 			cb_on1.setPrefHeight(standard_element_height);
 			cb_on1.setPrefWidth(standard_element_width);
-			cb_on1.setLayoutX(base_x);
-			cb_on1.setLayoutY(base_y+y_dif*3);
+			cb_on1.setLayoutX(base_x+x_dif);
+			cb_on1.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_on1);
 			cb_on1.getItems().clear();
 			cb_on1.getItems().addAll("A","B","C","D","E");
@@ -123,15 +123,15 @@ public class UpdatingExamWindow extends Application {
 			lb2=new Label("On Test Cevap-2");
 			lb2.setPrefHeight(standard_element_height);
 			lb2.setPrefWidth(standard_element_width);
-			lb2.setLayoutX(base_x);
-			lb2.setLayoutY(base_y+y_dif*4+lbdif);
+			lb2.setLayoutX(base_x+x_dif);
+			lb2.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb2);
 			
 			cb_on2=new ComboBox<String>();
 			cb_on2.setPrefHeight(standard_element_height);
 			cb_on2.setPrefWidth(standard_element_width);
-			cb_on2.setLayoutX(base_x);
-			cb_on2.setLayoutY(base_y+y_dif*5);
+			cb_on2.setLayoutX(base_x+x_dif);
+			cb_on2.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_on2);
 			cb_on2.getItems().clear();
 			cb_on2.getItems().addAll("A","B","C","D","E");
@@ -144,15 +144,15 @@ public class UpdatingExamWindow extends Application {
 			lb3=new Label("On Test Cevap-3");
 			lb3.setPrefHeight(standard_element_height);
 			lb3.setPrefWidth(standard_element_width);
-			lb3.setLayoutX(base_x);
-			lb3.setLayoutY(base_y+y_dif*6+lbdif);
+			lb3.setLayoutX(base_x+x_dif);
+			lb3.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb3);
 			
 			cb_on3=new ComboBox<String>();
 			cb_on3.setPrefHeight(standard_element_height);
 			cb_on3.setPrefWidth(standard_element_width);
-			cb_on3.setLayoutX(base_x);
-			cb_on3.setLayoutY(base_y+y_dif*7);
+			cb_on3.setLayoutX(base_x+x_dif);
+			cb_on3.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_on3);
 			cb_on3.getItems().clear();
 			cb_on3.getItems().addAll("A","B","C","D","E");
@@ -165,15 +165,15 @@ public class UpdatingExamWindow extends Application {
 			lb4=new Label("On Test Cevap-4");
 			lb4.setPrefHeight(standard_element_height);
 			lb4.setPrefWidth(standard_element_width);
-			lb4.setLayoutX(base_x);
-			lb4.setLayoutY(base_y+y_dif*8+lbdif);
+			lb4.setLayoutX(base_x+x_dif);
+			lb4.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb4);
 			
 			cb_on4=new ComboBox<String>();
 			cb_on4.setPrefHeight(standard_element_height);
 			cb_on4.setPrefWidth(standard_element_width);
-			cb_on4.setLayoutX(base_x);
-			cb_on4.setLayoutY(base_y+y_dif*9);
+			cb_on4.setLayoutX(base_x+x_dif);
+			cb_on4.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_on4);
 			cb_on4.getItems().clear();
 			cb_on4.getItems().addAll("A","B","C","D","E");
@@ -186,15 +186,15 @@ public class UpdatingExamWindow extends Application {
 			lb5=new Label("On Test Cevap-5");
 			lb5.setPrefHeight(standard_element_height);
 			lb5.setPrefWidth(standard_element_width);
-			lb5.setLayoutX(base_x);
-			lb5.setLayoutY(base_y+y_dif*10+lbdif);
+			lb5.setLayoutX(base_x+x_dif);
+			lb5.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb5);
 			
 			cb_on5=new ComboBox<String>();
 			cb_on5.setPrefHeight(standard_element_height);
 			cb_on5.setPrefWidth(standard_element_width);
-			cb_on5.setLayoutX(base_x);
-			cb_on5.setLayoutY(base_y+y_dif*11);
+			cb_on5.setLayoutX(base_x+x_dif);
+			cb_on5.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_on5);
 			cb_on5.getItems().clear();
 			cb_on5.getItems().addAll("A","B","C","D","E");
@@ -206,15 +206,15 @@ public class UpdatingExamWindow extends Application {
 			lb6=new Label("On Test Cevap-6");
 			lb6.setPrefHeight(standard_element_height);
 			lb6.setPrefWidth(standard_element_width);
-			lb6.setLayoutX(base_x);
-			lb6.setLayoutY(base_y+y_dif*12+lbdif);
+			lb6.setLayoutX(base_x+x_dif);
+			lb6.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb6);
 			
 			cb_on6=new ComboBox<String>();
 			cb_on6.setPrefHeight(standard_element_height);
 			cb_on6.setPrefWidth(standard_element_width);
-			cb_on6.setLayoutX(base_x);
-			cb_on6.setLayoutY(base_y+y_dif*13);
+			cb_on6.setLayoutX(base_x+x_dif);
+			cb_on6.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_on6);
 			cb_on6.getItems().clear();
 			cb_on6.getItems().addAll("A","B","C","D","E");
@@ -226,15 +226,15 @@ public class UpdatingExamWindow extends Application {
 			lb7=new Label("On Test Cevap-7");
 			lb7.setPrefHeight(standard_element_height);
 			lb7.setPrefWidth(standard_element_width);
-			lb7.setLayoutX(base_x);
-			lb7.setLayoutY(base_y+y_dif*14+lbdif);
+			lb7.setLayoutX(base_x+x_dif);
+			lb7.setLayoutY(base_y+y_dif*12+lbdif);
 			pane.getChildren().add(lb7);
 			
 			cb_on7=new ComboBox<String>();
 			cb_on7.setPrefHeight(standard_element_height);
 			cb_on7.setPrefWidth(standard_element_width);
-			cb_on7.setLayoutX(base_x);
-			cb_on7.setLayoutY(base_y+y_dif*15);
+			cb_on7.setLayoutX(base_x+x_dif);
+			cb_on7.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_on7);
 			cb_on7.getItems().clear();
 			cb_on7.getItems().addAll("A","B","C","D","E");
@@ -246,15 +246,15 @@ public class UpdatingExamWindow extends Application {
 			lb8=new Label("On Test Cevap-8");
 			lb8.setPrefHeight(standard_element_height);
 			lb8.setPrefWidth(standard_element_width);
-			lb8.setLayoutX(base_x);
-			lb8.setLayoutY(base_y+y_dif*16+lbdif);
+			lb8.setLayoutX(base_x+x_dif);
+			lb8.setLayoutY(base_y+y_dif*14+lbdif);
 			pane.getChildren().add(lb8);
 			
 			cb_on8=new ComboBox<String>();
 			cb_on8.setPrefHeight(standard_element_height);
 			cb_on8.setPrefWidth(standard_element_width);
-			cb_on8.setLayoutX(base_x);
-			cb_on8.setLayoutY(base_y+y_dif*17);
+			cb_on8.setLayoutX(base_x+x_dif);
+			cb_on8.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(cb_on8);
 			cb_on8.getItems().clear();
 			cb_on8.getItems().addAll("A","B","C","D","E");
@@ -266,15 +266,15 @@ public class UpdatingExamWindow extends Application {
 			lb9=new Label("On Test Cevap-9");
 			lb9.setPrefHeight(standard_element_height);
 			lb9.setPrefWidth(standard_element_width);
-			lb9.setLayoutX(base_x);
-			lb9.setLayoutY(base_y+y_dif*18+lbdif);
+			lb9.setLayoutX(base_x+x_dif);
+			lb9.setLayoutY(base_y+y_dif*16+lbdif);
 			pane.getChildren().add(lb9);
 			
 			cb_on9=new ComboBox<String>();
 			cb_on9.setPrefHeight(standard_element_height);
 			cb_on9.setPrefWidth(standard_element_width);
-			cb_on9.setLayoutX(base_x);
-			cb_on9.setLayoutY(base_y+y_dif*19);
+			cb_on9.setLayoutX(base_x+x_dif);
+			cb_on9.setLayoutY(base_y+y_dif*17);
 			pane.getChildren().add(cb_on9);
 			cb_on9.getItems().clear();
 			cb_on9.getItems().addAll("A","B","C","D","E");
@@ -286,15 +286,15 @@ public class UpdatingExamWindow extends Application {
 			lb10=new Label("On Test Cevap-10");
 			lb10.setPrefHeight(standard_element_height);
 			lb10.setPrefWidth(standard_element_width);
-			lb10.setLayoutX(base_x);
-			lb10.setLayoutY(base_y+y_dif*20+lbdif);
+			lb10.setLayoutX(base_x+x_dif);
+			lb10.setLayoutY(base_y+y_dif*18+lbdif);
 			pane.getChildren().add(lb10);
 			
 			cb_on10=new ComboBox<String>();
 			cb_on10.setPrefHeight(standard_element_height);
 			cb_on10.setPrefWidth(standard_element_width);
-			cb_on10.setLayoutX(base_x);
-			cb_on10.setLayoutY(base_y+y_dif*21);
+			cb_on10.setLayoutX(base_x+x_dif);
+			cb_on10.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_on10);
 			cb_on10.getItems().clear();
 			cb_on10.getItems().addAll("A","B","C","D","E");
@@ -306,15 +306,15 @@ public class UpdatingExamWindow extends Application {
 			lb11=new Label("On Test Cevap-11");
 			lb11.setPrefHeight(standard_element_height);
 			lb11.setPrefWidth(standard_element_width);
-			lb11.setLayoutX(base_x);
-			lb11.setLayoutY(base_y+y_dif*22+lbdif);
+			lb11.setLayoutX(base_x+x_dif);
+			lb11.setLayoutY(base_y+y_dif*20+lbdif);
 			pane.getChildren().add(lb11);
 			
 			cb_on11=new ComboBox<String>();
 			cb_on11.setPrefHeight(standard_element_height);
 			cb_on11.setPrefWidth(standard_element_width);
-			cb_on11.setLayoutX(base_x);
-			cb_on11.setLayoutY(base_y+y_dif*23);
+			cb_on11.setLayoutX(base_x+x_dif);
+			cb_on11.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(cb_on11);
 			cb_on11.getItems().clear();
 			cb_on11.getItems().addAll("A","B","C","D","E");
@@ -327,14 +327,14 @@ public class UpdatingExamWindow extends Application {
 			lb12.setPrefHeight(standard_element_height);
 			lb12.setPrefWidth(standard_element_width);
 			lb12.setLayoutX(base_x+x_dif);
-			lb12.setLayoutY(base_y+lbdif);
+			lb12.setLayoutY(base_y+y_dif*22+lbdif);
 			pane.getChildren().add(lb12);
 			
 			cb_on12=new ComboBox<String>();
 			cb_on12.setPrefHeight(standard_element_height);
 			cb_on12.setPrefWidth(standard_element_width);
 			cb_on12.setLayoutX(base_x+x_dif);
-			cb_on12.setLayoutY(base_y+y_dif);
+			cb_on12.setLayoutY(base_y+y_dif*23);
 			pane.getChildren().add(cb_on12);
 			cb_on12.getItems().clear();
 			cb_on12.getItems().addAll("A","B","C","D","E");
@@ -346,15 +346,15 @@ public class UpdatingExamWindow extends Application {
 			lb13=new Label("On Test Cevap-13");
 			lb13.setPrefHeight(standard_element_height);
 			lb13.setPrefWidth(standard_element_width);
-			lb13.setLayoutX(base_x+x_dif);
-			lb13.setLayoutY(base_y+y_dif*2+lbdif);
+			lb13.setLayoutX(base_x+x_dif*2);
+			lb13.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb13);
 			
 			cb_on13=new ComboBox<String>();
 			cb_on13.setPrefHeight(standard_element_height);
 			cb_on13.setPrefWidth(standard_element_width);
-			cb_on13.setLayoutX(base_x+x_dif);
-			cb_on13.setLayoutY(base_y+y_dif*3);
+			cb_on13.setLayoutX(base_x+x_dif*2);
+			cb_on13.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_on13);
 			cb_on13.getItems().clear();
 			cb_on13.getItems().addAll("A","B","C","D","E");
@@ -366,15 +366,15 @@ public class UpdatingExamWindow extends Application {
 			lb14=new Label("On Test Cevap-14");
 			lb14.setPrefHeight(standard_element_height);
 			lb14.setPrefWidth(standard_element_width);
-			lb14.setLayoutX(base_x+x_dif);
-			lb14.setLayoutY(base_y+y_dif*4+lbdif);
+			lb14.setLayoutX(base_x+x_dif*2);
+			lb14.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb14);
 			
 			cb_on14=new ComboBox<String>();
 			cb_on14.setPrefHeight(standard_element_height);
 			cb_on14.setPrefWidth(standard_element_width);
-			cb_on14.setLayoutX(base_x+x_dif);
-			cb_on14.setLayoutY(base_y+y_dif*5);
+			cb_on14.setLayoutX(base_x+x_dif*2);
+			cb_on14.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_on14);
 			cb_on14.getItems().clear();
 			cb_on14.getItems().addAll("A","B","C","D","E");
@@ -386,15 +386,15 @@ public class UpdatingExamWindow extends Application {
 			lb15=new Label("On Test Cevap-15");
 			lb15.setPrefHeight(standard_element_height);
 			lb15.setPrefWidth(standard_element_width);
-			lb15.setLayoutX(base_x+x_dif);
-			lb15.setLayoutY(base_y+y_dif*6+lbdif);
+			lb15.setLayoutX(base_x+x_dif*2);
+			lb15.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb15);
 			
 			cb_on15=new ComboBox<String>();
 			cb_on15.setPrefHeight(standard_element_height);
 			cb_on15.setPrefWidth(standard_element_width);
-			cb_on15.setLayoutX(base_x+x_dif);
-			cb_on15.setLayoutY(base_y+y_dif*7);
+			cb_on15.setLayoutX(base_x+x_dif*2);
+			cb_on15.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_on15);
 			cb_on15.getItems().clear();
 			cb_on15.getItems().addAll("A","B","C","D","E");
@@ -406,15 +406,15 @@ public class UpdatingExamWindow extends Application {
 			lb16=new Label("On Test Cevap-16");
 			lb16.setPrefHeight(standard_element_height);
 			lb16.setPrefWidth(standard_element_width);
-			lb16.setLayoutX(base_x+x_dif);
-			lb16.setLayoutY(base_y+y_dif*8+lbdif);
+			lb16.setLayoutX(base_x+x_dif*2);
+			lb16.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb16);
 			
 			cb_on16=new ComboBox<String>();
 			cb_on16.setPrefHeight(standard_element_height);
 			cb_on16.setPrefWidth(standard_element_width);
-			cb_on16.setLayoutX(base_x+x_dif);
-			cb_on16.setLayoutY(base_y+y_dif*9);
+			cb_on16.setLayoutX(base_x+x_dif*2);
+			cb_on16.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_on16);
 			cb_on16.getItems().clear();
 			cb_on16.getItems().addAll("A","B","C","D","E");
@@ -426,15 +426,15 @@ public class UpdatingExamWindow extends Application {
 			lb17=new Label("On Test Cevap-17");
 			lb17.setPrefHeight(standard_element_height);
 			lb17.setPrefWidth(standard_element_width);
-			lb17.setLayoutX(base_x+x_dif);
-			lb17.setLayoutY(base_y+y_dif*10+lbdif);
+			lb17.setLayoutX(base_x+x_dif*2);
+			lb17.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb17);
 			
 			cb_on17=new ComboBox<String>();
 			cb_on17.setPrefHeight(standard_element_height);
 			cb_on17.setPrefWidth(standard_element_width);
-			cb_on17.setLayoutX(base_x+x_dif);
-			cb_on17.setLayoutY(base_y+y_dif*11);
+			cb_on17.setLayoutX(base_x+x_dif*2);
+			cb_on17.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_on17);
 			cb_on17.getItems().clear();
 			cb_on17.getItems().addAll("A","B","C","D","E");
@@ -446,15 +446,15 @@ public class UpdatingExamWindow extends Application {
 			lb18=new Label("On Test Cevap-18");
 			lb18.setPrefHeight(standard_element_height);
 			lb18.setPrefWidth(standard_element_width);
-			lb18.setLayoutX(base_x+x_dif);
-			lb18.setLayoutY(base_y+y_dif*12+lbdif);
+			lb18.setLayoutX(base_x+x_dif*2);
+			lb18.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb18);
 			
 			cb_on18=new ComboBox<String>();
 			cb_on18.setPrefHeight(standard_element_height);
 			cb_on18.setPrefWidth(standard_element_width);
-			cb_on18.setLayoutX(base_x+x_dif);
-			cb_on18.setLayoutY(base_y+y_dif*13);
+			cb_on18.setLayoutX(base_x+x_dif*2);
+			cb_on18.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_on18);
 			cb_on18.getItems().clear();
 			cb_on18.getItems().addAll("A","B","C","D","E");
@@ -466,15 +466,15 @@ public class UpdatingExamWindow extends Application {
 			lb19=new Label("On Test Cevap-19");
 			lb19.setPrefHeight(standard_element_height);
 			lb19.setPrefWidth(standard_element_width);
-			lb19.setLayoutX(base_x+x_dif);
-			lb19.setLayoutY(base_y+y_dif*14+lbdif);
+			lb19.setLayoutX(base_x+x_dif*2);
+			lb19.setLayoutY(base_y+y_dif*12+lbdif);
 			pane.getChildren().add(lb19);
 			
 			cb_on19=new ComboBox<String>();
 			cb_on19.setPrefHeight(standard_element_height);
 			cb_on19.setPrefWidth(standard_element_width);
-			cb_on19.setLayoutX(base_x+x_dif);
-			cb_on19.setLayoutY(base_y+y_dif*15);
+			cb_on19.setLayoutX(base_x+x_dif*2);
+			cb_on19.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_on19);
 			cb_on19.getItems().clear();
 			cb_on19.getItems().addAll("A","B","C","D","E");
@@ -486,15 +486,15 @@ public class UpdatingExamWindow extends Application {
 			lb20=new Label("On Test Cevap-20");
 			lb20.setPrefHeight(standard_element_height);
 			lb20.setPrefWidth(standard_element_width);
-			lb20.setLayoutX(base_x+x_dif);
-			lb20.setLayoutY(base_y+y_dif*16+lbdif);
+			lb20.setLayoutX(base_x+x_dif*2);
+			lb20.setLayoutY(base_y+y_dif*14+lbdif);
 			pane.getChildren().add(lb20);
 			
 			cb_on20=new ComboBox<String>();
 			cb_on20.setPrefHeight(standard_element_height);
 			cb_on20.setPrefWidth(standard_element_width);
-			cb_on20.setLayoutX(base_x+x_dif);
-			cb_on20.setLayoutY(base_y+y_dif*17);
+			cb_on20.setLayoutX(base_x+x_dif*2);
+			cb_on20.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(cb_on20);
 			cb_on20.getItems().clear();
 			cb_on20.getItems().addAll("A","B","C","D","E");
@@ -506,15 +506,15 @@ public class UpdatingExamWindow extends Application {
 			lb21=new Label("On Test Cevap-21");
 			lb21.setPrefHeight(standard_element_height);
 			lb21.setPrefWidth(standard_element_width);
-			lb21.setLayoutX(base_x+x_dif);
-			lb21.setLayoutY(base_y+y_dif*18+lbdif);
+			lb21.setLayoutX(base_x+x_dif*2);
+			lb21.setLayoutY(base_y+y_dif*16+lbdif);
 			pane.getChildren().add(lb21);
 			
 			cb_on21=new ComboBox<String>();
 			cb_on21.setPrefHeight(standard_element_height);
 			cb_on21.setPrefWidth(standard_element_width);
-			cb_on21.setLayoutX(base_x+x_dif);
-			cb_on21.setLayoutY(base_y+y_dif*19);
+			cb_on21.setLayoutX(base_x+x_dif*2);
+			cb_on21.setLayoutY(base_y+y_dif*17);
 			pane.getChildren().add(cb_on21);
 			cb_on21.getItems().clear();
 			cb_on21.getItems().addAll("A","B","C","D","E");
@@ -526,15 +526,15 @@ public class UpdatingExamWindow extends Application {
 			lb22=new Label("On Test Cevap-22");
 			lb22.setPrefHeight(standard_element_height);
 			lb22.setPrefWidth(standard_element_width);
-			lb22.setLayoutX(base_x+x_dif);
-			lb22.setLayoutY(base_y+y_dif*20+lbdif);
+			lb22.setLayoutX(base_x+x_dif*2);
+			lb22.setLayoutY(base_y+y_dif*18+lbdif);
 			pane.getChildren().add(lb22);
 			
 			cb_on22=new ComboBox<String>();
 			cb_on22.setPrefHeight(standard_element_height);
 			cb_on22.setPrefWidth(standard_element_width);
-			cb_on22.setLayoutX(base_x+x_dif);
-			cb_on22.setLayoutY(base_y+y_dif*21);
+			cb_on22.setLayoutX(base_x+x_dif*2);
+			cb_on22.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_on22);
 			cb_on22.getItems().clear();
 			cb_on22.getItems().addAll("A","B","C","D","E");
@@ -546,15 +546,15 @@ public class UpdatingExamWindow extends Application {
 			lb23=new Label("On Test Cevap-23");
 			lb23.setPrefHeight(standard_element_height);
 			lb23.setPrefWidth(standard_element_width);
-			lb23.setLayoutX(base_x+x_dif);
-			lb23.setLayoutY(base_y+y_dif*22+lbdif);
+			lb23.setLayoutX(base_x+x_dif*2);
+			lb23.setLayoutY(base_y+y_dif*20+lbdif);
 			pane.getChildren().add(lb23);
 			
 			cb_on23=new ComboBox<String>();
 			cb_on23.setPrefHeight(standard_element_height);
 			cb_on23.setPrefWidth(standard_element_width);
-			cb_on23.setLayoutX(base_x+x_dif);
-			cb_on23.setLayoutY(base_y+y_dif*23);
+			cb_on23.setLayoutX(base_x+x_dif*2);
+			cb_on23.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(cb_on23);
 			cb_on23.getItems().clear();
 			cb_on23.getItems().addAll("A","B","C","D","E");
@@ -567,14 +567,14 @@ public class UpdatingExamWindow extends Application {
 			lb24.setPrefHeight(standard_element_height);
 			lb24.setPrefWidth(standard_element_width);
 			lb24.setLayoutX(base_x+x_dif*2);
-			lb24.setLayoutY(base_y+lbdif);
+			lb24.setLayoutY(base_y+y_dif*22+lbdif);
 			pane.getChildren().add(lb24);
 			
 			cb_on24=new ComboBox<String>();
 			cb_on24.setPrefHeight(standard_element_height);
 			cb_on24.setPrefWidth(standard_element_width);
 			cb_on24.setLayoutX(base_x+x_dif*2);
-			cb_on24.setLayoutY(base_y+y_dif);
+			cb_on24.setLayoutY(base_y+y_dif*23);
 			pane.getChildren().add(cb_on24);
 			cb_on24.getItems().clear();
 			cb_on24.getItems().addAll("A","B","C","D","E");
@@ -586,15 +586,15 @@ public class UpdatingExamWindow extends Application {
 			lb25=new Label("On Test Cevap-25");
 			lb25.setPrefHeight(standard_element_height);
 			lb25.setPrefWidth(standard_element_width);
-			lb25.setLayoutX(base_x+x_dif*2);
-			lb25.setLayoutY(base_y+y_dif*2+lbdif);
+			lb25.setLayoutX(base_x+x_dif*3);
+			lb25.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb25);
 			
 			cb_on25=new ComboBox<String>();
 			cb_on25.setPrefHeight(standard_element_height);
 			cb_on25.setPrefWidth(standard_element_width);
-			cb_on25.setLayoutX(base_x+x_dif*2);
-			cb_on25.setLayoutY(base_y+y_dif*3);
+			cb_on25.setLayoutX(base_x+x_dif*3);
+			cb_on25.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_on25);
 			cb_on25.getItems().clear();
 			cb_on25.getItems().addAll("A","B","C","D","E");
@@ -606,15 +606,15 @@ public class UpdatingExamWindow extends Application {
 			lb26=new Label("On Test Cevap-26");
 			lb26.setPrefHeight(standard_element_height);
 			lb26.setPrefWidth(standard_element_width);
-			lb26.setLayoutX(base_x+x_dif*2);
-			lb26.setLayoutY(base_y+y_dif*4+lbdif);
+			lb26.setLayoutX(base_x+x_dif*3);
+			lb26.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb26);
 			
 			cb_on26=new ComboBox<String>();
 			cb_on26.setPrefHeight(standard_element_height);
 			cb_on26.setPrefWidth(standard_element_width);
-			cb_on26.setLayoutX(base_x+x_dif*2);
-			cb_on26.setLayoutY(base_y+y_dif*5);
+			cb_on26.setLayoutX(base_x+x_dif*3);
+			cb_on26.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_on26);
 			cb_on26.getItems().clear();
 			cb_on26.getItems().addAll("A","B","C","D","E");
@@ -626,15 +626,15 @@ public class UpdatingExamWindow extends Application {
 			lb27=new Label("On Test Cevap-27");
 			lb27.setPrefHeight(standard_element_height);
 			lb27.setPrefWidth(standard_element_width);
-			lb27.setLayoutX(base_x+x_dif*2);
-			lb27.setLayoutY(base_y+y_dif*6+lbdif);
+			lb27.setLayoutX(base_x+x_dif*3);
+			lb27.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb27);
 			
 			cb_on27=new ComboBox<String>();
 			cb_on27.setPrefHeight(standard_element_height);
 			cb_on27.setPrefWidth(standard_element_width);
-			cb_on27.setLayoutX(base_x+x_dif*2);
-			cb_on27.setLayoutY(base_y+y_dif*7);
+			cb_on27.setLayoutX(base_x+x_dif*3);
+			cb_on27.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_on27);
 			cb_on27.getItems().clear();
 			cb_on27.getItems().addAll("A","B","C","D","E");
@@ -646,15 +646,15 @@ public class UpdatingExamWindow extends Application {
 			lb28=new Label("On Test Cevap-28");
 			lb28.setPrefHeight(standard_element_height);
 			lb28.setPrefWidth(standard_element_width);
-			lb28.setLayoutX(base_x+x_dif*2);
-			lb28.setLayoutY(base_y+y_dif*8+lbdif);
+			lb28.setLayoutX(base_x+x_dif*3);
+			lb28.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb28);
 			
 			cb_on28=new ComboBox<String>();
 			cb_on28.setPrefHeight(standard_element_height);
 			cb_on28.setPrefWidth(standard_element_width);
-			cb_on28.setLayoutX(base_x+x_dif*2);
-			cb_on28.setLayoutY(base_y+y_dif*9);
+			cb_on28.setLayoutX(base_x+x_dif*3);
+			cb_on28.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_on28);
 			cb_on28.getItems().clear();
 			cb_on28.getItems().addAll("A","B","C","D","E");
@@ -666,15 +666,15 @@ public class UpdatingExamWindow extends Application {
 			lb29=new Label("On Test Cevap-29");
 			lb29.setPrefHeight(standard_element_height);
 			lb29.setPrefWidth(standard_element_width);
-			lb29.setLayoutX(base_x+x_dif*2);
-			lb29.setLayoutY(base_y+y_dif*10+lbdif);
+			lb29.setLayoutX(base_x+x_dif*3);
+			lb29.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb29);
 			
 			cb_on29=new ComboBox<String>();
 			cb_on29.setPrefHeight(standard_element_height);
 			cb_on29.setPrefWidth(standard_element_width);
-			cb_on29.setLayoutX(base_x+x_dif*2);
-			cb_on29.setLayoutY(base_y+y_dif*11);
+			cb_on29.setLayoutX(base_x+x_dif*3);
+			cb_on29.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_on29);
 			cb_on29.getItems().clear();
 			cb_on29.getItems().addAll("A","B","C","D","E");
@@ -686,15 +686,15 @@ public class UpdatingExamWindow extends Application {
 			lb30=new Label("On Test Cevap-30");
 			lb30.setPrefHeight(standard_element_height);
 			lb30.setPrefWidth(standard_element_width);
-			lb30.setLayoutX(base_x+x_dif*2);
-			lb30.setLayoutY(base_y+y_dif*12+lbdif);
+			lb30.setLayoutX(base_x+x_dif*3);
+			lb30.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb30);
 			
 			cb_on30=new ComboBox<String>();
 			cb_on30.setPrefHeight(standard_element_height);
 			cb_on30.setPrefWidth(standard_element_width);
-			cb_on30.setLayoutX(base_x+x_dif*2);
-			cb_on30.setLayoutY(base_y+y_dif*13);
+			cb_on30.setLayoutX(base_x+x_dif*3);
+			cb_on30.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_on30);
 			cb_on30.getItems().clear();
 			cb_on30.getItems().addAll("A","B","C","D","E");
@@ -706,14 +706,14 @@ public class UpdatingExamWindow extends Application {
 			lb31=new Label("Son Test Cevap-1");
 			lb31.setPrefHeight(standard_element_height);
 			lb31.setPrefWidth(standard_element_width);
-			lb31.setLayoutX(base_x+x_dif*3);
+			lb31.setLayoutX(base_x+x_dif*4);
 			lb31.setLayoutY(base_y+lbdif);
 			pane.getChildren().add(lb31);
 			
 			cb_son1=new ComboBox<String>();
 			cb_son1.setPrefHeight(standard_element_height);
 			cb_son1.setPrefWidth(standard_element_width);
-			cb_son1.setLayoutX(base_x+x_dif*3);
+			cb_son1.setLayoutX(base_x+x_dif*4);
 			cb_son1.setLayoutY(base_y+y_dif);
 			pane.getChildren().add(cb_son1);
 			cb_son1.getItems().clear();
@@ -726,14 +726,14 @@ public class UpdatingExamWindow extends Application {
 			lb32=new Label("Son Test Cevap-2");
 			lb32.setPrefHeight(standard_element_height);
 			lb32.setPrefWidth(standard_element_width);
-			lb32.setLayoutX(base_x+x_dif*3);
+			lb32.setLayoutX(base_x+x_dif*4);
 			lb32.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb32);
 			
 			cb_son2=new ComboBox<String>();
 			cb_son2.setPrefHeight(standard_element_height);
 			cb_son2.setPrefWidth(standard_element_width);
-			cb_son2.setLayoutX(base_x+x_dif*3);
+			cb_son2.setLayoutX(base_x+x_dif*4);
 			cb_son2.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_son2);
 			cb_son2.getItems().clear();
@@ -746,14 +746,14 @@ public class UpdatingExamWindow extends Application {
 			lb33=new Label("Son Test Cevap-3");
 			lb33.setPrefHeight(standard_element_height);
 			lb33.setPrefWidth(standard_element_width);
-			lb33.setLayoutX(base_x+x_dif*3);
+			lb33.setLayoutX(base_x+x_dif*4);
 			lb33.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb33);
 			
 			cb_son3=new ComboBox<String>();
 			cb_son3.setPrefHeight(standard_element_height);
 			cb_son3.setPrefWidth(standard_element_width);
-			cb_son3.setLayoutX(base_x+x_dif*3);
+			cb_son3.setLayoutX(base_x+x_dif*4);
 			cb_son3.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_son3);
 			cb_son3.getItems().clear();
@@ -766,14 +766,14 @@ public class UpdatingExamWindow extends Application {
 			lb34=new Label("Son Test Cevap-4");
 			lb34.setPrefHeight(standard_element_height);
 			lb34.setPrefWidth(standard_element_width);
-			lb34.setLayoutX(base_x+x_dif*3);
+			lb34.setLayoutX(base_x+x_dif*4);
 			lb34.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb34);
 			
 			cb_son4=new ComboBox<String>();
 			cb_son4.setPrefHeight(standard_element_height);
 			cb_son4.setPrefWidth(standard_element_width);
-			cb_son4.setLayoutX(base_x+x_dif*3);
+			cb_son4.setLayoutX(base_x+x_dif*4);
 			cb_son4.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_son4);
 			cb_son4.getItems().clear();
@@ -786,14 +786,14 @@ public class UpdatingExamWindow extends Application {
 			lb35=new Label("Son Test Cevap-5");
 			lb35.setPrefHeight(standard_element_height);
 			lb35.setPrefWidth(standard_element_width);
-			lb35.setLayoutX(base_x+x_dif*3);
+			lb35.setLayoutX(base_x+x_dif*4);
 			lb35.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb35);
 			
 			cb_son5=new ComboBox<String>();
 			cb_son5.setPrefHeight(standard_element_height);
 			cb_son5.setPrefWidth(standard_element_width);
-			cb_son5.setLayoutX(base_x+x_dif*3);
+			cb_son5.setLayoutX(base_x+x_dif*4);
 			cb_son5.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_son5);
 			cb_son5.getItems().clear();
@@ -806,14 +806,14 @@ public class UpdatingExamWindow extends Application {
 			lb36=new Label("Son Test Cevap-6");
 			lb36.setPrefHeight(standard_element_height);
 			lb36.setPrefWidth(standard_element_width);
-			lb36.setLayoutX(base_x+x_dif*3);
+			lb36.setLayoutX(base_x+x_dif*4);
 			lb36.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb36);
 			
 			cb_son6=new ComboBox<String>();
 			cb_son6.setPrefHeight(standard_element_height);
 			cb_son6.setPrefWidth(standard_element_width);
-			cb_son6.setLayoutX(base_x+x_dif*3);
+			cb_son6.setLayoutX(base_x+x_dif*4);
 			cb_son6.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_son6);
 			cb_son6.getItems().clear();
@@ -826,14 +826,14 @@ public class UpdatingExamWindow extends Application {
 			lb37=new Label("Son Test Cevap-7");
 			lb37.setPrefHeight(standard_element_height);
 			lb37.setPrefWidth(standard_element_width);
-			lb37.setLayoutX(base_x+x_dif*3);
+			lb37.setLayoutX(base_x+x_dif*4);
 			lb37.setLayoutY(base_y+y_dif*12+lbdif);
 			pane.getChildren().add(lb37);
 			
 			cb_son7=new ComboBox<String>();
 			cb_son7.setPrefHeight(standard_element_height);
 			cb_son7.setPrefWidth(standard_element_width);
-			cb_son7.setLayoutX(base_x+x_dif*3);
+			cb_son7.setLayoutX(base_x+x_dif*4);
 			cb_son7.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_son7);
 			cb_son7.getItems().clear();
@@ -846,14 +846,14 @@ public class UpdatingExamWindow extends Application {
 			lb38=new Label("Son Test Cevap-8");
 			lb38.setPrefHeight(standard_element_height);
 			lb38.setPrefWidth(standard_element_width);
-			lb38.setLayoutX(base_x+x_dif*3);
+			lb38.setLayoutX(base_x+x_dif*4);
 			lb38.setLayoutY(base_y+y_dif*14+lbdif);
 			pane.getChildren().add(lb38);
 			
 			cb_son8=new ComboBox<String>();
 			cb_son8.setPrefHeight(standard_element_height);
 			cb_son8.setPrefWidth(standard_element_width);
-			cb_son8.setLayoutX(base_x+x_dif*3);
+			cb_son8.setLayoutX(base_x+x_dif*4);
 			cb_son8.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(cb_son8);
 			cb_son8.getItems().clear();
@@ -866,14 +866,14 @@ public class UpdatingExamWindow extends Application {
 			lb39=new Label("Son Test Cevap-9");
 			lb39.setPrefHeight(standard_element_height);
 			lb39.setPrefWidth(standard_element_width);
-			lb39.setLayoutX(base_x+x_dif*3);
+			lb39.setLayoutX(base_x+x_dif*4);
 			lb39.setLayoutY(base_y+y_dif*16+lbdif);
 			pane.getChildren().add(lb39);
 			
 			cb_son9=new ComboBox<String>();
 			cb_son9.setPrefHeight(standard_element_height);
 			cb_son9.setPrefWidth(standard_element_width);
-			cb_son9.setLayoutX(base_x+x_dif*3);
+			cb_son9.setLayoutX(base_x+x_dif*4);
 			cb_son9.setLayoutY(base_y+y_dif*17);
 			pane.getChildren().add(cb_son9);
 			cb_son9.getItems().clear();
@@ -886,14 +886,14 @@ public class UpdatingExamWindow extends Application {
 			lb40=new Label("Son Test Cevap-10");
 			lb40.setPrefHeight(standard_element_height);
 			lb40.setPrefWidth(standard_element_width);
-			lb40.setLayoutX(base_x+x_dif*3);
+			lb40.setLayoutX(base_x+x_dif*4);
 			lb40.setLayoutY(base_y+y_dif*18+lbdif);
 			pane.getChildren().add(lb40);
 			
 			cb_son10=new ComboBox<String>();
 			cb_son10.setPrefHeight(standard_element_height);
 			cb_son10.setPrefWidth(standard_element_width);
-			cb_son10.setLayoutX(base_x+x_dif*3);
+			cb_son10.setLayoutX(base_x+x_dif*4);
 			cb_son10.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_son10);
 			cb_son10.getItems().clear();
@@ -906,14 +906,14 @@ public class UpdatingExamWindow extends Application {
 			lb41=new Label("Son Test Cevap-11");
 			lb41.setPrefHeight(standard_element_height);
 			lb41.setPrefWidth(standard_element_width);
-			lb41.setLayoutX(base_x+x_dif*3);
+			lb41.setLayoutX(base_x+x_dif*4);
 			lb41.setLayoutY(base_y+y_dif*20+lbdif);
 			pane.getChildren().add(lb41);
 			
 			cb_son11=new ComboBox<String>();
 			cb_son11.setPrefHeight(standard_element_height);
 			cb_son11.setPrefWidth(standard_element_width);
-			cb_son11.setLayoutX(base_x+x_dif*3);
+			cb_son11.setLayoutX(base_x+x_dif*4);
 			cb_son11.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(cb_son11);
 			cb_son11.getItems().clear();
@@ -926,14 +926,14 @@ public class UpdatingExamWindow extends Application {
 			lb42=new Label("Son Test Cevap-12");
 			lb42.setPrefHeight(standard_element_height);
 			lb42.setPrefWidth(standard_element_width);
-			lb42.setLayoutX(base_x+x_dif*3);
+			lb42.setLayoutX(base_x+x_dif*4);
 			lb42.setLayoutY(base_y+y_dif*22+lbdif);
 			pane.getChildren().add(lb42);
 			
 			cb_son12=new ComboBox<String>();
 			cb_son12.setPrefHeight(standard_element_height);
 			cb_son12.setPrefWidth(standard_element_width);
-			cb_son12.setLayoutX(base_x+x_dif*3);
+			cb_son12.setLayoutX(base_x+x_dif*4);
 			cb_son12.setLayoutY(base_y+y_dif*23);
 			pane.getChildren().add(cb_son12);
 			cb_son12.getItems().clear();
@@ -946,14 +946,14 @@ public class UpdatingExamWindow extends Application {
 			lb43=new Label("Son Test Cevap-13");
 			lb43.setPrefHeight(standard_element_height);
 			lb43.setPrefWidth(standard_element_width);
-			lb43.setLayoutX(base_x+x_dif*4);
+			lb43.setLayoutX(base_x+x_dif*5);
 			lb43.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb43);
 			
 			cb_son13=new ComboBox<String>();
 			cb_son13.setPrefHeight(standard_element_height);
 			cb_son13.setPrefWidth(standard_element_width);
-			cb_son13.setLayoutX(base_x+x_dif*4);
+			cb_son13.setLayoutX(base_x+x_dif*5);
 			cb_son13.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_son13);
 			cb_son13.getItems().clear();
@@ -966,14 +966,14 @@ public class UpdatingExamWindow extends Application {
 			lb44=new Label("Son Test Cevap-14");
 			lb44.setPrefHeight(standard_element_height);
 			lb44.setPrefWidth(standard_element_width);
-			lb44.setLayoutX(base_x+x_dif*4);
+			lb44.setLayoutX(base_x+x_dif*5);
 			lb44.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb44);
 			
 			cb_son14=new ComboBox<String>();
 			cb_son14.setPrefHeight(standard_element_height);
 			cb_son14.setPrefWidth(standard_element_width);
-			cb_son14.setLayoutX(base_x+x_dif*4);
+			cb_son14.setLayoutX(base_x+x_dif*5);
 			cb_son14.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_son14);
 			cb_son14.getItems().clear();
@@ -986,14 +986,14 @@ public class UpdatingExamWindow extends Application {
 			lb45=new Label("Son Test Cevap-15");
 			lb45.setPrefHeight(standard_element_height);
 			lb45.setPrefWidth(standard_element_width);
-			lb45.setLayoutX(base_x+x_dif*4);
+			lb45.setLayoutX(base_x+x_dif*5);
 			lb45.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb45);
 			
 			cb_son15=new ComboBox<String>();
 			cb_son15.setPrefHeight(standard_element_height);
 			cb_son15.setPrefWidth(standard_element_width);
-			cb_son15.setLayoutX(base_x+x_dif*4);
+			cb_son15.setLayoutX(base_x+x_dif*5);
 			cb_son15.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_son15);
 			cb_son15.getItems().clear();
@@ -1006,14 +1006,14 @@ public class UpdatingExamWindow extends Application {
 			lb46=new Label("Son Test Cevap-16");
 			lb46.setPrefHeight(standard_element_height);
 			lb46.setPrefWidth(standard_element_width);
-			lb46.setLayoutX(base_x+x_dif*4);
+			lb46.setLayoutX(base_x+x_dif*5);
 			lb46.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb46);
 			
 			cb_son16=new ComboBox<String>();
 			cb_son16.setPrefHeight(standard_element_height);
 			cb_son16.setPrefWidth(standard_element_width);
-			cb_son16.setLayoutX(base_x+x_dif*4);
+			cb_son16.setLayoutX(base_x+x_dif*5);
 			cb_son16.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_son16);
 			cb_son16.getItems().clear();
@@ -1026,14 +1026,14 @@ public class UpdatingExamWindow extends Application {
 			lb47=new Label("Son Test Cevap-17");
 			lb47.setPrefHeight(standard_element_height);
 			lb47.setPrefWidth(standard_element_width);
-			lb47.setLayoutX(base_x+x_dif*4);
+			lb47.setLayoutX(base_x+x_dif*5);
 			lb47.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb47);
 			
 			cb_son17=new ComboBox<String>();
 			cb_son17.setPrefHeight(standard_element_height);
 			cb_son17.setPrefWidth(standard_element_width);
-			cb_son17.setLayoutX(base_x+x_dif*4);
+			cb_son17.setLayoutX(base_x+x_dif*5);
 			cb_son17.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_son17);
 			cb_son17.getItems().clear();
@@ -1046,14 +1046,14 @@ public class UpdatingExamWindow extends Application {
 			lb48=new Label("Son Test Cevap-18");
 			lb48.setPrefHeight(standard_element_height);
 			lb48.setPrefWidth(standard_element_width);
-			lb48.setLayoutX(base_x+x_dif*4);
+			lb48.setLayoutX(base_x+x_dif*5);
 			lb48.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb48);
 			
 			cb_son18=new ComboBox<String>();
 			cb_son18.setPrefHeight(standard_element_height);
 			cb_son18.setPrefWidth(standard_element_width);
-			cb_son18.setLayoutX(base_x+x_dif*4);
+			cb_son18.setLayoutX(base_x+x_dif*5);
 			cb_son18.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_son18);
 			cb_son18.getItems().clear();
@@ -1066,14 +1066,14 @@ public class UpdatingExamWindow extends Application {
 			lb49=new Label("Son Test Cevap-19");
 			lb49.setPrefHeight(standard_element_height);
 			lb49.setPrefWidth(standard_element_width);
-			lb49.setLayoutX(base_x+x_dif*4);
+			lb49.setLayoutX(base_x+x_dif*5);
 			lb49.setLayoutY(base_y+y_dif*12+lbdif);
 			pane.getChildren().add(lb49);
 			
 			cb_son19=new ComboBox<String>();
 			cb_son19.setPrefHeight(standard_element_height);
 			cb_son19.setPrefWidth(standard_element_width);
-			cb_son19.setLayoutX(base_x+x_dif*4);
+			cb_son19.setLayoutX(base_x+x_dif*5);
 			cb_son19.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_son19);
 			cb_son19.getItems().clear();
@@ -1086,14 +1086,14 @@ public class UpdatingExamWindow extends Application {
 			lb50=new Label("Son Test Cevap-20");
 			lb50.setPrefHeight(standard_element_height);
 			lb50.setPrefWidth(standard_element_width);
-			lb50.setLayoutX(base_x+x_dif*4);
+			lb50.setLayoutX(base_x+x_dif*5);
 			lb50.setLayoutY(base_y+y_dif*14+lbdif);
 			pane.getChildren().add(lb50);
 			
 			cb_son20=new ComboBox<String>();
 			cb_son20.setPrefHeight(standard_element_height);
 			cb_son20.setPrefWidth(standard_element_width);
-			cb_son20.setLayoutX(base_x+x_dif*4);
+			cb_son20.setLayoutX(base_x+x_dif*5);
 			cb_son20.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(cb_son20);
 			cb_son20.getItems().clear();
@@ -1106,14 +1106,14 @@ public class UpdatingExamWindow extends Application {
 			lb51=new Label("Son Test Cevap-21");
 			lb51.setPrefHeight(standard_element_height);
 			lb51.setPrefWidth(standard_element_width);
-			lb51.setLayoutX(base_x+x_dif*4);
+			lb51.setLayoutX(base_x+x_dif*5);
 			lb51.setLayoutY(base_y+y_dif*16+lbdif);
 			pane.getChildren().add(lb51);
 			
 			cb_son21=new ComboBox<String>();
 			cb_son21.setPrefHeight(standard_element_height);
 			cb_son21.setPrefWidth(standard_element_width);
-			cb_son21.setLayoutX(base_x+x_dif*4);
+			cb_son21.setLayoutX(base_x+x_dif*5);
 			cb_son21.setLayoutY(base_y+y_dif*17);
 			pane.getChildren().add(cb_son21);
 			cb_son21.getItems().clear();
@@ -1126,14 +1126,14 @@ public class UpdatingExamWindow extends Application {
 			lb52=new Label("Son Test Cevap-22");
 			lb52.setPrefHeight(standard_element_height);
 			lb52.setPrefWidth(standard_element_width);
-			lb52.setLayoutX(base_x+x_dif*4);
+			lb52.setLayoutX(base_x+x_dif*5);
 			lb52.setLayoutY(base_y+y_dif*18+lbdif);
 			pane.getChildren().add(lb52);
 			
 			cb_son22=new ComboBox<String>();
 			cb_son22.setPrefHeight(standard_element_height);
 			cb_son22.setPrefWidth(standard_element_width);
-			cb_son22.setLayoutX(base_x+x_dif*4);
+			cb_son22.setLayoutX(base_x+x_dif*5);
 			cb_son22.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_son22);
 			cb_son22.getItems().clear();
@@ -1146,14 +1146,14 @@ public class UpdatingExamWindow extends Application {
 			lb53=new Label("Son Test Cevap-23");
 			lb53.setPrefHeight(standard_element_height);
 			lb53.setPrefWidth(standard_element_width);
-			lb53.setLayoutX(base_x+x_dif*4);
+			lb53.setLayoutX(base_x+x_dif*5);
 			lb53.setLayoutY(base_y+y_dif*20+lbdif);
 			pane.getChildren().add(lb53);
 			
 			cb_son23=new ComboBox<String>();
 			cb_son23.setPrefHeight(standard_element_height);
 			cb_son23.setPrefWidth(standard_element_width);
-			cb_son23.setLayoutX(base_x+x_dif*4);
+			cb_son23.setLayoutX(base_x+x_dif*5);
 			cb_son23.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(cb_son23);
 			cb_son23.getItems().clear();
@@ -1166,14 +1166,14 @@ public class UpdatingExamWindow extends Application {
 			lb54=new Label("Son Test Cevap-24");
 			lb54.setPrefHeight(standard_element_height);
 			lb54.setPrefWidth(standard_element_width);
-			lb54.setLayoutX(base_x+x_dif*4);
+			lb54.setLayoutX(base_x+x_dif*5);
 			lb54.setLayoutY(base_y+y_dif*22+lbdif);
 			pane.getChildren().add(lb54);
 			
 			cb_son24=new ComboBox<String>();
 			cb_son24.setPrefHeight(standard_element_height);
 			cb_son24.setPrefWidth(standard_element_width);
-			cb_son24.setLayoutX(base_x+x_dif*4);
+			cb_son24.setLayoutX(base_x+x_dif*5);
 			cb_son24.setLayoutY(base_y+y_dif*23);
 			pane.getChildren().add(cb_son24);
 			cb_son24.getItems().clear();
@@ -1186,14 +1186,14 @@ public class UpdatingExamWindow extends Application {
 			lb55=new Label("Son Test Cevap-25");
 			lb55.setPrefHeight(standard_element_height);
 			lb55.setPrefWidth(standard_element_width);
-			lb55.setLayoutX(base_x+x_dif*5);
+			lb55.setLayoutX(base_x+x_dif*6);
 			lb55.setLayoutY(base_y+y_dif*0+lbdif);
 			pane.getChildren().add(lb55);
 			
 			cb_son25=new ComboBox<String>();
 			cb_son25.setPrefHeight(standard_element_height);
 			cb_son25.setPrefWidth(standard_element_width);
-			cb_son25.setLayoutX(base_x+x_dif*5);
+			cb_son25.setLayoutX(base_x+x_dif*6);
 			cb_son25.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_son25);
 			cb_son25.getItems().clear();
@@ -1206,14 +1206,14 @@ public class UpdatingExamWindow extends Application {
 			lb56=new Label("Son Test Cevap-26");
 			lb56.setPrefHeight(standard_element_height);
 			lb56.setPrefWidth(standard_element_width);
-			lb56.setLayoutX(base_x+x_dif*5);
+			lb56.setLayoutX(base_x+x_dif*6);
 			lb56.setLayoutY(base_y+y_dif*2+lbdif);
 			pane.getChildren().add(lb56);
 			
 			cb_son26=new ComboBox<String>();
 			cb_son26.setPrefHeight(standard_element_height);
 			cb_son26.setPrefWidth(standard_element_width);
-			cb_son26.setLayoutX(base_x+x_dif*5);
+			cb_son26.setLayoutX(base_x+x_dif*6);
 			cb_son26.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(cb_son26);
 			cb_son26.getItems().clear();
@@ -1226,14 +1226,14 @@ public class UpdatingExamWindow extends Application {
 			lb57=new Label("Son Test Cevap-27");
 			lb57.setPrefHeight(standard_element_height);
 			lb57.setPrefWidth(standard_element_width);
-			lb57.setLayoutX(base_x+x_dif*5);
+			lb57.setLayoutX(base_x+x_dif*6);
 			lb57.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb57);
 			
 			cb_son27=new ComboBox<String>();
 			cb_son27.setPrefHeight(standard_element_height);
 			cb_son27.setPrefWidth(standard_element_width);
-			cb_son27.setLayoutX(base_x+x_dif*5);
+			cb_son27.setLayoutX(base_x+x_dif*6);
 			cb_son27.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_son27);
 			cb_son27.getItems().clear();
@@ -1246,14 +1246,14 @@ public class UpdatingExamWindow extends Application {
 			lb58=new Label("Son Test Cevap-28");
 			lb58.setPrefHeight(standard_element_height);
 			lb58.setPrefWidth(standard_element_width);
-			lb58.setLayoutX(base_x+x_dif*5);
+			lb58.setLayoutX(base_x+x_dif*6);
 			lb58.setLayoutY(base_y+y_dif*6+lbdif);
 			pane.getChildren().add(lb58);
 			
 			cb_son28=new ComboBox<String>();
 			cb_son28.setPrefHeight(standard_element_height);
 			cb_son28.setPrefWidth(standard_element_width);
-			cb_son28.setLayoutX(base_x+x_dif*5);
+			cb_son28.setLayoutX(base_x+x_dif*6);
 			cb_son28.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_son28);
 			cb_son28.getItems().clear();
@@ -1266,14 +1266,14 @@ public class UpdatingExamWindow extends Application {
 			lb59=new Label("Son Test Cevap-29");
 			lb59.setPrefHeight(standard_element_height);
 			lb59.setPrefWidth(standard_element_width);
-			lb59.setLayoutX(base_x+x_dif*5);
+			lb59.setLayoutX(base_x+x_dif*6);
 			lb59.setLayoutY(base_y+y_dif*8+lbdif);
 			pane.getChildren().add(lb59);
 			
 			cb_son29=new ComboBox<String>();
 			cb_son29.setPrefHeight(standard_element_height);
 			cb_son29.setPrefWidth(standard_element_width);
-			cb_son29.setLayoutX(base_x+x_dif*5);
+			cb_son29.setLayoutX(base_x+x_dif*6);
 			cb_son29.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(cb_son29);
 			cb_son29.getItems().clear();
@@ -1286,14 +1286,14 @@ public class UpdatingExamWindow extends Application {
 			lb60=new Label("Son Test Cevap-30");
 			lb60.setPrefHeight(standard_element_height);
 			lb60.setPrefWidth(standard_element_width);
-			lb60.setLayoutX(base_x+x_dif*5);
+			lb60.setLayoutX(base_x+x_dif*6);
 			lb60.setLayoutY(base_y+y_dif*10+lbdif);
 			pane.getChildren().add(lb60);
 			
 			cb_son30=new ComboBox<String>();
 			cb_son30.setPrefHeight(standard_element_height);
 			cb_son30.setPrefWidth(standard_element_width);
-			cb_son30.setLayoutX(base_x+x_dif*5);
+			cb_son30.setLayoutX(base_x+x_dif*6);
 			cb_son30.setLayoutY(base_y+y_dif*11);
 			pane.getChildren().add(cb_son30);
 			cb_son30.getItems().clear();
@@ -1627,9 +1627,9 @@ public class UpdatingExamWindow extends Application {
 			
 			updateExamButton=new Button("Sınavı Güncelle");
 			updateExamButton.setPrefHeight(30);
-			updateExamButton.setPrefWidth(200);
-			updateExamButton.setLayoutX(base_x+x_dif*6);
-			updateExamButton.setLayoutY(base_y+y_dif*12);
+			updateExamButton.setPrefWidth(140);
+			updateExamButton.setLayoutX(base_x+x_dif*7);
+			updateExamButton.setLayoutY(base_y+y_dif*20);
 			pane.getChildren().add(updateExamButton);
 			updateExamButton.setOnAction(updatingExamEventHandler);
 			
@@ -1665,9 +1665,9 @@ public class UpdatingExamWindow extends Application {
 			
 			goBackButton=new Button("Ana Sayfa");
 			goBackButton.setPrefHeight(30);
-			goBackButton.setPrefWidth(200);
-			goBackButton.setLayoutX(base_x+x_dif*6);
-			goBackButton.setLayoutY(base_y+y_dif*14);
+			goBackButton.setPrefWidth(140);
+			goBackButton.setLayoutX(base_x+x_dif*7);
+			goBackButton.setLayoutY(base_y+y_dif*22);
 			pane.getChildren().add(goBackButton);
 			goBackButton.setOnAction(goBackToProgramWindowEventHandler);
 			
