@@ -156,7 +156,8 @@ public class SettingsWindow extends Application {
 			cb_min_area_threshold_for_noise.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_min_area_threshold_for_noise);
 			cb_min_area_threshold_for_noise.getItems().clear();
-			cb_min_area_threshold_for_noise.getItems().addAll(0,10,15,20,25,50,75,100,125,150,175,200);
+			cb_min_area_threshold_for_noise.getItems()
+								.addAll(0,10,15,20,25,50,55,60,65,70,75,80,85,90,95,100,125,150,175,200);
 			cb_min_area_threshold_for_noise.getSelectionModel()
 											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise()));
 			
@@ -246,7 +247,7 @@ public class SettingsWindow extends Application {
 			cb_white_ratio_limit_value.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_white_ratio_limit_value);
 			cb_white_ratio_limit_value.getItems().clear();
-			cb_white_ratio_limit_value.getItems().addAll(0,5,10,15,20,25,30);
+			cb_white_ratio_limit_value.getItems().addAll(0,1,2,3,4,5,10,15,20,25,30);
 			cb_white_ratio_limit_value.getSelectionModel()
 										.select(Integer.valueOf(ps.getWhite_ratio_limit_value()));
 			

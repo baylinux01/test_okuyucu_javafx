@@ -107,8 +107,13 @@ public class ImageConverter {
                     		new Scalar(0), Core.FILLED);
                 }
     		}
-    		    
-    		 
+    		
+    		
+//    		Imgcodecs.imwrite(imageFullPath.substring(0,
+//			imageFullPath.lastIndexOf("/")+1)+
+//			"denemeCikti.png",
+//			higherCroppedPart);
+    		
     		
     		
     		

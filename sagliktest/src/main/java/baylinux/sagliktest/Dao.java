@@ -3411,7 +3411,7 @@ public class Dao {
 				st1.setString(3, "tur");
 				st1.setInt(4, 6);
 				st1.setInt(5, 1);
-				st1.setInt(6, 100);
+				st1.setInt(6, 75);
 				st1.setInt(7, 0);
 				st1.setInt(8, 0);
 				st1.setInt(9, 100);

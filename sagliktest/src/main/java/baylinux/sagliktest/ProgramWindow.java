@@ -53,11 +53,12 @@ public class ProgramWindow extends Application {
 	clearProgramTablesButton,updateSelectedONTESTButton,
 	updateSelectedSONTESTButton,updateSelectedTESTButton,
 	deleteSelectedONTESTButton,deleteSelectedSONTESTButton,deleteSelectedTESTButton,
+	deleteAllONTESTSButton,deleteAllSONTESTSButton,deleteAllTESTSButton,deleteAllParticipantAnswersButton,
 	exportONTESTSButton,exportSONTESTSButton,exportAllONAndSONTESTSButton;
 	protected static List<Exam> examList;
 	protected static Exam selectedExam;
 	protected static ParticipantAnswer selectedONTEST,selectedSONTEST,selectedTEST;
-	protected static List<ParticipantAnswer> listOfONTESTS,listOfSONTESTS, listOfTESTS;
+	protected static List<ParticipantAnswer> listOfONTESTS,listOfSONTESTS, listOfTESTS, listOfParticipantAnswers;
 	protected static DefaultSettings ds;
 	protected static PreferredSettings ps;
 	
@@ -68,7 +69,7 @@ public class ProgramWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1280,675);
+			Scene scene = new Scene(root,1300,675);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -159,7 +160,7 @@ public class ProgramWindow extends Application {
 			int standard_element_height=20;
 			int standard_element_width=140;
 			int standart_table_height=200;
-			int standart_table_width=1120;
+			int standart_table_width=1140;
 			
 			//ONTEST TABLOSUNUN BAŞLANGICI 
 			ONTESTTableView=new TableView<ParticipantAnswer>();
@@ -237,8 +238,8 @@ public class ProgramWindow extends Application {
 					new TableColumn<ParticipantAnswer,String>("29");
 			TableColumn<ParticipantAnswer,String> colONTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
-			TableColumn<ParticipantAnswer,Integer> colONTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colONTEST34=
+//					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
 //			TableColumn<ParticipantAnswer,Integer> colONTEST35=
 //					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
@@ -276,13 +277,13 @@ public class ProgramWindow extends Application {
 			colONTEST31.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_28"));
 			colONTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colONTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
-			colONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
+//			colONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 //			colONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colONTEST1.setMinWidth(40);
 			colONTEST1.setMaxWidth(40);
-			colONTEST2.setMinWidth(200);
-			colONTEST2.setMaxWidth(200);
+			colONTEST2.setMinWidth(280);
+			colONTEST2.setMaxWidth(280);
 			colONTEST2b.setMaxWidth(80);
 			colONTEST3.setMinWidth(140);
 			colONTEST3.setMaxWidth(140);
@@ -316,15 +317,17 @@ public class ProgramWindow extends Application {
 			colONTEST31.setMaxWidth(20);
 			colONTEST32.setMaxWidth(20);
 			colONTEST33.setMaxWidth(20);
-			colONTEST34.setMinWidth(80);
-			colONTEST34.setMaxWidth(80);
+//			colONTEST34.setMinWidth(80);
+//			colONTEST34.setMaxWidth(80);
 //			colONTEST35.setMinWidth(60);
 //			colONTEST35.setMaxWidth(60);
 			
 			colONTEST1.setStyle("-fx-alignment: center");
 			colONTEST2.setStyle("-fx-alignment: center");
+			colONTEST2.setStyle("-fx-font-size: 10");
 			colONTEST2b.setStyle("-fx-alignment: center");
 			colONTEST3.setStyle("-fx-alignment: center");
+			colONTEST3.setStyle("-fx-font-size: 10");
 			colONTEST4.setStyle("-fx-alignment: center");
 			colONTEST5.setStyle("-fx-alignment: center");
 			colONTEST6.setStyle("-fx-alignment: center");
@@ -355,8 +358,8 @@ public class ProgramWindow extends Application {
 			colONTEST31.setStyle("-fx-alignment: center");
 			colONTEST32.setStyle("-fx-alignment: center");
 			colONTEST33.setStyle("-fx-alignment: center");
-			colONTEST34.setStyle("-fx-alignment: center");
-			colONTEST34.setStyle("-fx-font-size: 10px");
+//			colONTEST34.setStyle("-fx-alignment: center");
+//			colONTEST34.setStyle("-fx-font-size: 10px");
 //			colONTEST35.setStyle("-fx-alignment: center");
 			
 			ONTESTTableView.getColumns().add(colONTEST1);
@@ -393,7 +396,7 @@ public class ProgramWindow extends Application {
 			ONTESTTableView.getColumns().add(colONTEST31);
 			ONTESTTableView.getColumns().add(colONTEST32);
 			ONTESTTableView.getColumns().add(colONTEST33);
-			ONTESTTableView.getColumns().add(colONTEST34);
+//			ONTESTTableView.getColumns().add(colONTEST34);
 //			ONTESTTableView.getColumns().add(colONTEST35);
 			//ONTEST TABLOSUNUN BİTİŞİ
 			
@@ -475,8 +478,8 @@ public class ProgramWindow extends Application {
 					new TableColumn<ParticipantAnswer,String>("29");
 			TableColumn<ParticipantAnswer,String> colSONTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
-			TableColumn<ParticipantAnswer,Integer> colSONTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colSONTEST34=
+//					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
 //			TableColumn<ParticipantAnswer,Integer> colSONTEST35=
 //					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
@@ -514,13 +517,13 @@ public class ProgramWindow extends Application {
 			colSONTEST31.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_28"));
 			colSONTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colSONTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
-			colSONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
+//			colSONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 //			colSONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colSONTEST1.setMinWidth(40);
 			colSONTEST1.setMaxWidth(40);
-			colSONTEST2.setMinWidth(200);
-			colSONTEST2.setMaxWidth(200);
+			colSONTEST2.setMinWidth(280);
+			colSONTEST2.setMaxWidth(280);
 			colSONTEST2b.setMaxWidth(80);
 			colSONTEST3.setMinWidth(140);
 			colSONTEST3.setMaxWidth(140);
@@ -554,15 +557,17 @@ public class ProgramWindow extends Application {
 			colSONTEST31.setMaxWidth(20);
 			colSONTEST32.setMaxWidth(20);
 			colSONTEST33.setMaxWidth(20);
-			colSONTEST34.setMinWidth(80);
-			colSONTEST34.setMaxWidth(80);
+//			colSONTEST34.setMinWidth(80);
+//			colSONTEST34.setMaxWidth(80);
 //			colSONTEST35.setMinWidth(60);
 //			colSONTEST35.setMaxWidth(60);
 			
 			colSONTEST1.setStyle("-fx-alignment: center");
 			colSONTEST2.setStyle("-fx-alignment: center");
+			colSONTEST2.setStyle("-fx-font-size: 10");
 			colSONTEST2b.setStyle("-fx-alignment: center");
 			colSONTEST3.setStyle("-fx-alignment: center");
+			colSONTEST3.setStyle("-fx-font-size: 10");
 			colSONTEST4.setStyle("-fx-alignment: center");
 			colSONTEST5.setStyle("-fx-alignment: center");
 			colSONTEST6.setStyle("-fx-alignment: center");
@@ -593,8 +598,8 @@ public class ProgramWindow extends Application {
 			colSONTEST31.setStyle("-fx-alignment: center");
 			colSONTEST32.setStyle("-fx-alignment: center");
 			colSONTEST33.setStyle("-fx-alignment: center");
-			colSONTEST34.setStyle("-fx-alignment: center");
-			colSONTEST34.setStyle("-fx-font-size: 10px");
+//			colSONTEST34.setStyle("-fx-alignment: center");
+//			colSONTEST34.setStyle("-fx-font-size: 10px");
 //			colSONTEST35.setStyle("-fx-alignment: center");
 			
 			SONTESTTableView.getColumns().add(colSONTEST1);
@@ -631,7 +636,7 @@ public class ProgramWindow extends Application {
 			SONTESTTableView.getColumns().add(colSONTEST31);
 			SONTESTTableView.getColumns().add(colSONTEST32);
 			SONTESTTableView.getColumns().add(colSONTEST33);
-			SONTESTTableView.getColumns().add(colSONTEST34);
+//			SONTESTTableView.getColumns().add(colSONTEST34);
 //			SONTESTTableView.getColumns().add(colSONTEST35);
 			
 			
@@ -715,8 +720,8 @@ public class ProgramWindow extends Application {
 					new TableColumn<ParticipantAnswer,String>("29");
 			TableColumn<ParticipantAnswer,String> colTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
-			TableColumn<ParticipantAnswer,Integer> colTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colTEST34=
+//					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
 //			TableColumn<ParticipantAnswer,Integer> colTEST35=
 //					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
@@ -754,13 +759,13 @@ public class ProgramWindow extends Application {
 			colTEST31.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_28"));
 			colTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
-			colTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
+//			colTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
 //			colTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colTEST1.setMinWidth(40);
 			colTEST1.setMaxWidth(40);
-			colTEST2.setMinWidth(200);
-			colTEST2.setMaxWidth(200);
+			colTEST2.setMinWidth(280);
+			colTEST2.setMaxWidth(280);
 			colTEST2b.setMaxWidth(80);
 			colTEST3.setMinWidth(140);
 			colTEST3.setMaxWidth(140);
@@ -794,15 +799,17 @@ public class ProgramWindow extends Application {
 			colTEST31.setMaxWidth(20);
 			colTEST32.setMaxWidth(20);
 			colTEST33.setMaxWidth(20);
-			colTEST34.setMinWidth(80);
-			colTEST34.setMaxWidth(80);
+//			colTEST34.setMinWidth(80);
+//			colTEST34.setMaxWidth(80);
 //			colTEST35.setMinWidth(60);
 //			colTEST35.setMaxWidth(60);
 			
 			colTEST1.setStyle("-fx-alignment: center");
 			colTEST2.setStyle("-fx-alignment: center");
+			colTEST2.setStyle("-fx-font-size: 10");
 			colTEST2b.setStyle("-fx-alignment: center");
 			colTEST3.setStyle("-fx-alignment: center");
+			colTEST3.setStyle("-fx-font-size: 10");
 			colTEST4.setStyle("-fx-alignment: center");
 			colTEST5.setStyle("-fx-alignment: center");
 			colTEST6.setStyle("-fx-alignment: center");
@@ -833,8 +840,8 @@ public class ProgramWindow extends Application {
 			colTEST31.setStyle("-fx-alignment: center");
 			colTEST32.setStyle("-fx-alignment: center");
 			colTEST33.setStyle("-fx-alignment: center");
-			colTEST34.setStyle("-fx-alignment: center");
-			colTEST34.setStyle("-fx-font-size: 10px");
+//			colTEST34.setStyle("-fx-alignment: center");
+//			colTEST34.setStyle("-fx-font-size: 10px");
 //			colTEST35.setStyle("-fx-alignment: center");
 			
 			TESTTableView.getColumns().add(colTEST1);
@@ -871,7 +878,7 @@ public class ProgramWindow extends Application {
 			TESTTableView.getColumns().add(colTEST31);
 			TESTTableView.getColumns().add(colTEST32);
 			TESTTableView.getColumns().add(colTEST33);
-			TESTTableView.getColumns().add(colTEST34);
+//			TESTTableView.getColumns().add(colTEST34);
 //			TESTTableView.getColumns().add(colTEST35);
 			//TEST TABLOSUNUN BİTİŞİ
 			
@@ -884,6 +891,7 @@ public class ProgramWindow extends Application {
 			root.getChildren().add(pane);
 			
 			lb1=new Label("Görüntülenecek Sınav");
+			//lb1.setStyle("-fx-font-size:10");
 			lb1.setPrefHeight(standard_element_height);
 			lb1.setPrefWidth(standard_element_width);
 			lb1.setLayoutX(base_x);
@@ -980,6 +988,7 @@ public class ProgramWindow extends Application {
 			};
 			
 			addExamButton=new Button("Sınav Oluştur");
+			//addExamButton.setStyle("-fx-font-size: 10");
 			addExamButton.setPrefHeight(standard_element_height);
 			addExamButton.setPrefWidth(standard_element_width);
 			addExamButton.setLayoutX(base_x);
@@ -1107,6 +1116,7 @@ public class ProgramWindow extends Application {
 			};
 			
 			updateExamButton=new Button("Seçili sınavı Güncelle");
+			updateExamButton.setStyle("-fx-font-size: 12");
 			updateExamButton.setPrefHeight(standard_element_height);
 			updateExamButton.setPrefWidth(standard_element_width);
 			updateExamButton.setLayoutX(base_x);
@@ -1220,7 +1230,8 @@ public class ProgramWindow extends Application {
 				
 			};
 			
-			importDataButton=new Button("Okumak için klasör seç");
+			importDataButton=new Button("Okunacak klasör seç");
+			importDataButton.setStyle("-fx-font-size: 12");
 			importDataButton.setPrefHeight(standard_element_height);
 			importDataButton.setPrefWidth(standard_element_width);
 			importDataButton.setLayoutX(base_x);
@@ -1228,45 +1239,7 @@ public class ProgramWindow extends Application {
 			pane.getChildren().add(importDataButton);
 			importDataButton.setOnAction(importDataEventHandler);
 			
-			EventHandler<ActionEvent> clearProgramTablesEventHandler=new EventHandler<ActionEvent>()
-			{
-
-				@Override
-				public void handle(ActionEvent event) 
-				{
-					Alert alert=new Alert(AlertType.CONFIRMATION);
-					alert.setTitle("Dikkat");
-					alert.setHeaderText("Dikkat");
-					alert.setContentText("Bunu yaparsanız veri tabanındaki veriler tamamen silinecektir");
-					ButtonType bt=alert.showAndWait().orElse(null);
-					if(bt.equals(ButtonType.OK))
-					{
-						try 
-						{
-							dao.clearProgramTables();
-							cb_exams.getItems().clear();
-							SONTESTTableView.getItems().clear();
-							ONTESTTableView.getItems().clear();
-							TESTTableView.getItems().clear();
-						} 
-						catch (SQLException e) 
-						{
-							e.printStackTrace();
-						}
-					}
-					
-					
-				}
-				
-			};
 			
-			clearProgramTablesButton=new Button("Veri Tabanını Sil");
-			clearProgramTablesButton.setPrefHeight(standard_element_height);
-			clearProgramTablesButton.setPrefWidth(standard_element_width);
-			clearProgramTablesButton.setLayoutX(base_x);
-			clearProgramTablesButton.setLayoutY(base_y +y_dif*6);
-			pane.getChildren().add(clearProgramTablesButton);
-			clearProgramTablesButton.setOnAction(clearProgramTablesEventHandler);
 			
 			EventHandler<ActionEvent> updateSelectedONTESTEventHandler=new EventHandler<ActionEvent>()
 			{
@@ -1314,10 +1287,11 @@ public class ProgramWindow extends Application {
 			};
 			
 			updateSelectedONTESTButton=new Button("Seçili Ön Testi Güncelle");
+			updateSelectedONTESTButton.setStyle("-fx-font-size: 11");
 			updateSelectedONTESTButton.setPrefHeight(standard_element_height);
 			updateSelectedONTESTButton.setPrefWidth(standard_element_width);
 			updateSelectedONTESTButton.setLayoutX(base_x);
-			updateSelectedONTESTButton.setLayoutY(base_y +y_dif*7);
+			updateSelectedONTESTButton.setLayoutY(base_y +y_dif*6);
 			pane.getChildren().add(updateSelectedONTESTButton);
 			updateSelectedONTESTButton.setOnAction(updateSelectedONTESTEventHandler);
 			
@@ -1367,10 +1341,11 @@ public class ProgramWindow extends Application {
 			};
 			
 			updateSelectedSONTESTButton=new Button("Seçili Son Testi Güncelle");
+			updateSelectedSONTESTButton.setStyle("-fx-font-size: 11");
 			updateSelectedSONTESTButton.setPrefHeight(standard_element_height);
 			updateSelectedSONTESTButton.setPrefWidth(standard_element_width);
 			updateSelectedSONTESTButton.setLayoutX(base_x);
-			updateSelectedSONTESTButton.setLayoutY(base_y +y_dif*8);
+			updateSelectedSONTESTButton.setLayoutY(base_y +y_dif*7);
 			pane.getChildren().add(updateSelectedSONTESTButton);
 			updateSelectedSONTESTButton.setOnAction(updateSelectedSONTESTEventHandler);
 			
@@ -1423,7 +1398,7 @@ public class ProgramWindow extends Application {
 			updateSelectedTESTButton.setPrefHeight(standard_element_height);
 			updateSelectedTESTButton.setPrefWidth(standard_element_width);
 			updateSelectedTESTButton.setLayoutX(base_x);
-			updateSelectedTESTButton.setLayoutY(base_y +y_dif*9);
+			updateSelectedTESTButton.setLayoutY(base_y +y_dif*8);
 			pane.getChildren().add(updateSelectedTESTButton);
 			updateSelectedTESTButton.setOnAction(updateSelectedTESTEventHandler);
 			
@@ -1480,10 +1455,65 @@ public class ProgramWindow extends Application {
 			deleteSelectedONTESTButton.setPrefHeight(standard_element_height);
 			deleteSelectedONTESTButton.setPrefWidth(standard_element_width);
 			deleteSelectedONTESTButton.setLayoutX(base_x);
-			deleteSelectedONTESTButton.setLayoutY(base_y +y_dif*10);
+			deleteSelectedONTESTButton.setLayoutY(base_y +y_dif*9);
 			pane.getChildren().add(deleteSelectedONTESTButton);
 			deleteSelectedONTESTButton.setOnAction(deleteSelectedONTESTEventHandler);
 			
+			EventHandler<ActionEvent> deleteAllONTESTSEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					
+					if(listOfONTESTS!=null)
+					{
+						Alert alert=new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yaparsanız tüm ön testler silinecektir");
+						ButtonType bt=alert.showAndWait().orElse(null);
+						if(bt.equals(ButtonType.OK))
+						{
+							
+							while(0<listOfONTESTS.size())
+							{
+								try 
+								{
+									dao.deleteParticipantAnswerById(listOfONTESTS.get(0).getId());
+									listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+								} 
+								catch (SQLException e) 
+								{
+									e.printStackTrace();
+								}
+							}
+						  
+						  
+						  ONTESTTableView.getItems().clear();
+						  if(listOfONTESTS!=null)
+						  {
+						  ONTESTTableView.getItems().addAll(listOfONTESTS);
+						  }
+						}
+						else
+						{
+							
+						}
+					}
+					
+					
+				}
+				
+			};
+			
+			deleteAllONTESTSButton=new Button("Tüm Ön Testleri Sil");
+			deleteAllONTESTSButton.setPrefHeight(standard_element_height);
+			deleteAllONTESTSButton.setPrefWidth(standard_element_width);
+			deleteAllONTESTSButton.setLayoutX(base_x);
+			deleteAllONTESTSButton.setLayoutY(base_y +y_dif*10);
+			pane.getChildren().add(deleteAllONTESTSButton);
+			deleteAllONTESTSButton.setOnAction(deleteAllONTESTSEventHandler);
 
 			EventHandler<ActionEvent> deleteSelectedSONTESTEventHandler=new EventHandler<ActionEvent>()
 			{
@@ -1541,6 +1571,62 @@ public class ProgramWindow extends Application {
 			pane.getChildren().add(deleteSelectedSONTESTButton);
 			deleteSelectedSONTESTButton.setOnAction(deleteSelectedSONTESTEventHandler);
 			
+			EventHandler<ActionEvent> deleteAllSONTESTSEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					
+					if(listOfSONTESTS!=null)
+					{
+						Alert alert=new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yaparsanız tüm son testler silinecektir");
+						ButtonType bt=alert.showAndWait().orElse(null);
+						if(bt.equals(ButtonType.OK))
+						{
+							
+							while(0<listOfSONTESTS.size())
+							{
+								try 
+								{
+									dao.deleteParticipantAnswerById(listOfSONTESTS.get(0).getId());
+									listOfSONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+								} 
+								catch (SQLException e) 
+								{
+									e.printStackTrace();
+								}
+							}
+						  
+						  
+						  SONTESTTableView.getItems().clear();
+						  if(listOfSONTESTS!=null)
+						  {
+						  SONTESTTableView.getItems().addAll(listOfSONTESTS);
+						  }
+						}
+						else
+						{
+							
+						}
+					}
+					
+					
+				}
+				
+			};
+			
+			deleteAllSONTESTSButton=new Button("Tüm Son Testleri Sil");
+			deleteAllSONTESTSButton.setPrefHeight(standard_element_height);
+			deleteAllSONTESTSButton.setPrefWidth(standard_element_width);
+			deleteAllSONTESTSButton.setLayoutX(base_x);
+			deleteAllSONTESTSButton.setLayoutY(base_y +y_dif*12);
+			pane.getChildren().add(deleteAllSONTESTSButton);
+			deleteAllSONTESTSButton.setOnAction(deleteAllSONTESTSEventHandler);
+			
 			EventHandler<ActionEvent> deleteSelectedTESTEventHandler=new EventHandler<ActionEvent>()
 			{
 
@@ -1589,13 +1675,156 @@ public class ProgramWindow extends Application {
 				
 			};
 			
-			deleteSelectedTESTButton=new Button("Seçili Testi Sil");
+			deleteSelectedTESTButton=new Button("Seçili Sınıfsız Testi Sil");
+			deleteSelectedTESTButton.setStyle("-fx-font-size: 11");
 			deleteSelectedTESTButton.setPrefHeight(standard_element_height);
 			deleteSelectedTESTButton.setPrefWidth(standard_element_width);
 			deleteSelectedTESTButton.setLayoutX(base_x);
-			deleteSelectedTESTButton.setLayoutY(base_y +y_dif*12);
+			deleteSelectedTESTButton.setLayoutY(base_y +y_dif*13);
 			pane.getChildren().add(deleteSelectedTESTButton);
 			deleteSelectedTESTButton.setOnAction(deleteSelectedTESTEventHandler);
+			
+			EventHandler<ActionEvent> deleteAllTESTSEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					
+					if(listOfTESTS!=null)
+					{
+						Alert alert=new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("Dikkat");
+						alert.setHeaderText("Uyarı");
+						alert.setContentText("Bunu yaparsanız tüm sınıflandırılmalış testler silinecektir");
+						ButtonType bt=alert.showAndWait().orElse(null);
+						if(bt.equals(ButtonType.OK))
+						{
+							
+							while(0<listOfTESTS.size())
+							{
+								try 
+								{
+									dao.deleteParticipantAnswerById(listOfTESTS.get(0).getId());
+									listOfTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+								} 
+								catch (SQLException e) 
+								{
+									e.printStackTrace();
+								}
+							}
+						  
+						  
+						  TESTTableView.getItems().clear();
+						  if(listOfTESTS!=null)
+						  {
+						  TESTTableView.getItems().addAll(listOfTESTS);
+						  }
+						}
+						else
+						{
+							
+						}
+					}
+					
+					
+				}
+				
+			};
+			
+			deleteAllTESTSButton=new Button("Tüm Sınıfsız Testleri Sil");
+			deleteAllTESTSButton.setStyle("-fx-font-size: 11");
+			deleteAllTESTSButton.setPrefHeight(standard_element_height);
+			deleteAllTESTSButton.setPrefWidth(standard_element_width);
+			deleteAllTESTSButton.setLayoutX(base_x);
+			deleteAllTESTSButton.setLayoutY(base_y +y_dif*14);
+			pane.getChildren().add(deleteAllTESTSButton);
+			deleteAllTESTSButton.setOnAction(deleteAllTESTSEventHandler);
+			
+			
+			EventHandler<ActionEvent> deleteAllParticipantAnswersEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					try 
+					{
+						dao.dropParticipantAnswerTable();
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					try 
+					{
+						dao.createParticipantAnswerTable();
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					listOfONTESTS.clear();
+					listOfSONTESTS.clear();
+					listOfTESTS.clear();
+					ONTESTTableView.getItems().clear();
+					SONTESTTableView.getItems().clear();
+					TESTTableView.getItems().clear();
+					
+					
+					
+					
+				}
+				
+			};
+			
+			deleteAllParticipantAnswersButton=new Button("Tüm Testleri Sil");
+			deleteAllParticipantAnswersButton.setPrefHeight(standard_element_height);
+			deleteAllParticipantAnswersButton.setPrefWidth(standard_element_width);
+			deleteAllParticipantAnswersButton.setLayoutX(base_x);
+			deleteAllParticipantAnswersButton.setLayoutY(base_y +y_dif*15);
+			pane.getChildren().add(deleteAllParticipantAnswersButton);
+			deleteAllParticipantAnswersButton.setOnAction(deleteAllParticipantAnswersEventHandler);
+			
+			EventHandler<ActionEvent> clearProgramTablesEventHandler=new EventHandler<ActionEvent>()
+			{
+
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					Alert alert=new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Dikkat");
+					alert.setHeaderText("Dikkat");
+					alert.setContentText("Bunu yaparsanız veri tabanındaki veriler tamamen silinecektir");
+					ButtonType bt=alert.showAndWait().orElse(null);
+					if(bt.equals(ButtonType.OK))
+					{
+						try 
+						{
+							dao.clearProgramTables();
+							cb_exams.getItems().clear();
+							SONTESTTableView.getItems().clear();
+							ONTESTTableView.getItems().clear();
+							TESTTableView.getItems().clear();
+						} 
+						catch (SQLException e) 
+						{
+							e.printStackTrace();
+						}
+					}
+					
+					
+				}
+				
+			};
+			
+			clearProgramTablesButton=new Button("Veri Tabanını Sil");
+			clearProgramTablesButton.setPrefHeight(standard_element_height);
+			clearProgramTablesButton.setPrefWidth(standard_element_width);
+			clearProgramTablesButton.setLayoutX(base_x);
+			clearProgramTablesButton.setLayoutY(base_y +y_dif*16);
+			pane.getChildren().add(clearProgramTablesButton);
+			clearProgramTablesButton.setOnAction(clearProgramTablesEventHandler);
 			
 			EventHandler<ActionEvent> exportONTESTSEventHandler=new EventHandler<ActionEvent>()
 			{
@@ -1679,7 +1908,7 @@ public class ProgramWindow extends Application {
 			exportONTESTSButton.setPrefHeight(standard_element_height);
 			exportONTESTSButton.setPrefWidth(standard_element_width);
 			exportONTESTSButton.setLayoutX(base_x);
-			exportONTESTSButton.setLayoutY(base_y +y_dif*13);
+			exportONTESTSButton.setLayoutY(base_y +y_dif*17);
 			pane.getChildren().add(exportONTESTSButton);
 			exportONTESTSButton.setOnAction(exportONTESTSEventHandler);
 			
@@ -1764,7 +1993,7 @@ public class ProgramWindow extends Application {
 			exportSONTESTSButton.setPrefHeight(standard_element_height);
 			exportSONTESTSButton.setPrefWidth(standard_element_width);
 			exportSONTESTSButton.setLayoutX(base_x);
-			exportSONTESTSButton.setLayoutY(base_y +y_dif*14);
+			exportSONTESTSButton.setLayoutY(base_y +y_dif*18);
 			pane.getChildren().add(exportSONTESTSButton);
 			exportSONTESTSButton.setOnAction(exportSONTESTSEventHandler);
 			
@@ -1869,7 +2098,7 @@ public class ProgramWindow extends Application {
 			exportAllONAndSONTESTSButton.setPrefHeight(standard_element_height);
 			exportAllONAndSONTESTSButton.setPrefWidth(standard_element_width);
 			exportAllONAndSONTESTSButton.setLayoutX(base_x);
-			exportAllONAndSONTESTSButton.setLayoutY(base_y +y_dif*15);
+			exportAllONAndSONTESTSButton.setLayoutY(base_y +y_dif*19);
 			pane.getChildren().add(exportAllONAndSONTESTSButton);
 			exportAllONAndSONTESTSButton.setOnAction(exportAllONAndSONTESTSEventHandler);
 			
@@ -1906,7 +2135,7 @@ public class ProgramWindow extends Application {
 			settingsButton.setPrefHeight(standard_element_height);
 			settingsButton.setPrefWidth(standard_element_width);
 			settingsButton.setLayoutX(base_x);
-			settingsButton.setLayoutY(base_y + y_dif*16);
+			settingsButton.setLayoutY(base_y + y_dif*20);
 			pane.getChildren().add(settingsButton);
 			settingsButton.setOnAction(openSettingsEventHandler);
 			
