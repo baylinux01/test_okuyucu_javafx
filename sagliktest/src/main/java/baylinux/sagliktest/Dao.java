@@ -2997,6 +2997,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3031,6 +3035,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3065,6 +3073,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3099,6 +3111,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 			
 		}
@@ -3170,6 +3186,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3204,6 +3224,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3238,6 +3262,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3272,6 +3300,10 @@ public class Dao {
 					+ "margin_x int,"
 					+ "margin_y int,"
 					+ "near_words text"
+					+ "resized_width_for_title int,"					
+					+ "resized_height_for_title int,"					
+					+ "resized_width_for_table int,"					
+					+ "resized_height_for_table int"
 					+ ");";
 			
 		}
@@ -3367,7 +3399,11 @@ public class Dao {
 				+ "cell_mat_width_crop_degree_factor,"			//25
 				+ "margin_x,"									//26
 				+ "margin_y,"									//27
-				+ "near_words"									//28
+				+ "near_words,"									//28
+				+ "resized_width_for_title,"					//29
+				+ "resized_height_for_title,"					//30
+				+ "resized_width_for_table,"					//31
+				+ "resized_height_for_table"					//32
 				+ ")"
 				+ "values ("
 				+ "?,"  //1
@@ -3397,7 +3433,11 @@ public class Dao {
 				+ "?,"	//25
 				+ "?,"	//26
 				+ "?,"	//27
-				+ "?"	//28
+				+ "?,"	//28
+				+ "?,"	//29
+				+ "?,"	//30
+				+ "?,"	//31
+				+ "?"	//32
 				+ ")";
 				int result=-1;
 				try {
@@ -3429,13 +3469,15 @@ public class Dao {
 				st1.setInt(21, 1);
 				st1.setInt(22, 1);
 				st1.setInt(23, 1);
-				st1.setInt(24, 9);
+				st1.setInt(24, 5);
 				st1.setInt(25, 20);
 				st1.setInt(26, 20);
 				st1.setInt(27, 20);
 				st1.setString(28, "İSİM-SOYİSİM");
-				
-				
+				st1.setInt(29, 3120);
+				st1.setInt(30, 4160);
+				st1.setInt(31, 3120);
+				st1.setInt(32, 4160);
 				result=st1.executeUpdate();
 				
 				} 
@@ -3494,7 +3536,11 @@ public class Dao {
 				+ "cell_mat_width_crop_degree_factor,"			//25
 				+ "margin_x,"									//26
 				+ "margin_y,"									//27
-				+ "near_words"									//28
+				+ "near_words,"									//28
+				+ "resized_width_for_title,"					//29
+				+ "resized_height_for_title,"					//30
+				+ "resized_width_for_table,"					//31
+				+ "resized_height_for_table"					//32
 				+ ")"
 				+ "values ("
 				+ "?,"  //1
@@ -3524,7 +3570,11 @@ public class Dao {
 				+ "?,"	//25
 				+ "?,"	//26
 				+ "?,"	//27
-				+ "?"	//28
+				+ "?,"	//28
+				+ "?,"	//29
+				+ "?,"	//30
+				+ "?,"	//31
+				+ "?"	//32
 				+ ")";
 			int result=-1;
 			try {
@@ -3561,7 +3611,10 @@ public class Dao {
 			st1.setInt(26, ds.getMargin_x());
 			st1.setInt(27, ds.getMargin_y());
 			st1.setString(28, ds.getNearWords());
-			
+			st1.setInt(29, ds.getResized_width_for_title());
+			st1.setInt(30, ds.getResized_height_for_title());
+			st1.setInt(31, ds.getResized_width_for_table());
+			st1.setInt(32, ds.getResized_height_for_table());
 			result=st1.executeUpdate();
 			
 			} 
@@ -3620,7 +3673,11 @@ String query1="Insert into PreferredSettingsTable "
 		+ "cell_mat_width_crop_degree_factor,"			//25
 		+ "margin_x,"									//26
 		+ "margin_y,"									//27
-		+ "near_words"									//28
+		+ "near_words,"									//28
+		+ "resized_width_for_title,"					//29
+		+ "resized_height_for_title,"					//30
+		+ "resized_width_for_table,"					//31
+		+ "resized_height_for_table"					//32
 		+ ")"
 		+ "values ("
 		+ "?,"  //1
@@ -3650,7 +3707,11 @@ String query1="Insert into PreferredSettingsTable "
 		+ "?,"	//25
 		+ "?,"	//26
 		+ "?,"	//27
-		+ "?"	//28
+		+ "?,"	//28
+		+ "?,"	//29
+		+ "?,"	//30
+		+ "?,"	//31
+		+ "?"	//32
 		+ ")";
 	int result=-1;
 	try {
@@ -3687,6 +3748,10 @@ String query1="Insert into PreferredSettingsTable "
 	st1.setInt(26, ps.getMargin_x());
 	st1.setInt(27, ps.getMargin_y());
 	st1.setString(28, ps.getNearWords());
+	st1.setInt(29, ps.getResized_width_for_title());
+	st1.setInt(30, ps.getResized_height_for_title());
+	st1.setInt(31, ps.getResized_width_for_table());
+	st1.setInt(32, ps.getResized_height_for_table());
 	result=st1.executeUpdate();
 	
 	} 

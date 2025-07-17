@@ -31,6 +31,10 @@ public class DefaultSettings
 	private int margin_x;
 	private int margin_y;
 	private String nearWords;
+	private int resized_width_for_title;
+	private int resized_height_for_title;
+	private int resized_width_for_table;
+	private int resized_height_for_table;
 	
 	public String getTesseract_data_path() {
 		return tesseract_data_path;
@@ -195,6 +199,31 @@ public class DefaultSettings
 	public void setNearWords(String nearWords) {
 		this.nearWords = nearWords;
 	}
+	public int getResized_width_for_title() {
+		return resized_width_for_title;
+	}
+	public void setResized_width_for_title(int resized_width_for_title) {
+		this.resized_width_for_title = resized_width_for_title;
+	}
+	public int getResized_height_for_title() {
+		return resized_height_for_title;
+	}
+	public void setResized_height_for_title(int resized_height_for_title) {
+		this.resized_height_for_title = resized_height_for_title;
+	}
+	public int getResized_width_for_table() {
+		return resized_width_for_table;
+	}
+	public void setResized_width_for_table(int resized_width_for_table) {
+		this.resized_width_for_table = resized_width_for_table;
+	}
+	public int getResized_height_for_table() {
+		return resized_height_for_table;
+	}
+	public void setResized_height_for_table(int resized_height_for_table) {
+		this.resized_height_for_table = resized_height_for_table;
+	}
+	
 	
 	
 	

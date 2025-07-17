@@ -50,10 +50,12 @@ public class ImageConverter {
        {
     	   
        }
-       
+       Mat resizedImage = new Mat();
+       Size newSize = new Size(ps.getResized_width_for_title(), ps.getResized_height_for_title()); 
+       Imgproc.resize(image, resizedImage, newSize);
        
        Mat gray=new Mat();
-       Imgproc.cvtColor(image, gray, Imgproc.COLOR_BGR2GRAY);
+       Imgproc.cvtColor(resizedImage, gray, Imgproc.COLOR_BGR2GRAY);
 //       Imgcodecs.imwrite(imagePath+"ilkCikti.png",gray);
        
        Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
@@ -189,10 +191,13 @@ public class ImageConverter {
         {
         	
         }
-        
+        System.out.println(image.width()+" "+image.height());
+        Mat resizedImage = new Mat();
+        Size newSize = new Size(ps.getResized_width_for_table(), ps.getResized_height_for_table()); 
+        Imgproc.resize(image, resizedImage, newSize);
        
        Mat gray=new Mat();
-       Imgproc.cvtColor(image, gray, Imgproc.COLOR_BGR2GRAY);
+       Imgproc.cvtColor(resizedImage, gray, Imgproc.COLOR_BGR2GRAY);
 //       Imgcodecs.imwrite(imagePath+"ilkCikti.png",gray);
        
        Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
