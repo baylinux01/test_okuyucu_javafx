@@ -2,11 +2,14 @@ package baylinux.sagliktest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -305,12 +308,35 @@ public class SettingsWindow extends Application {
 			cb_resized_width_for_title.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_resized_width_for_title);
 			cb_resized_width_for_title.getItems().clear();
+			List<Integer> list0= new ArrayList<Integer>();
 			for(int a=1000;a<10001;a=a+100)
 			{
-			cb_resized_width_for_title.getItems().add(a);
+			list0.add(a);
 			}
-			cb_resized_width_for_title.getItems()
-				.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
+			list0
+			.addAll(List.of(180,
+					312,
+					396,
+					720,
+					268,
+					820,
+					1024,
+					1080,
+					1280,
+					1440,
+					1584,
+					1920,
+					2160,
+					2481,
+					2560,
+					3120,
+					3507,
+					3840,
+					4160
+					));
+			Collections.sort(list0);
+			list0.stream().sorted().forEach(e->cb_resized_width_for_title.getItems().add(e));
+			
 			cb_resized_width_for_title.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_width_for_title()));
 			
@@ -328,12 +354,34 @@ public class SettingsWindow extends Application {
 			cb_resized_height_for_title.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_resized_height_for_title);
 			cb_resized_height_for_title.getItems().clear();
+			List<Integer> list1= new ArrayList<Integer>();
 			for(int a=1000;a<10001;a=a+100)
 			{
-			cb_resized_height_for_title.getItems().add(a);
+			list1.add(a);
 			}
-			cb_resized_height_for_title.getItems()
-			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
+			list1
+			.addAll(List.of(180,
+					312,
+					396,
+					720,
+					268,
+					820,
+					1024,
+					1080,
+					1280,
+					1440,
+					1584,
+					1920,
+					2160,
+					2481,
+					2560,
+					3120,
+					3507,
+					3840,
+					4160
+					));
+			Collections.sort(list1);
+			list1.stream().sorted().forEach(e->cb_resized_height_for_title.getItems().add(e));
 			cb_resized_height_for_title.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_height_for_title()));
 			
@@ -352,12 +400,34 @@ public class SettingsWindow extends Application {
 			cb_resized_width_for_table.setLayoutY(base_y+y_dif*10);
 			pane.getChildren().add(cb_resized_width_for_table);
 			cb_resized_width_for_table.getItems().clear();
+			List<Integer> list2= new ArrayList<Integer>();
 			for(int a=1000;a<10001;a=a+100)
 			{
-			cb_resized_width_for_table.getItems().add(a);
+			list2.add(a);
 			}
-			cb_resized_width_for_table.getItems()
-			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
+			list2
+			.addAll(List.of(180,
+					312,
+					396,
+					720,
+					268,
+					820,
+					1024,
+					1080,
+					1280,
+					1440,
+					1584,
+					1920,
+					2160,
+					2481,
+					2560,
+					3120,
+					3507,
+					3840,
+					4160
+					));
+			Collections.sort(list2);
+			list2.stream().sorted().forEach(e->cb_resized_width_for_table.getItems().add(e));
 			cb_resized_width_for_table.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_width_for_table()));
 			
@@ -375,12 +445,34 @@ public class SettingsWindow extends Application {
 			cb_resized_height_for_table.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_resized_height_for_table);
 			cb_resized_height_for_table.getItems().clear();
+			List<Integer> list3= new ArrayList<Integer>();
 			for(int a=1000;a<10001;a=a+100)
 			{
-			cb_resized_height_for_table.getItems().add(a);
+			list3.add(a);
 			}
-			cb_resized_height_for_table.getItems()
-			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
+			list3
+			.addAll(List.of(180,
+					312,
+					396,
+					720,
+					268,
+					820,
+					1024,
+					1080,
+					1280,
+					1440,
+					1584,
+					1920,
+					2160,
+					2481,
+					2560,
+					3120,
+					3507,
+					3840,
+					4160
+					));
+			Collections.sort(list3);
+			list3.stream().sorted().forEach(e->cb_resized_height_for_table.getItems().add(e));
 			cb_resized_height_for_table.getSelectionModel()
 										.select(Integer.valueOf(ps.getResized_height_for_table()));
 			

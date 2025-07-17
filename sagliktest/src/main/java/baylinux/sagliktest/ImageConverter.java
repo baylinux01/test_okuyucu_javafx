@@ -209,7 +209,7 @@ public class ImageConverter {
        Mat binary=new Mat();
        Imgproc.adaptiveThreshold(gray, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, 
     		   Imgproc.THRESH_BINARY_INV, 11, 2);
-//       Imgcodecs.imwrite(imagePath+"ucuncuCikti.png",binary);
+//       Imgcodecs.imwrite(imageFullPath+"ucuncuCikti.png",binary);
        
     
     List<MatOfPoint> paperContoursBinary = new ArrayList<>();
@@ -300,12 +300,12 @@ public class ImageConverter {
     		Core.bitwise_not(tableLines, inverseTableLines);
     		
     		
-//    		Imgcodecs.imwrite(imagePath + "inverseTableLines.png", inverseTableLines);
+//    		Imgcodecs.imwrite(imageFullPath + "inverseTableLines.png", inverseTableLines);
     		
     		Mat textOnlyImage = new Mat();
     		Core.bitwise_and(croppedBinary, inverseTableLines, textOnlyImage);
     		
-//    		Imgcodecs.imwrite(imagePath + "text_only_without_lines.png", textOnlyImage);
+//    		Imgcodecs.imwrite(imageFullPath + "text_only_without_lines.png", textOnlyImage);
     		
     		 List<MatOfPoint> contoursToCleanInsideTableForTextOnly = new ArrayList<>();
              Mat hierarchyToCleanInsideTableForTextOnly = new Mat();
@@ -322,7 +322,7 @@ public class ImageConverter {
             
     		Mat intersections = new Mat(); 
     		Core.bitwise_and(horizontalLines, verticalLines, intersections); 
-//    		Imgcodecs.imwrite(imagePath+"yedinciCikti_intersections.png", intersections); 
+//    		Imgcodecs.imwrite(imageFullPath+"yedinciCikti_intersections.png", intersections); 
 
     		List<MatOfPoint> intersectionContours = new ArrayList<>(); 
     		Imgproc.findContours(intersections, intersectionContours, new Mat(), 
