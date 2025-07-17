@@ -1748,28 +1748,41 @@ public class ProgramWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					try 
+					Alert alert=new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Dikkat");
+					alert.setHeaderText("Uyarı");
+					alert.setContentText("Bunu yaparsanız veritanabındaki tüm testler silinecektir");
+					ButtonType bt=alert.showAndWait().orElse(null);
+					if(bt.equals(ButtonType.OK))
 					{
-						dao.dropParticipantAnswerTable();
-					} 
-					catch (SQLException e) 
-					{
-						e.printStackTrace();
+						try 
+						{
+							dao.dropParticipantAnswerTable();
+						} 
+						catch (SQLException e) 
+						{
+							e.printStackTrace();
+						}
+						try 
+						{
+							dao.createParticipantAnswerTable();
+						} 
+						catch (SQLException e) 
+						{
+							e.printStackTrace();
+						}
+						listOfONTESTS.clear();
+						listOfSONTESTS.clear();
+						listOfTESTS.clear();
+						ONTESTTableView.getItems().clear();
+						SONTESTTableView.getItems().clear();
+						TESTTableView.getItems().clear();
 					}
-					try 
+					else
 					{
-						dao.createParticipantAnswerTable();
-					} 
-					catch (SQLException e) 
-					{
-						e.printStackTrace();
+						
 					}
-					listOfONTESTS.clear();
-					listOfSONTESTS.clear();
-					listOfTESTS.clear();
-					ONTESTTableView.getItems().clear();
-					SONTESTTableView.getItems().clear();
-					TESTTableView.getItems().clear();
+					
 					
 					
 					
