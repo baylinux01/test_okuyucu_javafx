@@ -35,13 +35,13 @@ public class UpdatingParticipantAnswerWindow extends Application {
 	private static PreferredSettings ps;
 	private static Dao dao;
 	protected static ParticipantAnswer paToBeUpdated;
-	protected static Label lb0, lb1,lb2,lb3,lb4,lb5,lb6,lb7,lb8,lb9,lb10,
+	protected static Label lb0a,lb0b, lb1,lb2,lb3,lb4,lb5,lb6,lb7,lb8,lb9,lb10,
 	lb11,lb12,lb13,lb14,lb15,lb16,lb17,lb18,lb19,lb20,
 	lb21,lb22,lb23,lb24,lb25,lb26,lb27,lb28,lb29,lb30,
 	lb31,lb32,lb33,lb34,lb35,lb36,lb37,lb38,lb39,lb40,
 	lb41,lb42,lb43,lb44,lb45,lb46,lb47,lb48,lb49,lb50,
 	lb51,lb52,lb53,lb54,lb55,lb56,lb57,lb58,lb59,lb60,lb61,lb62;
-	protected static TextField tf1,tf2;
+	protected static TextField tf1a,tf1b,tf2;
 	protected static ComboBox<String> cb_kc1,cb_kc2,cb_kc3,cb_kc4,cb_kc5,
 	cb_kc6,cb_kc7,cb_kc8,cb_kc9,cb_kc10,cb_kc11,cb_kc12,cb_kc13,cb_kc14,cb_kc15,
 	cb_kc16,cb_kc17,cb_kc18,cb_kc19,cb_kc20,cb_kc21,cb_kc22,cb_kc23,cb_kc24,cb_kc25,
@@ -72,45 +72,62 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			
 			int base_x=0;
 			int base_y=0;
-			int x_dif=130;
+			int x_dif=250;
 			int y_dif=25;
 			
 			int standard_element_height=20;
-			int standard_element_width=120;
+			int standard_element_width=240;
 			int lbdif=5;
 			
+			lb0a=new Label("Dosya Adı:");
+			lb0a.setPrefHeight(standard_element_height);
+			lb0a.setPrefWidth(standard_element_width);
+			lb0a.setLayoutX(base_x);
+			lb0a.setLayoutY(base_y+y_dif*0+lbdif);
+			pane.getChildren().add(lb0a);
 			
+			tf1a=new TextField();
+			tf1a.setStyle("-fx-font-size: 10");
+			if(paToBeUpdated!=null)
+			{	if(paToBeUpdated.getFile_name()!=null)
+				tf1a.setText(paToBeUpdated.getFile_name());
+			}
+			tf1a.setPrefHeight(standard_element_height);
+			tf1a.setPrefWidth(standard_element_width);
+			tf1a.setLayoutX(base_x+x_dif*0);
+			tf1a.setLayoutY(base_y+y_dif*1);
+			pane.getChildren().add(tf1a);
 			
-			lb0=new Label("İsim Soyisim:");
-			lb0.setPrefHeight(standard_element_height);
-			lb0.setPrefWidth(standard_element_width);
-			lb0.setLayoutX(base_x);
-			lb0.setLayoutY(base_y+y_dif*0+lbdif);
-			pane.getChildren().add(lb0);
+			lb0b=new Label("İsim Soyisim:");
+			lb0b.setPrefHeight(standard_element_height);
+			lb0b.setPrefWidth(standard_element_width);
+			lb0b.setLayoutX(base_x);
+			lb0b.setLayoutY(base_y+y_dif*2+lbdif);
+			pane.getChildren().add(lb0b);
 			
-			tf1=new TextField();
+			tf1b=new TextField();
 			if(paToBeUpdated!=null)
 			{	if(paToBeUpdated.getName_surname()!=null)
-				tf1.setText(paToBeUpdated.getName_surname());
+				tf1b.setText(paToBeUpdated.getName_surname());
 			}
-			tf1.setPrefHeight(standard_element_height);
-			tf1.setPrefWidth(standard_element_width);
-			tf1.setLayoutX(base_x);
-			tf1.setLayoutY(base_y+y_dif*1);
-			pane.getChildren().add(tf1);
+			tf1b.setPrefHeight(standard_element_height);
+			tf1b.setPrefWidth(standard_element_width);
+			tf1b.setLayoutX(base_x+x_dif*0);
+			tf1b.setLayoutY(base_y+y_dif*3);
+			pane.getChildren().add(tf1b);
 			
 			lb31=new Label("Test Tipi");
 			lb31.setPrefHeight(standard_element_height);
 			lb31.setPrefWidth(standard_element_width);
-			lb31.setLayoutX(base_x);
-			lb31.setLayoutY(base_y+y_dif*2+lbdif);
+			lb31.setLayoutX(base_x+x_dif*0);
+			lb31.setLayoutY(base_y+y_dif*4+lbdif);
 			pane.getChildren().add(lb31);
 			
 			cb_test_type=new ComboBox<String>();
 			cb_test_type.setPrefHeight(standard_element_height);
 			cb_test_type.setPrefWidth(standard_element_width);
-			cb_test_type.setLayoutX(base_x);
-			cb_test_type.setLayoutY(base_y+y_dif*3);
+			cb_test_type.setLayoutX(base_x+x_dif*0);
+			cb_test_type.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_test_type);
 			cb_test_type.getItems().clear();
 			cb_test_type.getItems().addAll("ON TEST","SON TEST","TEST");
@@ -749,8 +766,8 @@ public class UpdatingParticipantAnswerWindow extends Application {
 						ParticipantAnswer pa=new ParticipantAnswer();
 						pa.setId(paToBeUpdated.getId());
 						
-						if(tf1.getText()!=null&&tf1.getText().length()>1)
-						pa.setName_surname(tf1.getText());
+						if(tf1b.getText()!=null&&tf1b.getText().length()>1)
+						pa.setName_surname(tf1b.getText());
 						
 						if(cb_test_type.getValue()!=null)
 							pa.setTest_type(cb_test_type.getValue());
@@ -1043,10 +1060,10 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			};
 			
 			updateExamButton=new Button("Cevapları Güncelle");
-			updateExamButton.setPrefHeight(30);
-			updateExamButton.setPrefWidth(140);
-			updateExamButton.setLayoutX(base_x+x_dif*4);
-			updateExamButton.setLayoutY(base_y+y_dif*20);
+			updateExamButton.setPrefHeight(standard_element_height);
+			updateExamButton.setPrefWidth(standard_element_width);
+			updateExamButton.setLayoutX(base_x+x_dif*3);
+			updateExamButton.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(updateExamButton);
 			updateExamButton.setOnAction(updatingParticipantAnswerEventHandler);
 			
@@ -1081,10 +1098,10 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			};
 			
 			goBackButton=new Button("Ana Sayfa");
-			goBackButton.setPrefHeight(30);
-			goBackButton.setPrefWidth(140);
-			goBackButton.setLayoutX(base_x+x_dif*4);
-			goBackButton.setLayoutY(base_y+y_dif*22);
+			goBackButton.setPrefHeight(standard_element_height);
+			goBackButton.setPrefWidth(standard_element_width);
+			goBackButton.setLayoutX(base_x+x_dif*3);
+			goBackButton.setLayoutY(base_y+y_dif*23);
 			pane.getChildren().add(goBackButton);
 			goBackButton.setOnAction(goBackToProgramWindowEventHandler);
 			
