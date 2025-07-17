@@ -4056,6 +4056,10 @@ String query1="Insert into PreferredSettingsTable "
 						.getInt("min_area_threshold_for_noise"));
 				p.setNearWords(rs
 						.getString("near_words"));
+				p.setResized_width_for_title(rs.getInt("resized_width_for_title"));
+				p.setResized_height_for_title(rs.getInt("resized_height_for_title"));
+				p.setResized_width_for_table(rs.getInt("resized_width_for_table"));
+				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -4144,6 +4148,10 @@ String query1="Insert into PreferredSettingsTable "
 						.getInt("min_area_threshold_for_noise"));
 				p.setNearWords(rs
 						.getString("near_words"));
+				p.setResized_width_for_title(rs.getInt("resized_width_for_title"));
+				p.setResized_height_for_title(rs.getInt("resized_height_for_title"));
+				p.setResized_width_for_table(rs.getInt("resized_width_for_table"));
+				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
