@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -66,6 +66,39 @@ public class SettingsWindow extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			EventHandler closeRequestEventHandler=new EventHandler()
+			{
+
+				@Override
+				public void handle(Event event) {
+					Group rootProgramWindow=new Group();
+					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Stage stageProgramWindow=new Stage();
+					stageProgramWindow.setScene(sceneProgramWindow);
+					stageProgramWindow.getIcons().add(
+							new Image(ProgramWindow.class
+							.getResourceAsStream("hotelLogo.png")));
+					
+					//stageOpenAidatPayerAddingWindow.show();
+					
+					ProgramWindow programWindow=new ProgramWindow();
+					try {
+						//programWindow.language=language;
+						programWindow.start(stageProgramWindow);
+
+						
+						primaryStage.hide();
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+					}
+					
+				}
+				
+			};
+			primaryStage.setOnCloseRequest(closeRequestEventHandler);
+			
 			Dao dao=new Dao();
 			DefaultSettings ds=dao.getDefaultSettings();
 			PreferredSettings ps=dao.getPreferredSettings();
