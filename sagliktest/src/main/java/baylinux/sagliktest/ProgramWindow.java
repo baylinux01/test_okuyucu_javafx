@@ -68,7 +68,7 @@ public class ProgramWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1315,675);
+			Scene scene = new Scene(root,1280,675);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -153,11 +153,11 @@ public class ProgramWindow extends Application {
 			
 			int base_x=5;
 			int base_y=5;
-			int x_dif=180;
+			int x_dif=150;
 			int y_dif=30;
 			
 			int standard_element_height=20;
-			int standard_element_width=170;
+			int standard_element_width=140;
 			int standart_table_height=200;
 			int standart_table_width=1120;
 			
@@ -238,9 +238,9 @@ public class ProgramWindow extends Application {
 			TableColumn<ParticipantAnswer,String> colONTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
 			TableColumn<ParticipantAnswer,Integer> colONTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru Sayısı");
-			TableColumn<ParticipantAnswer,Integer> colONTEST35=
-					new TableColumn<ParticipantAnswer,Integer>("Puan");
+					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colONTEST35=
+//					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
 			colONTEST1.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("id"));
 			colONTEST2.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("file_name"));
@@ -277,12 +277,12 @@ public class ProgramWindow extends Application {
 			colONTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colONTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
 			colONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
-			colONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
+//			colONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colONTEST1.setMinWidth(40);
 			colONTEST1.setMaxWidth(40);
-			colONTEST2.setMinWidth(100);
-			colONTEST2.setMaxWidth(100);
+			colONTEST2.setMinWidth(200);
+			colONTEST2.setMaxWidth(200);
 			colONTEST2b.setMaxWidth(80);
 			colONTEST3.setMinWidth(140);
 			colONTEST3.setMaxWidth(140);
@@ -316,10 +316,10 @@ public class ProgramWindow extends Application {
 			colONTEST31.setMaxWidth(20);
 			colONTEST32.setMaxWidth(20);
 			colONTEST33.setMaxWidth(20);
-			colONTEST34.setMinWidth(100);
-			colONTEST34.setMaxWidth(100);
-			colONTEST35.setMinWidth(60);
-			colONTEST35.setMaxWidth(60);
+			colONTEST34.setMinWidth(80);
+			colONTEST34.setMaxWidth(80);
+//			colONTEST35.setMinWidth(60);
+//			colONTEST35.setMaxWidth(60);
 			
 			colONTEST1.setStyle("-fx-alignment: center");
 			colONTEST2.setStyle("-fx-alignment: center");
@@ -356,7 +356,8 @@ public class ProgramWindow extends Application {
 			colONTEST32.setStyle("-fx-alignment: center");
 			colONTEST33.setStyle("-fx-alignment: center");
 			colONTEST34.setStyle("-fx-alignment: center");
-			colONTEST35.setStyle("-fx-alignment: center");
+			colONTEST34.setStyle("-fx-font-size: 10px");
+//			colONTEST35.setStyle("-fx-alignment: center");
 			
 			ONTESTTableView.getColumns().add(colONTEST1);
 			ONTESTTableView.getColumns().add(colONTEST2);
@@ -393,7 +394,7 @@ public class ProgramWindow extends Application {
 			ONTESTTableView.getColumns().add(colONTEST32);
 			ONTESTTableView.getColumns().add(colONTEST33);
 			ONTESTTableView.getColumns().add(colONTEST34);
-			ONTESTTableView.getColumns().add(colONTEST35);
+//			ONTESTTableView.getColumns().add(colONTEST35);
 			//ONTEST TABLOSUNUN BİTİŞİ
 			
 			
@@ -475,9 +476,9 @@ public class ProgramWindow extends Application {
 			TableColumn<ParticipantAnswer,String> colSONTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
 			TableColumn<ParticipantAnswer,Integer> colSONTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru Sayısı");
-			TableColumn<ParticipantAnswer,Integer> colSONTEST35=
-					new TableColumn<ParticipantAnswer,Integer>("Puan");
+					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colSONTEST35=
+//					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
 			colSONTEST1.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("id"));
 			colSONTEST2.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("file_name"));
@@ -514,12 +515,12 @@ public class ProgramWindow extends Application {
 			colSONTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colSONTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
 			colSONTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
-			colSONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
+//			colSONTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colSONTEST1.setMinWidth(40);
 			colSONTEST1.setMaxWidth(40);
-			colSONTEST2.setMinWidth(100);
-			colSONTEST2.setMaxWidth(100);
+			colSONTEST2.setMinWidth(200);
+			colSONTEST2.setMaxWidth(200);
 			colSONTEST2b.setMaxWidth(80);
 			colSONTEST3.setMinWidth(140);
 			colSONTEST3.setMaxWidth(140);
@@ -553,10 +554,10 @@ public class ProgramWindow extends Application {
 			colSONTEST31.setMaxWidth(20);
 			colSONTEST32.setMaxWidth(20);
 			colSONTEST33.setMaxWidth(20);
-			colSONTEST34.setMinWidth(100);
-			colSONTEST34.setMaxWidth(100);
-			colSONTEST35.setMinWidth(60);
-			colSONTEST35.setMaxWidth(60);
+			colSONTEST34.setMinWidth(80);
+			colSONTEST34.setMaxWidth(80);
+//			colSONTEST35.setMinWidth(60);
+//			colSONTEST35.setMaxWidth(60);
 			
 			colSONTEST1.setStyle("-fx-alignment: center");
 			colSONTEST2.setStyle("-fx-alignment: center");
@@ -593,7 +594,8 @@ public class ProgramWindow extends Application {
 			colSONTEST32.setStyle("-fx-alignment: center");
 			colSONTEST33.setStyle("-fx-alignment: center");
 			colSONTEST34.setStyle("-fx-alignment: center");
-			colSONTEST35.setStyle("-fx-alignment: center");
+			colSONTEST34.setStyle("-fx-font-size: 10px");
+//			colSONTEST35.setStyle("-fx-alignment: center");
 			
 			SONTESTTableView.getColumns().add(colSONTEST1);
 			SONTESTTableView.getColumns().add(colSONTEST2);
@@ -630,7 +632,7 @@ public class ProgramWindow extends Application {
 			SONTESTTableView.getColumns().add(colSONTEST32);
 			SONTESTTableView.getColumns().add(colSONTEST33);
 			SONTESTTableView.getColumns().add(colSONTEST34);
-			SONTESTTableView.getColumns().add(colSONTEST35);
+//			SONTESTTableView.getColumns().add(colSONTEST35);
 			
 			
 			//SONTEST TABLOSUNUN BİTİŞİ
@@ -714,9 +716,9 @@ public class ProgramWindow extends Application {
 			TableColumn<ParticipantAnswer,String> colTEST33=
 					new TableColumn<ParticipantAnswer,String>("30");
 			TableColumn<ParticipantAnswer,Integer> colTEST34=
-					new TableColumn<ParticipantAnswer,Integer>("Doğru Sayısı");
-			TableColumn<ParticipantAnswer,Integer> colTEST35=
-					new TableColumn<ParticipantAnswer,Integer>("Puan");
+					new TableColumn<ParticipantAnswer,Integer>("Doğru          ");
+//			TableColumn<ParticipantAnswer,Integer> colTEST35=
+//					new TableColumn<ParticipantAnswer,Integer>("Puan");
 			
 			colTEST1.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("id"));
 			colTEST2.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("file_name"));
@@ -753,12 +755,12 @@ public class ProgramWindow extends Application {
 			colTEST32.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_29"));
 			colTEST33.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,String>("answer_correctness_30"));
 			colTEST34.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("number_of_correct_answers"));
-			colTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
+//			colTEST35.setCellValueFactory(new PropertyValueFactory<ParticipantAnswer,Integer>("total_point"));
 			
 			colTEST1.setMinWidth(40);
 			colTEST1.setMaxWidth(40);
-			colTEST2.setMinWidth(100);
-			colTEST2.setMaxWidth(100);
+			colTEST2.setMinWidth(200);
+			colTEST2.setMaxWidth(200);
 			colTEST2b.setMaxWidth(80);
 			colTEST3.setMinWidth(140);
 			colTEST3.setMaxWidth(140);
@@ -792,10 +794,10 @@ public class ProgramWindow extends Application {
 			colTEST31.setMaxWidth(20);
 			colTEST32.setMaxWidth(20);
 			colTEST33.setMaxWidth(20);
-			colTEST34.setMinWidth(100);
-			colTEST34.setMaxWidth(100);
-			colTEST35.setMinWidth(60);
-			colTEST35.setMaxWidth(60);
+			colTEST34.setMinWidth(80);
+			colTEST34.setMaxWidth(80);
+//			colTEST35.setMinWidth(60);
+//			colTEST35.setMaxWidth(60);
 			
 			colTEST1.setStyle("-fx-alignment: center");
 			colTEST2.setStyle("-fx-alignment: center");
@@ -832,7 +834,8 @@ public class ProgramWindow extends Application {
 			colTEST32.setStyle("-fx-alignment: center");
 			colTEST33.setStyle("-fx-alignment: center");
 			colTEST34.setStyle("-fx-alignment: center");
-			colTEST35.setStyle("-fx-alignment: center");
+			colTEST34.setStyle("-fx-font-size: 10px");
+//			colTEST35.setStyle("-fx-alignment: center");
 			
 			TESTTableView.getColumns().add(colTEST1);
 			TESTTableView.getColumns().add(colTEST2);
@@ -869,7 +872,7 @@ public class ProgramWindow extends Application {
 			TESTTableView.getColumns().add(colTEST32);
 			TESTTableView.getColumns().add(colTEST33);
 			TESTTableView.getColumns().add(colTEST34);
-			TESTTableView.getColumns().add(colTEST35);
+//			TESTTableView.getColumns().add(colTEST35);
 			//TEST TABLOSUNUN BİTİŞİ
 			
 			
@@ -880,7 +883,7 @@ public class ProgramWindow extends Application {
 			pane.setPrefWidth(600);
 			root.getChildren().add(pane);
 			
-			lb1=new Label("Görüntülenecek Sınavı Seç");
+			lb1=new Label("Görüntülenecek Sınav");
 			lb1.setPrefHeight(standard_element_height);
 			lb1.setPrefWidth(standard_element_width);
 			lb1.setLayoutX(base_x);
