@@ -272,7 +272,7 @@ public class SettingsWindow extends Application {
 			cb_resized_width_for_title.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_resized_width_for_title);
 			cb_resized_width_for_title.getItems().clear();
-			for(int a=1000;a<10001;a++)
+			for(int a=1000;a<10001;a=a+100)
 			{
 			cb_resized_width_for_title.getItems().add(a);
 			}
@@ -293,7 +293,7 @@ public class SettingsWindow extends Application {
 			cb_resized_height_for_title.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_resized_height_for_title);
 			cb_resized_height_for_title.getItems().clear();
-			for(int a=1000;a<10001;a++)
+			for(int a=1000;a<10001;a=a+100)
 			{
 			cb_resized_height_for_title.getItems().add(a);
 			}
@@ -315,7 +315,7 @@ public class SettingsWindow extends Application {
 			cb_resized_width_for_table.setLayoutY(base_y+y_dif*10);
 			pane.getChildren().add(cb_resized_width_for_table);
 			cb_resized_width_for_table.getItems().clear();
-			for(int a=1000;a<10001;a++)
+			for(int a=1000;a<10001;a=a+100)
 			{
 			cb_resized_width_for_table.getItems().add(a);
 			}
@@ -336,7 +336,7 @@ public class SettingsWindow extends Application {
 			cb_resized_height_for_table.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_resized_height_for_table);
 			cb_resized_height_for_table.getItems().clear();
-			for(int a=1000;a<10001;a++)
+			for(int a=1000;a<10001;a=a+100)
 			{
 			cb_resized_height_for_table.getItems().add(a);
 			}
@@ -728,13 +728,13 @@ public class SettingsWindow extends Application {
 					cb_margin_y.getSelectionModel()
 										.select(Integer.valueOf(ds.getMargin_y()));
 					cb_resized_width_for_title.getSelectionModel()
-										.select(ds.getResized_width_for_title());
+										.select(Integer.valueOf(ds.getResized_width_for_title()));
 					cb_resized_height_for_title.getSelectionModel()
-										.select(ds.getResized_height_for_title());
+										.select(Integer.valueOf(ds.getResized_height_for_title()));
 					cb_resized_width_for_table.getSelectionModel()
-										.select(ds.getResized_width_for_table());
+										.select(Integer.valueOf(ds.getResized_width_for_table()));
 					cb_resized_height_for_table.getSelectionModel()
-										.select(ds.getResized_height_for_table());
+										.select(Integer.valueOf(ds.getResized_height_for_table()));
 					tf3.setText(String.valueOf(ds.getNearWords()));
 					if(ds.getDont_read_first_row()==1)
 					{
@@ -818,8 +818,25 @@ public class SettingsWindow extends Application {
 						{
 							ps.setDont_read_first_column(0);
 						}
-						dao.clearPreferredSettingsTable();
-						int result=dao.insertIntoPreferredSettingsTable(ps);
+						try 
+						{
+							dao.clearPreferredSettingsTable();
+						} 
+						catch (Exception e) 
+						{
+							
+							e.printStackTrace();
+						}
+						int result=-1;
+						try 
+						{
+							result=dao.insertIntoPreferredSettingsTable(ps);
+						} 
+						catch (Exception e) 
+						{
+							
+							e.printStackTrace();
+						}
 						if(result<=0)
 						{
 							Alert alert=new Alert(AlertType.ERROR);
