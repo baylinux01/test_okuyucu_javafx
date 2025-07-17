@@ -382,7 +382,7 @@ public class SettingsWindow extends Application {
 			cb_resized_height_for_table.getItems()
 			.addAll(180,312,396,720,268,820,1024,1080,1280,1440,1584,1920,2160,2560,3120,3840,4160);
 			cb_resized_height_for_table.getSelectionModel()
-										.select(Integer.valueOf(ps.getResized_width_for_table()));
+										.select(Integer.valueOf(ps.getResized_height_for_table()));
 			
 			lb11=new Label("Tablonun toplam satır sayısı:");
 			lb11.setPrefHeight(standart_element_height);
