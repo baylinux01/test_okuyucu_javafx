@@ -361,11 +361,19 @@ public class ImageConverter {
     		
     		
     		
-    		
-    		for (int r = 0; r < yCoords.size() - 1; r++) 
+    		int a=0;
+    		int b=0;
+    		if(ps.getDont_read_first_column()==1) a=1;
+    		if(ps.getDont_read_first_row()==1) b=1;
+    		for (int r = a; r < yCoords.size() - 1; r++) 
     		{ 
     		    List<String> rowData = new ArrayList<>(); 
-    		    for (int c = 0; c < xCoords.size() - 1; c++) 
+    		    double whitePixelRatioForA=0;
+    		    double whitePixelRatioForB=0;
+    		    double whitePixelRatioForC=0;
+    		    double whitePixelRatioForD=0;
+    		    double whitePixelRatioForE=0;
+    		    for (int c = b; c < xCoords.size() - 1; c++) 
     		    { 
     		        
     		        int cellX = xCoords.get(c).intValue();
@@ -419,34 +427,54 @@ public class ImageConverter {
     		            int whitePixelCount=Core.countNonZero(croppedCellImageMat);
     		            int totalPixelCount=croppedCellImageMat.rows()*croppedCellImageMat.cols();
     		            double whitePixelRatio=(Double.valueOf(whitePixelCount)/totalPixelCount)*100;
+    		            if(ps.getDont_read_first_column()==1&&b==1) whitePixelRatioForA=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&b==0) whitePixelRatioForA=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&b==2) whitePixelRatioForB=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&b==1) whitePixelRatioForB=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&b==3) whitePixelRatioForC=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&b==2) whitePixelRatioForC=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&b==4) whitePixelRatioForD=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&b==3) whitePixelRatioForD=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&b==5) whitePixelRatioForE=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&b==4) whitePixelRatioForE=whitePixelRatio;
     		            
     		            String cellStatus="-";
-    		            if(whitePixelRatio>=ps.getWhite_ratio_limit_value())
-    		            {
-    		            	cellStatus="+";
-    		            }
-    		            rowData.add(cellStatus);
+    		            if(whitePixelRatio>=ps.getWhite_ratio_limit_value()
+    		            		&&whitePixelRatio>=whitePixelRatioForA
+    		            		&&whitePixelRatio>=whitePixelRatioForB
+    		            		&&whitePixelRatio>=whitePixelRatioForC
+    		            		&&whitePixelRatio>=whitePixelRatioForD
+    		            		&&whitePixelRatio>=whitePixelRatioForE
+    		            		)
+    		            		{
+    		            			cellStatus="+";
+    		            		}
+    		            		else
+    		            		{
+    		            			cellStatus="-";
+    		            		}
+    		            		rowData.add(cellStatus);
 
-    		}
-    	}
+    		        }
+    		    }
     		    
     		    
     		    output.add(rowData);
    }
 
 
-    		if(ps.getDont_read_first_column()==1)
-    		{
-    			for(int k=0;k<output.size();k++)
-    			{
-    				if(output.get(k).size()>=1)
-    				{
-    					output.get(k).remove(0);
-    				}
-    				
-    			}
-    		}
-    		if(ps.getDont_read_first_row()==1) output.remove(0);
+//    		if(ps.getDont_read_first_column()==1)
+//    		{
+//    			for(int k=0;k<output.size();k++)
+//    			{
+//    				if(output.get(k).size()>=1)
+//    				{
+//    					output.get(k).remove(0);
+//    				}
+//    				
+//    			}
+//    		}
+//    		if(ps.getDont_read_first_row()==1) output.remove(0);
     		
     		
     		return output;
