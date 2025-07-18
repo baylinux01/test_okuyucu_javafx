@@ -5,57 +5,73 @@ import java.util.stream.Collectors;
 
 public class InfoExtractor {
 	
-	public static String extractTestType(List<String> title)
+	public static String extractTestType(String title)
 	{
-		if(title.size()==1)
+		int indexOfTEST=title.indexOf("TEST");
+		int indexOfON=title.indexOf("ON");
+		int indexOfSON=title.indexOf("SON");
+		if(indexOfSON<indexOfON&&indexOfSON!=-1)
 		{
-			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-					&& !title.get(0).contains("SON"))
-			{
-				return "ON TEST";
-			}
-			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-					&& title.get(0).contains("SON"))
-			{
-				return "SON TEST";
-			}
-			else
-			{
-				return "TEST";
-			}
-			
+			return "SON TEST";
 		}
-		else if(title.size()>=2)
-		{
-			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-					&& !title.get(0).contains("SON"))
-			{
-				return "ON TEST";
-			}
-			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-					&& title.get(0).contains("SON"))
-			{
-				return "SON TEST";
-			}
-			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
-					&& !title.get(1).contains("SON"))
-			{
-				return "ON TEST";
-			}
-			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
-					&& title.get(1).contains("SON"))
-			{
-				return "SON TEST";
-			}
-			else
-			{
-				return "TEST";
-			}
-		}
-		else
+		else if(indexOfSON==-1 && indexOfON==-1)
 		{
 			return "TEST";
 		}
+		else
+		{
+			return "ON TEST";
+		}
+//		if(title.size()==1)
+//		{
+//			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
+//					&& !title.get(0).contains("SON"))
+//			{
+//				return "ON TEST";
+//			}
+//			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
+//					&& title.get(0).contains("SON"))
+//			{
+//				return "SON TEST";
+//			}
+//			else
+//			{
+//				return "TEST";
+//			}
+//			
+//		}
+//		else if(title.size()>=2)
+//		{
+//			
+//			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
+//					&& !title.get(0).contains("SON"))
+//			{
+//				return "ON TEST";
+//			}
+//			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
+//					&& title.get(0).contains("SON"))
+//			{
+//				return "SON TEST";
+//			}
+//			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
+//					&& !title.get(1).contains("SON"))
+//			{
+//				return "ON TEST";
+//			}
+//			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
+//					&& title.get(1).contains("SON"))
+//			{
+//				return "SON TEST";
+//			}
+//			else
+//			{
+//				return "TEST";
+//			}
+//		}
+//		else
+//		{
+//			return "TEST";
+//		}
 	}
 	public static String extractNameAndSurnameFromTitle(List<String> title,String nearWords)
 	{

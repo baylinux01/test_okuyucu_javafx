@@ -15,12 +15,12 @@ public class ExamEvaluator
 	(PreferredSettings ps,String imageFullPath,Exam exam) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
 	{
 		ParticipantAnswer pa=new ParticipantAnswer();
-		List<String> title=ImageConverter
+		String title=ImageConverter
 				.convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage(ps, imageFullPath);
 		String test_type=InfoExtractor.extractTestType(title);
 	
-		String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());
-		
+		//String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());
+		String name_surname="";
 		List<List<String>> tableData=ImageConverter
 					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, imageFullPath);
 		if(imageFullPath.contains("/"))

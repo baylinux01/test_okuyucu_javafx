@@ -30,7 +30,7 @@ public class ImageConverter {
 //		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 //	}
 	
-	public static List<String> convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage
+	public static String convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage
 	(PreferredSettings ps,String imageFullPath)
 	{
 		long startTime=System.currentTimeMillis();
@@ -113,7 +113,7 @@ public class ImageConverter {
     		
 //    		Imgcodecs.imwrite(imageFullPath.substring(0,
 //			imageFullPath.lastIndexOf("/")+1)+
-//			"denemeCikti.png",
+//			"denemeCikti2.png",
 //			higherCroppedPart);
     		
     		
@@ -121,8 +121,9 @@ public class ImageConverter {
     		
     		BufferedImage highBufferedImage=ImageConverter
     				.matToBufferedImage(higherCroppedPart);
+    		
     		String highText="";
-    		List<String> list1=new ArrayList<String>();
+    		
     		
     		
     		 if (highBufferedImage != null) 
@@ -130,49 +131,58 @@ public class ImageConverter {
 	             try {
 	                 highText = tesseract.doOCR(highBufferedImage).trim();
 	                 
-	                 if(highText!=null)
-	                 {
-	                	 
-		                 String[] dizi0=highText.split("\t");
-		                 String[] dizi1=dizi0[0].split("\n");
-		                 
-		                 for(int y=0;y<dizi1.length;y++)
-		                 {
-		                	
-		                		 try 
-		                		 {
-		                			 list1.add(dizi1[y].toUpperCase().trim());
-		                		 }
-		                		 catch(IndexOutOfBoundsException ex)
-		                		 {
-		                			System.out
-		                			.println
-		                			("istenilen colon sayısı"
-		                					+ " tesseract'ın tesbit ettiği aralığın dışında kalıyor"
-		                					+ " negatif değer girmeyin"
-		                					+ " ve istenilen son kolon değeri"
-		                					+ " fazla geliyorsa küçültün");
-		                		 }
-		                	 
-		                	 
-		                 }
-		                
-	                 }
-	             } 
-	             catch (TesseractException e) 
-	             {
-	                 System.out.println(e.getMessage());
-	                 
 	             }
-	         } 
-	         else 
-	         {
-	            list1.add("başlık tesbit edilemedi");
-	            
+	             catch(Exception ex)
+	             {
+	            	 highText="";
+	             }
+	             
 	         }
-    		 long endTime=System.currentTimeMillis()-startTime;
-    		 System.out.println("time for extract title: "+endTime);
-    		return list1;
+    		 System.out.println(highText);
+    		 return highText;
+//	                 if(highText!=null)
+//	                 {
+//	                	 
+//		                 String[] dizi0=highText.split("\t");
+//		                 String[] dizi1=dizi0[0].split("\n");
+//		                 
+//		                 for(int y=0;y<dizi1.length;y++)
+//		                 {
+//		                	
+//		                		 try 
+//		                		 {
+//		                			 list1.add(dizi1[y].toUpperCase().trim());
+//		                		 }
+//		                		 catch(IndexOutOfBoundsException ex)
+//		                		 {
+//		                			System.out
+//		                			.println
+//		                			("istenilen colon sayısı"
+//		                					+ " tesseract'ın tesbit ettiği aralığın dışında kalıyor"
+//		                					+ " negatif değer girmeyin"
+//		                					+ " ve istenilen son kolon değeri"
+//		                					+ " fazla geliyorsa küçültün");
+//		                		 }
+//		                	 
+//		                	 
+//		                 }
+//		                
+//	                 }
+//	             } 
+//	             catch (TesseractException e) 
+//	             {
+//	                 System.out.println(e.getMessage());
+//	                 
+//	             }
+//	         } 
+//	         else 
+//	         {
+//	            list1.add("başlık tesbit edilemedi");
+//	            
+//	         }
+//    		 long endTime=System.currentTimeMillis()-startTime;
+//    		 System.out.println("time for extract title: "+endTime);
+//    		return list1;
 	}
 	
 	public static List<List<String>> convertMultipleChoiceExamAnswersToDigitalFormatFromImage
