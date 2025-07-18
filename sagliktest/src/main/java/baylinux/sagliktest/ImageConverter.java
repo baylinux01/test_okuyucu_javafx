@@ -101,7 +101,7 @@ public class ImageConverter {
     		{
     		    double area = Imgproc.contourArea(contours.get(i));
     		   
-        		if (area < ps.getMin_area_threshold_for_noise()) 
+        		if (area < ps.getMin_area_threshold_for_noise_for_title()) 
                 {
                     
                     Imgproc.drawContours(higherCroppedPart, 
@@ -220,7 +220,7 @@ public class ImageConverter {
     
     
    Optional<MatOfPoint> contour = paperContoursBinary.stream()
-    	    .filter(c -> Imgproc.contourArea(c) > ps.getMin_area_threshold_for_noise()) 
+    	    .filter(c -> Imgproc.contourArea(c) > ps.getMin_area_threshold_for_noise_for_table()) 
     	    .max((contour1, contour2) -> 
     	    Double.compare(Imgproc.contourArea(contour1), 
     	    		Imgproc.contourArea(contour2)));
@@ -292,7 +292,7 @@ public class ImageConverter {
                                  Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_NONE);
 
             contoursToCleanInsideTable.stream()
-            	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise())
+            	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise_for_table())
             	    .forEach(x-> Imgproc.drawContours(croppedBinary, 
             	    		Collections.singletonList(x), -1,new Scalar(0),Core.FILLED));
             	    
@@ -316,7 +316,7 @@ public class ImageConverter {
              
              
              contoursToCleanInsideTableForTextOnly.stream()
-             	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise())
+             	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise_for_table())
              	    .forEach(x-> Imgproc.drawContours(croppedBinary, 
              	    		Collections.singletonList(x), -1,new Scalar(0),Core.FILLED));
             

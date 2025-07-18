@@ -36,15 +36,16 @@ import javafx.stage.Stage;
 
 public class SettingsWindow extends Application {
 	
-	protected static Label lb1,lb2,lb3,lb4,lb5,lb6,lb7,lb8,lb9,lb10,lb10b,lb10c,lb10d,lb10e,
+	protected static Label lb1,lb2,lb3,lb4,lb5,
+	lb5b,lb6,lb7,lb8,lb9,lb10,lb10b,lb10c,lb10d,lb10e,
 	lb11,lb12,lb13,lb14,
 	lb15,lb16,lb17,lb18,
 	lb19,lb20,lb21,lb21b,lb21c,lb22,
-	lb23,lb24,lb25,lb26,lb27;
+	lb23,lb24,lb24b,lb24c,lb25,lb26,lb27;
 	protected static TextField tf1,tf2,tf3,tf4,tf5,tf6,tf7;
 	protected static ComboBox<Integer> cb_tesseract_page_seg_mode,
 	cb_tesseract_ocr_engine_mode,cb_x_start,cb_y_start,
-	cb_min_area_threshold_for_noise,
+	cb_min_area_threshold_for_noise_for_title,cb_min_area_threshold_for_noise_for_table,
 	cb_width_percentage_to_be_cut,cb_height_percentage_to_be_cut,
 	cb_white_ratio_limit_value,cb_row_number,cb_column_number,
 	cb_erosion_degree,cb_dilation_degree,
@@ -54,7 +55,8 @@ public class SettingsWindow extends Application {
 	cb_max_y_dif_for_intersection_points,cb_cell_mat_width_crop_degree_factor,
 	cb_margin_x,cb_margin_y,
 	cb_resized_width_for_title,cb_resized_height_for_title,
-	cb_resized_width_for_table,cb_resized_height_for_table;
+	cb_resized_width_for_table,cb_resized_height_for_table,
+	cb_draw_contours_thickness_for_title,cb_draw_contours_thickness_for_table;
 	protected static ComboBox<String> cb_dont_read_first_row,cb_dont_read_first_column;
 	
 	protected static Button defaultsButton,saveButton,goToProgramWindowButton;
@@ -183,37 +185,56 @@ public class SettingsWindow extends Application {
 			cb_tesseract_ocr_engine_mode.getSelectionModel()
 										.select(Integer.valueOf(ps.getTesseract_ocr_engine_mode()));
 			
-			lb5=new Label("Temizlenecek gürültü için minimum alan eşiği:");
+			lb5=new Label("Başlık kısmında temizlenecek gürültü için minimum alan eşiği:");
 			lb5.setPrefHeight(standart_element_height);
 			lb5.setPrefWidth(standart_element_width);
 			lb5.setLayoutX(base_x);
 			lb5.setLayoutY(base_y+y_dif*12);
 			pane.getChildren().add(lb5);
 			
-			cb_min_area_threshold_for_noise=new ComboBox<Integer>();
-			cb_min_area_threshold_for_noise.setPrefHeight(standart_element_height);
-			cb_min_area_threshold_for_noise.setPrefWidth(standart_element_width);
-			cb_min_area_threshold_for_noise.setLayoutX(base_x);
-			cb_min_area_threshold_for_noise.setLayoutY(base_y+y_dif*13);
-			pane.getChildren().add(cb_min_area_threshold_for_noise);
-			cb_min_area_threshold_for_noise.getItems().clear();
-			cb_min_area_threshold_for_noise.getItems()
+			cb_min_area_threshold_for_noise_for_title=new ComboBox<Integer>();
+			cb_min_area_threshold_for_noise_for_title.setPrefHeight(standart_element_height);
+			cb_min_area_threshold_for_noise_for_title.setPrefWidth(standart_element_width);
+			cb_min_area_threshold_for_noise_for_title.setLayoutX(base_x);
+			cb_min_area_threshold_for_noise_for_title.setLayoutY(base_y+y_dif*13);
+			pane.getChildren().add(cb_min_area_threshold_for_noise_for_title);
+			cb_min_area_threshold_for_noise_for_title.getItems().clear();
+			cb_min_area_threshold_for_noise_for_title.getItems()
 								.addAll(0,10,15,20,25,50,55,60,65,70,71,72,73,74,75,76,77,78,79,80,85,90,95,100,125,150,175,200);
-			cb_min_area_threshold_for_noise.getSelectionModel()
-											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise()));
+			cb_min_area_threshold_for_noise_for_title.getSelectionModel()
+											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise_for_title()));
+			
+			lb5b=new Label("Tabloda temizlenecek gürültü için minimum alan eşiği:");
+			lb5b.setPrefHeight(standart_element_height);
+			lb5b.setPrefWidth(standart_element_width);
+			lb5b.setLayoutX(base_x);
+			lb5b.setLayoutY(base_y+y_dif*15);
+			pane.getChildren().add(lb5b);
+			
+			cb_min_area_threshold_for_noise_for_table=new ComboBox<Integer>();
+			cb_min_area_threshold_for_noise_for_table.setPrefHeight(standart_element_height);
+			cb_min_area_threshold_for_noise_for_table.setPrefWidth(standart_element_width);
+			cb_min_area_threshold_for_noise_for_table.setLayoutX(base_x);
+			cb_min_area_threshold_for_noise_for_table.setLayoutY(base_y+y_dif*16);
+			pane.getChildren().add(cb_min_area_threshold_for_noise_for_table);
+			cb_min_area_threshold_for_noise_for_table.getItems().clear();
+			cb_min_area_threshold_for_noise_for_table.getItems()
+								.addAll(0,10,15,20,25,50,55,60,65,70,71,72,73,74,75,76,77,78,79,80,85,90,95,100,125,150,175,200);
+			cb_min_area_threshold_for_noise_for_table.getSelectionModel()
+											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise_for_table()));
 			
 			lb6=new Label("Başlık kısmı kesimi için başlangıç x koordinatı:");
 			lb6.setPrefHeight(standart_element_height);
 			lb6.setPrefWidth(standart_element_width);
 			lb6.setLayoutX(base_x);
-			lb6.setLayoutY(base_y+y_dif*15);
+			lb6.setLayoutY(base_y+y_dif*18);
 			pane.getChildren().add(lb6);
 			
 			cb_x_start=new ComboBox<Integer>();
 			cb_x_start.setPrefHeight(standart_element_height);
 			cb_x_start.setPrefWidth(standart_element_width);
 			cb_x_start.setLayoutX(base_x);
-			cb_x_start.setLayoutY(base_y+y_dif*16);
+			cb_x_start.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_x_start);
 			cb_x_start.getItems().clear();
 			cb_x_start.getItems().addAll(0,100,200,300,400,500,600,700,800,900);
@@ -224,14 +245,14 @@ public class SettingsWindow extends Application {
 			lb7.setPrefHeight(standart_element_height);
 			lb7.setPrefWidth(standart_element_width);
 			lb7.setLayoutX(base_x);
-			lb7.setLayoutY(base_y+y_dif*18);
+			lb7.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(lb7);
 			
 			cb_y_start=new ComboBox<Integer>();
 			cb_y_start.setPrefHeight(standart_element_height);
 			cb_y_start.setPrefWidth(standart_element_width);
 			cb_y_start.setLayoutX(base_x);
-			cb_y_start.setLayoutY(base_y+y_dif*19);
+			cb_y_start.setLayoutY(base_y+y_dif*22);
 			pane.getChildren().add(cb_y_start);
 			cb_y_start.getItems().clear();
 			cb_y_start.getItems().addAll(0,100,200,300,400,500,600,700,800,900);
@@ -244,14 +265,14 @@ public class SettingsWindow extends Application {
 			lb8.setPrefHeight(standart_element_height);
 			lb8.setPrefWidth(standart_element_width);
 			lb8.setLayoutX(base_x);
-			lb8.setLayoutY(base_y+y_dif*21);
+			lb8.setLayoutY(base_y+y_dif*24);
 			pane.getChildren().add(lb8);
 			
 			cb_width_percentage_to_be_cut=new ComboBox<Integer>();
 			cb_width_percentage_to_be_cut.setPrefHeight(standart_element_height);
 			cb_width_percentage_to_be_cut.setPrefWidth(standart_element_width);
 			cb_width_percentage_to_be_cut.setLayoutX(base_x);
-			cb_width_percentage_to_be_cut.setLayoutY(base_y+y_dif*22);
+			cb_width_percentage_to_be_cut.setLayoutY(base_y+y_dif*25);
 			pane.getChildren().add(cb_width_percentage_to_be_cut);
 			cb_width_percentage_to_be_cut.getItems().clear();
 			cb_width_percentage_to_be_cut.getItems().addAll(0,10,20,30,40,50,60,70,80,90,100);
@@ -261,15 +282,15 @@ public class SettingsWindow extends Application {
 			lb9=new Label("Başlık kısmı kesimi için yüzde yükseklik:");
 			lb9.setPrefHeight(standart_element_height);
 			lb9.setPrefWidth(standart_element_width);
-			lb9.setLayoutX(base_x);
-			lb9.setLayoutY(base_y+y_dif*24);
+			lb9.setLayoutX(base_x+x_dif*1);
+			lb9.setLayoutY(base_y+y_dif*0);
 			pane.getChildren().add(lb9);
 			
 			cb_height_percentage_to_be_cut=new ComboBox<Integer>();
 			cb_height_percentage_to_be_cut.setPrefHeight(standart_element_height);
 			cb_height_percentage_to_be_cut.setPrefWidth(standart_element_width);
-			cb_height_percentage_to_be_cut.setLayoutX(base_x);
-			cb_height_percentage_to_be_cut.setLayoutY(base_y+y_dif*25);
+			cb_height_percentage_to_be_cut.setLayoutX(base_x+x_dif*1);
+			cb_height_percentage_to_be_cut.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_height_percentage_to_be_cut);
 			cb_height_percentage_to_be_cut.getItems().clear();
 			cb_height_percentage_to_be_cut.getItems().addAll(0,10,20,30,40,50,60,70,80,90,100);
@@ -280,14 +301,14 @@ public class SettingsWindow extends Application {
 			lb10.setPrefHeight(standart_element_height);
 			lb10.setPrefWidth(standart_element_width);
 			lb10.setLayoutX(base_x+x_dif*1);
-			lb10.setLayoutY(base_y+y_dif*0);
+			lb10.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(lb10);
 			
 			cb_white_ratio_limit_value=new ComboBox<Integer>();
 			cb_white_ratio_limit_value.setPrefHeight(standart_element_height);
 			cb_white_ratio_limit_value.setPrefWidth(standart_element_width);
 			cb_white_ratio_limit_value.setLayoutX(base_x+x_dif*1);
-			cb_white_ratio_limit_value.setLayoutY(base_y+y_dif*1);
+			cb_white_ratio_limit_value.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_white_ratio_limit_value);
 			cb_white_ratio_limit_value.getItems().clear();
 			cb_white_ratio_limit_value.getItems().addAll(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,20,25,30);
@@ -298,14 +319,14 @@ public class SettingsWindow extends Application {
 			lb10b.setPrefHeight(standart_element_height);
 			lb10b.setPrefWidth(standart_element_width);
 			lb10b.setLayoutX(base_x+x_dif*1);
-			lb10b.setLayoutY(base_y+y_dif*3);
+			lb10b.setLayoutY(base_y+y_dif*6);
 			pane.getChildren().add(lb10b);
 			
 			cb_resized_width_for_title=new ComboBox<Integer>();
 			cb_resized_width_for_title.setPrefHeight(standart_element_height);
 			cb_resized_width_for_title.setPrefWidth(standart_element_width);
 			cb_resized_width_for_title.setLayoutX(base_x+x_dif*1);
-			cb_resized_width_for_title.setLayoutY(base_y+y_dif*4);
+			cb_resized_width_for_title.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_resized_width_for_title);
 			cb_resized_width_for_title.getItems().clear();
 			List<Integer> list0= new ArrayList<Integer>();
@@ -344,14 +365,14 @@ public class SettingsWindow extends Application {
 			lb10c.setPrefHeight(standart_element_height);
 			lb10c.setPrefWidth(standart_element_width);
 			lb10c.setLayoutX(base_x+x_dif*1);
-			lb10c.setLayoutY(base_y+y_dif*6);
+			lb10c.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(lb10c);
 			
 			cb_resized_height_for_title=new ComboBox<Integer>();
 			cb_resized_height_for_title.setPrefHeight(standart_element_height);
 			cb_resized_height_for_title.setPrefWidth(standart_element_width);
 			cb_resized_height_for_title.setLayoutX(base_x+x_dif*1);
-			cb_resized_height_for_title.setLayoutY(base_y+y_dif*7);
+			cb_resized_height_for_title.setLayoutY(base_y+y_dif*10);
 			pane.getChildren().add(cb_resized_height_for_title);
 			cb_resized_height_for_title.getItems().clear();
 			List<Integer> list1= new ArrayList<Integer>();
@@ -390,14 +411,14 @@ public class SettingsWindow extends Application {
 			lb10d.setPrefHeight(standart_element_height);
 			lb10d.setPrefWidth(standart_element_width);
 			lb10d.setLayoutX(base_x+x_dif*1);
-			lb10d.setLayoutY(base_y+y_dif*9);
+			lb10d.setLayoutY(base_y+y_dif*12);
 			pane.getChildren().add(lb10d);
 			
 			cb_resized_width_for_table=new ComboBox<Integer>();
 			cb_resized_width_for_table.setPrefHeight(standart_element_height);
 			cb_resized_width_for_table.setPrefWidth(standart_element_width);
 			cb_resized_width_for_table.setLayoutX(base_x+x_dif*1);
-			cb_resized_width_for_table.setLayoutY(base_y+y_dif*10);
+			cb_resized_width_for_table.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_resized_width_for_table);
 			cb_resized_width_for_table.getItems().clear();
 			List<Integer> list2= new ArrayList<Integer>();
@@ -435,14 +456,14 @@ public class SettingsWindow extends Application {
 			lb10e.setPrefHeight(standart_element_height);
 			lb10e.setPrefWidth(standart_element_width);
 			lb10e.setLayoutX(base_x+x_dif*1);
-			lb10e.setLayoutY(base_y+y_dif*12);
+			lb10e.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(lb10e);
 			
 			cb_resized_height_for_table=new ComboBox<Integer>();
 			cb_resized_height_for_table.setPrefHeight(standart_element_height);
 			cb_resized_height_for_table.setPrefWidth(standart_element_width);
 			cb_resized_height_for_table.setLayoutX(base_x+x_dif*1);
-			cb_resized_height_for_table.setLayoutY(base_y+y_dif*13);
+			cb_resized_height_for_table.setLayoutY(base_y+y_dif*16);
 			pane.getChildren().add(cb_resized_height_for_table);
 			cb_resized_height_for_table.getItems().clear();
 			List<Integer> list3= new ArrayList<Integer>();
@@ -480,14 +501,14 @@ public class SettingsWindow extends Application {
 			lb11.setPrefHeight(standart_element_height);
 			lb11.setPrefWidth(standart_element_width);
 			lb11.setLayoutX(base_x+x_dif);
-			lb11.setLayoutY(base_y+y_dif*15);
+			lb11.setLayoutY(base_y+y_dif*18);
 			pane.getChildren().add(lb11);
 			
 			cb_row_number=new ComboBox<Integer>();
 			cb_row_number.setPrefHeight(standart_element_height);
 			cb_row_number.setPrefWidth(standart_element_width);
 			cb_row_number.setLayoutX(base_x+x_dif);
-			cb_row_number.setLayoutY(base_y+y_dif*16);
+			cb_row_number.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_row_number);
 			cb_row_number.getItems().clear();
 			cb_row_number.getItems().addAll(0,5,10,15,20,25,30);
@@ -498,14 +519,14 @@ public class SettingsWindow extends Application {
 			lb12.setPrefHeight(standart_element_height);
 			lb12.setPrefWidth(standart_element_width);
 			lb12.setLayoutX(base_x+x_dif);
-			lb12.setLayoutY(base_y+y_dif*18);
+			lb12.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(lb12);
 			
 			cb_column_number=new ComboBox<Integer>();
 			cb_column_number.setPrefHeight(standart_element_height);
 			cb_column_number.setPrefWidth(standart_element_width);
 			cb_column_number.setLayoutX(base_x+x_dif);
-			cb_column_number.setLayoutY(base_y+y_dif*19);
+			cb_column_number.setLayoutY(base_y+y_dif*22);
 			pane.getChildren().add(cb_column_number);
 			cb_column_number.getItems().clear();
 			cb_column_number.getItems().addAll(0,5,10,15,20,25,30);
@@ -516,14 +537,14 @@ public class SettingsWindow extends Application {
 			lb13.setPrefHeight(standart_element_height);
 			lb13.setPrefWidth(standart_element_width);
 			lb13.setLayoutX(base_x+x_dif);
-			lb13.setLayoutY(base_y+y_dif*21);
+			lb13.setLayoutY(base_y+y_dif*24);
 			pane.getChildren().add(lb13);
 			
 			cb_dont_read_first_row=new ComboBox<String>();
 			cb_dont_read_first_row.setPrefHeight(standart_element_height);
 			cb_dont_read_first_row.setPrefWidth(standart_element_width);
 			cb_dont_read_first_row.setLayoutX(base_x+x_dif);
-			cb_dont_read_first_row.setLayoutY(base_y+y_dif*22);
+			cb_dont_read_first_row.setLayoutY(base_y+y_dif*25);
 			pane.getChildren().add(cb_dont_read_first_row);
 			cb_dont_read_first_row.getItems().clear();
 			cb_dont_read_first_row.getItems().addAll("Evet","Hayır");
@@ -541,15 +562,15 @@ public class SettingsWindow extends Application {
 			lb14=new Label("Tablonun ilk sütununu okuma:");
 			lb14.setPrefHeight(standart_element_height);
 			lb14.setPrefWidth(standart_element_width);
-			lb14.setLayoutX(base_x+x_dif);
-			lb14.setLayoutY(base_y+y_dif*24);
+			lb14.setLayoutX(base_x+x_dif*2);
+			lb14.setLayoutY(base_y+y_dif*0);
 			pane.getChildren().add(lb14);
 			
 			cb_dont_read_first_column=new ComboBox<String>();
 			cb_dont_read_first_column.setPrefHeight(standart_element_height);
 			cb_dont_read_first_column.setPrefWidth(standart_element_width);
-			cb_dont_read_first_column.setLayoutX(base_x+x_dif);
-			cb_dont_read_first_column.setLayoutY(base_y+y_dif*25);
+			cb_dont_read_first_column.setLayoutX(base_x+x_dif*2);
+			cb_dont_read_first_column.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_dont_read_first_column);
 			cb_dont_read_first_column.getItems().clear();
 			cb_dont_read_first_column.getItems().addAll("Evet","Hayır");
@@ -568,14 +589,14 @@ public class SettingsWindow extends Application {
 			lb15.setPrefHeight(standart_element_height);
 			lb15.setPrefWidth(standart_element_width);
 			lb15.setLayoutX(base_x+x_dif*2);
-			lb15.setLayoutY(base_y+y_dif*0);
+			lb15.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(lb15);
 			
 			cb_erosion_degree=new ComboBox<Integer>();
 			cb_erosion_degree.setPrefHeight(standart_element_height);
 			cb_erosion_degree.setPrefWidth(standart_element_width);
 			cb_erosion_degree.setLayoutX(base_x+x_dif*2);
-			cb_erosion_degree.setLayoutY(base_y+y_dif);
+			cb_erosion_degree.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_erosion_degree);
 			cb_erosion_degree.getItems().clear();
 			cb_erosion_degree.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
@@ -586,14 +607,14 @@ public class SettingsWindow extends Application {
 			lb16.setPrefHeight(standart_element_height);
 			lb16.setPrefWidth(standart_element_width);
 			lb16.setLayoutX(base_x+x_dif*2);
-			lb16.setLayoutY(base_y+y_dif*3);
+			lb16.setLayoutY(base_y+y_dif*6);
 			pane.getChildren().add(lb16);
 			
 			cb_dilation_degree=new ComboBox<Integer>();
 			cb_dilation_degree.setPrefHeight(standart_element_height);
 			cb_dilation_degree.setPrefWidth(standart_element_width);
 			cb_dilation_degree.setLayoutX(base_x+x_dif*2);
-			cb_dilation_degree.setLayoutY(base_y+y_dif*4);
+			cb_dilation_degree.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_dilation_degree);
 			cb_dilation_degree.getItems().clear();
 			cb_dilation_degree.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
@@ -604,14 +625,14 @@ public class SettingsWindow extends Application {
 			lb17.setPrefHeight(standart_element_height);
 			lb17.setPrefWidth(standart_element_width);
 			lb17.setLayoutX(base_x+x_dif*2);
-			lb17.setLayoutY(base_y+y_dif*6);
+			lb17.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(lb17);
 			
 			cb_horizontal_kernel_length_division_factor=new ComboBox<Integer>();
 			cb_horizontal_kernel_length_division_factor.setPrefHeight(standart_element_height);
 			cb_horizontal_kernel_length_division_factor.setPrefWidth(standart_element_width);
 			cb_horizontal_kernel_length_division_factor.setLayoutX(base_x+x_dif*2);
-			cb_horizontal_kernel_length_division_factor.setLayoutY(base_y+y_dif*7);
+			cb_horizontal_kernel_length_division_factor.setLayoutY(base_y+y_dif*10);
 			pane.getChildren().add(cb_horizontal_kernel_length_division_factor);
 			cb_horizontal_kernel_length_division_factor.getItems().clear();
 			cb_horizontal_kernel_length_division_factor.getItems()
@@ -623,14 +644,14 @@ public class SettingsWindow extends Application {
 			lb18.setPrefHeight(standart_element_height);
 			lb18.setPrefWidth(standart_element_width);
 			lb18.setLayoutX(base_x+x_dif*2);
-			lb18.setLayoutY(base_y+y_dif*9);
+			lb18.setLayoutY(base_y+y_dif*12);
 			pane.getChildren().add(lb18);
 			
 			cb_vertical_kernel_length_division_factor=new ComboBox<Integer>();
 			cb_vertical_kernel_length_division_factor.setPrefHeight(standart_element_height);
 			cb_vertical_kernel_length_division_factor.setPrefWidth(standart_element_width);
 			cb_vertical_kernel_length_division_factor.setLayoutX(base_x+x_dif*2);
-			cb_vertical_kernel_length_division_factor.setLayoutY(base_y+y_dif*10);
+			cb_vertical_kernel_length_division_factor.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_vertical_kernel_length_division_factor);
 			cb_vertical_kernel_length_division_factor.getItems().clear();
 			cb_horizontal_kernel_length_division_factor.getItems()
@@ -642,14 +663,14 @@ public class SettingsWindow extends Application {
 			lb19.setPrefHeight(standart_element_height);
 			lb19.setPrefWidth(standart_element_width);
 			lb19.setLayoutX(base_x+x_dif*2);
-			lb19.setLayoutY(base_y+y_dif*12);
+			lb19.setLayoutY(base_y+y_dif*15);
 			pane.getChildren().add(lb19);
 			
 			cb_horizontal_erosion_iteration_number=new ComboBox<Integer>();
 			cb_horizontal_erosion_iteration_number.setPrefHeight(standart_element_height);
 			cb_horizontal_erosion_iteration_number.setPrefWidth(standart_element_width);
 			cb_horizontal_erosion_iteration_number.setLayoutX(base_x+x_dif*2);
-			cb_horizontal_erosion_iteration_number.setLayoutY(base_y+y_dif*13);
+			cb_horizontal_erosion_iteration_number.setLayoutY(base_y+y_dif*16);
 			pane.getChildren().add(cb_horizontal_erosion_iteration_number);
 			cb_horizontal_erosion_iteration_number.getItems().clear();
 			cb_horizontal_erosion_iteration_number.getItems()
@@ -661,14 +682,14 @@ public class SettingsWindow extends Application {
 			lb20.setPrefHeight(standart_element_height);
 			lb20.setPrefWidth(standart_element_width);
 			lb20.setLayoutX(base_x+x_dif*2);
-			lb20.setLayoutY(base_y+y_dif*15);
+			lb20.setLayoutY(base_y+y_dif*18);
 			pane.getChildren().add(lb20);
 			
 			cb_vertical_erosion_iteration_number=new ComboBox<Integer>();
 			cb_vertical_erosion_iteration_number.setPrefHeight(standart_element_height);
 			cb_vertical_erosion_iteration_number.setPrefWidth(standart_element_width);
 			cb_vertical_erosion_iteration_number.setLayoutX(base_x+x_dif*2);
-			cb_vertical_erosion_iteration_number.setLayoutY(base_y+y_dif*16);
+			cb_vertical_erosion_iteration_number.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(cb_vertical_erosion_iteration_number);
 			cb_vertical_erosion_iteration_number.getItems().clear();
 			cb_vertical_erosion_iteration_number.getItems()
@@ -676,12 +697,7 @@ public class SettingsWindow extends Application {
 			cb_vertical_erosion_iteration_number.getSelectionModel()
 				.select(Integer.valueOf(ps.getVertical_erosion_iteration_number()));
 			
-			lb21=new Label("Yatay dilasyon iterasyon sayısı");
-			lb21.setPrefHeight(standart_element_height);
-			lb21.setPrefWidth(standart_element_width);
-			lb21.setLayoutX(base_x+x_dif*2);
-			lb21.setLayoutY(base_y+y_dif*18);
-			pane.getChildren().add(lb21);
+			
 			
 			lb21b=new Label("Hücreler için Margin X");
 			lb21b.setPrefHeight(standart_element_height);
@@ -721,11 +737,18 @@ public class SettingsWindow extends Application {
 			cb_margin_y.getSelectionModel()
 				.select(Integer.valueOf(ps.getMargin_y()));
 			
+			lb21=new Label("Yatay dilasyon iterasyon sayısı");
+			lb21.setPrefHeight(standart_element_height);
+			lb21.setPrefWidth(standart_element_width);
+			lb21.setLayoutX(base_x+x_dif*3);
+			lb21.setLayoutY(base_y+y_dif*0);
+			pane.getChildren().add(lb21);
+			
 			cb_horizontal_dilation_iteration_number=new ComboBox<Integer>();
 			cb_horizontal_dilation_iteration_number.setPrefHeight(standart_element_height);
 			cb_horizontal_dilation_iteration_number.setPrefWidth(standart_element_width);
-			cb_horizontal_dilation_iteration_number.setLayoutX(base_x+x_dif*2);
-			cb_horizontal_dilation_iteration_number.setLayoutY(base_y+y_dif*19);
+			cb_horizontal_dilation_iteration_number.setLayoutX(base_x+x_dif*3);
+			cb_horizontal_dilation_iteration_number.setLayoutY(base_y+y_dif*1);
 			pane.getChildren().add(cb_horizontal_dilation_iteration_number);
 			cb_horizontal_dilation_iteration_number.getItems().clear();
 			cb_horizontal_dilation_iteration_number.getItems()
@@ -737,14 +760,14 @@ public class SettingsWindow extends Application {
 			lb22.setPrefHeight(standart_element_height);
 			lb22.setPrefWidth(standart_element_width);
 			lb22.setLayoutX(base_x+x_dif*3);
-			lb22.setLayoutY(base_y);
+			lb22.setLayoutY(base_y+y_dif*3);
 			pane.getChildren().add(lb22);
 			
 			cb_vertical_dilation_iteration_number=new ComboBox<Integer>();
 			cb_vertical_dilation_iteration_number.setPrefHeight(standart_element_height);
 			cb_vertical_dilation_iteration_number.setPrefWidth(standart_element_width);
 			cb_vertical_dilation_iteration_number.setLayoutX(base_x+x_dif*3);
-			cb_vertical_dilation_iteration_number.setLayoutY(base_y+y_dif);
+			cb_vertical_dilation_iteration_number.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_vertical_dilation_iteration_number);
 			cb_vertical_dilation_iteration_number.getItems().clear();
 			cb_vertical_dilation_iteration_number.getItems()
@@ -756,14 +779,14 @@ public class SettingsWindow extends Application {
 			lb23.setPrefHeight(standart_element_height);
 			lb23.setPrefWidth(standart_element_width);
 			lb23.setLayoutX(base_x+x_dif*3);
-			lb23.setLayoutY(base_y+y_dif*3);
+			lb23.setLayoutY(base_y+y_dif*6);
 			pane.getChildren().add(lb23);
 			
 			cb_max_y_dif_for_intersection_points=new ComboBox<Integer>();
 			cb_max_y_dif_for_intersection_points.setPrefHeight(standart_element_height);
 			cb_max_y_dif_for_intersection_points.setPrefWidth(standart_element_width);
 			cb_max_y_dif_for_intersection_points.setLayoutX(base_x+x_dif*3);
-			cb_max_y_dif_for_intersection_points.setLayoutY(base_y+y_dif*4);
+			cb_max_y_dif_for_intersection_points.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_max_y_dif_for_intersection_points);
 			cb_max_y_dif_for_intersection_points.getItems().clear();
 			cb_max_y_dif_for_intersection_points.getItems()
@@ -776,14 +799,14 @@ public class SettingsWindow extends Application {
 			lb24.setPrefHeight(standart_element_height);
 			lb24.setPrefWidth(standart_element_width);
 			lb24.setLayoutX(base_x+x_dif*3);
-			lb24.setLayoutY(base_y+y_dif*6);
+			lb24.setLayoutY(base_y+y_dif*9);
 			pane.getChildren().add(lb24);
 			
 			cb_cell_mat_width_crop_degree_factor=new ComboBox<Integer>();
 			cb_cell_mat_width_crop_degree_factor.setPrefHeight(standart_element_height);
 			cb_cell_mat_width_crop_degree_factor.setPrefWidth(standart_element_width);
 			cb_cell_mat_width_crop_degree_factor.setLayoutX(base_x+x_dif*3);
-			cb_cell_mat_width_crop_degree_factor.setLayoutY(base_y+y_dif*7);
+			cb_cell_mat_width_crop_degree_factor.setLayoutY(base_y+y_dif*10);
 			pane.getChildren().add(cb_cell_mat_width_crop_degree_factor);
 			cb_cell_mat_width_crop_degree_factor.getItems().clear();
 			cb_cell_mat_width_crop_degree_factor.getItems()
@@ -791,13 +814,49 @@ public class SettingsWindow extends Application {
 			cb_cell_mat_width_crop_degree_factor.getSelectionModel()
 				.select(Integer.valueOf(ps.getCell_mat_width_crop_degree_factor()));
 			
+			lb24b=new Label("Başlık için kontür boyama kalınlığı");
+			lb24b.setPrefHeight(standart_element_height);
+			lb24b.setPrefWidth(standart_element_width);
+			lb24b.setLayoutX(base_x+x_dif*3);
+			lb24b.setLayoutY(base_y+y_dif*12);
+			pane.getChildren().add(lb24b);
 			
+			cb_draw_contours_thickness_for_title=new ComboBox<Integer>();
+			cb_draw_contours_thickness_for_title.setPrefHeight(standart_element_height);
+			cb_draw_contours_thickness_for_title.setPrefWidth(standart_element_width);
+			cb_draw_contours_thickness_for_title.setLayoutX(base_x+x_dif*3);
+			cb_draw_contours_thickness_for_title.setLayoutY(base_y+y_dif*13);
+			pane.getChildren().add(cb_draw_contours_thickness_for_title);
+			cb_draw_contours_thickness_for_title.getItems().clear();
+			cb_draw_contours_thickness_for_title.getItems()
+										.addAll(-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+			cb_draw_contours_thickness_for_title.getSelectionModel()
+				.select(Integer.valueOf(ps.getDraw_contours_thickness_for_title()));
+			
+			lb24c=new Label("Tablo için kontür boyama kalınlığı");
+			lb24c.setPrefHeight(standart_element_height);
+			lb24c.setPrefWidth(standart_element_width);
+			lb24c.setLayoutX(base_x+x_dif*3);
+			lb24c.setLayoutY(base_y+y_dif*15);
+			pane.getChildren().add(lb24c);
+			
+			cb_draw_contours_thickness_for_table=new ComboBox<Integer>();
+			cb_draw_contours_thickness_for_table.setPrefHeight(standart_element_height);
+			cb_draw_contours_thickness_for_table.setPrefWidth(standart_element_width);
+			cb_draw_contours_thickness_for_table.setLayoutX(base_x+x_dif*3);
+			cb_draw_contours_thickness_for_table.setLayoutY(base_y+y_dif*16);
+			pane.getChildren().add(cb_draw_contours_thickness_for_table);
+			cb_draw_contours_thickness_for_table.getItems().clear();
+			cb_draw_contours_thickness_for_table.getItems()
+										.addAll(-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+			cb_draw_contours_thickness_for_table.getSelectionModel()
+				.select(Integer.valueOf(ps.getDraw_contours_thickness_for_table()));
 			
 			lb27=new Label("İsim ve Soyisim ile aynı satırda olabilecek kelimeler");
 			lb27.setPrefHeight(standart_element_height);
 			lb27.setPrefWidth(standart_element_width);
 			lb27.setLayoutX(base_x+x_dif*3);
-			lb27.setLayoutY(base_y+y_dif*9);
+			lb27.setLayoutY(base_y+y_dif*18);
 			pane.getChildren().add(lb27);
 			
 			
@@ -805,7 +864,7 @@ public class SettingsWindow extends Application {
 			tf3.setPrefHeight(standart_element_height);
 			tf3.setPrefWidth(standart_element_width);
 			tf3.setLayoutX(base_x+x_dif*3);
-			tf3.setLayoutY(base_y+y_dif*10);
+			tf3.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(tf3);
 			
 			EventHandler<ActionEvent> changeFieldsToDefaultsEventHandler=new EventHandler<ActionEvent>()
@@ -824,8 +883,10 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ds.getX_start()));
 					cb_y_start.getSelectionModel()
 										.select(Integer.valueOf(ds.getY_start()));
-					cb_min_area_threshold_for_noise.getSelectionModel()
-										.select(Integer.valueOf(ds.getMin_area_threshold_for_noise()));
+					cb_min_area_threshold_for_noise_for_title.getSelectionModel()
+										.select(Integer.valueOf(ds.getMin_area_threshold_for_noise_for_title()));
+					cb_min_area_threshold_for_noise_for_table.getSelectionModel()
+										.select(Integer.valueOf(ds.getMin_area_threshold_for_noise_for_table()));
 					cb_width_percentage_to_be_cut.getSelectionModel()
 										.select(Integer.valueOf(ds.getWidth_percentage_to_be_cut()));
 					cb_height_percentage_to_be_cut.getSelectionModel()
@@ -868,6 +929,10 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ds.getResized_width_for_table()));
 					cb_resized_height_for_table.getSelectionModel()
 										.select(Integer.valueOf(ds.getResized_height_for_table()));
+					cb_draw_contours_thickness_for_title.getSelectionModel()
+										.select(Integer.valueOf(ds.getDraw_contours_thickness_for_title()));
+					cb_draw_contours_thickness_for_table.getSelectionModel()
+										.select(Integer.valueOf(ds.getDraw_contours_thickness_for_table()));
 					tf3.setText(String.valueOf(ds.getNearWords()));
 					if(ds.getDont_read_first_row()==1)
 					{
@@ -893,7 +958,7 @@ public class SettingsWindow extends Application {
 			defaultsButton.setPrefHeight(standart_element_height);
 			defaultsButton.setPrefWidth(standart_element_width);
 			defaultsButton.setLayoutX(base_x+x_dif*3);
-			defaultsButton.setLayoutY(base_y+y_dif*18);
+			defaultsButton.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(defaultsButton);
 			defaultsButton.setOnAction(changeFieldsToDefaultsEventHandler);
 			
@@ -912,7 +977,8 @@ public class SettingsWindow extends Application {
 						ps.setTesseract_ocr_engine_mode(cb_tesseract_ocr_engine_mode.getValue());
 						ps.setX_start(cb_x_start.getValue());
 						ps.setY_start(cb_y_start.getValue());
-						ps.setMin_area_threshold_for_noise(cb_min_area_threshold_for_noise.getValue());
+						ps.setMin_area_threshold_for_noise_for_title(cb_min_area_threshold_for_noise_for_title.getValue());
+						ps.setMin_area_threshold_for_noise_for_table(cb_min_area_threshold_for_noise_for_table.getValue());
 						ps.setWidth_percentage_to_be_cut(cb_width_percentage_to_be_cut.getValue());
 						ps.setHeight_percentage_to_be_cut(cb_height_percentage_to_be_cut.getValue());
 						ps.setWhite_ratio_limit_value(cb_white_ratio_limit_value.getValue());
@@ -935,6 +1001,8 @@ public class SettingsWindow extends Application {
 						ps.setResized_height_for_title(cb_resized_height_for_title.getValue());
 						ps.setResized_width_for_table(cb_resized_width_for_table.getValue());
 						ps.setResized_height_for_table(cb_resized_height_for_table.getValue());
+						ps.setDraw_contours_thickness_for_title(cb_draw_contours_thickness_for_title.getValue());
+						ps.setDraw_contours_thickness_for_table(cb_draw_contours_thickness_for_table.getValue());
 						if(cb_dont_read_first_row.getValue().equalsIgnoreCase("Evet"))
 						{
 							ps.setDont_read_first_row(1);
@@ -1005,7 +1073,7 @@ public class SettingsWindow extends Application {
 			saveButton.setPrefHeight(standart_element_height);
 			saveButton.setPrefWidth(standart_element_width);
 			saveButton.setLayoutX(base_x+x_dif*3);
-			saveButton.setLayoutY(base_y+y_dif*19+10);
+			saveButton.setLayoutY(base_y+y_dif*22+10);
 			pane.getChildren().add(saveButton);
 			saveButton.setOnAction(savePreferredSettingsEventHandler);
 			
@@ -1044,7 +1112,7 @@ public class SettingsWindow extends Application {
 			goToProgramWindowButton.setPrefHeight(standart_element_height);
 			goToProgramWindowButton.setPrefWidth(standart_element_width);
 			goToProgramWindowButton.setLayoutX(base_x+x_dif*3);
-			goToProgramWindowButton.setLayoutY(base_y+y_dif*20+20);
+			goToProgramWindowButton.setLayoutY(base_y+y_dif*23+20);
 			pane.getChildren().add(goToProgramWindowButton);
 			goToProgramWindowButton.setOnAction(goToProgramWindowEventHandler);
 			

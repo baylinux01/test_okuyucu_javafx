@@ -8,7 +8,8 @@ public class DefaultSettings
 	private String tesseract_language;
 	private int tesseract_page_seg_mode;
 	private int tesseract_ocr_engine_mode;
-	private int min_area_threshold_for_noise;
+	private int min_area_threshold_for_noise_for_title;
+	private int min_area_threshold_for_noise_for_table;
 	private int x_start;
 	private int y_start;
 	private int width_percentage_to_be_cut;
@@ -35,6 +36,9 @@ public class DefaultSettings
 	private int resized_height_for_title;
 	private int resized_width_for_table;
 	private int resized_height_for_table;
+	private int draw_contours_thickness_for_title;
+	private int draw_contours_thickness_for_table;
+	
 	
 	public String getTesseract_data_path() {
 		return tesseract_data_path;
@@ -60,12 +64,17 @@ public class DefaultSettings
 	public void setTesseract_ocr_engine_mode(int tesseract_ocr_engine_mode) {
 		this.tesseract_ocr_engine_mode = tesseract_ocr_engine_mode;
 	}
-	
-	public int getMin_area_threshold_for_noise() {
-		return min_area_threshold_for_noise;
+	public int getMin_area_threshold_for_noise_for_title() {
+		return min_area_threshold_for_noise_for_title;
 	}
-	public void setMin_area_threshold_for_noise(int min_area_threshold_for_noise) {
-		this.min_area_threshold_for_noise = min_area_threshold_for_noise;
+	public void setMin_area_threshold_for_noise_for_title(int min_area_threshold_for_noise_for_title) {
+		this.min_area_threshold_for_noise_for_title = min_area_threshold_for_noise_for_title;
+	}
+	public int getMin_area_threshold_for_noise_for_table() {
+		return min_area_threshold_for_noise_for_table;
+	}
+	public void setMin_area_threshold_for_noise_for_table(int min_area_threshold_for_noise_for_table) {
+		this.min_area_threshold_for_noise_for_table = min_area_threshold_for_noise_for_table;
 	}
 	public int getX_start() {
 		return x_start;
@@ -223,6 +232,20 @@ public class DefaultSettings
 	public void setResized_height_for_table(int resized_height_for_table) {
 		this.resized_height_for_table = resized_height_for_table;
 	}
+	public int getDraw_contours_thickness_for_title() {
+		return draw_contours_thickness_for_title;
+	}
+	public void setDraw_contours_thickness_for_title(int draw_contours_thickness_for_title) {
+		this.draw_contours_thickness_for_title = draw_contours_thickness_for_title;
+	}
+	public int getDraw_contours_thickness_for_table() {
+		return draw_contours_thickness_for_table;
+	}
+	public void setDraw_contours_thickness_for_table(int draw_contours_thickness_for_table) {
+		this.draw_contours_thickness_for_table = draw_contours_thickness_for_table;
+	}
+	
+	
 	
 	
 	

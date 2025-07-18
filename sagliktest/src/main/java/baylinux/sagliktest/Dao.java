@@ -2974,7 +2974,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3000,7 +3001,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3012,7 +3015,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3038,7 +3042,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3050,7 +3056,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3076,7 +3083,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3088,7 +3097,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3114,7 +3124,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 			
 		}
@@ -3163,7 +3175,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3189,7 +3202,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3201,7 +3216,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3227,7 +3243,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3239,7 +3257,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3265,7 +3284,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3277,7 +3298,8 @@ public class Dao {
 					+ "tesseract_language text, "
 					+ "tesseract_page_seg_mode int,"
 					+ "tesseract_ocr_engine_mode int,"
-					+ "min_area_threshold_for_noise int,"
+					+ "min_area_threshold_for_noise_for_title int,"
+					+ "min_area_threshold_for_noise_for_table int,"
 					+ "x_start int,"
 					+ "y_start int,"
 					+ "width_percentage_to_be_cut int,"
@@ -3303,7 +3325,9 @@ public class Dao {
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
 					+ "resized_width_for_table int,"					
-					+ "resized_height_for_table int"
+					+ "resized_height_for_table int,"
+					+ "draw_contours_thickness_for_title int,"
+					+ "draw_contours_thickness_for_table int"
 					+ ");";
 			
 		}
@@ -3371,74 +3395,80 @@ public class Dao {
 				 }
 				
 				String query1="Insert into DefaultSettingsTable "
-				+ "("
-				+ "id," 										//1
-				+ "tesseract_data_path," 						//2
-				+ "tesseract_language,"	 						//3
-				+ "tesseract_page_seg_mode," 					//4
-				+ "tesseract_ocr_engine_mode," 					//5
-				+ "min_area_threshold_for_noise,"  				//6
-				+ "x_start,"									//7
-				+ "y_start,"									//8
-				+ "width_percentage_to_be_cut,"					//9
-				+ "height_percentage_to_be_cut,"				//10
-				+ "white_ratio_limit_value,"					//11
-				+ "row_number,"									//12
-				+ "column_number,"								//13
-				+ "dont_read_first_row,"						//14
-				+ "dont_read_first_column,"						//15
-				+ "erosion_degree,"								//16
-				+ "dilation_degree,"							//17
-				+ "horizontal_kernel_length_division_factor,"	//18
-				+ "vertical_kernel_length_division_factor,"		//19
-				+ "horizontal_erosion_iteration_number,"		//20
-				+ "vertical_erosion_iteration_number,"			//21
-				+ "horizontal_dilation_iteration_number,"		//22
-				+ "vertical_dilation_iteration_number,"			//23
-				+ "max_y_dif_for_intersection_points,"			//24
-				+ "cell_mat_width_crop_degree_factor,"			//25
-				+ "margin_x,"									//26
-				+ "margin_y,"									//27
-				+ "near_words,"									//28
-				+ "resized_width_for_title,"					//29
-				+ "resized_height_for_title,"					//30
-				+ "resized_width_for_table,"					//31
-				+ "resized_height_for_table"					//32
-				+ ")"
-				+ "values ("
-				+ "?,"  //1
-				+ "?,"	//2
-				+ "?,"	//3
-				+ "?,"	//4
-				+ "?,"	//5
-				+ "?,"	//6
-				+ "?,"	//7
-				+ "?,"	//8
-				+ "?,"	//9
-				+ "?,"	//10
-				+ "?,"	//11
-				+ "?,"	//12
-				+ "?,"	//13
-				+ "?,"	//14
-				+ "?,"	//15
-				+ "?,"	//16
-				+ "?,"	//17
-				+ "?,"	//18
-				+ "?,"	//19
-				+ "?,"	//20
-				+ "?,"	//21
-				+ "?,"	//22
-				+ "?,"	//23
-				+ "?,"	//24
-				+ "?,"	//25
-				+ "?,"	//26
-				+ "?,"	//27
-				+ "?,"	//28
-				+ "?,"	//29
-				+ "?,"	//30
-				+ "?,"	//31
-				+ "?"	//32
-				+ ")";
+						+ "("
+						+ "id,"											//1
+						+ "tesseract_data_path," 						//2
+						+ "tesseract_language,"	 						//3
+						+ "tesseract_page_seg_mode," 					//4
+						+ "tesseract_ocr_engine_mode," 					//5
+						+ "min_area_threshold_for_noise_for_title,"  	//6
+						+ "min_area_threshold_for_noise_for_table,"  	//7
+						+ "x_start,"									//8
+						+ "y_start,"									//9
+						+ "width_percentage_to_be_cut,"					//10
+						+ "height_percentage_to_be_cut,"				//11
+						+ "white_ratio_limit_value,"					//12
+						+ "row_number,"									//13
+						+ "column_number,"								//14
+						+ "dont_read_first_row,"						//15
+						+ "dont_read_first_column,"						//16
+						+ "erosion_degree,"								//17
+						+ "dilation_degree,"							//18
+						+ "horizontal_kernel_length_division_factor,"	//19
+						+ "vertical_kernel_length_division_factor,"		//20
+						+ "horizontal_erosion_iteration_number,"		//21
+						+ "vertical_erosion_iteration_number,"			//22
+						+ "horizontal_dilation_iteration_number,"		//23
+						+ "vertical_dilation_iteration_number,"			//24
+						+ "max_y_dif_for_intersection_points,"			//25
+						+ "cell_mat_width_crop_degree_factor,"			//26
+						+ "margin_x,"									//27
+						+ "margin_y,"									//28
+						+ "near_words,"									//29
+						+ "resized_width_for_title,"					//30										
+						+ "resized_height_for_title,"					//31					
+						+ "resized_width_for_table,"					//32				
+						+ "resized_height_for_table,"					//33
+						+ "draw_contours_thickness_for_title,"			//34
+						+ "draw_contours_thickness_for_table"			//35
+						+ ")"
+						+ "values ("
+						+ "?,"  //1
+						+ "?,"	//2
+						+ "?,"	//3
+						+ "?,"	//4
+						+ "?,"	//5
+						+ "?,"	//6
+						+ "?,"	//7
+						+ "?,"	//8
+						+ "?,"	//9
+						+ "?,"	//10
+						+ "?,"	//11
+						+ "?,"	//12
+						+ "?,"	//13
+						+ "?,"	//14
+						+ "?,"	//15
+						+ "?,"	//16
+						+ "?,"	//17
+						+ "?,"	//18
+						+ "?,"	//19
+						+ "?,"	//20
+						+ "?,"	//21
+						+ "?,"	//22
+						+ "?,"	//23
+						+ "?,"	//24
+						+ "?,"	//25
+						+ "?,"	//26
+						+ "?,"	//27
+						+ "?,"	//28
+						+ "?,"	//29
+						+ "?,"	//30
+						+ "?,"	//31
+						+ "?,"	//32
+						+ "?,"	//33
+						+ "?,"	//34
+						+ "?"	//35
+						+ ")";
 				int result=-1;
 				try {
 				//Class.forName(className);
@@ -3452,32 +3482,35 @@ public class Dao {
 				st1.setInt(4, 6);
 				st1.setInt(5, 1);
 				st1.setInt(6, 75);
-				st1.setInt(7, 0);
+				st1.setInt(7, 100);
 				st1.setInt(8, 0);
-				st1.setInt(9, 100);
-				st1.setInt(10, 20);
-				st1.setInt(11, 5);
-				st1.setInt(12, 31);
-				st1.setInt(13, 5);
-				st1.setInt(14, 1);
+				st1.setInt(9, 0);
+				st1.setInt(10, 100);
+				st1.setInt(11, 20);
+				st1.setInt(12, 5);
+				st1.setInt(13, 31);
+				st1.setInt(14, 5);
 				st1.setInt(15, 1);
 				st1.setInt(16, 1);
 				st1.setInt(17, 1);
-				st1.setInt(18, 32);
+				st1.setInt(18, 1);
 				st1.setInt(19, 32);
-				st1.setInt(20, 1);
+				st1.setInt(20, 32);
 				st1.setInt(21, 1);
 				st1.setInt(22, 1);
 				st1.setInt(23, 1);
-				st1.setInt(24, 5);
-				st1.setInt(25, 20);
+				st1.setInt(24, 1);
+				st1.setInt(25, 5);
 				st1.setInt(26, 20);
 				st1.setInt(27, 20);
-				st1.setString(28, "İSİM-SOYİSİM");
-				st1.setInt(29, 3120);
-				st1.setInt(30, 4160);
-				st1.setInt(31, 3120);
-				st1.setInt(32, 4160);
+				st1.setInt(28, 20);
+				st1.setString(29, "İSİM-SOYİSİM");
+				st1.setInt(30, 3120);
+				st1.setInt(31, 4160);
+				st1.setInt(32, 3120);
+				st1.setInt(33, 4160);
+				st1.setInt(34, -1);
+				st1.setInt(35, -1);
 				result=st1.executeUpdate();
 				
 				} 
@@ -3514,33 +3547,36 @@ public class Dao {
 				+ "tesseract_language,"	 						//3
 				+ "tesseract_page_seg_mode," 					//4
 				+ "tesseract_ocr_engine_mode," 					//5
-				+ "min_area_threshold_for_noise,"  				//6
-				+ "x_start,"									//7
-				+ "y_start,"									//8
-				+ "width_percentage_to_be_cut,"					//9
-				+ "height_percentage_to_be_cut,"				//10
-				+ "white_ratio_limit_value,"					//11
-				+ "row_number,"									//12
-				+ "column_number,"								//13
-				+ "dont_read_first_row,"						//14
-				+ "dont_read_first_column,"						//15
-				+ "erosion_degree,"								//16
-				+ "dilation_degree,"							//17
-				+ "horizontal_kernel_length_division_factor,"	//18
-				+ "vertical_kernel_length_division_factor,"		//19
-				+ "horizontal_erosion_iteration_number,"		//20
-				+ "vertical_erosion_iteration_number,"			//21
-				+ "horizontal_dilation_iteration_number,"		//22
-				+ "vertical_dilation_iteration_number,"			//23
-				+ "max_y_dif_for_intersection_points,"			//24
-				+ "cell_mat_width_crop_degree_factor,"			//25
-				+ "margin_x,"									//26
-				+ "margin_y,"									//27
-				+ "near_words,"									//28
-				+ "resized_width_for_title,"					//29
-				+ "resized_height_for_title,"					//30
-				+ "resized_width_for_table,"					//31
-				+ "resized_height_for_table"					//32
+				+ "min_area_threshold_for_noise_for_title,"  	//6
+				+ "min_area_threshold_for_noise_for_table,"  	//7
+				+ "x_start,"									//8
+				+ "y_start,"									//9
+				+ "width_percentage_to_be_cut,"					//10
+				+ "height_percentage_to_be_cut,"				//11
+				+ "white_ratio_limit_value,"					//12
+				+ "row_number,"									//13
+				+ "column_number,"								//14
+				+ "dont_read_first_row,"						//15
+				+ "dont_read_first_column,"						//16
+				+ "erosion_degree,"								//17
+				+ "dilation_degree,"							//18
+				+ "horizontal_kernel_length_division_factor,"	//19
+				+ "vertical_kernel_length_division_factor,"		//20
+				+ "horizontal_erosion_iteration_number,"		//21
+				+ "vertical_erosion_iteration_number,"			//22
+				+ "horizontal_dilation_iteration_number,"		//23
+				+ "vertical_dilation_iteration_number,"			//24
+				+ "max_y_dif_for_intersection_points,"			//25
+				+ "cell_mat_width_crop_degree_factor,"			//26
+				+ "margin_x,"									//27
+				+ "margin_y,"									//28
+				+ "near_words,"									//29
+				+ "resized_width_for_title,"					//30										
+				+ "resized_height_for_title,"					//31					
+				+ "resized_width_for_table,"					//32				
+				+ "resized_height_for_table,"					//33
+				+ "draw_contours_thickness_for_title,"			//34
+				+ "draw_contours_thickness_for_table"			//35
 				+ ")"
 				+ "values ("
 				+ "?,"  //1
@@ -3574,7 +3610,10 @@ public class Dao {
 				+ "?,"	//29
 				+ "?,"	//30
 				+ "?,"	//31
-				+ "?"	//32
+				+ "?,"	//32
+				+ "?,"	//33
+				+ "?,"	//34
+				+ "?"	//35
 				+ ")";
 			int result=-1;
 			try {
@@ -3588,33 +3627,36 @@ public class Dao {
 			st1.setString(3, ds.getTesseract_language());
 			st1.setInt(4, ds.getTesseract_page_seg_mode());
 			st1.setInt(5, ds.getTesseract_ocr_engine_mode());
-			st1.setInt(6, ds.getMin_area_threshold_for_noise());
-			st1.setInt(7, ds.getX_start());
-			st1.setInt(8, ds.getY_start());
-			st1.setInt(9, ds.getWidth_percentage_to_be_cut());
-			st1.setInt(10, ds.getHeight_percentage_to_be_cut());
-			st1.setInt(11, ds.getWhite_ratio_limit_value());
-			st1.setInt(12, ds.getRow_number());
-			st1.setInt(13, ds.getColumn_number());
-			st1.setInt(14, ds.getDont_read_first_row());
-			st1.setInt(15, ds.getDont_read_first_column());
-			st1.setInt(16, ds.getErosion_degree());
-			st1.setInt(17, ds.getDilation_degree());
-			st1.setInt(18, ds.getHorizontal_kernel_length_division_factor());
-			st1.setInt(19, ds.getVertical_kernel_length_division_factor());
-			st1.setInt(20, ds.getHorizontal_erosion_iteration_number());
-			st1.setInt(21, ds.getVertical_erosion_iteration_number());
-			st1.setInt(22, ds.getHorizontal_dilation_iteration_number());
-			st1.setInt(23, ds.getVertical_dilation_iteration_number());
-			st1.setInt(24, ds.getMax_y_dif_for_intersection_points());
-			st1.setInt(25, ds.getCell_mat_width_crop_degree_factor());
-			st1.setInt(26, ds.getMargin_x());
-			st1.setInt(27, ds.getMargin_y());
-			st1.setString(28, ds.getNearWords());
-			st1.setInt(29, ds.getResized_width_for_title());
-			st1.setInt(30, ds.getResized_height_for_title());
-			st1.setInt(31, ds.getResized_width_for_table());
-			st1.setInt(32, ds.getResized_height_for_table());
+			st1.setInt(6, ds.getMin_area_threshold_for_noise_for_title());
+			st1.setInt(7, ds.getMin_area_threshold_for_noise_for_table());
+			st1.setInt(8, ds.getX_start());
+			st1.setInt(9, ds.getY_start());
+			st1.setInt(10, ds.getWidth_percentage_to_be_cut());
+			st1.setInt(11, ds.getHeight_percentage_to_be_cut());
+			st1.setInt(12, ds.getWhite_ratio_limit_value());
+			st1.setInt(13, ds.getRow_number());
+			st1.setInt(14, ds.getColumn_number());
+			st1.setInt(15, ds.getDont_read_first_row());
+			st1.setInt(16, ds.getDont_read_first_column());
+			st1.setInt(17, ds.getErosion_degree());
+			st1.setInt(18, ds.getDilation_degree());
+			st1.setInt(19, ds.getHorizontal_kernel_length_division_factor());
+			st1.setInt(20, ds.getVertical_kernel_length_division_factor());
+			st1.setInt(21, ds.getHorizontal_erosion_iteration_number());
+			st1.setInt(22, ds.getVertical_erosion_iteration_number());
+			st1.setInt(23, ds.getHorizontal_dilation_iteration_number());
+			st1.setInt(24, ds.getVertical_dilation_iteration_number());
+			st1.setInt(25, ds.getMax_y_dif_for_intersection_points());
+			st1.setInt(26, ds.getCell_mat_width_crop_degree_factor());
+			st1.setInt(27, ds.getMargin_x());
+			st1.setInt(28, ds.getMargin_y());
+			st1.setString(29, ds.getNearWords());
+			st1.setInt(30, ds.getResized_width_for_title());
+			st1.setInt(31, ds.getResized_height_for_title());
+			st1.setInt(32, ds.getResized_width_for_table());
+			st1.setInt(33, ds.getResized_height_for_table());
+			st1.setInt(34, ds.getDraw_contours_thickness_for_title());
+			st1.setInt(35, ds.getDraw_contours_thickness_for_table());
 			result=st1.executeUpdate();
 			
 			} 
@@ -3644,137 +3686,146 @@ public class Dao {
 	{
 	
 	
-String query1="Insert into PreferredSettingsTable "
-		+ "("
-		+ "id,"											//1
-		+ "tesseract_data_path," 						//2
-		+ "tesseract_language,"	 						//3
-		+ "tesseract_page_seg_mode," 					//4
-		+ "tesseract_ocr_engine_mode," 					//5
-		+ "min_area_threshold_for_noise,"  				//6
-		+ "x_start,"									//7
-		+ "y_start,"									//8
-		+ "width_percentage_to_be_cut,"					//9
-		+ "height_percentage_to_be_cut,"				//10
-		+ "white_ratio_limit_value,"					//11
-		+ "row_number,"									//12
-		+ "column_number,"								//13
-		+ "dont_read_first_row,"						//14
-		+ "dont_read_first_column,"						//15
-		+ "erosion_degree,"								//16
-		+ "dilation_degree,"							//17
-		+ "horizontal_kernel_length_division_factor,"	//18
-		+ "vertical_kernel_length_division_factor,"		//19
-		+ "horizontal_erosion_iteration_number,"		//20
-		+ "vertical_erosion_iteration_number,"			//21
-		+ "horizontal_dilation_iteration_number,"		//22
-		+ "vertical_dilation_iteration_number,"			//23
-		+ "max_y_dif_for_intersection_points,"			//24
-		+ "cell_mat_width_crop_degree_factor,"			//25
-		+ "margin_x,"									//26
-		+ "margin_y,"									//27
-		+ "near_words,"									//28
-		+ "resized_width_for_title,"					//29
-		+ "resized_height_for_title,"					//30
-		+ "resized_width_for_table,"					//31
-		+ "resized_height_for_table"					//32
-		+ ")"
-		+ "values ("
-		+ "?,"  //1
-		+ "?,"	//2
-		+ "?,"	//3
-		+ "?,"	//4
-		+ "?,"	//5
-		+ "?,"	//6
-		+ "?,"	//7
-		+ "?,"	//8
-		+ "?,"	//9
-		+ "?,"	//10
-		+ "?,"	//11
-		+ "?,"	//12
-		+ "?,"	//13
-		+ "?,"	//14
-		+ "?,"	//15
-		+ "?,"	//16
-		+ "?,"	//17
-		+ "?,"	//18
-		+ "?,"	//19
-		+ "?,"	//20
-		+ "?,"	//21
-		+ "?,"	//22
-		+ "?,"	//23
-		+ "?,"	//24
-		+ "?,"	//25
-		+ "?,"	//26
-		+ "?,"	//27
-		+ "?,"	//28
-		+ "?,"	//29
-		+ "?,"	//30
-		+ "?,"	//31
-		+ "?"	//32
-		+ ")";
-	int result=-1;
-	try {
-	//Class.forName(className);
-	//con = DriverManager.getConnection(url);
-	//con = DriverManager.getConnection(url,uname,pass);
-	con=getCon();
-	PreparedStatement st1= con.prepareStatement(query1);
-	st1.setInt(1, 1);
-	st1.setString(2, ps.getTesseract_data_path());
-	st1.setString(3, ps.getTesseract_language());
-	st1.setInt(4, ps.getTesseract_page_seg_mode());
-	st1.setInt(5, ps.getTesseract_ocr_engine_mode());
-	st1.setInt(6, ps.getMin_area_threshold_for_noise());
-	st1.setInt(7, ps.getX_start());
-	st1.setInt(8, ps.getY_start());
-	st1.setInt(9, ps.getWidth_percentage_to_be_cut());
-	st1.setInt(10, ps.getHeight_percentage_to_be_cut());
-	st1.setInt(11, ps.getWhite_ratio_limit_value());
-	st1.setInt(12, ps.getRow_number());
-	st1.setInt(13, ps.getColumn_number());
-	st1.setInt(14, ps.getDont_read_first_row());
-	st1.setInt(15, ps.getDont_read_first_column());
-	st1.setInt(16, ps.getErosion_degree());
-	st1.setInt(17, ps.getDilation_degree());
-	st1.setInt(18, ps.getHorizontal_kernel_length_division_factor());
-	st1.setInt(19, ps.getVertical_kernel_length_division_factor());
-	st1.setInt(20, ps.getHorizontal_erosion_iteration_number());
-	st1.setInt(21, ps.getVertical_erosion_iteration_number());
-	st1.setInt(22, ps.getHorizontal_dilation_iteration_number());
-	st1.setInt(23, ps.getVertical_dilation_iteration_number());
-	st1.setInt(24, ps.getMax_y_dif_for_intersection_points());
-	st1.setInt(25, ps.getCell_mat_width_crop_degree_factor());
-	st1.setInt(26, ps.getMargin_x());
-	st1.setInt(27, ps.getMargin_y());
-	st1.setString(28, ps.getNearWords());
-	st1.setInt(29, ps.getResized_width_for_title());
-	st1.setInt(30, ps.getResized_height_for_title());
-	st1.setInt(31, ps.getResized_width_for_table());
-	st1.setInt(32, ps.getResized_height_for_table());
-	result=st1.executeUpdate();
-	
-	} 
-	catch (ClassNotFoundException e) 
-	{
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-	} 
-	catch (SQLException e) 
-	{
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-	
-	}
-	finally 
-	{
-	if(con!=null)
-	{
-	con.close();
-	}
-	}
-	
-	return result;
+			String query1="Insert into PreferredSettingsTable "
+					+ "("
+					+ "id,"											//1
+					+ "tesseract_data_path," 						//2
+					+ "tesseract_language,"	 						//3
+					+ "tesseract_page_seg_mode," 					//4
+					+ "tesseract_ocr_engine_mode," 					//5
+					+ "min_area_threshold_for_noise_for_title,"  	//6
+					+ "min_area_threshold_for_noise_for_table,"  	//7
+					+ "x_start,"									//8
+					+ "y_start,"									//9
+					+ "width_percentage_to_be_cut,"					//10
+					+ "height_percentage_to_be_cut,"				//11
+					+ "white_ratio_limit_value,"					//12
+					+ "row_number,"									//13
+					+ "column_number,"								//14
+					+ "dont_read_first_row,"						//15
+					+ "dont_read_first_column,"						//16
+					+ "erosion_degree,"								//17
+					+ "dilation_degree,"							//18
+					+ "horizontal_kernel_length_division_factor,"	//19
+					+ "vertical_kernel_length_division_factor,"		//20
+					+ "horizontal_erosion_iteration_number,"		//21
+					+ "vertical_erosion_iteration_number,"			//22
+					+ "horizontal_dilation_iteration_number,"		//23
+					+ "vertical_dilation_iteration_number,"			//24
+					+ "max_y_dif_for_intersection_points,"			//25
+					+ "cell_mat_width_crop_degree_factor,"			//26
+					+ "margin_x,"									//27
+					+ "margin_y,"									//28
+					+ "near_words,"									//29
+					+ "resized_width_for_title,"					//30										
+					+ "resized_height_for_title,"					//31					
+					+ "resized_width_for_table,"					//32				
+					+ "resized_height_for_table,"					//33
+					+ "draw_contours_thickness_for_title,"			//34
+					+ "draw_contours_thickness_for_table"			//35
+					+ ")"
+					+ "values ("
+					+ "?,"  //1
+					+ "?,"	//2
+					+ "?,"	//3
+					+ "?,"	//4
+					+ "?,"	//5
+					+ "?,"	//6
+					+ "?,"	//7
+					+ "?,"	//8
+					+ "?,"	//9
+					+ "?,"	//10
+					+ "?,"	//11
+					+ "?,"	//12
+					+ "?,"	//13
+					+ "?,"	//14
+					+ "?,"	//15
+					+ "?,"	//16
+					+ "?,"	//17
+					+ "?,"	//18
+					+ "?,"	//19
+					+ "?,"	//20
+					+ "?,"	//21
+					+ "?,"	//22
+					+ "?,"	//23
+					+ "?,"	//24
+					+ "?,"	//25
+					+ "?,"	//26
+					+ "?,"	//27
+					+ "?,"	//28
+					+ "?,"	//29
+					+ "?,"	//30
+					+ "?,"	//31
+					+ "?,"	//32
+					+ "?,"	//33
+					+ "?,"	//34
+					+ "?"	//35
+					+ ")";
+				int result=-1;
+				try {
+				//Class.forName(className);
+				//con = DriverManager.getConnection(url);
+				//con = DriverManager.getConnection(url,uname,pass);
+				con=getCon();
+				PreparedStatement st1= con.prepareStatement(query1);
+				st1.setInt(1, 1);
+				st1.setString(2, ps.getTesseract_data_path());
+				st1.setString(3, ps.getTesseract_language());
+				st1.setInt(4, ps.getTesseract_page_seg_mode());
+				st1.setInt(5, ps.getTesseract_ocr_engine_mode());
+				st1.setInt(6, ps.getMin_area_threshold_for_noise_for_title());
+				st1.setInt(7, ps.getMin_area_threshold_for_noise_for_table());
+				st1.setInt(8, ps.getX_start());
+				st1.setInt(9, ps.getY_start());
+				st1.setInt(10, ps.getWidth_percentage_to_be_cut());
+				st1.setInt(11, ps.getHeight_percentage_to_be_cut());
+				st1.setInt(12, ps.getWhite_ratio_limit_value());
+				st1.setInt(13, ps.getRow_number());
+				st1.setInt(14, ps.getColumn_number());
+				st1.setInt(15, ps.getDont_read_first_row());
+				st1.setInt(16, ps.getDont_read_first_column());
+				st1.setInt(17, ps.getErosion_degree());
+				st1.setInt(18, ps.getDilation_degree());
+				st1.setInt(19, ps.getHorizontal_kernel_length_division_factor());
+				st1.setInt(20, ps.getVertical_kernel_length_division_factor());
+				st1.setInt(21, ps.getHorizontal_erosion_iteration_number());
+				st1.setInt(22, ps.getVertical_erosion_iteration_number());
+				st1.setInt(23, ps.getHorizontal_dilation_iteration_number());
+				st1.setInt(24, ps.getVertical_dilation_iteration_number());
+				st1.setInt(25, ps.getMax_y_dif_for_intersection_points());
+				st1.setInt(26, ps.getCell_mat_width_crop_degree_factor());
+				st1.setInt(27, ps.getMargin_x());
+				st1.setInt(28, ps.getMargin_y());
+				st1.setString(29, ps.getNearWords());
+				st1.setInt(30, ps.getResized_width_for_title());
+				st1.setInt(31, ps.getResized_height_for_title());
+				st1.setInt(32, ps.getResized_width_for_table());
+				st1.setInt(33, ps.getResized_height_for_table());
+				st1.setInt(34, ps.getDraw_contours_thickness_for_title());
+				st1.setInt(35, ps.getDraw_contours_thickness_for_table());
+				result=st1.executeUpdate();
+				
+				} 
+				catch (ClassNotFoundException e) 
+				{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				} 
+				catch (SQLException e) 
+				{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+				}
+				finally 
+				{
+				if(con!=null)
+				{
+				con.close();
+				}
+				}
+				
+				return result;
 	
 }
 	public int clearDefaultSettingsTable() throws SQLException 
@@ -4052,23 +4103,30 @@ String query1="Insert into PreferredSettingsTable "
 						.getInt("margin_y"));
 				p.setMax_y_dif_for_intersection_points(rs
 						.getInt("max_y_dif_for_intersection_points"));
-				p.setMin_area_threshold_for_noise(rs
-						.getInt("min_area_threshold_for_noise"));
+				p.setMin_area_threshold_for_noise_for_title(rs
+						.getInt("min_area_threshold_for_noise_for_title"));
+				p.setMin_area_threshold_for_noise_for_table(rs
+						.getInt("min_area_threshold_for_noise_for_table"));
 				p.setNearWords(rs
 						.getString("near_words"));
 				p.setResized_width_for_title(rs.getInt("resized_width_for_title"));
 				p.setResized_height_for_title(rs.getInt("resized_height_for_title"));
 				p.setResized_width_for_table(rs.getInt("resized_width_for_table"));
 				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
+				p.setDraw_contours_thickness_for_title(rs.getInt("draw_contours_thickness_for_title"));
+				p.setDraw_contours_thickness_for_table(rs.getInt("draw_contours_thickness_for_table"));
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (ClassNotFoundException e) 
+		{
 			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
-		finally {
+		finally 
+		{
 			if(con!=null)
 			{
 				con.close();
@@ -4144,14 +4202,18 @@ String query1="Insert into PreferredSettingsTable "
 						.getInt("margin_y"));
 				p.setMax_y_dif_for_intersection_points(rs
 						.getInt("max_y_dif_for_intersection_points"));
-				p.setMin_area_threshold_for_noise(rs
-						.getInt("min_area_threshold_for_noise"));
+				p.setMin_area_threshold_for_noise_for_title(rs
+						.getInt("min_area_threshold_for_noise_for_title"));
+				p.setMin_area_threshold_for_noise_for_table(rs
+						.getInt("min_area_threshold_for_noise_for_table"));
 				p.setNearWords(rs
 						.getString("near_words"));
 				p.setResized_width_for_title(rs.getInt("resized_width_for_title"));
 				p.setResized_height_for_title(rs.getInt("resized_height_for_title"));
 				p.setResized_width_for_table(rs.getInt("resized_width_for_table"));
 				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
+				p.setDraw_contours_thickness_for_title(rs.getInt("draw_contours_thickness_for_title"));
+				p.setDraw_contours_thickness_for_table(rs.getInt("draw_contours_thickness_for_table"));
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
