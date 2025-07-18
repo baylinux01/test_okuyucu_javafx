@@ -120,8 +120,10 @@ public class SettingsWindow extends Application {
 			
 			int standart_element_height=30;
 			int standart_element_width=300;
+			int labelFontSize=11;
 			
 			lb1=new Label("Tesseract Veri Yolu:");
+			lb1.setStyle("-fx-font-size: "+labelFontSize);
 			lb1.setPrefHeight(standart_element_height);
 			lb1.setPrefWidth(standart_element_width);
 			lb1.setLayoutX(base_x);
@@ -136,6 +138,7 @@ public class SettingsWindow extends Application {
 			pane.getChildren().add(tf1);
 			
 			lb2=new Label("Tesseract Dili:");
+			lb2.setStyle("-fx-font-size: "+labelFontSize);
 			lb2.setPrefHeight(standart_element_height);
 			lb2.setPrefWidth(standart_element_width);
 			lb2.setLayoutX(base_x);
@@ -150,6 +153,7 @@ public class SettingsWindow extends Application {
 			pane.getChildren().add(tf2);
 			
 			lb3=new Label("Tesseract Page Seg Mode:");
+			lb3.setStyle("-fx-font-size: "+labelFontSize);
 			lb3.setPrefHeight(standart_element_height);
 			lb3.setPrefWidth(standart_element_width);
 			lb3.setLayoutX(base_x);
@@ -168,6 +172,7 @@ public class SettingsWindow extends Application {
 									.select(Integer.valueOf(ps.getTesseract_page_seg_mode()));
 			
 			lb4=new Label("Tesseract OCR Engine Mode:");
+			lb4.setStyle("-fx-font-size: "+labelFontSize);
 			lb4.setPrefHeight(standart_element_height);
 			lb4.setPrefWidth(standart_element_width);
 			lb4.setLayoutX(base_x);
@@ -185,7 +190,8 @@ public class SettingsWindow extends Application {
 			cb_tesseract_ocr_engine_mode.getSelectionModel()
 										.select(Integer.valueOf(ps.getTesseract_ocr_engine_mode()));
 			
-			lb5=new Label("Başlık kısmında temizlenecek gürültü için minimum alan eşiği:");
+			lb5=new Label("Başlıkta temizlenecek gürültü için minimum alan eşiği:");
+			lb5.setStyle("-fx-font-size: "+labelFontSize);
 			lb5.setPrefHeight(standart_element_height);
 			lb5.setPrefWidth(standart_element_width);
 			lb5.setLayoutX(base_x);
@@ -205,6 +211,7 @@ public class SettingsWindow extends Application {
 											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise_for_title()));
 			
 			lb5b=new Label("Tabloda temizlenecek gürültü için minimum alan eşiği:");
+			lb5b.setStyle("-fx-font-size: "+labelFontSize);
 			lb5b.setPrefHeight(standart_element_height);
 			lb5b.setPrefWidth(standart_element_width);
 			lb5b.setLayoutX(base_x);
@@ -224,6 +231,7 @@ public class SettingsWindow extends Application {
 											.select(Integer.valueOf(ps.getMin_area_threshold_for_noise_for_table()));
 			
 			lb6=new Label("Başlık kısmı kesimi için başlangıç x koordinatı:");
+			lb6.setStyle("-fx-font-size: "+labelFontSize);
 			lb6.setPrefHeight(standart_element_height);
 			lb6.setPrefWidth(standart_element_width);
 			lb6.setLayoutX(base_x);
@@ -242,6 +250,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getX_start()));
 			
 			lb7=new Label("Başlık kısmı kesimi için başlangıç y koordinatı:");
+			lb7.setStyle("-fx-font-size: "+labelFontSize);
 			lb7.setPrefHeight(standart_element_height);
 			lb7.setPrefWidth(standart_element_width);
 			lb7.setLayoutX(base_x);
@@ -262,6 +271,7 @@ public class SettingsWindow extends Application {
 			
 			
 			lb8=new Label("Başlık kısmı kesimi için yüzde genişlik:");
+			lb8.setStyle("-fx-font-size: "+labelFontSize);
 			lb8.setPrefHeight(standart_element_height);
 			lb8.setPrefWidth(standart_element_width);
 			lb8.setLayoutX(base_x);
@@ -280,6 +290,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getWidth_percentage_to_be_cut()));
 			
 			lb9=new Label("Başlık kısmı kesimi için yüzde yükseklik:");
+			lb9.setStyle("-fx-font-size: "+labelFontSize);
 			lb9.setPrefHeight(standart_element_height);
 			lb9.setPrefWidth(standart_element_width);
 			lb9.setLayoutX(base_x+x_dif*1);
@@ -298,6 +309,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getHeight_percentage_to_be_cut()));
 			
 			lb10=new Label("Hücrenin dolu kabul edilmesi için eşik:");
+			lb10.setStyle("-fx-font-size: "+labelFontSize);
 			lb10.setPrefHeight(standart_element_height);
 			lb10.setPrefWidth(standart_element_width);
 			lb10.setLayoutX(base_x+x_dif*1);
@@ -316,6 +328,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getWhite_ratio_limit_value()));
 			
 			lb10b=new Label("Başlık resmi için yeni genişlik");
+			lb10b.setStyle("-fx-font-size: "+labelFontSize);
 			lb10b.setPrefHeight(standart_element_height);
 			lb10b.setPrefWidth(standart_element_width);
 			lb10b.setLayoutX(base_x+x_dif*1);
@@ -362,6 +375,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getResized_width_for_title()));
 			
 			lb10c=new Label("Başlık resmi için yeni yükseklik");
+			lb10c.setStyle("-fx-font-size: "+labelFontSize);
 			lb10c.setPrefHeight(standart_element_height);
 			lb10c.setPrefWidth(standart_element_width);
 			lb10c.setLayoutX(base_x+x_dif*1);
@@ -408,6 +422,7 @@ public class SettingsWindow extends Application {
 			
 			
 			lb10d=new Label("Tablo resmi için yeni genişlik");
+			lb10d.setStyle("-fx-font-size: "+labelFontSize);
 			lb10d.setPrefHeight(standart_element_height);
 			lb10d.setPrefWidth(standart_element_width);
 			lb10d.setLayoutX(base_x+x_dif*1);
@@ -453,6 +468,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getResized_width_for_table()));
 			
 			lb10e=new Label("Tablo resmi için yeni yükseklik");
+			lb10e.setStyle("-fx-font-size: "+labelFontSize);
 			lb10e.setPrefHeight(standart_element_height);
 			lb10e.setPrefWidth(standart_element_width);
 			lb10e.setLayoutX(base_x+x_dif*1);
@@ -498,6 +514,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getResized_height_for_table()));
 			
 			lb11=new Label("Tablonun toplam satır sayısı:");
+			lb11.setStyle("-fx-font-size: "+labelFontSize);
 			lb11.setPrefHeight(standart_element_height);
 			lb11.setPrefWidth(standart_element_width);
 			lb11.setLayoutX(base_x+x_dif);
@@ -516,6 +533,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getRow_number()));
 			
 			lb12=new Label("Tablonun toplam sütun sayısı:");
+			lb12.setStyle("-fx-font-size: "+labelFontSize);
 			lb12.setPrefHeight(standart_element_height);
 			lb12.setPrefWidth(standart_element_width);
 			lb12.setLayoutX(base_x+x_dif);
@@ -534,6 +552,7 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ps.getColumn_number()));
 			
 			lb13=new Label("Tablonun ilk satırını okuma:");
+			lb13.setStyle("-fx-font-size: "+labelFontSize);
 			lb13.setPrefHeight(standart_element_height);
 			lb13.setPrefWidth(standart_element_width);
 			lb13.setLayoutX(base_x+x_dif);
@@ -560,6 +579,7 @@ public class SettingsWindow extends Application {
 			}
 			
 			lb14=new Label("Tablonun ilk sütununu okuma:");
+			lb14.setStyle("-fx-font-size: "+labelFontSize);
 			lb14.setPrefHeight(standart_element_height);
 			lb14.setPrefWidth(standart_element_width);
 			lb14.setLayoutX(base_x+x_dif*2);
@@ -586,6 +606,7 @@ public class SettingsWindow extends Application {
 			}
 			
 			lb15=new Label("Erezyon Derecesi");
+			lb15.setStyle("-fx-font-size: "+labelFontSize);
 			lb15.setPrefHeight(standart_element_height);
 			lb15.setPrefWidth(standart_element_width);
 			lb15.setLayoutX(base_x+x_dif*2);
@@ -604,6 +625,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getErosion_degree()));
 			
 			lb16=new Label("Dilasyon Derecesi");
+			lb16.setStyle("-fx-font-size: "+labelFontSize);
 			lb16.setPrefHeight(standart_element_height);
 			lb16.setPrefWidth(standart_element_width);
 			lb16.setLayoutX(base_x+x_dif*2);
@@ -622,6 +644,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getDilation_degree()));
 			
 			lb17=new Label("Yatay kernel bölme faktörü");
+			lb17.setStyle("-fx-font-size: "+labelFontSize);
 			lb17.setPrefHeight(standart_element_height);
 			lb17.setPrefWidth(standart_element_width);
 			lb17.setLayoutX(base_x+x_dif*2);
@@ -641,6 +664,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getHorizontal_kernel_length_division_factor()));
 			
 			lb18=new Label("Dikey kernel bölme faktörü");
+			lb18.setStyle("-fx-font-size: "+labelFontSize);
 			lb18.setPrefHeight(standart_element_height);
 			lb18.setPrefWidth(standart_element_width);
 			lb18.setLayoutX(base_x+x_dif*2);
@@ -660,6 +684,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getVertical_kernel_length_division_factor()));
 			
 			lb19=new Label("Yatay erozyon iterasyon sayısı");
+			lb19.setStyle("-fx-font-size: "+labelFontSize);
 			lb19.setPrefHeight(standart_element_height);
 			lb19.setPrefWidth(standart_element_width);
 			lb19.setLayoutX(base_x+x_dif*2);
@@ -679,6 +704,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getHorizontal_erosion_iteration_number()));
 			
 			lb20=new Label("Dikey erozyon iterasyon sayısı");
+			lb20.setStyle("-fx-font-size: "+labelFontSize);
 			lb20.setPrefHeight(standart_element_height);
 			lb20.setPrefWidth(standart_element_width);
 			lb20.setLayoutX(base_x+x_dif*2);
@@ -700,6 +726,7 @@ public class SettingsWindow extends Application {
 			
 			
 			lb21b=new Label("Hücreler için Margin X");
+			lb21b.setStyle("-fx-font-size: "+labelFontSize);
 			lb21b.setPrefHeight(standart_element_height);
 			lb21b.setPrefWidth(standart_element_width);
 			lb21b.setLayoutX(base_x+x_dif*2);
@@ -719,6 +746,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getMargin_x()));
 			
 			lb21c=new Label("Hücreler için Margin Y");
+			lb21c.setStyle("-fx-font-size: "+labelFontSize);
 			lb21c.setPrefHeight(standart_element_height);
 			lb21c.setPrefWidth(standart_element_width);
 			lb21c.setLayoutX(base_x+x_dif*2);
@@ -738,6 +766,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getMargin_y()));
 			
 			lb21=new Label("Yatay dilasyon iterasyon sayısı");
+			lb21.setStyle("-fx-font-size: "+labelFontSize);
 			lb21.setPrefHeight(standart_element_height);
 			lb21.setPrefWidth(standart_element_width);
 			lb21.setLayoutX(base_x+x_dif*3);
@@ -757,6 +786,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getHorizontal_dilation_iteration_number()));
 			
 			lb22=new Label("Dikey dilasyon iterasyon sayısı");
+			lb22.setStyle("-fx-font-size: "+labelFontSize);
 			lb22.setPrefHeight(standart_element_height);
 			lb22.setPrefWidth(standart_element_width);
 			lb22.setLayoutX(base_x+x_dif*3);
@@ -776,6 +806,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getVertical_dilation_iteration_number()));
 			
 			lb23=new Label("Kesişim noktaları için maksimum dikey fark:");
+			lb23.setStyle("-fx-font-size: "+labelFontSize);
 			lb23.setPrefHeight(standart_element_height);
 			lb23.setPrefWidth(standart_element_width);
 			lb23.setLayoutX(base_x+x_dif*3);
@@ -796,6 +827,7 @@ public class SettingsWindow extends Application {
 			
 			
 			lb24=new Label("Hücre Kırpma Faktörü");
+			lb24.setStyle("-fx-font-size: "+labelFontSize);
 			lb24.setPrefHeight(standart_element_height);
 			lb24.setPrefWidth(standart_element_width);
 			lb24.setLayoutX(base_x+x_dif*3);
@@ -815,6 +847,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getCell_mat_width_crop_degree_factor()));
 			
 			lb24b=new Label("Başlık için kontür boyama kalınlığı");
+			lb24b.setStyle("-fx-font-size: "+labelFontSize);
 			lb24b.setPrefHeight(standart_element_height);
 			lb24b.setPrefWidth(standart_element_width);
 			lb24b.setLayoutX(base_x+x_dif*3);
@@ -834,6 +867,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getDraw_contours_thickness_for_title()));
 			
 			lb24c=new Label("Tablo için kontür boyama kalınlığı");
+			lb24c.setStyle("-fx-font-size: "+labelFontSize);
 			lb24c.setPrefHeight(standart_element_height);
 			lb24c.setPrefWidth(standart_element_width);
 			lb24c.setLayoutX(base_x+x_dif*3);
@@ -853,6 +887,7 @@ public class SettingsWindow extends Application {
 				.select(Integer.valueOf(ps.getDraw_contours_thickness_for_table()));
 			
 			lb27=new Label("İsim ve Soyisim ile aynı satırda olabilecek kelimeler");
+			lb27.setStyle("-fx-font-size: "+labelFontSize);
 			lb27.setPrefHeight(standart_element_height);
 			lb27.setPrefWidth(standart_element_width);
 			lb27.setLayoutX(base_x+x_dif*3);
