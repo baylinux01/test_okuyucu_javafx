@@ -116,11 +116,12 @@ public class ImageConverter {
 //			"denemeCikti2.png",
 //			higherCroppedPart);
     		
-    		
+    		Mat higherCroppedImageWithWhiteBGColorAndBlackWritingColor=new Mat();
+    		Core.bitwise_not(higherCroppedPart,higherCroppedImageWithWhiteBGColorAndBlackWritingColor);
     		
     		
     		BufferedImage highBufferedImage=ImageConverter
-    				.matToBufferedImage(higherCroppedPart);
+    				.matToBufferedImage(higherCroppedImageWithWhiteBGColorAndBlackWritingColor);
     		
     		String highText="";
     		

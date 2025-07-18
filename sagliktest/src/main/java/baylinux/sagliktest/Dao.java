@@ -3479,7 +3479,7 @@ public class Dao {
 				st1.setInt(1, 1);
 				st1.setString(2, tessdataPath);
 				st1.setString(3, "tur");
-				st1.setInt(4, 6);
+				st1.setInt(4, 11);
 				st1.setInt(5, 1);
 				st1.setInt(6, 75);
 				st1.setInt(7, 100);

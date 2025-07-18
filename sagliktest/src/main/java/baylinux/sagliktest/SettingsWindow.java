@@ -167,7 +167,7 @@ public class SettingsWindow extends Application {
 			cb_tesseract_page_seg_mode.setLayoutY(base_y+y_dif*7);
 			pane.getChildren().add(cb_tesseract_page_seg_mode);
 			cb_tesseract_page_seg_mode.getItems().clear();
-			cb_tesseract_page_seg_mode.getItems().addAll(0,1,2,3,4,5,6,7,8,9,10);
+			cb_tesseract_page_seg_mode.getItems().addAll(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
 			cb_tesseract_page_seg_mode.getSelectionModel()
 									.select(Integer.valueOf(ps.getTesseract_page_seg_mode()));
 			
