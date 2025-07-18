@@ -363,8 +363,9 @@ public class ImageConverter {
     		
     		int a=0;
     		int b=0;
-    		if(ps.getDont_read_first_column()==1) a=1;
-    		if(ps.getDont_read_first_row()==1) b=1;
+    		if(ps.getDont_read_first_row()==1) a=1;
+    		if(ps.getDont_read_first_column()==1) b=1;
+    		
     		for (int r = a; r < yCoords.size() - 1; r++) 
     		{ 
     		    List<String> rowData = new ArrayList<>(); 
