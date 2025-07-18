@@ -3503,7 +3503,7 @@ public class Dao {
 				st1.setInt(25, 5);
 				st1.setInt(26, 20);
 				st1.setInt(27, 20);
-				st1.setInt(28, 20);
+				st1.setInt(28, 0);
 				st1.setString(29, "İSİM-SOYİSİM");
 				st1.setInt(30, 3120);
 				st1.setInt(31, 4160);

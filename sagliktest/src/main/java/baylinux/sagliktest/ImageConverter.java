@@ -106,7 +106,7 @@ public class ImageConverter {
                     
                     Imgproc.drawContours(higherCroppedPart, 
                     		Collections.singletonList(contours.get(i)), -1, 
-                    		new Scalar(0), Core.FILLED);
+                    		new Scalar(0), ps.getDraw_contours_thickness_for_title());
                 }
     		}
     		
@@ -295,7 +295,7 @@ public class ImageConverter {
             contoursToCleanInsideTable.stream()
             	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise_for_table())
             	    .forEach(x-> Imgproc.drawContours(croppedBinary, 
-            	    		Collections.singletonList(x), -1,new Scalar(0),Core.FILLED));
+            	    		Collections.singletonList(x), -1,new Scalar(0),ps.getDraw_contours_thickness_for_table()));
             	    
     		Mat inverseTableLines = new Mat();
     		Core.bitwise_not(tableLines, inverseTableLines);
@@ -319,7 +319,7 @@ public class ImageConverter {
              contoursToCleanInsideTableForTextOnly.stream()
              	    .filter(c -> Imgproc.contourArea(c) < ps.getMin_area_threshold_for_noise_for_table())
              	    .forEach(x-> Imgproc.drawContours(croppedBinary, 
-             	    		Collections.singletonList(x), -1,new Scalar(0),Core.FILLED));
+             	    		Collections.singletonList(x), -1,new Scalar(0),ps.getDraw_contours_thickness_for_table()));
             
     		Mat intersections = new Mat(); 
     		Core.bitwise_and(horizontalLines, verticalLines, intersections); 
@@ -366,7 +366,7 @@ public class ImageConverter {
     		int b=0;
     		if(ps.getDont_read_first_row()==1) a=1;
     		if(ps.getDont_read_first_column()==1) b=1;
-    		
+    		int sayi=1;
     		for (int r = a; r < yCoords.size() - 1; r++) 
     		{ 
     		    List<String> rowData = new ArrayList<>(); 
@@ -375,6 +375,7 @@ public class ImageConverter {
     		    double whitePixelRatioForC=0;
     		    double whitePixelRatioForD=0;
     		    double whitePixelRatioForE=0;
+    		    
     		    for (int c = b; c < xCoords.size() - 1; c++) 
     		    { 
     		        
@@ -408,6 +409,11 @@ public class ImageConverter {
 						try 
 						{
 							cellImageMat = new Mat(textOnlyImage, cellRect);
+//				    		Imgcodecs.imwrite(imageFullPath
+//				    				.substring(0,imageFullPath.lastIndexOf("/")-1)
+//				    				+sayi+".png", cellImageMat); 
+//				    		++sayi;
+							
 						} 
 						catch (Exception e) 
 						{
@@ -450,12 +456,58 @@ public class ImageConverter {
     		            		)
     		            		{
     		            			cellStatus="+";
+    		            			rowData.add(cellStatus);
+    		    		            if(ps.getDont_read_first_column()==1&&c==2)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            }
+    		    		            else if(ps.getDont_read_first_column()==0&&c==1)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            }
+    		    		            if(ps.getDont_read_first_column()==1&&c==3)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            }
+    		    		            else if(ps.getDont_read_first_column()==0&&c==2)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            }
+    		    		            if(ps.getDont_read_first_column()==1&&c==4)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            	rowData.set(2, "-");
+    		    		            }
+    		    		            else if(ps.getDont_read_first_column()==0&&c==3)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            	rowData.set(2, "-");
+    		    		            }
+    		    		            if(ps.getDont_read_first_column()==1&&c==5)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            	rowData.set(2, "-");
+    		    		            	rowData.set(3, "-");
+    		    		            }
+    		    		            else if(ps.getDont_read_first_column()==0&&c==4)
+    		    		            {
+    		    		            	rowData.set(0, "-");
+    		    		            	rowData.set(1, "-");
+    		    		            	rowData.set(2, "-");
+    		    		            	rowData.set(3, "-");
+    		    		            }
     		            		}
     		            		else
     		            		{
     		            			cellStatus="-";
+    		            			rowData.add(cellStatus);
     		            		}
-    		            		rowData.add(cellStatus);
+    		            		
 
     		        }
     		    }

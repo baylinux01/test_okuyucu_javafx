@@ -741,7 +741,7 @@ public class SettingsWindow extends Application {
 			pane.getChildren().add(cb_margin_x);
 			cb_margin_x.getItems().clear();
 			cb_margin_x.getItems()
-										.addAll(5,10,15,20,25,30,35,40);
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40);
 			cb_margin_x.getSelectionModel()
 				.select(Integer.valueOf(ps.getMargin_x()));
 			
@@ -761,7 +761,7 @@ public class SettingsWindow extends Application {
 			pane.getChildren().add(cb_margin_y);
 			cb_margin_y.getItems().clear();
 			cb_margin_y.getItems()
-										.addAll(5,10,15,20,25,30,35,40);
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40);
 			cb_margin_y.getSelectionModel()
 				.select(Integer.valueOf(ps.getMargin_y()));
 			
