@@ -282,6 +282,7 @@ public class ImageConverter {
 //    		Imgcodecs.imwrite(imagePath+"altinciCikti_tableLinesCombined.png", 
 //    				tableLines); 
     		
+    		
     		Core.bitwise_or(tableLines, croppedBinary, croppedBinary);
     		
             List<MatOfPoint> contoursToCleanInsideTable = new ArrayList<>();
@@ -428,16 +429,16 @@ public class ImageConverter {
     		            int whitePixelCount=Core.countNonZero(croppedCellImageMat);
     		            int totalPixelCount=croppedCellImageMat.rows()*croppedCellImageMat.cols();
     		            double whitePixelRatio=(Double.valueOf(whitePixelCount)/totalPixelCount)*100;
-    		            if(ps.getDont_read_first_column()==1&&b==1) whitePixelRatioForA=whitePixelRatio;
-    		            else if(ps.getDont_read_first_column()==0&&b==0) whitePixelRatioForA=whitePixelRatio;
-    		            if(ps.getDont_read_first_column()==1&&b==2) whitePixelRatioForB=whitePixelRatio;
-    		            else if(ps.getDont_read_first_column()==0&&b==1) whitePixelRatioForB=whitePixelRatio;
-    		            if(ps.getDont_read_first_column()==1&&b==3) whitePixelRatioForC=whitePixelRatio;
-    		            else if(ps.getDont_read_first_column()==0&&b==2) whitePixelRatioForC=whitePixelRatio;
-    		            if(ps.getDont_read_first_column()==1&&b==4) whitePixelRatioForD=whitePixelRatio;
-    		            else if(ps.getDont_read_first_column()==0&&b==3) whitePixelRatioForD=whitePixelRatio;
-    		            if(ps.getDont_read_first_column()==1&&b==5) whitePixelRatioForE=whitePixelRatio;
-    		            else if(ps.getDont_read_first_column()==0&&b==4) whitePixelRatioForE=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&c==1) whitePixelRatioForA=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&c==0) whitePixelRatioForA=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&c==2) whitePixelRatioForB=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&c==1) whitePixelRatioForB=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&c==3) whitePixelRatioForC=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&c==2) whitePixelRatioForC=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&c==4) whitePixelRatioForD=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&c==3) whitePixelRatioForD=whitePixelRatio;
+    		            if(ps.getDont_read_first_column()==1&&c==5) whitePixelRatioForE=whitePixelRatio;
+    		            else if(ps.getDont_read_first_column()==0&&c==4) whitePixelRatioForE=whitePixelRatio;
     		            
     		            String cellStatus="-";
     		            if(whitePixelRatio>=ps.getWhite_ratio_limit_value()
