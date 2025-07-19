@@ -420,6 +420,16 @@ public class ImageConverter {
 						try 
 						{
 							cellImageMat = new Mat(textOnlyImage, cellRect);
+							
+							Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
+									new Size(3, 3));
+							Mat small = new Mat();
+							Imgproc.resize(cellImageMat, small, 
+									new Size(cellImageMat.cols() * (ps.getCell_mat_downscale_factor()/100.0),
+											cellImageMat.rows() * (ps.getCell_mat_downscale_factor()/100.0))); 
+							Imgproc.erode(small, small, kernel);  
+							Imgproc.resize(small, cellImageMat, cellImageMat.size());
+							//Imgproc.erode(cellImageMat, cellImageMat, kernel);
 //				    		Imgcodecs.imwrite(imageFullPath
 //				    				.substring(0,imageFullPath.lastIndexOf("/")-1)
 //				    				+sayi+".png", cellImageMat); 
@@ -458,7 +468,7 @@ public class ImageConverter {
     		            else if(ps.getDont_read_first_column()==0&&c==4) whitePixelRatioForE=whitePixelRatio;
     		            
     		            String cellStatus="-";
-    		            if(whitePixelRatio>=ps.getWhite_ratio_limit_value()
+    		            if(whitePixelRatio>=(ps.getWhite_ratio_limit_value()/100.0)
     		            		&&whitePixelRatio>=whitePixelRatioForA
     		            		&&whitePixelRatio>=whitePixelRatioForB
     		            		&&whitePixelRatio>=whitePixelRatioForC
@@ -468,35 +478,43 @@ public class ImageConverter {
     		            		{
     		            			cellStatus="+";
     		            			rowData.add(cellStatus);
+    		            			
+    		            			//System.out.println("all white ratios: "+whitePixelRatio);
     		    		            if(ps.getDont_read_first_column()==1&&c==2)
     		    		            {
     		    		            	rowData.set(0, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            else if(ps.getDont_read_first_column()==0&&c==1)
     		    		            {
     		    		            	rowData.set(0, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            if(ps.getDont_read_first_column()==1&&c==3)
     		    		            {
     		    		            	rowData.set(0, "-");
     		    		            	rowData.set(1, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            else if(ps.getDont_read_first_column()==0&&c==2)
     		    		            {
     		    		            	rowData.set(0, "-");
     		    		            	rowData.set(1, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            if(ps.getDont_read_first_column()==1&&c==4)
     		    		            {
     		    		            	rowData.set(0, "-");
     		    		            	rowData.set(1, "-");
     		    		            	rowData.set(2, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            else if(ps.getDont_read_first_column()==0&&c==3)
     		    		            {
     		    		            	rowData.set(0, "-");
     		    		            	rowData.set(1, "-");
     		    		            	rowData.set(2, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            if(ps.getDont_read_first_column()==1&&c==5)
     		    		            {
@@ -504,6 +522,7 @@ public class ImageConverter {
     		    		            	rowData.set(1, "-");
     		    		            	rowData.set(2, "-");
     		    		            	rowData.set(3, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		    		            else if(ps.getDont_read_first_column()==0&&c==4)
     		    		            {
@@ -511,6 +530,7 @@ public class ImageConverter {
     		    		            	rowData.set(1, "-");
     		    		            	rowData.set(2, "-");
     		    		            	rowData.set(3, "-");
+    		    		            	//System.out.println("white ratio: "+whitePixelRatio);
     		    		            }
     		            		}
     		            		else
@@ -523,7 +543,18 @@ public class ImageConverter {
     		        }
     		    }
     		    
-    		    
+    		    System.out.println("For "
+    		    +imageFullPath.substring(imageFullPath.lastIndexOf("/")+1)
+    		    +" "+"question "+r+" A: "+whitePixelRatioForA);
+    		    System.out.println("For "
+    	    		    +imageFullPath.substring(imageFullPath.lastIndexOf("/")+1)
+    	    		    +" "+"question "+r+" B: "+whitePixelRatioForB);
+    		    System.out.println("For "
+    	    		    +imageFullPath.substring(imageFullPath.lastIndexOf("/")+1)
+    	    		    +" "+"question "+r+" C: "+whitePixelRatioForC);
+    		    System.out.println("For "
+    	    		    +imageFullPath.substring(imageFullPath.lastIndexOf("/")+1)
+    	    		    +" "+"question "+r+" D: "+whitePixelRatioForD);
     		    output.add(rowData);
    }
 
@@ -562,29 +593,31 @@ public class ImageConverter {
 
 	        List<Double> filteredCoords=new ArrayList<Double>();
 
-	        double t=coords.get(0);
-	        double y=coords.get(coords.size()-1);
-	        double z=(y-t)/(elementNumber-1);
-	        double i=t-z;
-	        if(i<1) i=1.0;
-	        double j=y+z;
-	        if(j>matLengthInThatAxis) j=matLengthInThatAxis;
+//	        double t=coords.get(0);
+//	        double y=coords.get(coords.size()-1);
+//	        double z=(y-t)/(elementNumber-1);
+//	        double i=t-z;
+//	        if(i<1) i=1.0;
+//	        double j=y+z;
+//	        if(j>matLengthInThatAxis) j=matLengthInThatAxis;
 	        filteredCoords.add(0.0);
 	        filteredCoords.add((double)matLengthInThatAxis);
 	        coords.add(0,0.0);
 	        coords.add((double)matLengthInThatAxis);
 	        Collections.sort(coords);
 	        double pay=0;
-	        double step=(j-i)/(elementNumber-1)+pay;
+	        //double step=(j-i)/(elementNumber-1)+pay;
+	        double step=matLengthInThatAxis/(elementNumber-1);
 	        int a=1;
 	        double l=0;
 	        while(filteredCoords.size()<elementNumber)
 	        {
-	        	l=i+a*step;
+	        	l=0+a*step;
 	        	filteredCoords.add(l);
 	        	++a;
 	        }
 	        Collections.sort(filteredCoords);
+	        
 	        
 
 	        List<Double> lastFilteredCoords=new ArrayList<Double>();

@@ -3003,7 +3003,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3044,7 +3045,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3085,7 +3087,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3126,7 +3129,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 			
 		}
@@ -3204,7 +3208,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -3245,7 +3250,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -3286,7 +3292,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 		}
 		else if(className.equals(PostgreClassName))
@@ -3327,7 +3334,8 @@ public class Dao {
 					+ "resized_width_for_table int,"					
 					+ "resized_height_for_table int,"
 					+ "draw_contours_thickness_for_title int,"
-					+ "draw_contours_thickness_for_table int"
+					+ "draw_contours_thickness_for_table int,"
+					+ "cell_mat_downscale_factor int"
 					+ ");";
 			
 		}
@@ -3430,7 +3438,8 @@ public class Dao {
 						+ "resized_width_for_table,"					//32				
 						+ "resized_height_for_table,"					//33
 						+ "draw_contours_thickness_for_title,"			//34
-						+ "draw_contours_thickness_for_table"			//35
+						+ "draw_contours_thickness_for_table,"			//35
+						+ "cell_mat_downscale_factor"					//36
 						+ ")"
 						+ "values ("
 						+ "?,"  //1
@@ -3467,7 +3476,8 @@ public class Dao {
 						+ "?,"	//32
 						+ "?,"	//33
 						+ "?,"	//34
-						+ "?"	//35
+						+ "?,"	//35
+						+"?"	//36
 						+ ")";
 				int result=-1;
 				try {
@@ -3487,7 +3497,7 @@ public class Dao {
 				st1.setInt(9, 0);
 				st1.setInt(10, 100);
 				st1.setInt(11, 20);
-				st1.setInt(12, 3);
+				st1.setInt(12, 150);
 				st1.setInt(13, 31);
 				st1.setInt(14, 5);
 				st1.setInt(15, 1);
@@ -3502,7 +3512,7 @@ public class Dao {
 				st1.setInt(24, 1);
 				st1.setInt(25, 5);
 				st1.setInt(26, 20);
-				st1.setInt(27, 20);
+				st1.setInt(27, 0);
 				st1.setInt(28, 0);
 				st1.setString(29, "İSİM-SOYİSİM");
 				st1.setInt(30, 3120);
@@ -3511,6 +3521,7 @@ public class Dao {
 				st1.setInt(33, 4160);
 				st1.setInt(34, -1);
 				st1.setInt(35, -1);
+				st1.setInt(36, 50);
 				result=st1.executeUpdate();
 				
 				} 
@@ -3576,7 +3587,8 @@ public class Dao {
 				+ "resized_width_for_table,"					//32				
 				+ "resized_height_for_table,"					//33
 				+ "draw_contours_thickness_for_title,"			//34
-				+ "draw_contours_thickness_for_table"			//35
+				+ "draw_contours_thickness_for_table,"			//35
+				+ "cell_mat_downscale_factor"					//36
 				+ ")"
 				+ "values ("
 				+ "?,"  //1
@@ -3613,7 +3625,8 @@ public class Dao {
 				+ "?,"	//32
 				+ "?,"	//33
 				+ "?,"	//34
-				+ "?"	//35
+				+ "?,"	//35
+				+"?"	//36
 				+ ")";
 			int result=-1;
 			try {
@@ -3657,6 +3670,7 @@ public class Dao {
 			st1.setInt(33, ds.getResized_height_for_table());
 			st1.setInt(34, ds.getDraw_contours_thickness_for_title());
 			st1.setInt(35, ds.getDraw_contours_thickness_for_table());
+			st1.setInt(36, ds.getCell_mat_downscale_factor());
 			result=st1.executeUpdate();
 			
 			} 
@@ -3722,7 +3736,8 @@ public class Dao {
 					+ "resized_width_for_table,"					//32				
 					+ "resized_height_for_table,"					//33
 					+ "draw_contours_thickness_for_title,"			//34
-					+ "draw_contours_thickness_for_table"			//35
+					+ "draw_contours_thickness_for_table,"			//35
+					+ "cell_mat_downscale_factor"					//36
 					+ ")"
 					+ "values ("
 					+ "?,"  //1
@@ -3759,7 +3774,8 @@ public class Dao {
 					+ "?,"	//32
 					+ "?,"	//33
 					+ "?,"	//34
-					+ "?"	//35
+					+ "?,"	//35
+					+"?"	//36
 					+ ")";
 				int result=-1;
 				try {
@@ -3803,6 +3819,7 @@ public class Dao {
 				st1.setInt(33, ps.getResized_height_for_table());
 				st1.setInt(34, ps.getDraw_contours_thickness_for_title());
 				st1.setInt(35, ps.getDraw_contours_thickness_for_table());
+				st1.setInt(36, ps.getCell_mat_downscale_factor());
 				result=st1.executeUpdate();
 				
 				} 
@@ -4115,6 +4132,7 @@ public class Dao {
 				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
 				p.setDraw_contours_thickness_for_title(rs.getInt("draw_contours_thickness_for_title"));
 				p.setDraw_contours_thickness_for_table(rs.getInt("draw_contours_thickness_for_table"));
+				p.setCell_mat_downscale_factor(rs.getInt("cell_mat_downscale_factor"));
 			}
 		}
 		catch (ClassNotFoundException e) 
@@ -4214,6 +4232,7 @@ public class Dao {
 				p.setResized_height_for_table(rs.getInt("resized_height_for_table"));
 				p.setDraw_contours_thickness_for_title(rs.getInt("draw_contours_thickness_for_title"));
 				p.setDraw_contours_thickness_for_table(rs.getInt("draw_contours_thickness_for_table"));
+				p.setCell_mat_downscale_factor(rs.getInt("cell_mat_downscale_factor"));
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

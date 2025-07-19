@@ -38,6 +38,7 @@ public class PreferredSettings
 	private int resized_height_for_table;
 	private int draw_contours_thickness_for_title;
 	private int draw_contours_thickness_for_table;
+	private int cell_mat_downscale_factor;
 	
 	public String getTesseract_data_path() {
 		return tesseract_data_path;
@@ -243,6 +244,12 @@ public class PreferredSettings
 	}
 	public void setDraw_contours_thickness_for_table(int draw_contours_thickness_for_table) {
 		this.draw_contours_thickness_for_table = draw_contours_thickness_for_table;
+	}
+	public int getCell_mat_downscale_factor() {
+		return cell_mat_downscale_factor;
+	}
+	public void setCell_mat_downscale_factor(int cell_mat_downscale_factor) {
+		this.cell_mat_downscale_factor = cell_mat_downscale_factor;
 	}
 	
 	

@@ -41,7 +41,7 @@ public class SettingsWindow extends Application {
 	lb11,lb12,lb13,lb14,
 	lb15,lb16,lb17,lb18,
 	lb19,lb20,lb21,lb21b,lb21c,lb22,
-	lb23,lb24,lb24b,lb24c,lb25,lb26,lb27;
+	lb23,lb24,lb24b,lb24c,lb25,lb26,lb27,lb28;
 	protected static TextField tf1,tf2,tf3,tf4,tf5,tf6,tf7;
 	protected static ComboBox<Integer> cb_tesseract_page_seg_mode,
 	cb_tesseract_ocr_engine_mode,cb_x_start,cb_y_start,
@@ -56,7 +56,8 @@ public class SettingsWindow extends Application {
 	cb_margin_x,cb_margin_y,
 	cb_resized_width_for_title,cb_resized_height_for_title,
 	cb_resized_width_for_table,cb_resized_height_for_table,
-	cb_draw_contours_thickness_for_title,cb_draw_contours_thickness_for_table;
+	cb_draw_contours_thickness_for_title,cb_draw_contours_thickness_for_table,
+	cb_cell_mat_downscale_factor;
 	protected static ComboBox<String> cb_dont_read_first_row,cb_dont_read_first_column;
 	
 	protected static Button defaultsButton,saveButton,goToProgramWindowButton;
@@ -116,7 +117,7 @@ public class SettingsWindow extends Application {
 			int base_x=5;
 			int base_y=5;
 			int x_dif=310;
-			int y_dif=25;
+			int y_dif=20;
 			
 			int standart_element_height=30;
 			int standart_element_width=300;
@@ -902,6 +903,26 @@ public class SettingsWindow extends Application {
 			tf3.setLayoutY(base_y+y_dif*19);
 			pane.getChildren().add(tf3);
 			
+			lb28=new Label("İsim ve Soyisim ile aynı satırda olabilecek kelimeler");
+			lb28.setStyle("-fx-font-size: "+labelFontSize);
+			lb28.setPrefHeight(standart_element_height);
+			lb28.setPrefWidth(standart_element_width);
+			lb28.setLayoutX(base_x+x_dif*3);
+			lb28.setLayoutY(base_y+y_dif*21);
+			pane.getChildren().add(lb28);
+			
+			cb_cell_mat_downscale_factor=new ComboBox<Integer>();
+			cb_cell_mat_downscale_factor.setPrefHeight(standart_element_height);
+			cb_cell_mat_downscale_factor.setPrefWidth(standart_element_width);
+			cb_cell_mat_downscale_factor.setLayoutX(base_x+x_dif*3);
+			cb_cell_mat_downscale_factor.setLayoutY(base_y+y_dif*22);
+			pane.getChildren().add(cb_cell_mat_downscale_factor);
+			cb_cell_mat_downscale_factor.getItems().clear();
+			cb_cell_mat_downscale_factor.getItems()
+								.addAll(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100);
+			cb_cell_mat_downscale_factor.getSelectionModel()
+				.select(Integer.valueOf(ps.getCell_mat_downscale_factor()));
+			
 			EventHandler<ActionEvent> changeFieldsToDefaultsEventHandler=new EventHandler<ActionEvent>()
 			{
 
@@ -968,6 +989,8 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ds.getDraw_contours_thickness_for_title()));
 					cb_draw_contours_thickness_for_table.getSelectionModel()
 										.select(Integer.valueOf(ds.getDraw_contours_thickness_for_table()));
+					cb_cell_mat_downscale_factor.getSelectionModel()
+										.select(Integer.valueOf(ds.getCell_mat_downscale_factor()));
 					tf3.setText(String.valueOf(ds.getNearWords()));
 					if(ds.getDont_read_first_row()==1)
 					{
@@ -993,7 +1016,7 @@ public class SettingsWindow extends Application {
 			defaultsButton.setPrefHeight(standart_element_height);
 			defaultsButton.setPrefWidth(standart_element_width);
 			defaultsButton.setLayoutX(base_x+x_dif*3);
-			defaultsButton.setLayoutY(base_y+y_dif*21);
+			defaultsButton.setLayoutY(base_y+y_dif*24);
 			pane.getChildren().add(defaultsButton);
 			defaultsButton.setOnAction(changeFieldsToDefaultsEventHandler);
 			
@@ -1038,6 +1061,7 @@ public class SettingsWindow extends Application {
 						ps.setResized_height_for_table(cb_resized_height_for_table.getValue());
 						ps.setDraw_contours_thickness_for_title(cb_draw_contours_thickness_for_title.getValue());
 						ps.setDraw_contours_thickness_for_table(cb_draw_contours_thickness_for_table.getValue());
+						ps.setCell_mat_downscale_factor(cb_cell_mat_downscale_factor.getValue());
 						if(cb_dont_read_first_row.getValue().equalsIgnoreCase("Evet"))
 						{
 							ps.setDont_read_first_row(1);
@@ -1108,7 +1132,7 @@ public class SettingsWindow extends Application {
 			saveButton.setPrefHeight(standart_element_height);
 			saveButton.setPrefWidth(standart_element_width);
 			saveButton.setLayoutX(base_x+x_dif*3);
-			saveButton.setLayoutY(base_y+y_dif*22+10);
+			saveButton.setLayoutY(base_y+y_dif*25+20);
 			pane.getChildren().add(saveButton);
 			saveButton.setOnAction(savePreferredSettingsEventHandler);
 			
@@ -1147,7 +1171,7 @@ public class SettingsWindow extends Application {
 			goToProgramWindowButton.setPrefHeight(standart_element_height);
 			goToProgramWindowButton.setPrefWidth(standart_element_width);
 			goToProgramWindowButton.setLayoutX(base_x+x_dif*3);
-			goToProgramWindowButton.setLayoutY(base_y+y_dif*23+20);
+			goToProgramWindowButton.setLayoutY(base_y+y_dif*26+40);
 			pane.getChildren().add(goToProgramWindowButton);
 			goToProgramWindowButton.setOnAction(goToProgramWindowEventHandler);
 			
