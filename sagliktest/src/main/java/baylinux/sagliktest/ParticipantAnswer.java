@@ -2,6 +2,9 @@ package baylinux.sagliktest;
 
 import java.util.List;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class ParticipantAnswer 
 {
 	
@@ -97,7 +100,7 @@ public class ParticipantAnswer
 		return name_surname;
 	}
 	public void setName_surname(String name_surname) {
-		this.name_surname = name_surname;
+		this.name_surname=name_surname;
 	}
 	public String getParticipant_answer_1() {
 		return participant_answer_1;

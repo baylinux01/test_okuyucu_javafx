@@ -27,17 +27,22 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 
 
@@ -323,11 +328,9 @@ public class ProgramWindow extends Application {
 //			colONTEST35.setMaxWidth(60);
 			
 			colONTEST1.setStyle("-fx-alignment: center");
-			colONTEST2.setStyle("-fx-alignment: center");
-			colONTEST2.setStyle("-fx-font-size: 10");
+			colONTEST2.setStyle("-fx-alignment: left;-fx-font-size: 10;");
 			colONTEST2b.setStyle("-fx-alignment: center");
-			colONTEST3.setStyle("-fx-alignment: center");
-			colONTEST3.setStyle("-fx-font-size: 10");
+			colONTEST3.setStyle("-fx-alignment: left;-fx-font-size: 10;");
 			colONTEST4.setStyle("-fx-alignment: center");
 			colONTEST5.setStyle("-fx-alignment: center");
 			colONTEST6.setStyle("-fx-alignment: center");
@@ -358,9 +361,10 @@ public class ProgramWindow extends Application {
 			colONTEST31.setStyle("-fx-alignment: center");
 			colONTEST32.setStyle("-fx-alignment: center");
 			colONTEST33.setStyle("-fx-alignment: center");
-//			colONTEST34.setStyle("-fx-alignment: center");
-//			colONTEST34.setStyle("-fx-font-size: 10px");
-//			colONTEST35.setStyle("-fx-alignment: center");
+//			colONTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
+//			colONTEST35.setStyle("-fx-alignment: left");
+			
+			
 			
 			ONTESTTableView.getColumns().add(colONTEST1);
 			ONTESTTableView.getColumns().add(colONTEST2);
@@ -398,6 +402,61 @@ public class ProgramWindow extends Application {
 			ONTESTTableView.getColumns().add(colONTEST33);
 //			ONTESTTableView.getColumns().add(colONTEST34);
 //			ONTESTTableView.getColumns().add(colONTEST35);
+			
+			ONTESTTableView.setEditable(true); 
+			ONTESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+			colONTEST1.setEditable(false);
+			colONTEST2.setEditable(false);
+			colONTEST2b.setEditable(false);
+			colONTEST3.setEditable(true);
+			
+			colONTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
+			
+			ONTESTTableView.setRowFactory(tv -> 
+			{
+			    TableRow<ParticipantAnswer> row = new TableRow<>();
+			    row.setOnMouseClicked(e -> 
+			    {
+			        if (e.getClickCount() == 2 && !row.isEmpty()) {
+			            int index = row.getIndex();
+			            ONTESTTableView.edit(index, colONTEST3);   
+			        }
+			    });
+			    return row;
+			});
+			
+			
+			EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>> 
+			changeNameSurnameOnONTESTTableEventHandler
+						=new EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>>()
+			{
+				@Override
+				public void handle(CellEditEvent<ParticipantAnswer, String> event) 
+				{
+					String newValue=event.getNewValue();
+					ParticipantAnswer pa=event.getRowValue();
+					pa.setName_surname(newValue);
+					try 
+					{
+						dao.updateParticipantAnswer(pa);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					try 
+					{
+						listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					ONTESTTableView.getItems().clear();
+					ONTESTTableView.getItems().addAll(listOfONTESTS);
+				}
+			};
+			colONTEST3.setOnEditCommit(changeNameSurnameOnONTESTTableEventHandler);
 			//ONTEST TABLOSUNUN BİTİŞİ
 			
 			
@@ -563,11 +622,9 @@ public class ProgramWindow extends Application {
 //			colSONTEST35.setMaxWidth(60);
 			
 			colSONTEST1.setStyle("-fx-alignment: center");
-			colSONTEST2.setStyle("-fx-alignment: center");
-			colSONTEST2.setStyle("-fx-font-size: 10");
+			colSONTEST2.setStyle("-fx-alignment: left; -fx-font-size: 10;");
 			colSONTEST2b.setStyle("-fx-alignment: center");
-			colSONTEST3.setStyle("-fx-alignment: center");
-			colSONTEST3.setStyle("-fx-font-size: 10");
+			colSONTEST3.setStyle("-fx-alignment: center;-fx-font-size: 10;");
 			colSONTEST4.setStyle("-fx-alignment: center");
 			colSONTEST5.setStyle("-fx-alignment: center");
 			colSONTEST6.setStyle("-fx-alignment: center");
@@ -598,9 +655,8 @@ public class ProgramWindow extends Application {
 			colSONTEST31.setStyle("-fx-alignment: center");
 			colSONTEST32.setStyle("-fx-alignment: center");
 			colSONTEST33.setStyle("-fx-alignment: center");
-//			colSONTEST34.setStyle("-fx-alignment: center");
-//			colSONTEST34.setStyle("-fx-font-size: 10px");
-//			colSONTEST35.setStyle("-fx-alignment: center");
+//			colSONTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
+//			colSONTEST35.setStyle("-fx-alignment: left");
 			
 			SONTESTTableView.getColumns().add(colSONTEST1);
 			SONTESTTableView.getColumns().add(colSONTEST2);
@@ -639,7 +695,60 @@ public class ProgramWindow extends Application {
 //			SONTESTTableView.getColumns().add(colSONTEST34);
 //			SONTESTTableView.getColumns().add(colSONTEST35);
 			
+			SONTESTTableView.setEditable(true); 
+			SONTESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+			colSONTEST1.setEditable(false);
+			colSONTEST2.setEditable(false);
+			colSONTEST2b.setEditable(false);
+			colSONTEST3.setEditable(true);
 			
+			colSONTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
+			
+			SONTESTTableView.setRowFactory(tv -> 
+			{
+			    TableRow<ParticipantAnswer> row = new TableRow<>();
+			    row.setOnMouseClicked(e -> 
+			    {
+			        if (e.getClickCount() == 2 && !row.isEmpty()) {
+			            int index = row.getIndex();
+			            SONTESTTableView.edit(index, colSONTEST3);   
+			        }
+			    });
+			    return row;
+			});
+			
+			
+			EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>> 
+			changeNameSurnameOnSONTESTTableEventHandler
+						=new EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>>()
+			{
+				@Override
+				public void handle(CellEditEvent<ParticipantAnswer, String> event) 
+				{
+					String newValue=event.getNewValue();
+					ParticipantAnswer pa=event.getRowValue();
+					pa.setName_surname(newValue);
+					try 
+					{
+						dao.updateParticipantAnswer(pa);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					try 
+					{
+						listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					SONTESTTableView.getItems().clear();
+					SONTESTTableView.getItems().addAll(listOfSONTESTS);
+				}
+			};
+			colSONTEST3.setOnEditCommit(changeNameSurnameOnSONTESTTableEventHandler);
 			//SONTEST TABLOSUNUN BİTİŞİ
 			
 			
@@ -805,11 +914,9 @@ public class ProgramWindow extends Application {
 //			colTEST35.setMaxWidth(60);
 			
 			colTEST1.setStyle("-fx-alignment: center");
-			colTEST2.setStyle("-fx-alignment: center");
-			colTEST2.setStyle("-fx-font-size: 10");
+			colTEST2.setStyle("-fx-alignment: left;-fx-font-size: 10;");
 			colTEST2b.setStyle("-fx-alignment: center");
-			colTEST3.setStyle("-fx-alignment: center");
-			colTEST3.setStyle("-fx-font-size: 10");
+			colTEST3.setStyle("-fx-alignment: left;-fx-font-size: 10;");
 			colTEST4.setStyle("-fx-alignment: center");
 			colTEST5.setStyle("-fx-alignment: center");
 			colTEST6.setStyle("-fx-alignment: center");
@@ -840,9 +947,8 @@ public class ProgramWindow extends Application {
 			colTEST31.setStyle("-fx-alignment: center");
 			colTEST32.setStyle("-fx-alignment: center");
 			colTEST33.setStyle("-fx-alignment: center");
-//			colTEST34.setStyle("-fx-alignment: center");
-//			colTEST34.setStyle("-fx-font-size: 10px");
-//			colTEST35.setStyle("-fx-alignment: center");
+//			colTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
+//			colTEST35.setStyle("-fx-alignment: left");
 			
 			TESTTableView.getColumns().add(colTEST1);
 			TESTTableView.getColumns().add(colTEST2);
@@ -880,6 +986,61 @@ public class ProgramWindow extends Application {
 			TESTTableView.getColumns().add(colTEST33);
 //			TESTTableView.getColumns().add(colTEST34);
 //			TESTTableView.getColumns().add(colTEST35);
+			
+			TESTTableView.setEditable(true); 
+			TESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+			colTEST1.setEditable(false);
+			colTEST2.setEditable(false);
+			colTEST2b.setEditable(false);
+			colTEST3.setEditable(true);
+			
+			colTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
+			
+			TESTTableView.setRowFactory(tv -> 
+			{
+			    TableRow<ParticipantAnswer> row = new TableRow<>();
+			    row.setOnMouseClicked(e -> 
+			    {
+			        if (e.getClickCount() == 2 && !row.isEmpty()) {
+			            int index = row.getIndex();
+			            TESTTableView.edit(index, colTEST3);  
+			        }
+			    });
+			    return row;
+			});
+			
+			
+			EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>> 
+			changeNameSurnameOnTESTTableEventHandler
+						=new EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>>()
+			{
+				@Override
+				public void handle(CellEditEvent<ParticipantAnswer, String> event) 
+				{
+					String newValue=event.getNewValue();
+					ParticipantAnswer pa=event.getRowValue();
+					pa.setName_surname(newValue);
+					try 
+					{
+						dao.updateParticipantAnswer(pa);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					try 
+					{
+						listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
+					} 
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+					TESTTableView.getItems().clear();
+					TESTTableView.getItems().addAll(listOfTESTS);
+				}
+			};
+			colTEST3.setOnEditCommit(changeNameSurnameOnTESTTableEventHandler);
 			//TEST TABLOSUNUN BİTİŞİ
 			
 			
