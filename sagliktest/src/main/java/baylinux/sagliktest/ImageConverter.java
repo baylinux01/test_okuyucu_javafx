@@ -395,10 +395,10 @@ public class ImageConverter {
     		        int cellWidth = xCoords.get(c + 1).intValue() - cellX;
     		        int cellHeight = yCoords.get(r + 1).intValue() - cellY;
     		    
-    		        cellX = cellX + ps.getMargin_x();
-    		        cellY = cellY + ps.getMargin_y();
-    		        cellWidth = cellWidth - (2 * ps.getMargin_x());
-    		        cellHeight = cellHeight - (2 * ps.getMargin_y());
+    		        cellX = cellX + ps.getMargin_x_left();
+    		        cellY = cellY + ps.getMargin_y_up();
+    		        cellWidth = cellWidth - (ps.getMargin_x_left()+ps.getMargin_x_right());
+    		        cellHeight = cellHeight - (ps.getMargin_y_up()+ps.getMargin_y_down());
     		        
     		        
     		        if (cellWidth > 0 && cellHeight > 0 &&

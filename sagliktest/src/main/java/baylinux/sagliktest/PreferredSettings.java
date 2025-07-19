@@ -29,8 +29,10 @@ public class PreferredSettings
 	private int vertical_dilation_iteration_number;
 	private int max_y_dif_for_intersection_points;
 	private int cell_mat_width_crop_degree_factor;
-	private int margin_x;
-	private int margin_y;
+	private int margin_x_left;
+	private int margin_x_right;
+	private int margin_y_up;
+	private int margin_y_down;
 	private String nearWords;
 	private int resized_width_for_title;
 	private int resized_height_for_title;
@@ -191,17 +193,30 @@ public class PreferredSettings
 	public void setCell_mat_width_crop_degree_factor(int cell_mat_width_crop_degree_factor) {
 		this.cell_mat_width_crop_degree_factor = cell_mat_width_crop_degree_factor;
 	}
-	public int getMargin_x() {
-		return margin_x;
+	
+	public int getMargin_x_left() {
+		return margin_x_left;
 	}
-	public void setMargin_x(int margin_x) {
-		this.margin_x = margin_x;
+	public void setMargin_x_left(int margin_x_left) {
+		this.margin_x_left = margin_x_left;
 	}
-	public int getMargin_y() {
-		return margin_y;
+	public int getMargin_x_right() {
+		return margin_x_right;
 	}
-	public void setMargin_y(int margin_y) {
-		this.margin_y = margin_y;
+	public void setMargin_x_right(int margin_x_right) {
+		this.margin_x_right = margin_x_right;
+	}
+	public int getMargin_y_up() {
+		return margin_y_up;
+	}
+	public void setMargin_y_up(int margin_y_up) {
+		this.margin_y_up = margin_y_up;
+	}
+	public int getMargin_y_down() {
+		return margin_y_down;
+	}
+	public void setMargin_y_down(int margin_y_down) {
+		this.margin_y_down = margin_y_down;
 	}
 	public String getNearWords() {
 		return nearWords;

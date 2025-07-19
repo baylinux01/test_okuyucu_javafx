@@ -40,7 +40,7 @@ public class SettingsWindow extends Application {
 	lb5b,lb6,lb7,lb8,lb9,lb10,lb10b,lb10c,lb10d,lb10e,
 	lb11,lb12,lb13,lb14,
 	lb15,lb16,lb17,lb18,
-	lb19,lb20,lb21,lb21b,lb21c,lb22,
+	lb19,lb20,lb21,lb21b,lb21b1,lb21c,lb21c1,lb22,
 	lb23,lb24,lb24b,lb24c,lb25,lb26,lb27,lb28;
 	protected static TextField tf1,tf2,tf3,tf4,tf5,tf6,tf7;
 	protected static ComboBox<Integer> cb_tesseract_page_seg_mode,
@@ -53,7 +53,7 @@ public class SettingsWindow extends Application {
 	cb_horizontal_erosion_iteration_number,cb_vertical_erosion_iteration_number,
 	cb_horizontal_dilation_iteration_number,cb_vertical_dilation_iteration_number,
 	cb_max_y_dif_for_intersection_points,cb_cell_mat_width_crop_degree_factor,
-	cb_margin_x,cb_margin_y,
+	cb_margin_x_left,cb_margin_x_right,cb_margin_y_up,cb_margin_y_down,
 	cb_resized_width_for_title,cb_resized_height_for_title,
 	cb_resized_width_for_table,cb_resized_height_for_table,
 	cb_draw_contours_thickness_for_title,cb_draw_contours_thickness_for_table,
@@ -324,7 +324,10 @@ public class SettingsWindow extends Application {
 			cb_white_ratio_limit_value.setLayoutY(base_y+y_dif*4);
 			pane.getChildren().add(cb_white_ratio_limit_value);
 			cb_white_ratio_limit_value.getItems().clear();
-			cb_white_ratio_limit_value.getItems().addAll(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,20,25,30);
+			cb_white_ratio_limit_value.getItems().addAll(100,105,110,115,120,125,130,135,140,145,150,
+					155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,
+					255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,340,345,350,355,
+					360,365,370,375,380,385,390,395,400,405,410,415,420,425,430,440,445,450,455,460);
 			cb_white_ratio_limit_value.getSelectionModel()
 										.select(Integer.valueOf(ps.getWhite_ratio_limit_value()));
 			
@@ -548,7 +551,7 @@ public class SettingsWindow extends Application {
 			cb_column_number.setLayoutY(base_y+y_dif*22);
 			pane.getChildren().add(cb_column_number);
 			cb_column_number.getItems().clear();
-			cb_column_number.getItems().addAll(0,5,10,15,20,25,30);
+			cb_column_number.getItems().addAll(0,1,2,3,4,5,10,15,20,25,30);
 			cb_column_number.getSelectionModel()
 										.select(Integer.valueOf(ps.getColumn_number()));
 			
@@ -726,7 +729,7 @@ public class SettingsWindow extends Application {
 			
 			
 			
-			lb21b=new Label("Hücreler için Margin X");
+			lb21b=new Label("Hücreler için Sol Marjin");
 			lb21b.setStyle("-fx-font-size: "+labelFontSize);
 			lb21b.setPrefHeight(standart_element_height);
 			lb21b.setPrefWidth(standart_element_width);
@@ -734,37 +737,78 @@ public class SettingsWindow extends Application {
 			lb21b.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(lb21b);
 			
-			cb_margin_x=new ComboBox<Integer>();
-			cb_margin_x.setPrefHeight(standart_element_height);
-			cb_margin_x.setPrefWidth(standart_element_width);
-			cb_margin_x.setLayoutX(base_x+x_dif*2);
-			cb_margin_x.setLayoutY(base_y+y_dif*22);
-			pane.getChildren().add(cb_margin_x);
-			cb_margin_x.getItems().clear();
-			cb_margin_x.getItems()
-										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40);
-			cb_margin_x.getSelectionModel()
-				.select(Integer.valueOf(ps.getMargin_x()));
+			cb_margin_x_left=new ComboBox<Integer>();
+			cb_margin_x_left.setPrefHeight(standart_element_height);
+			cb_margin_x_left.setPrefWidth(standart_element_width);
+			cb_margin_x_left.setLayoutX(base_x+x_dif*2);
+			cb_margin_x_left.setLayoutY(base_y+y_dif*22);
+			pane.getChildren().add(cb_margin_x_left);
+			cb_margin_x_left.getItems().clear();
+			cb_margin_x_left.getItems()
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95);
+			cb_margin_x_left.getSelectionModel()
+				.select(Integer.valueOf(ps.getMargin_x_left()));
 			
-			lb21c=new Label("Hücreler için Margin Y");
+			lb21b1=new Label("Hücreler için Sağ Marjin");
+			lb21b1.setStyle("-fx-font-size: "+labelFontSize);
+			lb21b1.setPrefHeight(standart_element_height);
+			lb21b1.setPrefWidth(standart_element_width);
+			lb21b1.setLayoutX(base_x+x_dif*2);
+			lb21b1.setLayoutY(base_y+y_dif*24);
+			pane.getChildren().add(lb21b1);
+			
+			cb_margin_x_right=new ComboBox<Integer>();
+			cb_margin_x_right.setPrefHeight(standart_element_height);
+			cb_margin_x_right.setPrefWidth(standart_element_width);
+			cb_margin_x_right.setLayoutX(base_x+x_dif*2);
+			cb_margin_x_right.setLayoutY(base_y+y_dif*25);
+			pane.getChildren().add(cb_margin_x_right);
+			cb_margin_x_right.getItems().clear();
+			cb_margin_x_right.getItems()
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95);
+			cb_margin_x_right.getSelectionModel()
+				.select(Integer.valueOf(ps.getMargin_x_right()));
+			
+			
+			lb21c=new Label("Hücreler için Üst Marjin");
 			lb21c.setStyle("-fx-font-size: "+labelFontSize);
 			lb21c.setPrefHeight(standart_element_height);
 			lb21c.setPrefWidth(standart_element_width);
 			lb21c.setLayoutX(base_x+x_dif*2);
-			lb21c.setLayoutY(base_y+y_dif*24);
+			lb21c.setLayoutY(base_y+y_dif*27);
 			pane.getChildren().add(lb21c);
 			
-			cb_margin_y=new ComboBox<Integer>();
-			cb_margin_y.setPrefHeight(standart_element_height);
-			cb_margin_y.setPrefWidth(standart_element_width);
-			cb_margin_y.setLayoutX(base_x+x_dif*2);
-			cb_margin_y.setLayoutY(base_y+y_dif*25);
-			pane.getChildren().add(cb_margin_y);
-			cb_margin_y.getItems().clear();
-			cb_margin_y.getItems()
-										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40);
-			cb_margin_y.getSelectionModel()
-				.select(Integer.valueOf(ps.getMargin_y()));
+			cb_margin_y_up=new ComboBox<Integer>();
+			cb_margin_y_up.setPrefHeight(standart_element_height);
+			cb_margin_y_up.setPrefWidth(standart_element_width);
+			cb_margin_y_up.setLayoutX(base_x+x_dif*2);
+			cb_margin_y_up.setLayoutY(base_y+y_dif*28);
+			pane.getChildren().add(cb_margin_y_up);
+			cb_margin_y_up.getItems().clear();
+			cb_margin_y_up.getItems()
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95);
+			cb_margin_y_up.getSelectionModel()
+				.select(Integer.valueOf(ps.getMargin_y_up()));
+			
+			lb21c1=new Label("Hücreler için Alt Marjin");
+			lb21c1.setStyle("-fx-font-size: "+labelFontSize);
+			lb21c1.setPrefHeight(standart_element_height);
+			lb21c1.setPrefWidth(standart_element_width);
+			lb21c1.setLayoutX(base_x+x_dif*2);
+			lb21c1.setLayoutY(base_y+y_dif*30);
+			pane.getChildren().add(lb21c1);
+			
+			cb_margin_y_down=new ComboBox<Integer>();
+			cb_margin_y_down.setPrefHeight(standart_element_height);
+			cb_margin_y_down.setPrefWidth(standart_element_width);
+			cb_margin_y_down.setLayoutX(base_x+x_dif*2);
+			cb_margin_y_down.setLayoutY(base_y+y_dif*31);
+			pane.getChildren().add(cb_margin_y_down);
+			cb_margin_y_down.getItems().clear();
+			cb_margin_y_down.getItems()
+										.addAll(0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95);
+			cb_margin_y_down.getSelectionModel()
+				.select(Integer.valueOf(ps.getMargin_y_down()));
 			
 			lb21=new Label("Yatay dilasyon iterasyon sayısı");
 			lb21.setStyle("-fx-font-size: "+labelFontSize);
@@ -973,10 +1017,14 @@ public class SettingsWindow extends Application {
 										.select(Integer.valueOf(ds.getMax_y_dif_for_intersection_points()));
 					cb_cell_mat_width_crop_degree_factor.getSelectionModel()
 										.select(Integer.valueOf(ds.getCell_mat_width_crop_degree_factor()));
-					cb_margin_x.getSelectionModel()
-										.select(Integer.valueOf(ds.getMargin_x()));
-					cb_margin_y.getSelectionModel()
-										.select(Integer.valueOf(ds.getMargin_y()));
+					cb_margin_x_left.getSelectionModel()
+										.select(Integer.valueOf(ds.getMargin_x_left()));
+					cb_margin_x_right.getSelectionModel()
+										.select(Integer.valueOf(ds.getMargin_x_right()));
+					cb_margin_y_up.getSelectionModel()
+										.select(Integer.valueOf(ds.getMargin_y_up()));
+					cb_margin_y_down.getSelectionModel()
+										.select(Integer.valueOf(ds.getMargin_y_down()));
 					cb_resized_width_for_title.getSelectionModel()
 										.select(Integer.valueOf(ds.getResized_width_for_title()));
 					cb_resized_height_for_title.getSelectionModel()
@@ -1052,8 +1100,10 @@ public class SettingsWindow extends Application {
 						ps.setVertical_dilation_iteration_number(cb_vertical_dilation_iteration_number.getValue());
 						ps.setMax_y_dif_for_intersection_points(cb_max_y_dif_for_intersection_points.getValue());
 						ps.setCell_mat_width_crop_degree_factor(cb_cell_mat_width_crop_degree_factor.getValue());
-						ps.setMargin_x(cb_margin_x.getValue());
-						ps.setMargin_y(cb_margin_y.getValue());
+						ps.setMargin_x_left(cb_margin_x_left.getValue());
+						ps.setMargin_x_right(cb_margin_x_right.getValue());
+						ps.setMargin_y_up(cb_margin_y_up.getValue());
+						ps.setMargin_y_down(cb_margin_y_down.getValue());
 						ps.setNearWords(tf3.getText());
 						ps.setResized_width_for_title(cb_resized_width_for_title.getValue());
 						ps.setResized_height_for_title(cb_resized_height_for_title.getValue());

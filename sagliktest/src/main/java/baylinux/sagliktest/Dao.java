@@ -2995,8 +2995,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3037,8 +3039,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3079,8 +3083,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3121,8 +3127,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3200,8 +3208,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3242,8 +3252,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3284,8 +3296,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3326,8 +3340,10 @@ public class Dao {
 					+ "vertical_dilation_iteration_number int,"
 					+ "max_y_dif_for_intersection_points int,"
 					+ "cell_mat_width_crop_degree_factor int,"
-					+ "margin_x int,"
-					+ "margin_y int,"
+					+ "margin_x_left int,"
+					+ "margin_x_right int,"
+					+ "margin_y_up int,"
+					+ "margin_y_down int,"
 					+ "near_words text,"
 					+ "resized_width_for_title int,"					
 					+ "resized_height_for_title int,"					
@@ -3430,16 +3446,18 @@ public class Dao {
 						+ "vertical_dilation_iteration_number,"			//24
 						+ "max_y_dif_for_intersection_points,"			//25
 						+ "cell_mat_width_crop_degree_factor,"			//26
-						+ "margin_x,"									//27
-						+ "margin_y,"									//28
-						+ "near_words,"									//29
-						+ "resized_width_for_title,"					//30										
-						+ "resized_height_for_title,"					//31					
-						+ "resized_width_for_table,"					//32				
-						+ "resized_height_for_table,"					//33
-						+ "draw_contours_thickness_for_title,"			//34
-						+ "draw_contours_thickness_for_table,"			//35
-						+ "cell_mat_downscale_factor"					//36
+						+ "margin_x_left,"								//27
+						+ "margin_x_right,"								//28
+						+ "margin_y_up,"								//29
+						+ "margin_y_down,"								//30
+						+ "near_words,"									//31
+						+ "resized_width_for_title,"					//32										
+						+ "resized_height_for_title,"					//33					
+						+ "resized_width_for_table,"					//34				
+						+ "resized_height_for_table,"					//35
+						+ "draw_contours_thickness_for_title,"			//36
+						+ "draw_contours_thickness_for_table,"			//37
+						+ "cell_mat_downscale_factor"					//38
 						+ ")"
 						+ "values ("
 						+ "?,"  //1
@@ -3477,7 +3495,9 @@ public class Dao {
 						+ "?,"	//33
 						+ "?,"	//34
 						+ "?,"	//35
-						+"?"	//36
+						+ "?,"	//36
+						+ "?,"	//37
+						+"?"	//38
 						+ ")";
 				int result=-1;
 				try {
@@ -3514,14 +3534,17 @@ public class Dao {
 				st1.setInt(26, 20);
 				st1.setInt(27, 0);
 				st1.setInt(28, 0);
-				st1.setString(29, "İSİM-SOYİSİM");
-				st1.setInt(30, 3120);
-				st1.setInt(31, 4160);
+				st1.setInt(29, 0);
+				st1.setInt(30, 0);
+				st1.setString(31, "İSİM-SOYİSİM");
 				st1.setInt(32, 3120);
 				st1.setInt(33, 4160);
-				st1.setInt(34, -1);
-				st1.setInt(35, -1);
-				st1.setInt(36, 50);
+				st1.setInt(34, 3120);
+				st1.setInt(35, 4160);
+				st1.setInt(36, -1);
+				st1.setInt(37, -1);
+				st1.setInt(38, 50);
+				
 				result=st1.executeUpdate();
 				
 				} 
@@ -3579,16 +3602,18 @@ public class Dao {
 				+ "vertical_dilation_iteration_number,"			//24
 				+ "max_y_dif_for_intersection_points,"			//25
 				+ "cell_mat_width_crop_degree_factor,"			//26
-				+ "margin_x,"									//27
-				+ "margin_y,"									//28
-				+ "near_words,"									//29
-				+ "resized_width_for_title,"					//30										
-				+ "resized_height_for_title,"					//31					
-				+ "resized_width_for_table,"					//32				
-				+ "resized_height_for_table,"					//33
-				+ "draw_contours_thickness_for_title,"			//34
-				+ "draw_contours_thickness_for_table,"			//35
-				+ "cell_mat_downscale_factor"					//36
+				+ "margin_x_left,"								//27
+				+ "margin_x_right,"								//28
+				+ "margin_y_up,"								//29
+				+ "margin_y_down,"								//30
+				+ "near_words,"									//31
+				+ "resized_width_for_title,"					//32										
+				+ "resized_height_for_title,"					//33					
+				+ "resized_width_for_table,"					//34				
+				+ "resized_height_for_table,"					//35
+				+ "draw_contours_thickness_for_title,"			//36
+				+ "draw_contours_thickness_for_table,"			//37
+				+ "cell_mat_downscale_factor"					//38
 				+ ")"
 				+ "values ("
 				+ "?,"  //1
@@ -3626,7 +3651,9 @@ public class Dao {
 				+ "?,"	//33
 				+ "?,"	//34
 				+ "?,"	//35
-				+"?"	//36
+				+ "?,"	//36
+				+ "?,"	//37
+				+"?"	//38
 				+ ")";
 			int result=-1;
 			try {
@@ -3661,16 +3688,18 @@ public class Dao {
 			st1.setInt(24, ds.getVertical_dilation_iteration_number());
 			st1.setInt(25, ds.getMax_y_dif_for_intersection_points());
 			st1.setInt(26, ds.getCell_mat_width_crop_degree_factor());
-			st1.setInt(27, ds.getMargin_x());
-			st1.setInt(28, ds.getMargin_y());
-			st1.setString(29, ds.getNearWords());
-			st1.setInt(30, ds.getResized_width_for_title());
-			st1.setInt(31, ds.getResized_height_for_title());
-			st1.setInt(32, ds.getResized_width_for_table());
-			st1.setInt(33, ds.getResized_height_for_table());
-			st1.setInt(34, ds.getDraw_contours_thickness_for_title());
-			st1.setInt(35, ds.getDraw_contours_thickness_for_table());
-			st1.setInt(36, ds.getCell_mat_downscale_factor());
+			st1.setInt(27, ds.getMargin_x_left());
+			st1.setInt(28, ds.getMargin_x_right());
+			st1.setInt(29, ds.getMargin_y_up());
+			st1.setInt(30, ds.getMargin_y_down());
+			st1.setString(31, ds.getNearWords());
+			st1.setInt(32, ds.getResized_width_for_title());
+			st1.setInt(33, ds.getResized_height_for_title());
+			st1.setInt(34, ds.getResized_width_for_table());
+			st1.setInt(35, ds.getResized_height_for_table());
+			st1.setInt(36, ds.getDraw_contours_thickness_for_title());
+			st1.setInt(37, ds.getDraw_contours_thickness_for_table());
+			st1.setInt(38, ds.getCell_mat_downscale_factor());
 			result=st1.executeUpdate();
 			
 			} 
@@ -3728,16 +3757,18 @@ public class Dao {
 					+ "vertical_dilation_iteration_number,"			//24
 					+ "max_y_dif_for_intersection_points,"			//25
 					+ "cell_mat_width_crop_degree_factor,"			//26
-					+ "margin_x,"									//27
-					+ "margin_y,"									//28
-					+ "near_words,"									//29
-					+ "resized_width_for_title,"					//30										
-					+ "resized_height_for_title,"					//31					
-					+ "resized_width_for_table,"					//32				
-					+ "resized_height_for_table,"					//33
-					+ "draw_contours_thickness_for_title,"			//34
-					+ "draw_contours_thickness_for_table,"			//35
-					+ "cell_mat_downscale_factor"					//36
+					+ "margin_x_left,"								//27
+					+ "margin_x_right,"								//28
+					+ "margin_y_up,"								//29
+					+ "margin_y_down,"								//30
+					+ "near_words,"									//31
+					+ "resized_width_for_title,"					//32										
+					+ "resized_height_for_title,"					//33					
+					+ "resized_width_for_table,"					//34			
+					+ "resized_height_for_table,"					//35
+					+ "draw_contours_thickness_for_title,"			//36
+					+ "draw_contours_thickness_for_table,"			//37
+					+ "cell_mat_downscale_factor"					//38
 					+ ")"
 					+ "values ("
 					+ "?,"  //1
@@ -3775,7 +3806,9 @@ public class Dao {
 					+ "?,"	//33
 					+ "?,"	//34
 					+ "?,"	//35
-					+"?"	//36
+					+ "?,"	//36
+					+ "?,"	//37
+					+"?"	//38
 					+ ")";
 				int result=-1;
 				try {
@@ -3810,16 +3843,19 @@ public class Dao {
 				st1.setInt(24, ps.getVertical_dilation_iteration_number());
 				st1.setInt(25, ps.getMax_y_dif_for_intersection_points());
 				st1.setInt(26, ps.getCell_mat_width_crop_degree_factor());
-				st1.setInt(27, ps.getMargin_x());
-				st1.setInt(28, ps.getMargin_y());
-				st1.setString(29, ps.getNearWords());
-				st1.setInt(30, ps.getResized_width_for_title());
-				st1.setInt(31, ps.getResized_height_for_title());
-				st1.setInt(32, ps.getResized_width_for_table());
-				st1.setInt(33, ps.getResized_height_for_table());
-				st1.setInt(34, ps.getDraw_contours_thickness_for_title());
-				st1.setInt(35, ps.getDraw_contours_thickness_for_table());
-				st1.setInt(36, ps.getCell_mat_downscale_factor());
+				st1.setInt(27, ps.getMargin_x_left());
+				st1.setInt(28, ps.getMargin_x_right());
+				st1.setInt(29, ps.getMargin_y_up());
+				st1.setInt(30, ps.getMargin_y_down());
+				st1.setString(31, ps.getNearWords());
+				st1.setInt(32, ps.getResized_width_for_title());
+				st1.setInt(33, ps.getResized_height_for_title());
+				st1.setInt(34, ps.getResized_width_for_table());
+				st1.setInt(35, ps.getResized_height_for_table());
+				st1.setInt(36, ps.getDraw_contours_thickness_for_title());
+				st1.setInt(37, ps.getDraw_contours_thickness_for_table());
+				st1.setInt(38, ps.getCell_mat_downscale_factor());
+				
 				result=st1.executeUpdate();
 				
 				} 
@@ -4114,10 +4150,14 @@ public class Dao {
 						.getInt("dont_read_first_column"));
 				p.setDont_read_first_row(rs
 						.getInt("dont_read_first_row"));
-				p.setMargin_x(rs
-						.getInt("margin_x"));
-				p.setMargin_y(rs
-						.getInt("margin_y"));
+				p.setMargin_x_left(rs
+						.getInt("margin_x_left"));
+				p.setMargin_x_right(rs
+						.getInt("margin_x_right"));
+				p.setMargin_y_up(rs
+						.getInt("margin_y_up"));
+				p.setMargin_y_down(rs
+						.getInt("margin_y_down"));
 				p.setMax_y_dif_for_intersection_points(rs
 						.getInt("max_y_dif_for_intersection_points"));
 				p.setMin_area_threshold_for_noise_for_title(rs
@@ -4214,10 +4254,14 @@ public class Dao {
 						.getInt("dont_read_first_column"));
 				p.setDont_read_first_row(rs
 						.getInt("dont_read_first_row"));
-				p.setMargin_x(rs
-						.getInt("margin_x"));
-				p.setMargin_y(rs
-						.getInt("margin_y"));
+				p.setMargin_x_left(rs
+						.getInt("margin_x_left"));
+				p.setMargin_x_right(rs
+						.getInt("margin_x_right"));
+				p.setMargin_y_up(rs
+						.getInt("margin_y_up"));
+				p.setMargin_y_down(rs
+						.getInt("margin_y_down"));
 				p.setMax_y_dif_for_intersection_points(rs
 						.getInt("max_y_dif_for_intersection_points"));
 				p.setMin_area_threshold_for_noise_for_title(rs
