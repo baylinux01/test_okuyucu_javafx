@@ -13,11 +13,13 @@ import java.util.Set;
 import java.util.TreeSet;
 
 
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -38,10 +40,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 
@@ -66,6 +73,7 @@ public class ProgramWindow extends Application {
 	protected static List<ParticipantAnswer> listOfONTESTS,listOfSONTESTS, listOfTESTS, listOfParticipantAnswers;
 	protected static DefaultSettings ds;
 	protected static PreferredSettings ps;
+	
 	
 	
 	@Override
@@ -403,14 +411,13 @@ public class ProgramWindow extends Application {
 //			ONTESTTableView.getColumns().add(colONTEST34);
 //			ONTESTTableView.getColumns().add(colONTEST35);
 			
+			
 			ONTESTTableView.setEditable(true); 
-			ONTESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			colONTEST1.setEditable(false);
-			colONTEST2.setEditable(false);
-			colONTEST2b.setEditable(false);
 			colONTEST3.setEditable(true);
 			
+			
 			colONTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
+			
 			
 			ONTESTTableView.setRowFactory(tv -> 
 			{
@@ -422,8 +429,11 @@ public class ProgramWindow extends Application {
 			            ONTESTTableView.edit(index, colONTEST3);   
 			        }
 			    });
+			    
 			    return row;
 			});
+			
+			
 			
 			
 			EventHandler<TableColumn.CellEditEvent<ParticipantAnswer, String>> 
@@ -457,6 +467,9 @@ public class ProgramWindow extends Application {
 				}
 			};
 			colONTEST3.setOnEditCommit(changeNameSurnameOnONTESTTableEventHandler);
+			
+			
+			
 			//ONTEST TABLOSUNUN BİTİŞİ
 			
 			
@@ -696,10 +709,6 @@ public class ProgramWindow extends Application {
 //			SONTESTTableView.getColumns().add(colSONTEST35);
 			
 			SONTESTTableView.setEditable(true); 
-			SONTESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			colSONTEST1.setEditable(false);
-			colSONTEST2.setEditable(false);
-			colSONTEST2b.setEditable(false);
 			colSONTEST3.setEditable(true);
 			
 			colSONTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -988,10 +997,6 @@ public class ProgramWindow extends Application {
 //			TESTTableView.getColumns().add(colTEST35);
 			
 			TESTTableView.setEditable(true); 
-			TESTTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			colTEST1.setEditable(false);
-			colTEST2.setEditable(false);
-			colTEST2b.setEditable(false);
 			colTEST3.setEditable(true);
 			
 			colTEST3.setCellFactory(TextFieldTableCell.forTableColumn());
