@@ -429,7 +429,7 @@ public class ImageConverter {
 											cellImageMat.rows() * (ps.getCell_mat_downscale_factor()/100.0))); 
 							Imgproc.erode(small, small, kernel);  
 							Imgproc.resize(small, cellImageMat, cellImageMat.size());
-							//Imgproc.erode(cellImageMat, cellImageMat, kernel);
+							
 //				    		Imgcodecs.imwrite(imageFullPath
 //				    				.substring(0,imageFullPath.lastIndexOf("/")-1)
 //				    				+sayi+".png", cellImageMat); 
