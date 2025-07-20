@@ -682,7 +682,7 @@ public class SettingsWindow extends Application {
 			cb_vertical_kernel_length_division_factor.setLayoutY(base_y+y_dif*13);
 			pane.getChildren().add(cb_vertical_kernel_length_division_factor);
 			cb_vertical_kernel_length_division_factor.getItems().clear();
-			cb_horizontal_kernel_length_division_factor.getItems()
+			cb_vertical_kernel_length_division_factor.getItems()
 										.addAll(5,10,15,20,25,30,31,32,33,34,35,36,37,38,39,40,45,50);
 			cb_vertical_kernel_length_division_factor.getSelectionModel()
 				.select(Integer.valueOf(ps.getVertical_kernel_length_division_factor()));

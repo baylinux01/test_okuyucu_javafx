@@ -203,6 +203,8 @@ public class ImageConverter {
         	
         }
         System.out.println(image.width()+" "+image.height());
+       
+        //Imgcodecs.imwrite("/home/baylinux/Desktop/image.png",image);
         Mat resizedImage = new Mat();
         Size newSize = new Size(ps.getResized_width_for_table(), ps.getResized_height_for_table()); 
         Imgproc.resize(image, resizedImage, newSize);
@@ -220,7 +222,8 @@ public class ImageConverter {
        Mat binary=new Mat();
        Imgproc.adaptiveThreshold(gray, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, 
     		   Imgproc.THRESH_BINARY_INV, 11, 2);
-//       Imgcodecs.imwrite(imageFullPath+"ucuncuCikti.png",binary);
+       
+       //Imgcodecs.imwrite("/home/baylinux/Desktop/binary.png",binary);
        
     
     List<MatOfPoint> paperContoursBinary = new ArrayList<>();
@@ -238,7 +241,9 @@ public class ImageConverter {
    
     Rect paperRectBinary = Imgproc.boundingRect(contour.get());
     Mat croppedBinary = new Mat(binary, paperRectBinary);
-
+    //Imgcodecs.imwrite("/home/baylinux/Desktop/croppedBinary.png",croppedBinary);
+    
+    
        int horizontalErodeKernelHeightForTable=ps.getErosion_degree();
        int horizontalErodeKernelWidthForTable=
     		   image.cols()/ps.getHorizontal_kernel_length_division_factor();
@@ -281,10 +286,14 @@ public class ImageConverter {
     						verticalDilateKernelHeightForTable));
     		
     		Imgproc.dilate(verticalLines, dilatedVerticalLines, verticalDilateKernel,
-    				new Point(-1,-1), ps.getVertical_dilation_iteration_number());  
-//    		Imgcodecs.imwrite(imagePath+"besinciCikti_verticalLines.png", 
-//    				dilatedVerticalLines); 
-
+    				new Point(-1,-1), ps.getVertical_dilation_iteration_number());
+    		
+    		
+//    		Point p=findLeftTopCornerPoint(dilatedVerticalLines, 3, 100);
+//    		System.out.println("top-left x: "+p.x+" top-left y: "+p.y);
+//    		System.out.println("dilatedVerticalLines.cols()= "+dilatedVerticalLines.cols());
+//    		System.out.println("dilatedVerticalLines.rows()= "+dilatedVerticalLines.rows());
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedVerticalLines.png",dilatedVerticalLines);
     		
     		
     		Mat tableLines = new Mat(); 
@@ -375,7 +384,7 @@ public class ImageConverter {
     		List<Double> rawXCoords = new ArrayList<>();
    		
     		
-    		intersectionPointsSet.stream().forEach(p->{rawYCoords.add(p.y);rawXCoords.add(p.x);});
+    		intersectionPointsSet.stream().forEach(f->{rawYCoords.add(f.y);rawXCoords.add(f.x);});
     		
     		
     		List<Double> xCoords = removeCloseCoordinates(rawXCoords, 
@@ -689,7 +698,60 @@ public class ImageConverter {
 	}
 	
 	
+	public static Point findLeftTopCornerPoint(Mat verticalLines,int whiteThreshold,int blackThreshold)
+	{
+			int xValue=-1;
+			int yValue=-1;
+			int blackNumber=0;
+			int whiteNumber=0;
+			for(int x=0;x<verticalLines.cols();x++)
+			{
+				double[] pixel = verticalLines.get(verticalLines.rows()/2, x);
+	            if (pixel != null ) 
+	            {
+	            	if(pixel[0] != 0)
+	            	{
+	            		whiteNumber++;
+	            		
+	            	}
+	            	else if(pixel[0]==0)
+	            	{
+	            		whiteNumber=0;
+	            	}
+	            }
+	            if(whiteNumber>=whiteThreshold)
+	            {
+	            	xValue=x;
+	            	break;
+	            }
+			}
+			for(int y=verticalLines.rows()/2;y>0;y--)
+			{
+				double[] pixel = verticalLines.get(y, xValue);
+	            if (pixel != null ) 
+	            {
+	            	if(pixel[0]!=0)
+	            	{
+	            		blackNumber=0;
+	            	}
+	            	else if(pixel[0] == 0)
+	            	{
+	            		blackNumber++;
+	            	}
+	            	
+	            }
+	            if(blackNumber>=blackThreshold)
+	            {
+	            	yValue=y+blackNumber;
+	            	break;
+	            }
+			}
+			return new Point(xValue,yValue);
+		
+	}
 
+	
+	
 	public static List<List<Point>> findPointsOfRows(Mat binaryImage,int esik)
 	{
 		 List<Point> rowPoints=new ArrayList<Point>();
