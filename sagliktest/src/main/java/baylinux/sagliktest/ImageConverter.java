@@ -141,49 +141,7 @@ public class ImageConverter {
 	         }
     		 System.out.println(highText);
     		 return highText;
-//	                 if(highText!=null)
-//	                 {
-//	                	 
-//		                 String[] dizi0=highText.split("\t");
-//		                 String[] dizi1=dizi0[0].split("\n");
-//		                 
-//		                 for(int y=0;y<dizi1.length;y++)
-//		                 {
-//		                	
-//		                		 try 
-//		                		 {
-//		                			 list1.add(dizi1[y].toUpperCase().trim());
-//		                		 }
-//		                		 catch(IndexOutOfBoundsException ex)
-//		                		 {
-//		                			System.out
-//		                			.println
-//		                			("istenilen colon sayısı"
-//		                					+ " tesseract'ın tesbit ettiği aralığın dışında kalıyor"
-//		                					+ " negatif değer girmeyin"
-//		                					+ " ve istenilen son kolon değeri"
-//		                					+ " fazla geliyorsa küçültün");
-//		                		 }
-//		                	 
-//		                	 
-//		                 }
-//		                
-//	                 }
-//	             } 
-//	             catch (TesseractException e) 
-//	             {
-//	                 System.out.println(e.getMessage());
-//	                 
-//	             }
-//	         } 
-//	         else 
-//	         {
-//	            list1.add("başlık tesbit edilemedi");
-//	            
-//	         }
-//    		 long endTime=System.currentTimeMillis()-startTime;
-//    		 System.out.println("time for extract title: "+endTime);
-//    		return list1;
+
 	}
 	
 	public static List<List<String>> convertMultipleChoiceExamAnswersToDigitalFormatFromImage
@@ -325,8 +283,15 @@ public class ImageConverter {
     		
     		Mat textOnlyImage = new Mat();
     		Core.bitwise_and(croppedBinary, inverseTableLines, textOnlyImage);
-    		
-//    		Imgcodecs.imwrite(imageFullPath + "text_only_without_lines.png", textOnlyImage);
+    		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
+					new Size(3, 3));
+			Mat small = new Mat();
+			Imgproc.resize(textOnlyImage, small, 
+					new Size(textOnlyImage.cols() * (ps.getCell_mat_downscale_factor()/100.0),
+							textOnlyImage.rows() * (ps.getCell_mat_downscale_factor()/100.0))); 
+			Imgproc.erode(small, small, kernel);  
+			Imgproc.resize(small, textOnlyImage, textOnlyImage.size());
+    		//Imgcodecs.imwrite("/home/baylinux/Desktop/text_only_without_lines.png", textOnlyImage);
     		
     		 List<MatOfPoint> contoursToCleanInsideTableForTextOnly = new ArrayList<>();
              Mat hierarchyToCleanInsideTableForTextOnly = new Mat();
@@ -441,15 +406,6 @@ public class ImageConverter {
 						try 
 						{
 							cellImageMat = new Mat(textOnlyImage, cellRect);
-							
-							Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-									new Size(3, 3));
-							Mat small = new Mat();
-							Imgproc.resize(cellImageMat, small, 
-									new Size(cellImageMat.cols() * (ps.getCell_mat_downscale_factor()/100.0),
-											cellImageMat.rows() * (ps.getCell_mat_downscale_factor()/100.0))); 
-							Imgproc.erode(small, small, kernel);  
-							Imgproc.resize(small, cellImageMat, cellImageMat.size());
 							
 //				    		Imgcodecs.imwrite(imageFullPath
 //				    				.substring(0,imageFullPath.lastIndexOf("/")-1)

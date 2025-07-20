@@ -3517,7 +3517,7 @@ public class Dao {
 				st1.setInt(9, 0);
 				st1.setInt(10, 100);
 				st1.setInt(11, 20);
-				st1.setInt(12, 160);
+				st1.setInt(12, 178);
 				st1.setInt(13, 31);
 				st1.setInt(14, 5);
 				st1.setInt(15, 1);
@@ -3543,7 +3543,7 @@ public class Dao {
 				st1.setInt(35, 4160);
 				st1.setInt(36, -1);
 				st1.setInt(37, -1);
-				st1.setInt(38, 50);
+				st1.setInt(38, 65);
 				
 				result=st1.executeUpdate();
 				

@@ -76,7 +76,7 @@ public class ExamEvaluator
 				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
 				
 				
-				if(answers.get(i).equalsIgnoreCase(result))
+				if(answers.get(i).equalsIgnoreCase(result)&&!answers.get(i).equalsIgnoreCase(""))
 				{
 					method3.invoke(pa,"D");
 					++numberOfCorrectAnswers;
@@ -100,7 +100,7 @@ public class ExamEvaluator
 				Method method3 = ParticipantAnswer.class.getMethod(l,String.class);
 				
 				
-				if(answers.get(i).equalsIgnoreCase(result))
+				if(answers.get(i).equalsIgnoreCase(result)&&!answers.get(i).equalsIgnoreCase(""))
 				{
 					method3.invoke(pa,"D");
 					++numberOfCorrectAnswers;
