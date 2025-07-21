@@ -20,9 +20,9 @@ Program bu resimlerden
 ve doğru cevaplarla karşılaştırıp 
 doğru mu değil mi diye D veya Y şeklinde çıktı veriyor.
 
--program ayrıca her kullanıcının doğru cevap sayısını 30 soru üzerinden puanını çıktı veriyor.
+-program ayrıca her katılımcının doğru cevap sayısını 30 soru üzerinden puanını çıktı veriyor.
 
--program bunlara ek olarak bir de her soru için kullanıcıların verdiği toplam doğru sayısını tüm kullanıcıların ortalama doğru sayısını ve ortalama puanını da veriyor.
+-program bunlara ek olarak bir de her soru için katılımcıların verdiği toplam doğru sayısını tüm katılımcıların ortalama doğru sayısını ve ortalama puanını da çıktı olarak veriyor.
 
 -program sınav cevap anahtarını güncellemeye veya katılımcının cevaplarını düzeltmeye de
 imkan tanıyor.
