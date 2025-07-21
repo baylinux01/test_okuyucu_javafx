@@ -16,7 +16,7 @@ public class ExamEvaluator
 	{
 		ParticipantAnswer pa=new ParticipantAnswer();
 		String title=ImageConverter
-				.convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage(ps, imageFullPath);
+				.convertTitlesOfExamToDigitalFormatFromImageToObtainTestType(ps, imageFullPath);
 		String test_type=InfoExtractor.extractTestType(title);
 	
 		//String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());

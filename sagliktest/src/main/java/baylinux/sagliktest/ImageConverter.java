@@ -37,7 +37,7 @@ public class ImageConverter {
 //		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 //	}
 	
-	public static String convertTitlesOfMultipleChoiceExamToDigitalFormatFromImage
+	public static String convertTitlesOfExamToDigitalFormatFromImageToObtainTestType
 	(PreferredSettings ps,String imageFullPath)
 	{
 		long startTime=System.currentTimeMillis();
