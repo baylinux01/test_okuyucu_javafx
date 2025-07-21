@@ -353,20 +353,23 @@ public class ImageConverter {
 //     	    					Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
 //     	    		});
     		
-    		intersectionContours.stream().forEach(c -> {
-    		    Rect r = Imgproc.boundingRect(c);
-    		    
-    		    Point center = new Point(
-    		            r.x + r.width  / 2.0,
-    		            r.y + r.height / 2.0
-    		    );
+    		intersectionContours.stream().forEach(c ->       											
+    		{											
+    		    Rect r = Imgproc.boundingRect(c);		
+    		    Point center = new Point(				
+    		            r.x + r.width  / 2.0,			
+    		            r.y + r.height / 2.0			
+    		    );										
     		    intersectionPointsSet.add(center);
     		});
+    		
+    		
     		List<Double> rawYCoords = new ArrayList<>();
     		List<Double> rawXCoords = new ArrayList<>();
    		
     		
     		intersectionPointsSet.stream().forEach(f->{rawYCoords.add(f.y);rawXCoords.add(f.x);});
+    		
     		
     		
     		List<Double> xCoords = removeCloseCoordinates(rawXCoords, 
@@ -445,7 +448,9 @@ public class ImageConverter {
     		            Rect roi = new Rect(cellMatWidthCropDegree, cellMatHeightCropDegree, 
     		            		Math.abs(cellMatWidth - 2 * cellMatWidthCropDegree), 
     		            		Math.abs(cellMatHeight - 2 * cellMatHeightCropDegree));
-
+    		            
+    		          
+    		            
     		            Mat croppedCellImageMat = new Mat(cellImageMat, roi);
     		            int whitePixelCount=Core.countNonZero(croppedCellImageMat);
     		            int totalPixelCount=croppedCellImageMat.rows()*croppedCellImageMat.cols();
@@ -617,7 +622,7 @@ public class ImageConverter {
 	        List<Double> lastFilteredCoords=new ArrayList<Double>();
 	        
 	        int s=0; int g=0;
-	        while(s<filteredCoords.size())
+	        while(lastFilteredCoords.size()<filteredCoords.size())
 	        {
 	        	double minDif=Double.MAX_VALUE;
 	        	int minIndex=Integer.MAX_VALUE;
@@ -632,13 +637,26 @@ public class ImageConverter {
 	        		}
 	        		g++;
 	        	}
-	        	if(minIndex<coords.size()&&minIndex>-1)
-       		{
-	        		lastFilteredCoords.add(coords.get(minIndex));
+	        if(minIndex<coords.size()&&minIndex>-1)
+       		{ 		double sayi=coords.get(minIndex);
+       				if(!lastFilteredCoords.contains(sayi))
+       				{
+       					lastFilteredCoords.add(coords.get(minIndex));
+       				}
+       				else
+       				{
+       					coords.remove(Double.valueOf(coords.get(minIndex)));
+       					s--;
+       				}
        		}
 	        	
 	        	s++;
-	        }
+	        	if(s>=filteredCoords.size())
+	        	{
+	        		lastFilteredCoords=filteredCoords;
+	        		break;
+	        	}
+	     }
 	        
 	        return lastFilteredCoords.stream()
 	        		.collect(Collectors.toSet())

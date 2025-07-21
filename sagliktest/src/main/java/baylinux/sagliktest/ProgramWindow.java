@@ -157,6 +157,7 @@ public class ProgramWindow extends Application {
 			}
 			try 
 			{
+				if(examList!=null) examList.clear();
 				examList=dao.getAllExams();
 			} 
 			catch (Exception e) 
@@ -335,42 +336,42 @@ public class ProgramWindow extends Application {
 //			colONTEST35.setMinWidth(60);
 //			colONTEST35.setMaxWidth(60);
 			
-			colONTEST1.setStyle("-fx-alignment: center");
-			colONTEST2.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-			colONTEST2b.setStyle("-fx-alignment: center");
-			colONTEST3.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-			colONTEST4.setStyle("-fx-alignment: center");
-			colONTEST5.setStyle("-fx-alignment: center");
-			colONTEST6.setStyle("-fx-alignment: center");
-			colONTEST7.setStyle("-fx-alignment: center");
-			colONTEST8.setStyle("-fx-alignment: center");
-			colONTEST9.setStyle("-fx-alignment: center");
-			colONTEST10.setStyle("-fx-alignment: center");
-			colONTEST11.setStyle("-fx-alignment: center");
-			colONTEST12.setStyle("-fx-alignment: center");
-			colONTEST13.setStyle("-fx-alignment: center");
-			colONTEST14.setStyle("-fx-alignment: center");
-			colONTEST15.setStyle("-fx-alignment: center");
-			colONTEST16.setStyle("-fx-alignment: center");
-			colONTEST17.setStyle("-fx-alignment: center");
-			colONTEST18.setStyle("-fx-alignment: center");
-			colONTEST19.setStyle("-fx-alignment: center");
-			colONTEST20.setStyle("-fx-alignment: center");
-			colONTEST21.setStyle("-fx-alignment: center");
-			colONTEST22.setStyle("-fx-alignment: center");
-			colONTEST23.setStyle("-fx-alignment: center");
-			colONTEST24.setStyle("-fx-alignment: center");
-			colONTEST25.setStyle("-fx-alignment: center");
-			colONTEST26.setStyle("-fx-alignment: center");
-			colONTEST27.setStyle("-fx-alignment: center");
-			colONTEST28.setStyle("-fx-alignment: center");
-			colONTEST29.setStyle("-fx-alignment: center");
-			colONTEST30.setStyle("-fx-alignment: center");
-			colONTEST31.setStyle("-fx-alignment: center");
-			colONTEST32.setStyle("-fx-alignment: center");
-			colONTEST33.setStyle("-fx-alignment: center");
-//			colONTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-//			colONTEST35.setStyle("-fx-alignment: left");
+			colONTEST1.setStyle("-fx-alignment: CENTER");
+			colONTEST2.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+			colONTEST2b.setStyle("-fx-alignment: CENTER");
+			colONTEST3.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+			colONTEST4.setStyle("-fx-alignment:  CENTER");
+			colONTEST5.setStyle("-fx-alignment:  CENTER");
+			colONTEST6.setStyle("-fx-alignment:  CENTER");
+			colONTEST7.setStyle("-fx-alignment:  CENTER");
+			colONTEST8.setStyle("-fx-alignment:  CENTER");
+			colONTEST9.setStyle("-fx-alignment:  CENTER");
+			colONTEST10.setStyle("-fx-alignment: CENTER");
+			colONTEST11.setStyle("-fx-alignment: CENTER");
+			colONTEST12.setStyle("-fx-alignment: CENTER");
+			colONTEST13.setStyle("-fx-alignment: CENTER");
+			colONTEST14.setStyle("-fx-alignment: CENTER");
+			colONTEST15.setStyle("-fx-alignment: CENTER");
+			colONTEST16.setStyle("-fx-alignment: CENTER");
+			colONTEST17.setStyle("-fx-alignment: CENTER");
+			colONTEST18.setStyle("-fx-alignment: CENTER");
+			colONTEST19.setStyle("-fx-alignment: CENTER");
+			colONTEST20.setStyle("-fx-alignment: CENTER");
+			colONTEST21.setStyle("-fx-alignment: CENTER");
+			colONTEST22.setStyle("-fx-alignment: CENTER");
+			colONTEST23.setStyle("-fx-alignment: CENTER");
+			colONTEST24.setStyle("-fx-alignment: CENTER");
+			colONTEST25.setStyle("-fx-alignment: CENTER");
+			colONTEST26.setStyle("-fx-alignment: CENTER");
+			colONTEST27.setStyle("-fx-alignment: CENTER");
+			colONTEST28.setStyle("-fx-alignment: CENTER");
+			colONTEST29.setStyle("-fx-alignment: CENTER");
+			colONTEST30.setStyle("-fx-alignment: CENTER");
+			colONTEST31.setStyle("-fx-alignment: CENTER");
+			colONTEST32.setStyle("-fx-alignment: CENTER");
+			colONTEST33.setStyle("-fx-alignment: CENTER");
+//			colONTEST34.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+//			colONTEST35.setStyle("-fx-alignment: LEFT");
 			
 			
 			
@@ -455,7 +456,7 @@ public class ProgramWindow extends Application {
 						e.printStackTrace();
 					}
 					try 
-					{
+					{	if(listOfONTESTS!=null) listOfONTESTS.clear();
 						listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 					} 
 					catch (SQLException e) 
@@ -634,42 +635,42 @@ public class ProgramWindow extends Application {
 //			colSONTEST35.setMinWidth(60);
 //			colSONTEST35.setMaxWidth(60);
 			
-			colSONTEST1.setStyle("-fx-alignment: center");
-			colSONTEST2.setStyle("-fx-alignment: left; -fx-font-size: 10;");
-			colSONTEST2b.setStyle("-fx-alignment: center");
-			colSONTEST3.setStyle("-fx-alignment: center;-fx-font-size: 10;");
-			colSONTEST4.setStyle("-fx-alignment: center");
-			colSONTEST5.setStyle("-fx-alignment: center");
-			colSONTEST6.setStyle("-fx-alignment: center");
-			colSONTEST7.setStyle("-fx-alignment: center");
-			colSONTEST8.setStyle("-fx-alignment: center");
-			colSONTEST9.setStyle("-fx-alignment: center");
-			colSONTEST10.setStyle("-fx-alignment: center");
-			colSONTEST11.setStyle("-fx-alignment: center");
-			colSONTEST12.setStyle("-fx-alignment: center");
-			colSONTEST13.setStyle("-fx-alignment: center");
-			colSONTEST14.setStyle("-fx-alignment: center");
-			colSONTEST15.setStyle("-fx-alignment: center");
-			colSONTEST16.setStyle("-fx-alignment: center");
-			colSONTEST17.setStyle("-fx-alignment: center");
-			colSONTEST18.setStyle("-fx-alignment: center");
-			colSONTEST19.setStyle("-fx-alignment: center");
-			colSONTEST20.setStyle("-fx-alignment: center");
-			colSONTEST21.setStyle("-fx-alignment: center");
-			colSONTEST22.setStyle("-fx-alignment: center");
-			colSONTEST23.setStyle("-fx-alignment: center");
-			colSONTEST24.setStyle("-fx-alignment: center");
-			colSONTEST25.setStyle("-fx-alignment: center");
-			colSONTEST26.setStyle("-fx-alignment: center");
-			colSONTEST27.setStyle("-fx-alignment: center");
-			colSONTEST28.setStyle("-fx-alignment: center");
-			colSONTEST29.setStyle("-fx-alignment: center");
-			colSONTEST30.setStyle("-fx-alignment: center");
-			colSONTEST31.setStyle("-fx-alignment: center");
-			colSONTEST32.setStyle("-fx-alignment: center");
-			colSONTEST33.setStyle("-fx-alignment: center");
-//			colSONTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-//			colSONTEST35.setStyle("-fx-alignment: left");
+			colSONTEST1.setStyle("-fx-alignment: CENTER");
+			colSONTEST2.setStyle("-fx-alignment: LEFT; -fx-font-size: 10;");
+			colSONTEST2b.setStyle("-fx-alignment: CENTER");
+			colSONTEST3.setStyle("-fx-alignment:  LEFT;-fx-font-size: 10;");
+			colSONTEST4.setStyle("-fx-alignment:  CENTER");
+			colSONTEST5.setStyle("-fx-alignment:  CENTER");
+			colSONTEST6.setStyle("-fx-alignment:  CENTER");
+			colSONTEST7.setStyle("-fx-alignment:  CENTER");
+			colSONTEST8.setStyle("-fx-alignment:  CENTER");
+			colSONTEST9.setStyle("-fx-alignment:  CENTER");
+			colSONTEST10.setStyle("-fx-alignment: CENTER");
+			colSONTEST11.setStyle("-fx-alignment: CENTER");
+			colSONTEST12.setStyle("-fx-alignment: CENTER");
+			colSONTEST13.setStyle("-fx-alignment: CENTER");
+			colSONTEST14.setStyle("-fx-alignment: CENTER");
+			colSONTEST15.setStyle("-fx-alignment: CENTER");
+			colSONTEST16.setStyle("-fx-alignment: CENTER");
+			colSONTEST17.setStyle("-fx-alignment: CENTER");
+			colSONTEST18.setStyle("-fx-alignment: CENTER");
+			colSONTEST19.setStyle("-fx-alignment: CENTER");
+			colSONTEST20.setStyle("-fx-alignment: CENTER");
+			colSONTEST21.setStyle("-fx-alignment: CENTER");
+			colSONTEST22.setStyle("-fx-alignment: CENTER");
+			colSONTEST23.setStyle("-fx-alignment: CENTER");
+			colSONTEST24.setStyle("-fx-alignment: CENTER");
+			colSONTEST25.setStyle("-fx-alignment: CENTER");
+			colSONTEST26.setStyle("-fx-alignment: CENTER");
+			colSONTEST27.setStyle("-fx-alignment: CENTER");
+			colSONTEST28.setStyle("-fx-alignment: CENTER");
+			colSONTEST29.setStyle("-fx-alignment: CENTER");
+			colSONTEST30.setStyle("-fx-alignment: CENTER");
+			colSONTEST31.setStyle("-fx-alignment: CENTER");
+			colSONTEST32.setStyle("-fx-alignment: CENTER");
+			colSONTEST33.setStyle("-fx-alignment: CENTER");
+//			colSONTEST34.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+//			colSONTEST35.setStyle("-fx-alignment: LEFT");
 			
 			SONTESTTableView.getColumns().add(colSONTEST1);
 			SONTESTTableView.getColumns().add(colSONTEST2);
@@ -746,7 +747,7 @@ public class ProgramWindow extends Application {
 						e.printStackTrace();
 					}
 					try 
-					{
+					{	if(listOfSONTESTS!=null) listOfSONTESTS.clear();
 						listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 					} 
 					catch (SQLException e) 
@@ -922,42 +923,42 @@ public class ProgramWindow extends Application {
 //			colTEST35.setMinWidth(60);
 //			colTEST35.setMaxWidth(60);
 			
-			colTEST1.setStyle("-fx-alignment: center");
-			colTEST2.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-			colTEST2b.setStyle("-fx-alignment: center");
-			colTEST3.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-			colTEST4.setStyle("-fx-alignment: center");
-			colTEST5.setStyle("-fx-alignment: center");
-			colTEST6.setStyle("-fx-alignment: center");
-			colTEST7.setStyle("-fx-alignment: center");
-			colTEST8.setStyle("-fx-alignment: center");
-			colTEST9.setStyle("-fx-alignment: center");
-			colTEST10.setStyle("-fx-alignment: center");
-			colTEST11.setStyle("-fx-alignment: center");
-			colTEST12.setStyle("-fx-alignment: center");
-			colTEST13.setStyle("-fx-alignment: center");
-			colTEST14.setStyle("-fx-alignment: center");
-			colTEST15.setStyle("-fx-alignment: center");
-			colTEST16.setStyle("-fx-alignment: center");
-			colTEST17.setStyle("-fx-alignment: center");
-			colTEST18.setStyle("-fx-alignment: center");
-			colTEST19.setStyle("-fx-alignment: center");
-			colTEST20.setStyle("-fx-alignment: center");
-			colTEST21.setStyle("-fx-alignment: center");
-			colTEST22.setStyle("-fx-alignment: center");
-			colTEST23.setStyle("-fx-alignment: center");
-			colTEST24.setStyle("-fx-alignment: center");
-			colTEST25.setStyle("-fx-alignment: center");
-			colTEST26.setStyle("-fx-alignment: center");
-			colTEST27.setStyle("-fx-alignment: center");
-			colTEST28.setStyle("-fx-alignment: center");
-			colTEST29.setStyle("-fx-alignment: center");
-			colTEST30.setStyle("-fx-alignment: center");
-			colTEST31.setStyle("-fx-alignment: center");
-			colTEST32.setStyle("-fx-alignment: center");
-			colTEST33.setStyle("-fx-alignment: center");
-//			colTEST34.setStyle("-fx-alignment: left;-fx-font-size: 10;");
-//			colTEST35.setStyle("-fx-alignment: left");
+			colTEST1.setStyle("-fx-alignment: CENTER");
+			colTEST2.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+			colTEST2b.setStyle("-fx-alignment: CENTER");
+			colTEST3.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+			colTEST4.setStyle("-fx-alignment:  CENTER");
+			colTEST5.setStyle("-fx-alignment:  CENTER");
+			colTEST6.setStyle("-fx-alignment:  CENTER");
+			colTEST7.setStyle("-fx-alignment:  CENTER");
+			colTEST8.setStyle("-fx-alignment:  CENTER");
+			colTEST9.setStyle("-fx-alignment:  CENTER");
+			colTEST10.setStyle("-fx-alignment: CENTER");
+			colTEST11.setStyle("-fx-alignment: CENTER");
+			colTEST12.setStyle("-fx-alignment: CENTER");
+			colTEST13.setStyle("-fx-alignment: CENTER");
+			colTEST14.setStyle("-fx-alignment: CENTER");
+			colTEST15.setStyle("-fx-alignment: CENTER");
+			colTEST16.setStyle("-fx-alignment: CENTER");
+			colTEST17.setStyle("-fx-alignment: CENTER");
+			colTEST18.setStyle("-fx-alignment: CENTER");
+			colTEST19.setStyle("-fx-alignment: CENTER");
+			colTEST20.setStyle("-fx-alignment: CENTER");
+			colTEST21.setStyle("-fx-alignment: CENTER");
+			colTEST22.setStyle("-fx-alignment: CENTER");
+			colTEST23.setStyle("-fx-alignment: CENTER");
+			colTEST24.setStyle("-fx-alignment: CENTER");
+			colTEST25.setStyle("-fx-alignment: CENTER");
+			colTEST26.setStyle("-fx-alignment: CENTER");
+			colTEST27.setStyle("-fx-alignment: CENTER");
+			colTEST28.setStyle("-fx-alignment: CENTER");
+			colTEST29.setStyle("-fx-alignment: CENTER");
+			colTEST30.setStyle("-fx-alignment: CENTER");
+			colTEST31.setStyle("-fx-alignment: CENTER");
+			colTEST32.setStyle("-fx-alignment: CENTER");
+			colTEST33.setStyle("-fx-alignment: CENTER");
+//			colTEST34.setStyle("-fx-alignment: LEFT;-fx-font-size: 10;");
+//			colTEST35.setStyle("-fx-alignment: LEFT");
 			
 			TESTTableView.getColumns().add(colTEST1);
 			TESTTableView.getColumns().add(colTEST2);
@@ -1034,7 +1035,7 @@ public class ProgramWindow extends Application {
 						e.printStackTrace();
 					}
 					try 
-					{
+					{	if(listOfTESTS!=null) listOfTESTS.clear();
 						listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
 					} 
 					catch (SQLException e) 
@@ -1075,36 +1076,25 @@ public class ProgramWindow extends Application {
 					selectedExam=(Exam) cb_exams.getSelectionModel().getSelectedItem();
 					try 
 					{
+						if(listOfONTESTS!=null) listOfONTESTS.clear();
 						listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 						ONTESTTableView.getItems().clear();
 						ONTESTTableView.getItems().addAll(listOfONTESTS);
 						
+						if(listOfSONTESTS!=null) listOfSONTESTS.clear();
 						listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 						SONTESTTableView.getItems().clear();
 						SONTESTTableView.getItems().addAll(listOfSONTESTS);
 						
+						if(listOfTESTS!=null) listOfTESTS.clear();
 						listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
 						TESTTableView.getItems().clear();
 						TESTTableView.getItems().addAll(listOfTESTS);
-					} catch (SQLException e) 
+					} 
+					catch (SQLException e) 
 					{
 						e.printStackTrace();
 					}
-					try 
-					{
-						listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
-					} catch (SQLException e) 
-					{
-						e.printStackTrace();
-					}
-					try 
-					{
-						listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
-					} catch (SQLException e) 
-					{
-						e.printStackTrace();
-					}
-					
 					
 				}
 				
@@ -1348,6 +1338,7 @@ public class ProgramWindow extends Application {
 						    
 						    try 
 							{
+						    	if(listOfONTESTS!=null) listOfONTESTS.clear();
 								listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 							} 
 							catch (SQLException e) 
@@ -1357,14 +1348,17 @@ public class ProgramWindow extends Application {
 							}
 							try 
 							{
+								if(listOfSONTESTS!=null) listOfSONTESTS.clear();
 								listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
-							} catch (SQLException e) 
+							} 
+							catch (SQLException e) 
 							{
 								
 								e.printStackTrace();
 							}
 							try 
 							{
+								if(listOfTESTS!=null) listOfTESTS.clear();
 								listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
 							} 
 							catch (SQLException e) 
@@ -1596,6 +1590,7 @@ public class ProgramWindow extends Application {
 						  }
 						  try 
 						  {
+							if(listOfONTESTS!=null) listOfONTESTS.clear();
 							listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 						  } 
 						  catch (SQLException e) 
@@ -1657,9 +1652,20 @@ public class ProgramWindow extends Application {
 						  
 						  
 						  ONTESTTableView.getItems().clear();
+						  if(listOfONTESTS!=null) listOfONTESTS.clear();
+						  try 
+						  {
+							listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+						   } 
+						  catch (SQLException e) 
+						  {
+							
+							e.printStackTrace();
+						  }
 						  if(listOfONTESTS!=null)
 						  {
-						  ONTESTTableView.getItems().addAll(listOfONTESTS);
+							  
+							  ONTESTTableView.getItems().addAll(listOfONTESTS);
 						  }
 						}
 						else
@@ -1708,6 +1714,7 @@ public class ProgramWindow extends Application {
 						  }
 						  try 
 						  {
+							if(listOfSONTESTS!=null) listOfSONTESTS.clear();
 							listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 						  } 
 						  catch (SQLException e) 
@@ -1759,7 +1766,7 @@ public class ProgramWindow extends Application {
 								try 
 								{
 									dao.deleteParticipantAnswerById(listOfSONTESTS.get(0).getId());
-									listOfSONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+									listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 								} 
 								catch (SQLException e) 
 								{
@@ -1769,6 +1776,16 @@ public class ProgramWindow extends Application {
 						  
 						  
 						  SONTESTTableView.getItems().clear();
+						  if(listOfSONTESTS!=null) listOfSONTESTS.clear();
+						  try 
+						  {
+							listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+						   } 
+						  catch (SQLException e) 
+						  {
+							
+							e.printStackTrace();
+						  }
 						  if(listOfSONTESTS!=null)
 						  {
 						  SONTESTTableView.getItems().addAll(listOfSONTESTS);
@@ -1820,6 +1837,7 @@ public class ProgramWindow extends Application {
 						  }
 						  try 
 						  {
+							if(listOfTESTS!=null) listOfTESTS.clear();
 							listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
 						  } 
 						  catch (SQLException e) 
@@ -1882,6 +1900,16 @@ public class ProgramWindow extends Application {
 						  
 						  
 						  TESTTableView.getItems().clear();
+						  if(listOfTESTS!=null) listOfTESTS.clear();
+						  try 
+						  {
+							listOfTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+						   } 
+						  catch (SQLException e) 
+						  {
+							
+							e.printStackTrace();
+						  }
 						  if(listOfTESTS!=null)
 						  {
 						  TESTTableView.getItems().addAll(listOfTESTS);
@@ -2044,6 +2072,8 @@ public class ProgramWindow extends Application {
 			            	pathToSave=selectedFile.getAbsolutePath();
 			            	try 
 				            {
+			            		if(listOfONTESTS!=null) listOfONTESTS.clear();
+			            		listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 			            		if(listOfONTESTS.size()>0)
 				            	{
 									OutputWriter.writeToXlsx(pathToSave, listOfONTESTS, "ON TEST");
@@ -2059,6 +2089,10 @@ public class ProgramWindow extends Application {
 							} 
 				            catch (IOException e) 
 				            {
+								e.printStackTrace();
+							} 
+			            	catch (SQLException e) 
+			            	{
 								e.printStackTrace();
 							}
 			            }
@@ -2128,7 +2162,11 @@ public class ProgramWindow extends Application {
 				            {
 				            	pathToSave=selectedFile.getAbsolutePath();
 				            	try 
-					            {	if(listOfSONTESTS.size()>0)
+					            {
+				            		
+				            		if(listOfSONTESTS!=null) listOfSONTESTS.clear();
+				            		listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+				            		if(listOfSONTESTS.size()>0)
 					            	{
 										OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST");
 					            	}
@@ -2143,6 +2181,10 @@ public class ProgramWindow extends Application {
 								} 
 					            catch (IOException e) 
 					            {
+									e.printStackTrace();
+								} 
+				            	catch (SQLException e) 
+				            	{
 									e.printStackTrace();
 								}
 				            }
@@ -2217,6 +2259,10 @@ public class ProgramWindow extends Application {
 					            {
 									try 
 									{
+										if(listOfONTESTS!=null) listOfONTESTS.clear();
+					            		listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+					            		if(listOfSONTESTS!=null) listOfSONTESTS.clear();
+					            		listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 										if(listOfSONTESTS.size()>0&&listOfONTESTS.size()>0)
 						            	{
 											OutputWriter.writeToSameXlsxAllONAndSONTESTES(pathToSave, 
