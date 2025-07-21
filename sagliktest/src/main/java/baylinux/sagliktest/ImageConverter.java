@@ -2,6 +2,8 @@ package baylinux.sagliktest;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -9,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -18,11 +22,14 @@ import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
+import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
+import net.sourceforge.tess4j.ITessAPI;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+import net.sourceforge.tess4j.Word;
 
 public class ImageConverter {
 	
@@ -126,10 +133,11 @@ public class ImageConverter {
     		String highText="";
     		
     		
-    		
     		 if (highBufferedImage != null) 
 	         {
-	             try {
+    			 
+	             try 
+	             {
 	                 highText = tesseract.doOCR(highBufferedImage).trim();
 	                 
 	             }
@@ -139,7 +147,7 @@ public class ImageConverter {
 	             }
 	             
 	         }
-    		 System.out.println(highText);
+    		 System.out.println("hightext is: "+highText);
     		 return highText;
 
 	}
@@ -247,11 +255,12 @@ public class ImageConverter {
     				new Point(-1,-1), ps.getVertical_dilation_iteration_number());
     		
     		
-//    		Point p=findLeftTopCornerPoint(dilatedVerticalLines, 3, 100);
+//    		Point p=findLeftTopCornerPoint(dilatedVerticalLines, 4);
 //    		System.out.println("top-left x: "+p.x+" top-left y: "+p.y);
 //    		System.out.println("dilatedVerticalLines.cols()= "+dilatedVerticalLines.cols());
 //    		System.out.println("dilatedVerticalLines.rows()= "+dilatedVerticalLines.rows());
 //    		Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedVerticalLines.png",dilatedVerticalLines);
+    		
     		
     		
     		Mat tableLines = new Mat(); 
@@ -309,7 +318,7 @@ public class ImageConverter {
     		Mat intersections = new Mat(); 
     		Core.bitwise_and(dilatedHorizontalLines, dilatedVerticalLines, intersections); 
     		
-    		//Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
     		
     		Mat dilatedIntersections= new Mat();
     		Mat kernelForDilateIntersections = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
@@ -318,33 +327,41 @@ public class ImageConverter {
 			//Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedIntersections.png", dilatedIntersections);
 			
     		
-    		
-    		
-    		
-    		
     		List<MatOfPoint> intersectionContours = new ArrayList<>(); 
     		Imgproc.findContours(dilatedIntersections, intersectionContours, new Mat(), 
     				Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_NONE); 
     		
     		Set<Point> intersectionPointsSet = new LinkedHashSet<Point>();
-
-    		intersectionContours.stream()
-     	    .forEach(c-> 
-     	    		{
-     	    			intersectionPointsSet
-     	    			.add(new Point(Imgproc.boundingRect(c).x ,Imgproc.boundingRect(c).y)); 
-     	    			intersectionPointsSet
-     	    			.add(new Point
-     	    					(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
-     	    							Imgproc.boundingRect(c).y));
-     	    			intersectionPointsSet
-     	    			.add(new Point
-     	    					(Imgproc.boundingRect(c).x,
-     	    							Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
-     	    			intersectionPointsSet
-     	    			.add(new Point(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
-     	    					Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
-     	    		});
+    		
+    		
+    		
+//    		intersectionContours.stream()
+//     	    .forEach(c-> 
+//     	    		{
+//     	    			intersectionPointsSet
+//     	    			.add(new Point(Imgproc.boundingRect(c).x ,Imgproc.boundingRect(c).y)); 
+//     	    			intersectionPointsSet
+//     	    			.add(new Point
+//     	    					(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
+//     	    							Imgproc.boundingRect(c).y));
+//     	    			intersectionPointsSet
+//     	    			.add(new Point
+//     	    					(Imgproc.boundingRect(c).x,
+//     	    							Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
+//     	    			intersectionPointsSet
+//     	    			.add(new Point(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
+//     	    					Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
+//     	    		});
+    		
+    		intersectionContours.stream().forEach(c -> {
+    		    Rect r = Imgproc.boundingRect(c);
+    		    
+    		    Point center = new Point(
+    		            r.x + r.width  / 2.0,
+    		            r.y + r.height / 2.0
+    		    );
+    		    intersectionPointsSet.add(center);
+    		});
     		List<Double> rawYCoords = new ArrayList<>();
     		List<Double> rawXCoords = new ArrayList<>();
    		
@@ -654,7 +671,7 @@ public class ImageConverter {
 	}
 	
 	
-	public static Point findLeftTopCornerPoint(Mat verticalLines,int whiteThreshold,int blackThreshold)
+	public static Point findLeftTopCornerPoint(Mat verticalLines,int whiteThreshold)
 	{
 			int xValue=-1;
 			int yValue=-1;
@@ -681,26 +698,19 @@ public class ImageConverter {
 	            	break;
 	            }
 			}
-			for(int y=verticalLines.rows()/2;y>0;y--)
+			for(int y=0;y<verticalLines.rows();y++)
 			{
 				double[] pixel = verticalLines.get(y, xValue);
 	            if (pixel != null ) 
 	            {
 	            	if(pixel[0]!=0)
 	            	{
-	            		blackNumber=0;
-	            	}
-	            	else if(pixel[0] == 0)
-	            	{
-	            		blackNumber++;
+	            		yValue=y;
 	            	}
 	            	
+	            	
 	            }
-	            if(blackNumber>=blackThreshold)
-	            {
-	            	yValue=y+blackNumber;
-	            	break;
-	            }
+	            
 			}
 			return new Point(xValue,yValue);
 		
