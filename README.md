@@ -15,6 +15,7 @@ Program bu resimlerden
 -Başlıktan sınav ön test mi son test mi anlamaya çalışıyor ve sınıflandırıyor.
 
 -Sınavın ön test veya son test olup olmadığını tesbit edemezse sadece test olarak farklı bir kategoride ele alıp kullanıcının düzenlemesine imkan tanıyor.
+
 -Katılımcının A, B, C, D veya A, B, C, D, E olarak 4 veya 5 seçenekten cevaplarını algılayıp kaydediyor, cevapları değiştirmeye ve güncellemeye imkan tanıyor 
 ve doğru cevaplarla karşılaştırıp 
 doğru mu değil mi diye D veya Y şeklinde çktı veriyor.
