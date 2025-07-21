@@ -590,17 +590,10 @@ public class ImageConverter {
 
 	       Collections.sort(coords);
 
-	        List<Double> filteredCoords=new ArrayList<Double>();
+	        List<Double> estimatedCoords=new ArrayList<Double>();
 
-//	        double t=coords.get(0);
-//	        double y=coords.get(coords.size()-1);
-//	        double z=(y-t)/(elementNumber-1);
-//	        double i=t-z;
-//	        if(i<1) i=1.0;
-//	        double j=y+z;
-//	        if(j>matLengthInThatAxis) j=matLengthInThatAxis;
-	        filteredCoords.add(0.0);
-	        filteredCoords.add((double)matLengthInThatAxis);
+	        estimatedCoords.add(0.0);
+	        estimatedCoords.add((double)matLengthInThatAxis);
 	        coords.add(0,0.0);
 	        coords.add((double)matLengthInThatAxis);
 	        Collections.sort(coords);
@@ -609,27 +602,27 @@ public class ImageConverter {
 	        double step=matLengthInThatAxis/(elementNumber-1);
 	        int a=1;
 	        double l=0;
-	        while(filteredCoords.size()<elementNumber)
+	        while(estimatedCoords.size()<elementNumber)
 	        {
 	        	l=0+a*step;
-	        	filteredCoords.add(l);
+	        	estimatedCoords.add(l);
 	        	++a;
 	        }
-	        Collections.sort(filteredCoords);
+	        Collections.sort(estimatedCoords);
 	        
 	        
 
-	        List<Double> lastFilteredCoords=new ArrayList<Double>();
+	        List<Double> filteredCoords=new ArrayList<Double>();
 	        
 	        int s=0; int g=0;
-	        while(lastFilteredCoords.size()<filteredCoords.size())
+	        while(filteredCoords.size()<estimatedCoords.size())
 	        {
 	        	double minDif=Double.MAX_VALUE;
 	        	int minIndex=Integer.MAX_VALUE;
 	        	g=0;
 	        	while(g<coords.size())
 	        	{
-	        		double dif=Math.abs(filteredCoords.get(s)-coords.get(g));
+	        		double dif=Math.abs(estimatedCoords.get(s)-coords.get(g));
 	        		if(dif<minDif)
 	        		{
 	        			minDif=dif;
@@ -639,9 +632,9 @@ public class ImageConverter {
 	        	}
 	        if(minIndex<coords.size()&&minIndex>-1)
        		{ 		double sayi=coords.get(minIndex);
-       				if(!lastFilteredCoords.contains(sayi))
+       				if(!filteredCoords.contains(sayi))
        				{
-       					lastFilteredCoords.add(coords.get(minIndex));
+       					filteredCoords.add(coords.get(minIndex));
        				}
        				else
        				{
@@ -651,14 +644,14 @@ public class ImageConverter {
        		}
 	        	
 	        	s++;
-	        	if(s>=filteredCoords.size())
+	        	if(s>=estimatedCoords.size())
 	        	{
-	        		lastFilteredCoords=filteredCoords;
+	        		filteredCoords=estimatedCoords;
 	        		break;
 	        	}
 	     }
 	        
-	        return lastFilteredCoords.stream()
+	        return filteredCoords.stream()
 	        		.collect(Collectors.toSet())
 	        		.stream().sorted().collect(Collectors.toList());
 
