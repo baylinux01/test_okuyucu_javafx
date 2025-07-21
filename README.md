@@ -7,14 +7,15 @@ ve xlsx formatında çıktı veren program.
 Kurumun  verdiği eğitimlerde sınavları online olarak yapmak veya optik kağıt dağıtıp optik okuyucuda okutmak gibi bir altyapısı yok. 
 Cevapların işaretlendiği kağıt genelde katılımcılara üzerinde bir tablo ile dağıtılıyor.
 Katılımcılar kağıdın üzerine isimlerini el ile yazıp tablo olarak verilen cevap anahtarını çarpı veya tik gibi rastgele işaretlerle dolduruyorlar.
-Bu program kağıtların düzgünce çekilmiş resimlerin bulunduğu klasörü seçiyor ve klasördeki resimleri okuyor.
+Bu program kağıtların düzgünce çekilmiş resimlerin bulunduğu klasörü seçiyor ve klasördeki resimleri tek seçimde toplu olarak okuyor.
 
 Program bu resimlerden
 
--isim ve soyisim bilgisini tesseract-ocr kullanarak algılamaya çalışıyor.
--sınav ön test mi son test mi anlamaya çalışıyor ve sınıflandırıyor.
--sınavın ön test veya son test olup olmadığını tesbit edemezse sadece test olarak farklı bir kategoride ele alıp kullanıcının düzenlemesine imkan tanıyor.
--kullanıcının cevaplarını algılayıp doğru cevaplarla karşılaştırıp doğru mu değil mi diye D veya Y şeklinde çktı veriyor.
+
+-Başlıktan sınav ön test mi son test mi anlamaya çalışıyor ve sınıflandırıyor.
+-Sınavın ön test veya son test olup olmadığını tesbit edemezse sadece test olarak farklı bir kategoride ele alıp kullanıcının düzenlemesine imkan tanıyor.
+-Katılımcının A, B, C, D veya A, B, C, D, E olarak 4 veya 5 seçenekten cevaplarını algılayıp kaydediyor ve doğru cevaplarla karşılaştırıp 
+doğru mu değil mi diye D veya Y şeklinde çktı veriyor.
 -program ayrıca her kullanıcının doğru cevap sayısını 30 soru üzerinden puanını çıktı veriyor.
 -program bunlara ek olarak bir de her soru için kullanıcıların verdiği toplam doğru sayısını tüm kullanıcıların ortalama doğru sayısını ve ortalama puanını da veriyor.
 -program sınav cevap anahtarını güncellemeye veya katılımcının cevaplarını düzeltmeye de
@@ -29,6 +30,7 @@ Ayrıca eğer programın kullanılacağı bilgisayar Windows ise
 Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 yazılımının mutlaka yüklenmesi gerekir. Aksi takdirde program çalışmaz.
 Bunlara ek olarak sqlite, mysql, mariadb veya postgresql databaselerinden en az birinin
 bilgisayara yüklü olması gerekir.
-Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenilen birisini kullanarak istenilen host ve port numarası ile başka bir bilgisayardaki veritabanına bağlanmayı da desteklemektedir.
+Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenilen birisini kullanarak istenilen host ve port numarası ile 
+başka bir bilgisayardaki veritabanına bağlanmayı da desteklemektedir.
 Fakat bazı databaselerde mesela postgrede bazen database'i elle manuel olarak oluşturmak gerekebilir.
 
