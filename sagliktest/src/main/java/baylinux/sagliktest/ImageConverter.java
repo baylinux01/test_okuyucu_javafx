@@ -147,7 +147,7 @@ public class ImageConverter {
 	             }
 	             
 	         }
-    		 System.out.println("hightext is: "+highText);
+    		 //System.out.println("hightext is: "+highText);
     		 return highText;
 
 	}
