@@ -18,7 +18,7 @@ Program bu resimlerden
 
 -Katılımcının A, B, C, D veya A, B, C, D, E olarak 4 veya 5 seçenekten cevaplarını algılayıp kaydediyor, cevapları değiştirmeye ve güncellemeye imkan tanıyor 
 ve doğru cevaplarla karşılaştırıp 
-doğru mu değil mi diye D veya Y şeklinde çktı veriyor.
+doğru mu değil mi diye D veya Y şeklinde çıktı veriyor.
 
 -program ayrıca her kullanıcının doğru cevap sayısını 30 soru üzerinden puanını çıktı veriyor.
 
