@@ -1,10 +1,17 @@
 package baylinux.sagliktest;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +19,7 @@ public class ExamEvaluator
 {
 	
 	public static ParticipantAnswer createParticipantAnswerWithInformation
-	(PreferredSettings ps,String imageFullPath,Exam exam) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
+	(PreferredSettings ps,String imageFullPath,Exam exam,int sayi) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
 	{
 		ParticipantAnswer pa=new ParticipantAnswer();
 		String title=ImageConverter
@@ -21,16 +28,35 @@ public class ExamEvaluator
 	
 		//String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());
 		String name_surname="";
-		List<List<String>> tableData=ImageConverter
-					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, imageFullPath);
+		
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yy HH-mm-ss");
+		String oldFileName="";
 		if(imageFullPath.contains("/"))
 		{
-			pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("/")+1));
+			oldFileName=imageFullPath.substring(imageFullPath.lastIndexOf("/")+1);
 		}
 		else
 		{
-			pa.setFile_name(imageFullPath.substring(imageFullPath.lastIndexOf("\\")+1));
+			oldFileName=imageFullPath.substring(imageFullPath.lastIndexOf("\\")+1);
 		}
+		String ext = oldFileName.substring(oldFileName.lastIndexOf('.')+1);
+		String newFileName=LocalDateTime.now().format(dateFormat)
+				+" "+test_type.split(" ")[0]+" "+sayi+"."+ext;
+		 Path sourcePath = Paths.get(imageFullPath);
+	        Path targetPath = sourcePath.resolveSibling(newFileName);
+	        try 
+	        {
+				Files.move(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+			} 
+	        catch (IOException e) 
+	        {
+				e.printStackTrace();
+			}
+	        String newImageFullPath = targetPath.toString();
+		List<List<String>> tableData=ImageConverter
+					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, newImageFullPath);
+		
+		pa.setFile_name(newFileName);
 		pa.setName_surname(name_surname);
 		pa.setTest_type(test_type);
 		pa.setExam_id(exam.getId());

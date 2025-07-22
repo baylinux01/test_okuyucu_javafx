@@ -1307,7 +1307,8 @@ public class ProgramWindow extends Application {
 						selectedDirectory=dc.showDialog(primaryStage);
 						if (selectedDirectory != null && selectedDirectory.isDirectory()) 
 						{
-							
+							int sefer=0;
+							int sayi=1;
 						    File[] files = selectedDirectory.listFiles();
 						    for(File file : files)
 						    {
@@ -1316,7 +1317,12 @@ public class ProgramWindow extends Application {
 						    	{
 									pa=ExamEvaluator
 											.createParticipantAnswerWithInformation
-													(ps, file.getAbsolutePath(), selectedExam);
+													(ps, file.getAbsolutePath(), selectedExam,sayi);
+									++sefer;
+									if(sefer%2==0)
+									{
+										++sayi;
+									}
 									
 								} 
 						    	catch (Exception e) 

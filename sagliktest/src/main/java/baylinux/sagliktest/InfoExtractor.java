@@ -22,56 +22,7 @@ public class InfoExtractor {
 		{
 			return "ON TEST";
 		}
-//		if(title.size()==1)
-//		{
-//			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-//					&& !title.get(0).contains("SON"))
-//			{
-//				return "ON TEST";
-//			}
-//			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-//					&& title.get(0).contains("SON"))
-//			{
-//				return "SON TEST";
-//			}
-//			else
-//			{
-//				return "TEST";
-//			}
-//			
-//		}
-//		else if(title.size()>=2)
-//		{
-//			
-//			if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-//					&& !title.get(0).contains("SON"))
-//			{
-//				return "ON TEST";
-//			}
-//			else if((title.get(0).contains("ÖN")||title.get(0).contains("ON"))
-//					&& title.get(0).contains("SON"))
-//			{
-//				return "SON TEST";
-//			}
-//			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
-//					&& !title.get(1).contains("SON"))
-//			{
-//				return "ON TEST";
-//			}
-//			else if((title.get(1).contains("ÖN")||title.get(1).contains("ON"))
-//					&& title.get(1).contains("SON"))
-//			{
-//				return "SON TEST";
-//			}
-//			else
-//			{
-//				return "TEST";
-//			}
-//		}
-//		else
-//		{
-//			return "TEST";
-//		}
+
 	}
 	public static String extractNameAndSurnameFromTitle(List<String> title,String nearWords)
 	{
