@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -297,6 +298,7 @@ public class ImageConverter {
 							textOnlyImage.rows() * (ps.getCell_mat_downscale_factor()/100.0))); 
 			Imgproc.erode(small, small, kernel);  
 			Imgproc.resize(small, textOnlyImage, textOnlyImage.size());
+			
     		//Imgcodecs.imwrite("/home/baylinux/Desktop/text_only_without_lines.png", textOnlyImage);
     		
     		 List<MatOfPoint> contoursToCleanInsideTableForTextOnly = new ArrayList<>();
@@ -338,27 +340,95 @@ public class ImageConverter {
     		});
     		
     		
+    		
+    		
     		List<Double> rawYCoords = new ArrayList<>();
     		List<Double> rawXCoords = new ArrayList<>();
    		
     		
     		intersectionPointsSet.stream().forEach(f->{rawYCoords.add(f.y);rawXCoords.add(f.x);});
     		
-    		
-    		
     		List<Double> xCoords = removeCloseCoordinates(rawXCoords, 
     				ps.getColumn_number(),textOnlyImage.cols());
     		List<Double> yCoords = removeCloseCoordinates(rawYCoords, 
     				ps.getRow_number(),textOnlyImage.rows());
     		
+    		int t=0;
+    		int l=0;
+    		if(ps.getDont_read_first_row()==1) t=1;
+    		if(ps.getDont_read_first_column()==1) l=1;
+    		double x1=(xCoords.get(xCoords.size()-1)-xCoords.get(l))/ps.getColumn_number()*2;
+    		double y1=(yCoords.get(yCoords.size()-1)-yCoords.get(t))/ps.getRow_number()*2;
+    		double x2=(xCoords.get(xCoords.size()-1)-xCoords.get(l))-x1;
+    		double y2=(yCoords.get(yCoords.size()-1)-yCoords.get(t))-y1;
     		
+    		Point optimumTopLeft = intersectionPointsSet.stream()
+    		        .filter(p -> p.x < x1 && p.y < y1)          
+    		        .sorted(Comparator.comparingDouble(p -> p.x + p.y))
+    		        .findFirst()
+    		        .orElse(null);
+    		Point optimumTopRight = intersectionPointsSet.stream()
+    		        .filter(p -> p.x > x2 && p.y < y1)              
+    		        .sorted(Comparator.comparingDouble(p -> -p.x + p.y))
+    		        .findFirst()
+    		        .orElse(null);
+    		Point optimumBottomLeft = intersectionPointsSet.stream()
+    		        .filter(p -> p.x < x1 && p.y > y2)              
+    		        .sorted(Comparator.comparingDouble(p -> p.x - p.y))
+    		        .findFirst()
+    		        .orElse(null);   
+    		Point optimumBottomRight = intersectionPointsSet.stream()
+    		        .filter(p -> p.x > x2 && p.y > y2)        
+    		        .sorted(Comparator.comparingDouble(p -> -p.x - p.y))
+    		        .findFirst()
+    		        .orElse(null);
+    		
+    		
+    		List<List<Point>> pointsByRows=new ArrayList<List<Point>>();
+    		int u=0;
+    		int o=0;
+    		if(ps.getDont_read_first_row()==1) u=1;
+    		if(ps.getDont_read_first_column()==1) o=1;
+    		for (int r = u; r < yCoords.size() - 1; r++) 
+    		{ 
+    		    List<Point> row= new ArrayList<Point>();
+    		    for (int c = o; c < xCoords.size() - 1; c++) 
+    		    { 
+    		    	row.add(new Point(c,r));
+    		    }
+    		    pointsByRows.add(row);
+    		}
+    		
+    		List<List<Point>> rowsSkewedPoints=applyRowSkew(pointsByRows, optimumTopLeft, optimumTopRight);
+    		List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
+    		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
+    		{   List<Point> column=new ArrayList<Point>();
+    			for(int j=0;j<rowsSkewedPoints.size();j++)
+    			{
+    				column.add(rowsSkewedPoints.get(j).get(i));
+    			}
+    			pointsByColumnsRowsSkewed.add(column);
+    		}
+    		List<List<Point>> columnsAndRowsSkewedPoints=applyRowSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
+    		List<Double> skewedRawXCoords=new ArrayList<Double>();
+    		List<Double> skewedRawYCoords=new ArrayList<Double>();
+    		
+    		columnsAndRowsSkewedPoints.stream()
+    		.forEach(satir-> satir.stream()
+    				.forEach(p->{if(p.y>=0)skewedRawYCoords.add(p.y);if(p.x>=0)skewedRawXCoords.add(p.x);}));
+    		
+    		List<Double> skewedXCoords = removeCloseCoordinates(skewedRawXCoords, 
+    				ps.getColumn_number(),textOnlyImage.cols());
+    		List<Double> skewedYCoords = removeCloseCoordinates(skewedRawYCoords, 
+    				ps.getRow_number(),textOnlyImage.rows());
     		
     		int a=0;
     		int b=0;
     		if(ps.getDont_read_first_row()==1) a=1;
     		if(ps.getDont_read_first_column()==1) b=1;
     		int sayi=1;
-    		for (int r = a; r < yCoords.size() - 1; r++) 
+    		
+    		for (int r = a; r < skewedYCoords.size() - 1; r++) 
     		{ 
     		    List<String> rowData = new ArrayList<>(); 
     		    double whitePixelRatioForA=0;
@@ -367,7 +437,7 @@ public class ImageConverter {
     		    double whitePixelRatioForD=0;
     		    double whitePixelRatioForE=0;
     		    
-    		    for (int c = b; c < xCoords.size() - 1; c++) 
+    		    for (int c = b; c < skewedXCoords.size() - 1; c++) 
     		    { 
     		        
     		        int cellX = xCoords.get(c).intValue();
@@ -381,8 +451,9 @@ public class ImageConverter {
     		        cellHeight = cellHeight - (ps.getMargin_y_up()+ps.getMargin_y_down());
     		        
     		        
-    		        if (cellWidth > 0 && cellHeight > 0 &&
-    		            cellX + cellWidth <= binary.cols() 
+    		        if (cellWidth > 0 
+    		        	&& cellHeight > 0 
+    		        	&&cellX + cellWidth <= binary.cols() 
     		            && cellY + cellHeight <= binary.rows()) 
     		        {
 
@@ -401,8 +472,7 @@ public class ImageConverter {
 						{
 							cellImageMat = new Mat(textOnlyImage, cellRect);
 							
-//				    		Imgcodecs.imwrite(imageFullPath
-//				    				.substring(0,imageFullPath.lastIndexOf("/")-1)
+//				    		Imgcodecs.imwrite("/home/baylinux/Desktop/"
 //				    				+sayi+".png", cellImageMat); 
 //				    		++sayi;
 							
@@ -413,21 +483,9 @@ public class ImageConverter {
 							e.printStackTrace();
 						} 
     		         
-    		            
-    		            int cellMatWidth=cellImageMat.width();
-    		            int cellMatHeight=cellImageMat.height();
-    		            int cellMatWidthCropDegree=cellMatWidth/ps.getCell_mat_width_crop_degree_factor();
-    		            int cellMatHeightCropDegree=cellMatHeight/ps.getCell_mat_width_crop_degree_factor();
-    		            
-    		            Rect roi = new Rect(cellMatWidthCropDegree, cellMatHeightCropDegree, 
-    		            		Math.abs(cellMatWidth - 2 * cellMatWidthCropDegree), 
-    		            		Math.abs(cellMatHeight - 2 * cellMatHeightCropDegree));
-    		            
     		          
-    		            
-    		            Mat croppedCellImageMat = new Mat(cellImageMat, roi);
-    		            int whitePixelCount=Core.countNonZero(croppedCellImageMat);
-    		            int totalPixelCount=croppedCellImageMat.rows()*croppedCellImageMat.cols();
+    		            int whitePixelCount=Core.countNonZero(cellImageMat);
+    		            int totalPixelCount=cellImageMat.rows()*cellImageMat.cols();
     		            double whitePixelRatio=(Double.valueOf(whitePixelCount)/totalPixelCount)*100;
     		            if(ps.getDont_read_first_column()==1&&c==1) whitePixelRatioForA=whitePixelRatio;
     		            else if(ps.getDont_read_first_column()==0&&c==0) whitePixelRatioForA=whitePixelRatio;
@@ -531,7 +589,7 @@ public class ImageConverter {
     		    output.add(rowData);
    }
 
-
+    		
     		
     		return output;
     
@@ -634,6 +692,43 @@ public class ImageConverter {
 		final byte[] targetPixels=((DataBufferByte) image.getRaster().getDataBuffer()).getData();
 		System.arraycopy(b, 0, targetPixels, 0, b.length);
 		return image;
+	}
+	
+	
+
+	public static List<List<Point>> applyRowSkew
+			(
+	        List<List<Point>> rows,
+	        Point startRef,   
+	        Point endRef
+	        )        
+	{
+	   
+	    double dx = endRef.x - startRef.x;
+	    double dy = endRef.y - startRef.y;
+
+	    // 2) Her satırı dönüştür
+	    return rows.stream()
+	            .map(row -> {
+	                // Satırın ilk noktası = başlangıç noktası kabul ediyoruz.
+	                // İsterseniz gerçekten satırın ilk elemanını kullanın.
+	                Point first = row.get(0);
+
+	                return row.stream()
+	                        .map(p -> {
+	                            // p'nin satır başına göre indeks oranı
+	                            int idx = row.indexOf(p);
+	                            int lastIdx = row.size() - 1;
+	                            double ratio = lastIdx == 0 ? 0 : (double) idx / lastIdx;
+
+	                            // Eğim etkisini orantılı uygula
+	                            double newX = first.x + dx * ratio;
+	                            double newY = first.y + dy * ratio;
+	                            return new Point(newX, newY);
+	                        })
+	                        .collect(Collectors.toList());
+	            })
+	            .collect(Collectors.toList());
 	}
 	
 	
