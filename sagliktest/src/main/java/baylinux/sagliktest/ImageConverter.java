@@ -221,7 +221,7 @@ public class ImageConverter {
     		  new Size(horizontalErodeKernelWidthForTable,horizontalErodeKernelHeightForTable));  
     		
     		Mat horizontalDilateKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-    				new Size(horizontalDilateKernelWidthForTable,
+    				new Size(horizontalDilateKernelWidthForTable*600,
     						horizontalDilateKernelHeightForTable)); 
     		 
     		Imgproc.erode(croppedBinary, horizontalLines, horizontalErodeKernel,
@@ -232,7 +232,7 @@ public class ImageConverter {
     				
     		
 
-//    		Imgcodecs.imwrite(imagePath+"dorduncuCikti_horizontalLines.png", dilatedHorizontalLines); 
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/horizontalLines.png", dilatedHorizontalLines); 
     		
     		Mat verticalLines = new Mat(); 
     		Mat dilatedVerticalLines=new Mat();
@@ -249,16 +249,13 @@ public class ImageConverter {
     		
     		Mat verticalDilateKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
     				new Size(verticalDilateKernelWidthForTable, 
-    						verticalDilateKernelHeightForTable));
+    						verticalDilateKernelHeightForTable*600));
     		
     		Imgproc.dilate(verticalLines, dilatedVerticalLines, verticalDilateKernel,
     				new Point(-1,-1), ps.getVertical_dilation_iteration_number());
     		
     		
-//    		Point p=findLeftTopCornerPoint(dilatedVerticalLines, 4);
-//    		System.out.println("top-left x: "+p.x+" top-left y: "+p.y);
-//    		System.out.println("dilatedVerticalLines.cols()= "+dilatedVerticalLines.cols());
-//    		System.out.println("dilatedVerticalLines.rows()= "+dilatedVerticalLines.rows());
+
 //    		Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedVerticalLines.png",dilatedVerticalLines);
     		
     		
@@ -318,7 +315,7 @@ public class ImageConverter {
     		Mat intersections = new Mat(); 
     		Core.bitwise_and(dilatedHorizontalLines, dilatedVerticalLines, intersections); 
     		
-//    		Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
+    		Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
     		
     		Mat dilatedIntersections= new Mat();
     		Mat kernelForDilateIntersections = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
@@ -592,19 +589,13 @@ public class ImageConverter {
 
 	        List<Double> estimatedCoords=new ArrayList<Double>();
 
-	        estimatedCoords.add(0.0);
-	        estimatedCoords.add((double)matLengthInThatAxis);
-	        coords.add(0,0.0);
-	        coords.add((double)matLengthInThatAxis);
-	        Collections.sort(coords);
-	        double pay=0;
-	        //double step=(j-i)/(elementNumber-1)+pay;
-	        double step=matLengthInThatAxis/(elementNumber-1);
-	        int a=1;
+	        
+	        double step=(coords.get(coords.size()-1)-coords.get(0))/(elementNumber-1);
+	        int a=0;
 	        double l=0;
 	        while(estimatedCoords.size()<elementNumber)
 	        {
-	        	l=0+a*step;
+	        	l=coords.get(0)+a*step;
 	        	estimatedCoords.add(l);
 	        	++a;
 	        }
@@ -682,144 +673,5 @@ public class ImageConverter {
 	}
 	
 	
-	public static Point findLeftTopCornerPoint(Mat verticalLines,int whiteThreshold)
-	{
-			int xValue=-1;
-			int yValue=-1;
-			int blackNumber=0;
-			int whiteNumber=0;
-			for(int x=0;x<verticalLines.cols();x++)
-			{
-				double[] pixel = verticalLines.get(verticalLines.rows()/2, x);
-	            if (pixel != null ) 
-	            {
-	            	if(pixel[0] != 0)
-	            	{
-	            		whiteNumber++;
-	            		
-	            	}
-	            	else if(pixel[0]==0)
-	            	{
-	            		whiteNumber=0;
-	            	}
-	            }
-	            if(whiteNumber>=whiteThreshold)
-	            {
-	            	xValue=x;
-	            	break;
-	            }
-			}
-			for(int y=0;y<verticalLines.rows();y++)
-			{
-				double[] pixel = verticalLines.get(y, xValue);
-	            if (pixel != null ) 
-	            {
-	            	if(pixel[0]!=0)
-	            	{
-	            		yValue=y;
-	            	}
-	            	
-	            	
-	            }
-	            
-			}
-			return new Point(xValue,yValue);
-		
-	}
-
 	
-	
-	public static List<List<Point>> findPointsOfRows(Mat binaryImage,int esik)
-	{
-		 List<Point> rowPoints=new ArrayList<Point>();
-		 List<List<Point>> rows=new ArrayList<List<Point>>();
-		 int blackCountX=0;
-		 int blackCountY=0;
-		 int startInt=-1;
-		 for (int y = 0; y < binaryImage.rows(); y+=esik )
-		 {
-			  for (int x = 0; x < binaryImage.cols(); x++)
-			  {
-				  double[] pixel = binaryImage.get(y, x);
-		            if (pixel != null ) 
-		            {
-		            	if(pixel[0] != 0)
-		            	{
-		            		for(int i=x+1;i<binaryImage.cols();i++)
-		            		{
-		            			double[] pixel2 = binaryImage.get(y, i);
-		            			if (pixel2 != null ) 
-		    		            {
-		            				if(pixel2[0] == 0)
-		    		            	{
-		            					blackCountX++;
-		    		            	}
-		            				else
-		            				{
-		            					break;
-		            				}
-		    		            }
-		            		}
-		            		if(blackCountX>=esik)
-	            			{
-	            				rowPoints.add(new Point(x,y));
-	            				blackCountX=0;
-	            			}
-		            	}
-		            }
-			  }
-			  if(rowPoints!=null&&rowPoints.size()>0)
-			  {
-				  rows.add(rowPoints);
-				  rowPoints.clear();
-			  }
-			  boolean found=false;
-			  while(!found)
-			  {
-				  int x2=0;
-				  for (int y2 = 0; y2 < binaryImage.rows(); y2++)
-				  {
-					  if(y<rows.size())
-					  {
-						  x2=(int) rows.get(y).get(0).x;
-					  }
-					  else
-					  {
-						  break;
-					  }
-					  double[] pixel3 = binaryImage.get(y2, x2);
-			            if (pixel3 != null ) 
-			            {
-			            	if(pixel3[0] != 0)
-			            	{
-			            		for(int i2=y2+1;i2<binaryImage.rows();i2++)
-			            		{
-			            			double[] pixel4 = binaryImage.get(i2, x2);
-			            			if (pixel4 != null ) 
-			    		            {
-			            				if(pixel4[0] == 0)
-			    		            	{
-			            					blackCountY++;
-			    		            	}
-			            				else
-			            				{
-			            					break;
-			            				}
-			    		            }
-			            		}
-			            		if(blackCountY>=esik)
-		            			{
-		            				y=y2;
-		            				y-=esik;
-		            				found=true;
-		            			}
-			            		
-			            	}
-			            }
-				  }
-			  }	
-		 }
-		 return rows;
-
-	}
 }
