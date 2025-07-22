@@ -315,41 +315,18 @@ public class ImageConverter {
     		Mat intersections = new Mat(); 
     		Core.bitwise_and(dilatedHorizontalLines, dilatedVerticalLines, intersections); 
     		
-    		Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/yedinciCikti_intersections.png", intersections);
     		
-    		Mat dilatedIntersections= new Mat();
-    		Mat kernelForDilateIntersections = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-					new Size(6, 6)); 
-			Imgproc.dilate(intersections, dilatedIntersections, kernelForDilateIntersections); 
-			//Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedIntersections.png", dilatedIntersections);
+    		
 			
     		
     		List<MatOfPoint> intersectionContours = new ArrayList<>(); 
-    		Imgproc.findContours(dilatedIntersections, intersectionContours, new Mat(), 
+    		Imgproc.findContours(intersections, intersectionContours, new Mat(), 
     				Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_NONE); 
     		
     		Set<Point> intersectionPointsSet = new LinkedHashSet<Point>();
     		
-    		
-    		
-//    		intersectionContours.stream()
-//     	    .forEach(c-> 
-//     	    		{
-//     	    			intersectionPointsSet
-//     	    			.add(new Point(Imgproc.boundingRect(c).x ,Imgproc.boundingRect(c).y)); 
-//     	    			intersectionPointsSet
-//     	    			.add(new Point
-//     	    					(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
-//     	    							Imgproc.boundingRect(c).y));
-//     	    			intersectionPointsSet
-//     	    			.add(new Point
-//     	    					(Imgproc.boundingRect(c).x,
-//     	    							Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
-//     	    			intersectionPointsSet
-//     	    			.add(new Point(Imgproc.boundingRect(c).x+Imgproc.boundingRect(c).width,
-//     	    					Imgproc.boundingRect(c).y+Imgproc.boundingRect(c).height));
-//     	    		});
-    		
+    	
     		intersectionContours.stream().forEach(c ->       											
     		{											
     		    Rect r = Imgproc.boundingRect(c);		
@@ -555,19 +532,6 @@ public class ImageConverter {
    }
 
 
-//    		if(ps.getDont_read_first_column()==1)
-//    		{
-//    			for(int k=0;k<output.size();k++)
-//    			{
-//    				if(output.get(k).size()>=1)
-//    				{
-//    					output.get(k).remove(0);
-//    				}
-//    				
-//    			}
-//    		}
-//    		if(ps.getDont_read_first_row()==1) output.remove(0);
-    		
     		
     		return output;
     
