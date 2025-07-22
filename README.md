@@ -33,7 +33,7 @@ imkan tanıyor.
 
 
 
-Programın hem windows hem de linux ortamında çalışmak üzere tasarlanmış olup linux ortamında kısmen test edilmiştir.
+Program hem windows hem de linux ortamında çalışmak üzere tasarlanmış olup linux ortamında kısmen test edilmiştir.
 Program amazon corretto jdk-21 ile geliştirilmiştir. Programın doğru bir şekilde çalışması için  jdk 21 yüklenmesi tavsiye edilir.
 Ayrıca programın doğru bir şekilde çalışabilmesi için tesseract programının
 (tercihen 5.3.0-2 sürümü) yüklü olması gerekir.
