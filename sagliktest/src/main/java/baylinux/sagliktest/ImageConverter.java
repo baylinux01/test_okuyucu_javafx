@@ -409,7 +409,7 @@ public class ImageConverter {
     			}
     			pointsByColumnsRowsSkewed.add(column);
     		}
-    		List<List<Point>> columnsAndRowsSkewedPoints=applyRowSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
+    		List<List<Point>> columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
     		List<Double> skewedRawXCoords=new ArrayList<Double>();
     		List<Double> skewedRawYCoords=new ArrayList<Double>();
     		
@@ -705,30 +705,51 @@ public class ImageConverter {
 	{
 	   
 	    double dx = endRef.x - startRef.x;
-	    double dy = endRef.y - startRef.y;
-
-	    // 2) Her satırı dönüştür
+	    double dy = -(endRef.y - startRef.y);
+	    double egim=dy/dx;
+	    
 	    return rows.stream()
 	            .map(row -> {
-	                // Satırın ilk noktası = başlangıç noktası kabul ediyoruz.
-	                // İsterseniz gerçekten satırın ilk elemanını kullanın.
-	                Point first = row.get(0);
+	                
+	                Point f = row.get(0);
 
 	                return row.stream()
 	                        .map(p -> {
-	                            // p'nin satır başına göre indeks oranı
-	                            int idx = row.indexOf(p);
-	                            int lastIdx = row.size() - 1;
-	                            double ratio = lastIdx == 0 ? 0 : (double) idx / lastIdx;
-
-	                            // Eğim etkisini orantılı uygula
-	                            double newX = first.x + dx * ratio;
-	                            double newY = first.y + dy * ratio;
-	                            return new Point(newX, newY);
+	                            
+	                            
+	                            return new Point(p.x,f.y-Math.abs(p.x-f.x)*egim);
 	                        })
 	                        .collect(Collectors.toList());
 	            })
 	            .collect(Collectors.toList());
+	}
+	
+	public static List<List<Point>> applyColSkew
+	(
+    List<List<Point>> cols,
+    Point startRef,   
+    Point endRef
+    )        
+	{
+
+	double dx = endRef.x - startRef.x;
+	double dy = -(endRef.y - startRef.y);
+	double egim=dy/dx;
+	
+	return cols.stream()
+	        .map(col -> {
+	            
+	            Point f = col.get(0);
+	
+	            return col.stream()
+	                    .map(p -> {
+	                        
+	                        
+	                        return new Point(f.x+Math.abs(p.y-f.y)*egim,p.y);
+	                    })
+	                    .collect(Collectors.toList());
+	        })
+	        .collect(Collectors.toList());
 	}
 	
 	
