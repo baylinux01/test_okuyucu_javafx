@@ -1144,8 +1144,10 @@ public class Dao {
 					+"answer_correctness_28 text,"
 					+"answer_correctness_29 text,"
 					+"answer_correctness_30 text,"
-					+"number_of_correct_answers int,"
-					+"total_point int"
+					+"number_of_correct_answers_over_30 int,"
+					+"total_point_over_30 int,"
+					+"number_of_correct_answers_over_25 int,"
+					+"total_point_over_25 int"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -1218,8 +1220,10 @@ public class Dao {
 					+"answer_correctness_28 text,"
 					+"answer_correctness_29 text,"
 					+"answer_correctness_30 text,"
-					+"number_of_correct_answers int,"
-					+"total_point int"
+					+"number_of_correct_answers_over_30 int,"
+					+"total_point_over_30 int,"
+					+"number_of_correct_answers_over_25 int,"
+					+"total_point_over_25 int"
 					+ ");";
 		
 		}
@@ -1293,8 +1297,10 @@ public class Dao {
 					+"answer_correctness_28 text,"
 					+"answer_correctness_29 text,"
 					+"answer_correctness_30 text,"
-					+"number_of_correct_answers int,"
-					+"total_point int"
+					+"number_of_correct_answers_over_30 int,"
+					+"total_point_over_30 int,"
+					+"number_of_correct_answers_over_25 int,"
+					+"total_point_over_25 int"
 					+ ");";
 		
 		}
@@ -1368,8 +1374,10 @@ public class Dao {
 					+"answer_correctness_28 text,"
 					+"answer_correctness_29 text,"
 					+"answer_correctness_30 text,"
-					+"number_of_correct_answers int,"
-					+"total_point int"
+					+"number_of_correct_answers_over_30 int,"
+					+"total_point_over_30 int,"
+					+"number_of_correct_answers_over_25 int,"
+					+"total_point_over_25 int"
 					+ ");";
 		
 			
@@ -1593,10 +1601,12 @@ public class Dao {
 				  pa.setAnswer_correctness_28(rs.getString("answer_correctness_28"));       
 				  pa.setAnswer_correctness_29(rs.getString("answer_correctness_29"));       
 				  pa.setAnswer_correctness_30(rs.getString("answer_correctness_30"));       
-				 pa.setNumber_of_correct_answers(rs.getInt("number_of_correct_answers")); 
-				 pa.setTotal_point(rs.getInt("total_point"));               
+				 pa.setNumber_of_correct_answers_over_30(rs.getInt("number_of_correct_answers_over_30")); 
+				 pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
+				 pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
+				 pa.setTotal_point_over_25(rs.getInt("total_point_over_25")); 
 				                                        
-				
+				 
 				
 				participantAnswersInDb.add(pa);
 				
@@ -1704,8 +1714,10 @@ public class Dao {
 				  pa.setAnswer_correctness_28(rs.getString("answer_correctness_28"));       
 				  pa.setAnswer_correctness_29(rs.getString("answer_correctness_29"));       
 				  pa.setAnswer_correctness_30(rs.getString("answer_correctness_30"));       
-				 pa.setNumber_of_correct_answers(rs.getInt("number_of_correct_answers")); 
-				 pa.setTotal_point(rs.getInt("total_point"));               
+				  pa.setNumber_of_correct_answers_over_30(rs.getInt("number_of_correct_answers_over_30")); 
+				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
+				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
+				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));               
 				                                        
 				
 				
@@ -1815,8 +1827,10 @@ public class Dao {
 				  pa.setAnswer_correctness_28(rs.getString("answer_correctness_28"));       
 				  pa.setAnswer_correctness_29(rs.getString("answer_correctness_29"));       
 				  pa.setAnswer_correctness_30(rs.getString("answer_correctness_30"));       
-				 pa.setNumber_of_correct_answers(rs.getInt("number_of_correct_answers")); 
-				 pa.setTotal_point(rs.getInt("total_point"));               
+				  pa.setNumber_of_correct_answers_over_30(rs.getInt("number_of_correct_answers_over_30")); 
+				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
+				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
+				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));              
 				                                        
 				
 				
@@ -1927,8 +1941,10 @@ public class Dao {
 				  pa.setAnswer_correctness_28(rs.getString("answer_correctness_28"));       
 				  pa.setAnswer_correctness_29(rs.getString("answer_correctness_29"));       
 				  pa.setAnswer_correctness_30(rs.getString("answer_correctness_30"));       
-				 pa.setNumber_of_correct_answers(rs.getInt("number_of_correct_answers")); 
-				 pa.setTotal_point(rs.getInt("total_point"));               
+				  pa.setNumber_of_correct_answers_over_30(rs.getInt("number_of_correct_answers_over_30")); 
+				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
+				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
+				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));               
 				                                        
 				
 				
@@ -2270,8 +2286,10 @@ public class Dao {
 				+ "answer_correctness_28,"
 				+ "answer_correctness_29,"
 				+ "answer_correctness_30,"
-				+ "number_of_correct_answers,"
-				+ "total_point"
+				+"number_of_correct_answers_over_30," 
+				+"total_point_over_30,"
+				+"number_of_correct_answers_over_25,"
+				+"total_point_over_25" 
 				+ ")"
 				+ "values ("
 				+ "?,"  //exam_id
@@ -2338,8 +2356,10 @@ public class Dao {
 				+ "?,"	//answer_correctness_28
 				+ "?,"	//answer_correctness_29
 				+ "?,"	//answer_correctness_30
-				+ "?,"	//number_of_correct_answers
-				+ "?"	//total_point
+				+ "?,"	//number_of_correct_answers_over_30
+				+ "?,"	//total_point_over_30
+				+ "?,"	//number_of_correct_answers_over_25
+				+ "?"	//total_point_over_25
 				+ ")";
 		int result=-1;
 		try {
@@ -2412,8 +2432,10 @@ public class Dao {
 			st1.setString(62, pa.getAnswer_correctness_28());
 			st1.setString(63, pa.getAnswer_correctness_29());
 			st1.setString(64, pa.getAnswer_correctness_30());
-			st1.setInt(65, 		pa.getNumber_of_correct_answers());
-			st1.setInt(66, 		pa.getTotal_point());
+			st1.setInt(65, 		pa.getNumber_of_correct_answers_over_30());
+			st1.setInt(66, 		pa.getTotal_point_over_30());
+			st1.setInt(67, 		pa.getNumber_of_correct_answers_over_25());
+			st1.setInt(68, 		pa.getTotal_point_over_25());
 			
 			result=st1.executeUpdate();
 			
@@ -2685,8 +2707,10 @@ public class Dao {
 				+ "answer_correctness_28=?,"
 				+ "answer_correctness_29=?,"
 				+ "answer_correctness_30=?,"
-				+ "number_of_correct_answers=?,"
-				+ "total_point=?"
+				+ "number_of_correct_answers_over_30=?,"
+				+ "total_point_over_30=?,"
+				+ "number_of_correct_answers_over_25=?,"
+				+ "total_point_over_25=?"
 				+ "where id=?";
 		int result=-1;
 		try {
@@ -2760,9 +2784,11 @@ public class Dao {
 			st1.setString(60, pa.getAnswer_correctness_28());
 			st1.setString(61, pa.getAnswer_correctness_29());
 			st1.setString(62, pa.getAnswer_correctness_30());
-			st1.setInt(63, pa.getNumber_of_correct_answers());
-			st1.setInt(64, pa.getTotal_point());
-			st1.setInt(65, pa.getId());
+			st1.setInt(63, pa.getNumber_of_correct_answers_over_30());
+			st1.setInt(64, pa.getTotal_point_over_30());
+			st1.setInt(65, pa.getNumber_of_correct_answers_over_25());
+			st1.setInt(66, pa.getTotal_point_over_25());
+			st1.setInt(67, pa.getId());
 			
 			result=st1.executeUpdate();
 		

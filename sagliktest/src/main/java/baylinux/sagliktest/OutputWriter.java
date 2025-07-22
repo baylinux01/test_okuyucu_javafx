@@ -15,7 +15,7 @@ public class OutputWriter
 {
 	protected static void writeToXlsx(String exportPath,
 			List<ParticipantAnswer> participantAnswers,
-			String test_type) throws IOException
+			String test_type, int soruModu) throws IOException
 	{
 		FileOutputStream fos=new FileOutputStream(exportPath);
 		XSSFWorkbook workbook = new XSSFWorkbook();
@@ -131,25 +131,29 @@ public class OutputWriter
         ++columnCount;
         cell.setCellValue("25");
         
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("26");
+        if(soruModu==30)
+        {
+        	cell=headerRow.createCell(columnCount);
+            ++columnCount;
+            cell.setCellValue("26");
+            
+            cell=headerRow.createCell(columnCount);
+            ++columnCount;
+            cell.setCellValue("27");
+            
+            cell=headerRow.createCell(columnCount);
+            ++columnCount;
+            cell.setCellValue("28");
+            
+            cell=headerRow.createCell(columnCount);
+            ++columnCount;
+            cell.setCellValue("29");
+            
+            cell=headerRow.createCell(columnCount);
+            ++columnCount;
+            cell.setCellValue("30");
+        }
         
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("27");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("28");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("29");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("30");
         
         cell=headerRow.createCell(columnCount);
         ++columnCount;
@@ -271,33 +275,48 @@ public class OutputWriter
             c.setCellValue(participantAnswers.get(i).getAnswer_correctness_25());
             ++columnCount;
             
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getAnswer_correctness_26());
-            ++columnCount;
             
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getAnswer_correctness_27());
-            ++columnCount;
-            
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getAnswer_correctness_28());
-            ++columnCount;
-            
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getAnswer_correctness_29());
-            ++columnCount;
-            
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getAnswer_correctness_30());
-            ++columnCount;
-            
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getNumber_of_correct_answers());
-            ++columnCount;
-            
-            c=row.createCell(columnCount);
-            c.setCellValue(participantAnswers.get(i).getTotal_point());
-            ++columnCount;
+            if(soruModu==30)
+            {
+            	c=row.createCell(columnCount);
+                c.setCellValue(participantAnswers.get(i).getAnswer_correctness_26());
+                ++columnCount;
+                
+                c=row.createCell(columnCount);
+                c.setCellValue(participantAnswers.get(i).getAnswer_correctness_27());
+                ++columnCount;
+                
+                c=row.createCell(columnCount);
+                c.setCellValue(participantAnswers.get(i).getAnswer_correctness_28());
+                ++columnCount;
+                
+                c=row.createCell(columnCount);
+                c.setCellValue(participantAnswers.get(i).getAnswer_correctness_29());
+                ++columnCount;
+                
+                c=row.createCell(columnCount);
+                c.setCellValue(participantAnswers.get(i).getAnswer_correctness_30());
+                ++columnCount;
+                
+            	 c=row.createCell(columnCount);
+                 c.setCellValue(participantAnswers.get(i).getNumber_of_correct_answers_over_30());
+                 ++columnCount;
+                 
+                 c=row.createCell(columnCount);
+                 c.setCellValue(participantAnswers.get(i).getTotal_point_over_30());
+                 ++columnCount;
+            }
+            else if(soruModu==25)
+            {
+            	 c=row.createCell(columnCount);
+                 c.setCellValue(participantAnswers.get(i).getNumber_of_correct_answers_over_25());
+                 ++columnCount;
+                 
+                 c=row.createCell(columnCount);
+                 c.setCellValue(participantAnswers.get(i).getTotal_point_over_25());
+                 ++columnCount;
+            }
+           
             
             
             
@@ -529,53 +548,97 @@ public class OutputWriter
         	if(s.equalsIgnoreCase("D")) ++totalDForColumn25;
         	++i;
         }
-        
+        int avgD=0;
+        int avgPoint=0;
         int totalDForColumn26=0;
-        i=0;
-        while(i<participantAnswers.size())
-        {
-        	String s=participantAnswers.get(i).getAnswer_correctness_26();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn26;
-        	++i;
-        }
-        
         int totalDForColumn27=0;
-        i=0;
-        while(i<participantAnswers.size())
-        {
-        	String s=participantAnswers.get(i).getAnswer_correctness_27();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn27;
-        	++i;
-        }
-        
         int totalDForColumn28=0;
-        i=0;
-        while(i<participantAnswers.size())
-        {
-        	String s=participantAnswers.get(i).getAnswer_correctness_28();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn28;
-        	++i;
-        }
-        
         int totalDForColumn29=0;
-        i=0;
-        while(i<participantAnswers.size())
-        {
-        	String s=participantAnswers.get(i).getAnswer_correctness_29();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn29;
-        	++i;
-        }
-        
         int totalDForColumn30=0;
-        i=0;
-        while(i<participantAnswers.size())
+        if(soruModu==30)
         {
-        	String s=participantAnswers.get(i).getAnswer_correctness_30();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn30;
-        	++i;
+        	
+            i=0;
+            while(i<participantAnswers.size())
+            {
+            	String s=participantAnswers.get(i).getAnswer_correctness_26();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn26;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswers.size())
+            {
+            	String s=participantAnswers.get(i).getAnswer_correctness_27();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn27;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswers.size())
+            {
+            	String s=participantAnswers.get(i).getAnswer_correctness_28();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn28;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswers.size())
+            {
+            	String s=participantAnswers.get(i).getAnswer_correctness_29();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn29;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswers.size())
+            {
+            	String s=participantAnswers.get(i).getAnswer_correctness_30();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn30;
+            	++i;
+            }
+            
+            	avgD=(
+            			totalDForColumn1
+            			+totalDForColumn2
+            			+totalDForColumn3
+            			+totalDForColumn4
+            			+totalDForColumn5
+            			+totalDForColumn6
+            			+totalDForColumn7
+            			+totalDForColumn8
+            			+totalDForColumn9
+            			+totalDForColumn10
+            			+totalDForColumn11
+            			+totalDForColumn12
+            			+totalDForColumn13
+            			+totalDForColumn14
+            			+totalDForColumn15
+            			+totalDForColumn16
+            			+totalDForColumn17
+            			+totalDForColumn18
+            			+totalDForColumn19
+            			+totalDForColumn20
+            			+totalDForColumn21
+            			+totalDForColumn22
+            			+totalDForColumn23
+            			+totalDForColumn24
+            			+totalDForColumn25
+            			+totalDForColumn26
+            			+totalDForColumn27
+            			+totalDForColumn28
+            			+totalDForColumn29
+            			+totalDForColumn30
+            			)/participantAnswers.size();
+            	avgPoint=avgD*100/30;
         }
-        
-        int avgD=(
+        else if(soruModu==25)
+        {
+        	avgD=(
         			totalDForColumn1
         			+totalDForColumn2
         			+totalDForColumn3
@@ -601,13 +664,10 @@ public class OutputWriter
         			+totalDForColumn23
         			+totalDForColumn24
         			+totalDForColumn25
-        			+totalDForColumn26
-        			+totalDForColumn27
-        			+totalDForColumn28
-        			+totalDForColumn29
-        			+totalDForColumn30
         			)/participantAnswers.size();
-        int avgPoint=avgD*100/30;
+        	avgPoint=avgD*100/25;
+        }
+        
         
         XSSFRow row=sheet.createRow(rowCount);
         ++rowCount;
@@ -713,25 +773,29 @@ public class OutputWriter
         c.setCellValue(totalDForColumn25);
         ++columnCount;
         
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn26);
-        ++columnCount;
+        if(soruModu==30)
+        {
+        	c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn26);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn27);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn28);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn29);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn30);
+            ++columnCount;
+        }
         
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn27);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn28);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn29);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn30);
-        ++columnCount;
         
         c=row.createCell(columnCount);
         c.setCellValue(avgD);
@@ -750,7 +814,8 @@ public class OutputWriter
         
 	}
 	protected static void writeToSameXlsxAllONAndSONTESTES(String exportPath,
-			List<ParticipantAnswer> participantAnswersON,List<ParticipantAnswer> participantAnswersSON) throws IOException
+			List<ParticipantAnswer> participantAnswersON,
+			List<ParticipantAnswer> participantAnswersSON, int soruModu) throws IOException
 	{
 		FileOutputStream fos=new FileOutputStream(exportPath);
 		XSSFWorkbook workbook = new XSSFWorkbook();
@@ -867,25 +932,29 @@ public class OutputWriter
         ++columnCount;
         cell.setCellValue("25");
         
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("26");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("27");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("28");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("29");
-        
-        cell=headerRow.createCell(columnCount);
-        ++columnCount;
-        cell.setCellValue("30");
+        if(soruModu==30)
+        {
+        	 cell=headerRow.createCell(columnCount);
+             ++columnCount;
+             cell.setCellValue("26");
+             
+             cell=headerRow.createCell(columnCount);
+             ++columnCount;
+             cell.setCellValue("27");
+             
+             cell=headerRow.createCell(columnCount);
+             ++columnCount;
+             cell.setCellValue("28");
+             
+             cell=headerRow.createCell(columnCount);
+             ++columnCount;
+             cell.setCellValue("29");
+             
+             cell=headerRow.createCell(columnCount);
+             ++columnCount;
+             cell.setCellValue("30");
+        }
+       
         
         cell=headerRow.createCell(columnCount);
         ++columnCount;
@@ -1005,35 +1074,51 @@ public class OutputWriter
                                              
             c=row.createCell(columnCount);   
             c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_25());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_26());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_27());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_28());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_29());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_30());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getNumber_of_correct_answers());
-            ++columnCount;                   
-                                             
-            c=row.createCell(columnCount);   
-            c.setCellValue(participantAnswersON.get(i).getTotal_point());
-            ++columnCount;
+            ++columnCount; 
+            
+            if(soruModu==30)
+            {
+            	c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_26());
+                ++columnCount;                   
+                                                 
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_27());
+                ++columnCount;                   
+                                                 
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_28());
+                ++columnCount;                   
+                                                 
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_29());
+                ++columnCount;                   
+                                                 
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getAnswer_correctness_30());
+                ++columnCount;                   
+           
+            	c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getNumber_of_correct_answers_over_30());
+                ++columnCount;                   
+                
+               
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getTotal_point_over_30());
+                ++columnCount;
+            }
+            else if(soruModu==25)
+            {
+            	c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getNumber_of_correct_answers_over_25());
+                ++columnCount;                   
+                
+               
+                c=row.createCell(columnCount);   
+                c.setCellValue(participantAnswersON.get(i).getTotal_point_over_25());
+                ++columnCount;
+            }
+            
             
             
             
@@ -1265,53 +1350,60 @@ public class OutputWriter
         	if(s.equalsIgnoreCase("D")) ++totalDForColumn25;
         	++i;
         }
-        
+        int avgD=0;
+        int avgPoint=0;
         int totalDForColumn26=0;
-        i=0;
-        while(i<participantAnswersON.size())
-        {
-        	String s=participantAnswersON.get(i).getAnswer_correctness_26();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn26;
-        	++i;
-        }
-        
         int totalDForColumn27=0;
-        i=0;
-        while(i<participantAnswersON.size())
-        {
-        	String s=participantAnswersON.get(i).getAnswer_correctness_27();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn27;
-        	++i;
-        }
-        
         int totalDForColumn28=0;
-        i=0;
-        while(i<participantAnswersON.size())
-        {
-        	String s=participantAnswersON.get(i).getAnswer_correctness_28();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn28;
-        	++i;
-        }
-        
         int totalDForColumn29=0;
-        i=0;
-        while(i<participantAnswersON.size())
-        {
-        	String s=participantAnswersON.get(i).getAnswer_correctness_29();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn29;
-        	++i;
-        }
-        
         int totalDForColumn30=0;
-        i=0;
-        while(i<participantAnswersON.size())
+        if(soruModu==30)
         {
-        	String s=participantAnswersON.get(i).getAnswer_correctness_30();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn30;
-        	++i;
-        }
-        
-        int avgD=(
+        	
+            i=0;
+            while(i<participantAnswersON.size())
+            {
+            	String s=participantAnswersON.get(i).getAnswer_correctness_26();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn26;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswersON.size())
+            {
+            	String s=participantAnswersON.get(i).getAnswer_correctness_27();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn27;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswersON.size())
+            {
+            	String s=participantAnswersON.get(i).getAnswer_correctness_28();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn28;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswersON.size())
+            {
+            	String s=participantAnswersON.get(i).getAnswer_correctness_29();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn29;
+            	++i;
+            }
+            
+            
+            i=0;
+            while(i<participantAnswersON.size())
+            {
+            	String s=participantAnswersON.get(i).getAnswer_correctness_30();
+            	if(s.equalsIgnoreCase("D")) ++totalDForColumn30;
+            	++i;
+            }
+            	avgD=(
         			totalDForColumn1
         			+totalDForColumn2
         			+totalDForColumn3
@@ -1343,7 +1435,42 @@ public class OutputWriter
         			+totalDForColumn29
         			+totalDForColumn30
         			)/participantAnswersON.size();
-        int avgPoint=avgD*100/30;
+            	avgPoint=avgD*100/30;
+        }
+        else if(soruModu==25)
+        {
+        	avgD=(
+        			totalDForColumn1
+        			+totalDForColumn2
+        			+totalDForColumn3
+        			+totalDForColumn4
+        			+totalDForColumn5
+        			+totalDForColumn6
+        			+totalDForColumn7
+        			+totalDForColumn8
+        			+totalDForColumn9
+        			+totalDForColumn10
+        			+totalDForColumn11
+        			+totalDForColumn12
+        			+totalDForColumn13
+        			+totalDForColumn14
+        			+totalDForColumn15
+        			+totalDForColumn16
+        			+totalDForColumn17
+        			+totalDForColumn18
+        			+totalDForColumn19
+        			+totalDForColumn20
+        			+totalDForColumn21
+        			+totalDForColumn22
+        			+totalDForColumn23
+        			+totalDForColumn24
+        			+totalDForColumn25
+        			)/participantAnswersON.size();
+            	avgPoint=avgD*100/25;
+        }
+        
+        
+       
         
         XSSFRow row=sheet.createRow(rowCount);
         ++rowCount;
@@ -1449,25 +1576,31 @@ public class OutputWriter
         c.setCellValue(totalDForColumn25);
         ++columnCount;
         
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn26);
-        ++columnCount;
+        if(soruModu==30)
+        {
+        	
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn26);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn27);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn28);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn29);
+            ++columnCount;
+            
+            c=row.createCell(columnCount);
+            c.setCellValue(totalDForColumn30);
+            ++columnCount;
+        }
         
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn27);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn28);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn29);
-        ++columnCount;
-        
-        c=row.createCell(columnCount);
-        c.setCellValue(totalDForColumn30);
-        ++columnCount;
         
         c=row.createCell(columnCount);
         c.setCellValue(avgD);
@@ -1590,25 +1723,29 @@ public class OutputWriter
         ++columnCountSON;
         cellSON.setCellValue("25");
         
-        cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCountSON;
-        cellSON.setCellValue("26");
+        if(soruModu==30)
+        {
+        	cellSON=headerRowSON.createCell(columnCountSON);
+            ++columnCountSON;
+            cellSON.setCellValue("26");
+            
+            cellSON=headerRowSON.createCell(columnCountSON);
+            ++columnCountSON;
+            cellSON.setCellValue("27");
+            
+            cellSON=headerRowSON.createCell(columnCountSON);
+            ++columnCountSON;
+            cellSON.setCellValue("28");
+            
+            cellSON=headerRowSON.createCell(columnCountSON);
+            ++columnCountSON;
+            cellSON.setCellValue("29");
+            
+            cellSON=headerRowSON.createCell(columnCountSON);
+            ++columnCountSON;
+            cellSON.setCellValue("30");
+        }
         
-        cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCountSON;
-        cellSON.setCellValue("27");
-        
-        cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCountSON;
-        cellSON.setCellValue("28");
-        
-        cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCountSON;
-        cellSON.setCellValue("29");
-        
-        cellSON=headerRowSON.createCell(columnCountSON);
-        ++columnCountSON;
-        cellSON.setCellValue("30");
         
         cellSON=headerRowSON.createCell(columnCountSON);
         ++columnCountSON;
@@ -1728,34 +1865,48 @@ public class OutputWriter
             cSON=rowSON.createCell(columnCountSON);
             cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_25());
             ++columnCountSON;
+            if(soruModu==30)
+            {
+            	cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_26());
+                ++columnCountSON;
+                                                 
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_27());
+                ++columnCountSON;
+                
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_28());
+                ++columnCountSON;
+                                                 
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_29());
+                ++columnCountSON;
+                
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_30());
+                ++columnCountSON;
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getNumber_of_correct_answers_over_30());
+                ++columnCountSON;
+                
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getTotal_point_over_30());
+                ++columnCountSON;
+            }
+            else if(soruModu==25)
+            {
+            	cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getNumber_of_correct_answers_over_25());
+                ++columnCountSON;
+                
+                cSON=rowSON.createCell(columnCountSON);
+                cSON.setCellValue(participantAnswersSON.get(i).getTotal_point_over_25());
+                ++columnCountSON;
+            }
             
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_26());
-            ++columnCountSON;
                                              
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_27());
-            ++columnCountSON;
             
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_28());
-            ++columnCountSON;
-                                             
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_29());
-            ++columnCountSON;
-            
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getAnswer_correctness_30());
-            ++columnCountSON;
-                                             
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getNumber_of_correct_answers());
-            ++columnCountSON;
-            
-            cSON=rowSON.createCell(columnCountSON);
-            cSON.setCellValue(participantAnswersSON.get(i).getTotal_point());
-            ++columnCountSON;
                                              
           
         	++i;
@@ -1986,85 +2137,127 @@ public class OutputWriter
         	if(s.equalsIgnoreCase("D")) ++totalDForColumn25SON;
         	++i;
         }
-        
+        int avgDSON=0;
+        int avgPointSON=0;
         int totalDForColumn26SON=0;
-        i=0;
-        while(i<participantAnswersSON.size())
-        {
-        	String s=participantAnswersSON.get(i).getAnswer_correctness_26();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn26SON;
-        	++i;
-        }
-        
         int totalDForColumn27SON=0;
-        i=0;
-        while(i<participantAnswersSON.size())
-        {
-        	String s=participantAnswersSON.get(i).getAnswer_correctness_27();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn27SON;
-        	++i;
-        }
-        
         int totalDForColumn28SON=0;
-        i=0;
-        while(i<participantAnswersSON.size())
-        {
-        	String s=participantAnswersSON.get(i).getAnswer_correctness_28();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn28SON;
-        	++i;
-        }
-        
         int totalDForColumn29SON=0;
-        i=0;
-        while(i<participantAnswersSON.size())
-        {
-        	String s=participantAnswersSON.get(i).getAnswer_correctness_29();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn29SON;
-        	++i;
-        }
-        
         int totalDForColumn30SON=0;
-        i=0;
-        while(i<participantAnswersSON.size())
+        if(soruModu==30)
         {
-        	String s=participantAnswersSON.get(i).getAnswer_correctness_30();
-        	if(s.equalsIgnoreCase("D")) ++totalDForColumn30SON;
-        	++i;
+        	 
+             i=0;
+             while(i<participantAnswersSON.size())
+             {
+             	String s=participantAnswersSON.get(i).getAnswer_correctness_26();
+             	if(s.equalsIgnoreCase("D")) ++totalDForColumn26SON;
+             	++i;
+             }
+             
+             
+             i=0;
+             while(i<participantAnswersSON.size())
+             {
+             	String s=participantAnswersSON.get(i).getAnswer_correctness_27();
+             	if(s.equalsIgnoreCase("D")) ++totalDForColumn27SON;
+             	++i;
+             }
+             
+             
+             i=0;
+             while(i<participantAnswersSON.size())
+             {
+             	String s=participantAnswersSON.get(i).getAnswer_correctness_28();
+             	if(s.equalsIgnoreCase("D")) ++totalDForColumn28SON;
+             	++i;
+             }
+             
+             
+             i=0;
+             while(i<participantAnswersSON.size())
+             {
+             	String s=participantAnswersSON.get(i).getAnswer_correctness_29();
+             	if(s.equalsIgnoreCase("D")) ++totalDForColumn29SON;
+             	++i;
+             }
+             
+             
+             i=0;
+             while(i<participantAnswersSON.size())
+             {
+             	String s=participantAnswersSON.get(i).getAnswer_correctness_30();
+             	if(s.equalsIgnoreCase("D")) ++totalDForColumn30SON;
+             	++i;
+             }
+             avgDSON=(
+         			totalDForColumn1SON
+         			+totalDForColumn2SON
+         			+totalDForColumn3SON
+         			+totalDForColumn4SON
+         			+totalDForColumn5SON
+         			+totalDForColumn6SON
+         			+totalDForColumn7SON
+         			+totalDForColumn8SON
+         			+totalDForColumn9SON
+         			+totalDForColumn10SON
+         			+totalDForColumn11SON
+         			+totalDForColumn12SON
+         			+totalDForColumn13SON
+         			+totalDForColumn14SON
+         			+totalDForColumn15SON
+         			+totalDForColumn16SON
+         			+totalDForColumn17SON
+         			+totalDForColumn18SON
+         			+totalDForColumn19SON
+         			+totalDForColumn20SON
+         			+totalDForColumn21SON
+         			+totalDForColumn22SON
+         			+totalDForColumn23SON
+         			+totalDForColumn24SON
+         			+totalDForColumn25SON
+         			+totalDForColumn26SON
+         			+totalDForColumn27SON
+         			+totalDForColumn28SON
+         			+totalDForColumn29SON
+         			+totalDForColumn30SON
+         			)/participantAnswersSON.size();
+         avgPointSON=avgDSON*100/30;
         }
+        else if(soruModu==25)
+        {
+        	avgDSON=(
+         			totalDForColumn1SON
+         			+totalDForColumn2SON
+         			+totalDForColumn3SON
+         			+totalDForColumn4SON
+         			+totalDForColumn5SON
+         			+totalDForColumn6SON
+         			+totalDForColumn7SON
+         			+totalDForColumn8SON
+         			+totalDForColumn9SON
+         			+totalDForColumn10SON
+         			+totalDForColumn11SON
+         			+totalDForColumn12SON
+         			+totalDForColumn13SON
+         			+totalDForColumn14SON
+         			+totalDForColumn15SON
+         			+totalDForColumn16SON
+         			+totalDForColumn17SON
+         			+totalDForColumn18SON
+         			+totalDForColumn19SON
+         			+totalDForColumn20SON
+         			+totalDForColumn21SON
+         			+totalDForColumn22SON
+         			+totalDForColumn23SON
+         			+totalDForColumn24SON
+         			+totalDForColumn25SON
+         			)/participantAnswersSON.size();
+         avgPointSON=avgDSON*100/25;
+        }
+       
         
-        int avgDSON=(
-        			totalDForColumn1SON
-        			+totalDForColumn2SON
-        			+totalDForColumn3SON
-        			+totalDForColumn4SON
-        			+totalDForColumn5SON
-        			+totalDForColumn6SON
-        			+totalDForColumn7SON
-        			+totalDForColumn8SON
-        			+totalDForColumn9SON
-        			+totalDForColumn10SON
-        			+totalDForColumn11SON
-        			+totalDForColumn12SON
-        			+totalDForColumn13SON
-        			+totalDForColumn14SON
-        			+totalDForColumn15SON
-        			+totalDForColumn16SON
-        			+totalDForColumn17SON
-        			+totalDForColumn18SON
-        			+totalDForColumn19SON
-        			+totalDForColumn20SON
-        			+totalDForColumn21SON
-        			+totalDForColumn22SON
-        			+totalDForColumn23SON
-        			+totalDForColumn24SON
-        			+totalDForColumn25SON
-        			+totalDForColumn26SON
-        			+totalDForColumn27SON
-        			+totalDForColumn28SON
-        			+totalDForColumn29SON
-        			+totalDForColumn30SON
-        			)/participantAnswersSON.size();
-        int avgPointSON=avgDSON*100/30;
+        
         
         XSSFRow rowSON2=sheetSON.createRow(rowCountSON);
         ++rowCountSON;
@@ -2171,25 +2364,29 @@ public class OutputWriter
         cSON2.setCellValue(totalDForColumn25SON);
         ++columnCountSON;
         
-        cSON2=rowSON2.createCell(columnCountSON);
-        cSON2.setCellValue(totalDForColumn26SON);
-        ++columnCountSON;
+        if(soruModu==30)
+        {
+        	cSON2=rowSON2.createCell(columnCountSON);
+            cSON2.setCellValue(totalDForColumn26SON);
+            ++columnCountSON;
+            
+            cSON2=rowSON2.createCell(columnCountSON);
+            cSON2.setCellValue(totalDForColumn27SON);
+            ++columnCountSON;
+            
+            cSON2=rowSON2.createCell(columnCountSON);
+            cSON2.setCellValue(totalDForColumn28SON);
+            ++columnCountSON;
+            
+            cSON2=rowSON2.createCell(columnCountSON);
+            cSON2.setCellValue(totalDForColumn29SON);
+            ++columnCountSON;
+            
+            cSON2=rowSON2.createCell(columnCountSON);
+            cSON2.setCellValue(totalDForColumn30SON);
+            ++columnCountSON;
+        }
         
-        cSON2=rowSON2.createCell(columnCountSON);
-        cSON2.setCellValue(totalDForColumn27SON);
-        ++columnCountSON;
-        
-        cSON2=rowSON2.createCell(columnCountSON);
-        cSON2.setCellValue(totalDForColumn28SON);
-        ++columnCountSON;
-        
-        cSON2=rowSON2.createCell(columnCountSON);
-        cSON2.setCellValue(totalDForColumn29SON);
-        ++columnCountSON;
-        
-        cSON2=rowSON2.createCell(columnCountSON);
-        cSON2.setCellValue(totalDForColumn30SON);
-        ++columnCountSON;
         
         
         

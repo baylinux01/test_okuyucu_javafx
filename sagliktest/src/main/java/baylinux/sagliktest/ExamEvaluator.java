@@ -85,7 +85,8 @@ public class ExamEvaluator
 			++i;
 		}
 		i=0;
-		int numberOfCorrectAnswers=0;
+		int numberOfCorrectAnswersOver30=0;
+		int numberOfCorrectAnswersOver25=0;
 		while(i<tableData.size())
 		{
 			if(pa.getTest_type().equalsIgnoreCase("ON TEST"))
@@ -105,7 +106,11 @@ public class ExamEvaluator
 				if(answers.get(i).equalsIgnoreCase(result)&&!answers.get(i).equalsIgnoreCase(""))
 				{
 					method3.invoke(pa,"D");
-					++numberOfCorrectAnswers;
+					++numberOfCorrectAnswersOver30;
+					if(i<=25)
+					{
+						++numberOfCorrectAnswersOver25;
+					}
 				}
 				else
 				{
@@ -129,7 +134,11 @@ public class ExamEvaluator
 				if(answers.get(i).equalsIgnoreCase(result)&&!answers.get(i).equalsIgnoreCase(""))
 				{
 					method3.invoke(pa,"D");
-					++numberOfCorrectAnswers;
+					++numberOfCorrectAnswersOver30;
+					if(i<=25)
+					{
+						++numberOfCorrectAnswersOver25;
+					}
 				}
 				else
 				{
@@ -148,8 +157,10 @@ public class ExamEvaluator
 			}
 			++i;
 		}
-		pa.setNumber_of_correct_answers(numberOfCorrectAnswers);
-		pa.setTotal_point(pa.getNumber_of_correct_answers()*100/tableData.size());
+		pa.setNumber_of_correct_answers_over_30(numberOfCorrectAnswersOver30);
+		pa.setTotal_point_over_30(pa.getNumber_of_correct_answers_over_30()*100/30);
+		pa.setNumber_of_correct_answers_over_25(numberOfCorrectAnswersOver25);
+		pa.setTotal_point_over_25(pa.getNumber_of_correct_answers_over_25()*100/25);
 		return pa;
 		
 		
@@ -165,7 +176,8 @@ public class ExamEvaluator
 		
 		
 		int i=0;
-		int numberOfCorrectAnswers=0;
+		int numberOfCorrectAnswersOver30=0;
+		int numberOfCorrectAnswersOver25=0;
 		while(i<30)
 		{
 			if(pa.getTest_type().equalsIgnoreCase("ON TEST"))
@@ -187,7 +199,11 @@ public class ExamEvaluator
 				if(participantAnswer.equalsIgnoreCase(result))
 				{
 					method3.invoke(pa,"D");
-					++numberOfCorrectAnswers;
+					++numberOfCorrectAnswersOver30;
+					if(i<=25)
+					{
+						++numberOfCorrectAnswersOver25;
+					}
 				}
 				else
 				{
@@ -211,7 +227,11 @@ public class ExamEvaluator
 				if(participantAnswer.equalsIgnoreCase(result))
 				{
 					method3.invoke(pa,"D");
-					++numberOfCorrectAnswers;
+					++numberOfCorrectAnswersOver30;
+					if(i<=25)
+					{
+						++numberOfCorrectAnswersOver25;
+					}
 				}
 				else
 				{
@@ -230,8 +250,10 @@ public class ExamEvaluator
 			}
 			++i;
 		}
-		pa.setNumber_of_correct_answers(numberOfCorrectAnswers);
-		pa.setTotal_point(pa.getNumber_of_correct_answers()*100/30);
+		pa.setNumber_of_correct_answers_over_30(numberOfCorrectAnswersOver30);
+		pa.setTotal_point_over_30(pa.getNumber_of_correct_answers_over_30()*100/30);
+		pa.setNumber_of_correct_answers_over_25(numberOfCorrectAnswersOver25);
+		pa.setTotal_point_over_25(pa.getNumber_of_correct_answers_over_25()*100/25);
 		return pa;
 		
 		

@@ -73,8 +73,10 @@ public class ParticipantAnswer
 	private String answer_correctness_28;
 	private String answer_correctness_29;
 	private String answer_correctness_30;
-	private int    number_of_correct_answers;
-	private int total_point;
+	private int    number_of_correct_answers_over_30;
+	private int total_point_over_30;
+	private int    number_of_correct_answers_over_25;
+	private int total_point_over_25;
 	
 	
 	
@@ -468,18 +470,31 @@ public class ParticipantAnswer
 	public void setAnswer_correctness_30(String answer_correctness_30) {
 		this.answer_correctness_30 = answer_correctness_30;
 	}
-	public int getNumber_of_correct_answers() {
-		return number_of_correct_answers;
+	public int getNumber_of_correct_answers_over_30() {
+		return number_of_correct_answers_over_30;
 	}
-	public void setNumber_of_correct_answers(int number_of_correct_answers) {
-		this.number_of_correct_answers = number_of_correct_answers;
+	public void setNumber_of_correct_answers_over_30(int number_of_correct_answers_over_30) {
+		this.number_of_correct_answers_over_30 = number_of_correct_answers_over_30;
 	}
-	public int getTotal_point() {
-		return total_point;
+	public int getTotal_point_over_30() {
+		return total_point_over_30;
 	}
-	public void setTotal_point(int total_point) {
-		this.total_point = total_point;
+	public void setTotal_point_over_30(int total_point_over_30) {
+		this.total_point_over_30 = total_point_over_30;
 	}
+	public int getNumber_of_correct_answers_over_25() {
+		return number_of_correct_answers_over_25;
+	}
+	public void setNumber_of_correct_answers_over_25(int number_of_correct_answers_over_25) {
+		this.number_of_correct_answers_over_25 = number_of_correct_answers_over_25;
+	}
+	public int getTotal_point_over_25() {
+		return total_point_over_25;
+	}
+	public void setTotal_point_over_25(int total_point_over_25) {
+		this.total_point_over_25 = total_point_over_25;
+	}
+	
 	
 	
 	

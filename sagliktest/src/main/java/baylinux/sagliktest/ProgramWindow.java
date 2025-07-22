@@ -16,6 +16,8 @@ import java.util.TreeSet;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 
 import javafx.event.EventHandler;
@@ -29,6 +31,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -36,6 +39,8 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -73,6 +78,7 @@ public class ProgramWindow extends Application {
 	protected static List<ParticipantAnswer> listOfONTESTS,listOfSONTESTS, listOfTESTS, listOfParticipantAnswers;
 	protected static DefaultSettings ds;
 	protected static PreferredSettings ps;
+	protected static int soruModu=30;
 	
 	
 	
@@ -169,7 +175,7 @@ public class ProgramWindow extends Application {
 			int base_x=5;
 			int base_y=5;
 			int x_dif=150;
-			int y_dif=30;
+			int y_dif=29;
 			
 			int standard_element_height=20;
 			int standard_element_width=140;
@@ -1055,6 +1061,8 @@ public class ProgramWindow extends Application {
 			Pane pane=new Pane();
 			pane.setPrefHeight(600);
 			pane.setPrefWidth(600);
+			pane.setLayoutX(0);
+			pane.setLayoutY(0);
 			root.getChildren().add(pane);
 			
 			lb1=new Label("Görüntülenecek Sınav");
@@ -2082,7 +2090,7 @@ public class ProgramWindow extends Application {
 			            		listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
 			            		if(listOfONTESTS.size()>0)
 				            	{
-									OutputWriter.writeToXlsx(pathToSave, listOfONTESTS, "ON TEST");
+									OutputWriter.writeToXlsx(pathToSave, listOfONTESTS, "ON TEST",soruModu);
 				            	}
 				            	else
 				            	{
@@ -2174,7 +2182,7 @@ public class ProgramWindow extends Application {
 				            		listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
 				            		if(listOfSONTESTS.size()>0)
 					            	{
-										OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST");
+										OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST",soruModu);
 					            	}
 					            	else
 					            	{
@@ -2272,16 +2280,16 @@ public class ProgramWindow extends Application {
 										if(listOfSONTESTS.size()>0&&listOfONTESTS.size()>0)
 						            	{
 											OutputWriter.writeToSameXlsxAllONAndSONTESTES(pathToSave, 
-													listOfONTESTS, listOfSONTESTS);
+													listOfONTESTS, listOfSONTESTS,soruModu);
 											
 						            	}
 										else if(listOfONTESTS.size()>0)
 										{
-											OutputWriter.writeToXlsx(pathToSave, listOfONTESTS,"ON TEST");
+											OutputWriter.writeToXlsx(pathToSave, listOfONTESTS,"ON TEST",soruModu);
 										}
 										else if(listOfSONTESTS.size()>0)
 										{
-											OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST");
+											OutputWriter.writeToXlsx(pathToSave, listOfSONTESTS,"SON TEST",soruModu);
 										}
 						            	else
 						            	{
@@ -2370,7 +2378,43 @@ public class ProgramWindow extends Application {
 			pane.getChildren().add(settingsButton);
 			settingsButton.setOnAction(openSettingsEventHandler);
 			
+			ChangeListener<Toggle> toggleSelectedRadioButtonEventHandler=new ChangeListener<Toggle>()
+			{
+
+				@Override
+				public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) 
+				{
+					soruModu=(int) newValue.getUserData();
+					//System.out.println("soru modu is: "+soruModu);
+					
+				}
+
+				
+				
+			};
+			ToggleGroup tglGroup=new ToggleGroup();
+			tglGroup.selectedToggleProperty().addListener(toggleSelectedRadioButtonEventHandler);
 			
+			RadioButton rdbtn30=new RadioButton("30 soru modlu çıktı");
+			rdbtn30.setUserData(30);
+			rdbtn30.setStyle("-fx-font-size: 12");
+			rdbtn30.setSelected(true);
+			rdbtn30.setPrefHeight(standard_element_height*0.5);
+			rdbtn30.setPrefWidth(standard_element_width);
+			rdbtn30.setLayoutX(base_x);
+			rdbtn30.setLayoutY(base_y+y_dif*21);
+			rdbtn30.setToggleGroup(tglGroup);
+			pane.getChildren().add(rdbtn30);
+			
+			RadioButton rdbtn25=new RadioButton("25 soru modlu çıktı");
+			rdbtn25.setUserData(25);
+			rdbtn25.setStyle("-fx-font-size: 12");
+			rdbtn25.setPrefHeight(standard_element_height*0.5);
+			rdbtn25.setPrefWidth(standard_element_width);
+			rdbtn25.setLayoutX(base_x);
+			rdbtn25.setLayoutY(base_y+y_dif*22);
+			rdbtn25.setToggleGroup(tglGroup);
+			pane.getChildren().add(rdbtn25);
 			
 			
 			
