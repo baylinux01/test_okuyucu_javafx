@@ -28,6 +28,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -1093,6 +1094,31 @@ public class UpdatingParticipantAnswerWindow extends Application {
 							alert.setHeaderText("işlem başarıyla tamamlandı");
 							alert.setContentText("Sınav başarıyla güncellendi");
 							alert.showAndWait().orElse(null);
+							
+							Group root=new Group();
+							Scene scene=new Scene(root);
+							Stage stage=new Stage();
+							stage.setScene(scene);
+							stage.getIcons().add(
+									new Image(AddingExamWindow.class
+									.getResourceAsStream(Main.logo)));
+							stage.setTitle("Ana Sayfa");
+							ProgramWindow window=new ProgramWindow();
+							
+							try 
+							{
+								window.selectedExam=dao.getExamById(paToBeUpdated.getExam_id());
+								window.start(stage);
+								primaryStage.hide();
+							} 
+							catch (InterruptedException e1) 
+							{
+								e1.printStackTrace();
+							} 
+							catch (SQLException e2) 
+							{
+								e2.printStackTrace();
+							}
 						}
 					} 
 					catch (Exception e) 
@@ -1102,6 +1128,8 @@ public class UpdatingParticipantAnswerWindow extends Application {
 						alert.setHeaderText("Güncelleme işlemi başarısız");
 						alert.setContentText("Girdiğiniz sınav adının benzersiz olduğundan ve en az 2 harf uzunluğunda olduğundan emin olun");
 						alert.showAndWait().orElse(null);
+						
+						
 						e.printStackTrace();
 					}
 					
@@ -1117,6 +1145,17 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			updateExamButton.setLayoutY(base_y+y_dif*21);
 			pane.getChildren().add(updateExamButton);
 			updateExamButton.setOnAction(updatingParticipantAnswerEventHandler);
+			
+			
+			scene.setOnKeyPressed(event -> {
+	            if (event.getCode() == KeyCode.ENTER) {
+	                updateExamButton.fire();        
+	                event.consume();     
+	            }
+	        });
+			
+			
+			
 			
 			EventHandler<ActionEvent> goBackToProgramWindowEventHandler=new EventHandler<ActionEvent>()
 			{
@@ -1140,13 +1179,13 @@ public class UpdatingParticipantAnswerWindow extends Application {
 						window.start(stage);
 						primaryStage.hide();
 					} 
-					catch (InterruptedException e) 
+					catch (InterruptedException e1) 
 					{
-						e.printStackTrace();
+						e1.printStackTrace();
 					} 
-					catch (SQLException e) 
+					catch (SQLException e2) 
 					{
-						e.printStackTrace();
+						e2.printStackTrace();
 					}
 					
 					
