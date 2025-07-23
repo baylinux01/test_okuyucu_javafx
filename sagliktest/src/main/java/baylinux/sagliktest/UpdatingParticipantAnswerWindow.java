@@ -9,6 +9,7 @@ import java.util.TreeSet;
 import java.io.ByteArrayInputStream;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -107,6 +108,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			Platform.runLater(() -> tf1b.requestFocus());
 			
 			EventHandler closeRequestEventHandler=new EventHandler()
 			{
@@ -246,6 +248,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			tf1a.setPrefWidth(standard_element_width);
 			tf1a.setLayoutX(base_x+x_dif*1);
 			tf1a.setLayoutY(base_y+y_dif*1);
+			tf1a.setEditable(false);
 			pane.getChildren().add(tf1a);
 			
 			lb0b=new Label("İsim Soyisim:");
@@ -276,7 +279,7 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			cb_test_type=new ComboBox<String>();
 			cb_test_type.setPrefHeight(standard_element_height);
 			cb_test_type.setPrefWidth(standard_element_width);
-			cb_test_type.setLayoutX(base_x+x_dif*2);
+			cb_test_type.setLayoutX(base_x+x_dif*1);
 			cb_test_type.setLayoutY(base_y+y_dif*5);
 			pane.getChildren().add(cb_test_type);
 			cb_test_type.getItems().clear();

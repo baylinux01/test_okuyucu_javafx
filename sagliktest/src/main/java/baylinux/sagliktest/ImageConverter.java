@@ -382,74 +382,74 @@ public class ImageConverter {
     		List<Double> yCoords = removeCloseCoordinates(rawYCoords, 
     				ps.getRow_number(),textOnlyImage.rows());
     		
-    		int t=0;
-    		int l=0;
-    		if(ps.getDont_read_first_row()==1) t=1;
-    		if(ps.getDont_read_first_column()==1) l=1;
-    		double x1=(xCoords.get(xCoords.size()-1)-xCoords.get(l))/ps.getColumn_number()*2;
-    		double y1=(yCoords.get(yCoords.size()-1)-yCoords.get(t))/ps.getRow_number()*2;
-    		double x2=(xCoords.get(xCoords.size()-1)-xCoords.get(l))-x1;
-    		double y2=(yCoords.get(yCoords.size()-1)-yCoords.get(t))-y1;
-    		
-    		Point optimumTopLeft = intersectionPointsSet.stream()
-    		        .filter(p -> p.x < x1 && p.y < y1)          
-    		        .sorted(Comparator.comparingDouble(p -> p.x + p.y))
-    		        .findFirst()
-    		        .orElse(null);
-    		Point optimumTopRight = intersectionPointsSet.stream()
-    		        .filter(p -> p.x > x2 && p.y < y1)              
-    		        .sorted(Comparator.comparingDouble(p -> -p.x + p.y))
-    		        .findFirst()
-    		        .orElse(null);
-    		Point optimumBottomLeft = intersectionPointsSet.stream()
-    		        .filter(p -> p.x < x1 && p.y > y2)              
-    		        .sorted(Comparator.comparingDouble(p -> p.x - p.y))
-    		        .findFirst()
-    		        .orElse(null);   
-    		Point optimumBottomRight = intersectionPointsSet.stream()
-    		        .filter(p -> p.x > x2 && p.y > y2)        
-    		        .sorted(Comparator.comparingDouble(p -> -p.x - p.y))
-    		        .findFirst()
-    		        .orElse(null);
-    		
-    		
-    		List<List<Point>> pointsByRows=new ArrayList<List<Point>>();
-    		int u=0;
-    		int o=0;
-    		if(ps.getDont_read_first_row()==1) u=1;
-    		if(ps.getDont_read_first_column()==1) o=1;
-    		for (int r = u; r < yCoords.size() - 1; r++) 
-    		{ 
-    		    List<Point> row= new ArrayList<Point>();
-    		    for (int c = o; c < xCoords.size() - 1; c++) 
-    		    { 
-    		    	row.add(new Point(c,r));
-    		    }
-    		    pointsByRows.add(row);
-    		}
-    		
-    		List<List<Point>> rowsSkewedPoints=applyRowSkew(pointsByRows, optimumTopLeft, optimumTopRight);
-    		List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
-    		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
-    		{   List<Point> column=new ArrayList<Point>();
-    			for(int j=0;j<rowsSkewedPoints.size();j++)
-    			{
-    				column.add(rowsSkewedPoints.get(j).get(i));
-    			}
-    			pointsByColumnsRowsSkewed.add(column);
-    		}
-    		List<List<Point>> columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
-    		List<Double> skewedRawXCoords=new ArrayList<Double>();
-    		List<Double> skewedRawYCoords=new ArrayList<Double>();
-    		
-    		columnsAndRowsSkewedPoints.stream()
-    		.forEach(satir-> satir.stream()
-    				.forEach(p->{if(p.y>=0)skewedRawYCoords.add(p.y);if(p.x>=0)skewedRawXCoords.add(p.x);}));
-    		
-    		List<Double> skewedXCoords = removeCloseCoordinates(skewedRawXCoords, 
-    				ps.getColumn_number(),textOnlyImage.cols());
-    		List<Double> skewedYCoords = removeCloseCoordinates(skewedRawYCoords, 
-    				ps.getRow_number(),textOnlyImage.rows());
+//    		int t=0;
+//    		int l=0;
+//    		if(ps.getDont_read_first_row()==1) t=1;
+//    		if(ps.getDont_read_first_column()==1) l=1;
+//    		double x1=(xCoords.get(xCoords.size()-1)-xCoords.get(l))/ps.getColumn_number()*2;
+//    		double y1=(yCoords.get(yCoords.size()-1)-yCoords.get(t))/ps.getRow_number()*2;
+//    		double x2=(xCoords.get(xCoords.size()-1)-xCoords.get(l))-x1;
+//    		double y2=(yCoords.get(yCoords.size()-1)-yCoords.get(t))-y1;
+//    		
+//    		Point optimumTopLeft = intersectionPointsSet.stream()
+//    		        .filter(p -> p.x < x1 && p.y < y1)          
+//    		        .sorted(Comparator.comparingDouble(p -> p.x + p.y))
+//    		        .findFirst()
+//    		        .orElse(null);
+//    		Point optimumTopRight = intersectionPointsSet.stream()
+//    		        .filter(p -> p.x > x2 && p.y < y1)              
+//    		        .sorted(Comparator.comparingDouble(p -> -p.x + p.y))
+//    		        .findFirst()
+//    		        .orElse(null);
+//    		Point optimumBottomLeft = intersectionPointsSet.stream()
+//    		        .filter(p -> p.x < x1 && p.y > y2)              
+//    		        .sorted(Comparator.comparingDouble(p -> p.x - p.y))
+//    		        .findFirst()
+//    		        .orElse(null);   
+//    		Point optimumBottomRight = intersectionPointsSet.stream()
+//    		        .filter(p -> p.x > x2 && p.y > y2)        
+//    		        .sorted(Comparator.comparingDouble(p -> -p.x - p.y))
+//    		        .findFirst()
+//    		        .orElse(null);
+//    		
+//    		
+//    		List<List<Point>> pointsByRows=new ArrayList<List<Point>>();
+//    		int u=0;
+//    		int o=0;
+//    		if(ps.getDont_read_first_row()==1) u=1;
+//    		if(ps.getDont_read_first_column()==1) o=1;
+//    		for (int r = u; r < yCoords.size() - 1; r++) 
+//    		{ 
+//    		    List<Point> row= new ArrayList<Point>();
+//    		    for (int c = o; c < xCoords.size() - 1; c++) 
+//    		    { 
+//    		    	row.add(new Point(c,r));
+//    		    }
+//    		    pointsByRows.add(row);
+//    		}
+//    		
+//    		List<List<Point>> rowsSkewedPoints=applyRowSkew(pointsByRows, optimumTopLeft, optimumTopRight);
+//    		List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
+//    		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
+//    		{   List<Point> column=new ArrayList<Point>();
+//    			for(int j=0;j<rowsSkewedPoints.size();j++)
+//    			{
+//    				column.add(rowsSkewedPoints.get(j).get(i));
+//    			}
+//    			pointsByColumnsRowsSkewed.add(column);
+//    		}
+//    		List<List<Point>> columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
+//    		List<Double> skewedRawXCoords=new ArrayList<Double>();
+//    		List<Double> skewedRawYCoords=new ArrayList<Double>();
+//    		
+//    		columnsAndRowsSkewedPoints.stream()
+//    		.forEach(satir-> satir.stream()
+//    				.forEach(p->{if(p.y>=0)skewedRawYCoords.add(p.y);if(p.x>=0)skewedRawXCoords.add(p.x);}));
+//    		
+//    		List<Double> skewedXCoords = removeCloseCoordinates(skewedRawXCoords, 
+//    				ps.getColumn_number(),textOnlyImage.cols());
+//    		List<Double> skewedYCoords = removeCloseCoordinates(skewedRawYCoords, 
+//    				ps.getRow_number(),textOnlyImage.rows());
     		
     		int a=0;
     		int b=0;
@@ -457,7 +457,7 @@ public class ImageConverter {
     		if(ps.getDont_read_first_column()==1) b=1;
     		int sayi=1;
     		
-    		for (int r = a; r < skewedYCoords.size() - 1; r++) 
+    		for (int r = a; r < yCoords.size() - 1; r++) 
     		{ 
     		    List<String> rowData = new ArrayList<>(); 
     		    double whitePixelRatioForA=0;
@@ -466,7 +466,7 @@ public class ImageConverter {
     		    double whitePixelRatioForD=0;
     		    double whitePixelRatioForE=0;
     		    
-    		    for (int c = b; c < skewedXCoords.size() - 1; c++) 
+    		    for (int c = b; c < xCoords.size() - 1; c++) 
     		    { 
     		        
     		        int cellX = xCoords.get(c).intValue();
