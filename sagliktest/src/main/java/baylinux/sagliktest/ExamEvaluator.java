@@ -19,13 +19,14 @@ public class ExamEvaluator
 {
 	
 	public static ParticipantAnswer createParticipantAnswerWithInformation
-	(PreferredSettings ps,String imageFullPath,Exam exam,int sayi) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
+	(PreferredSettings ps,File file,Exam exam,int sayi) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, SecurityException
 	{
+		String imageFullPath=file.getAbsolutePath();
 		ParticipantAnswer pa=new ParticipantAnswer();
 		String title=ImageConverter
 				.convertTitlesOfExamToDigitalFormatFromImageToObtainTestType(ps, imageFullPath);
 		String test_type=InfoExtractor.extractTestType(title);
-	
+		
 		//String name_surname=InfoExtractor.extractNameAndSurnameFromTitle(title,ps.getNearWords());
 		String name_surname="";
 		
@@ -53,10 +54,12 @@ public class ExamEvaluator
 				e.printStackTrace();
 			}
 	        String newImageFullPath = targetPath.toString();
+	        byte[] bytes=ImageConverter.getUserImageBytes(ps, newImageFullPath);
 		List<List<String>> tableData=ImageConverter
 					.convertMultipleChoiceExamAnswersToDigitalFormatFromImage(ps, newImageFullPath);
 		
 		pa.setFile_name(newFileName);
+		pa.setTest_image(bytes);
 		pa.setName_surname(name_surname);
 		pa.setTest_type(test_type);
 		pa.setExam_id(exam.getId());

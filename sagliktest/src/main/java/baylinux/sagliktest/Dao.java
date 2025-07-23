@@ -1147,7 +1147,8 @@ public class Dao {
 					+"number_of_correct_answers_over_30 int,"
 					+"total_point_over_30 int,"
 					+"number_of_correct_answers_over_25 int,"
-					+"total_point_over_25 int"
+					+"total_point_over_25 int,"
+					+"test_image longblob"
 					+ ");";
 		}
 		else if(className.equals(MariaDBClassName))
@@ -1223,8 +1224,10 @@ public class Dao {
 					+"number_of_correct_answers_over_30 int,"
 					+"total_point_over_30 int,"
 					+"number_of_correct_answers_over_25 int,"
-					+"total_point_over_25 int"
+					+"total_point_over_25 int,"
+					+"test_image longblob"
 					+ ");";
+		
 		
 		}
 		else if(className.equals(SqliteDBClassName))
@@ -1300,7 +1303,8 @@ public class Dao {
 					+"number_of_correct_answers_over_30 int,"
 					+"total_point_over_30 int,"
 					+"number_of_correct_answers_over_25 int,"
-					+"total_point_over_25 int"
+					+"total_point_over_25 int,"
+					+"test_image blob"
 					+ ");";
 		
 		}
@@ -1377,7 +1381,8 @@ public class Dao {
 					+"number_of_correct_answers_over_30 int,"
 					+"total_point_over_30 int,"
 					+"number_of_correct_answers_over_25 int,"
-					+"total_point_over_25 int"
+					+"total_point_over_25 int,"
+					+"test_image bytea"
 					+ ");";
 		
 			
@@ -1605,6 +1610,7 @@ public class Dao {
 				 pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
 				 pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
 				 pa.setTotal_point_over_25(rs.getInt("total_point_over_25")); 
+				 pa.setTest_image(rs.getBytes("test_image"));
 				                                        
 				 
 				
@@ -1718,7 +1724,7 @@ public class Dao {
 				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
 				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
 				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));               
-				                                        
+				  pa.setTest_image(rs.getBytes("test_image"));                                      
 				
 				
 				participantAnswersInDb.add(pa);
@@ -1831,7 +1837,7 @@ public class Dao {
 				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
 				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
 				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));              
-				                                        
+				  pa.setTest_image(rs.getBytes("test_image"));                                      
 				
 				
 				participantAnswersInDb.add(pa);
@@ -1945,7 +1951,7 @@ public class Dao {
 				  pa.setTotal_point_over_30(rs.getInt("total_point_over_30"));
 				  pa.setNumber_of_correct_answers_over_25(rs.getInt("number_of_correct_answers_over_25")); 
 				  pa.setTotal_point_over_25(rs.getInt("total_point_over_25"));               
-				                                        
+				  pa.setTest_image(rs.getBytes("test_image"));                                      
 				
 				
 				participantAnswersInDb.add(pa);
@@ -2289,7 +2295,8 @@ public class Dao {
 				+"number_of_correct_answers_over_30," 
 				+"total_point_over_30,"
 				+"number_of_correct_answers_over_25,"
-				+"total_point_over_25" 
+				+"total_point_over_25," 
+				+"test_image"
 				+ ")"
 				+ "values ("
 				+ "?,"  //exam_id
@@ -2359,7 +2366,8 @@ public class Dao {
 				+ "?,"	//number_of_correct_answers_over_30
 				+ "?,"	//total_point_over_30
 				+ "?,"	//number_of_correct_answers_over_25
-				+ "?"	//total_point_over_25
+				+ "?,"	//total_point_over_25
+				+ "?"	//test_image
 				+ ")";
 		int result=-1;
 		try {
@@ -2436,7 +2444,7 @@ public class Dao {
 			st1.setInt(66, 		pa.getTotal_point_over_30());
 			st1.setInt(67, 		pa.getNumber_of_correct_answers_over_25());
 			st1.setInt(68, 		pa.getTotal_point_over_25());
-			
+			st1.setBytes(69, pa.getTest_image());
 			result=st1.executeUpdate();
 			
 		} 
@@ -2710,7 +2718,8 @@ public class Dao {
 				+ "number_of_correct_answers_over_30=?,"
 				+ "total_point_over_30=?,"
 				+ "number_of_correct_answers_over_25=?,"
-				+ "total_point_over_25=?"
+				+ "total_point_over_25=?,"
+				+"test_image=?"
 				+ "where id=?";
 		int result=-1;
 		try {
@@ -2788,7 +2797,8 @@ public class Dao {
 			st1.setInt(64, pa.getTotal_point_over_30());
 			st1.setInt(65, pa.getNumber_of_correct_answers_over_25());
 			st1.setInt(66, pa.getTotal_point_over_25());
-			st1.setInt(67, pa.getId());
+			st1.setBytes(67, pa.getTest_image());
+			st1.setInt(68, pa.getId());
 			
 			result=st1.executeUpdate();
 		

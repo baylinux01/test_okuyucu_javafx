@@ -1323,9 +1323,10 @@ public class ProgramWindow extends Application {
 						    	ParticipantAnswer pa=null;
 						    	try 
 						    	{
+						    		
 									pa=ExamEvaluator
 											.createParticipantAnswerWithInformation
-													(ps, file.getAbsolutePath(), selectedExam,sayi);
+													(ps, file, selectedExam,sayi);
 									++sefer;
 									if(sefer%2==0)
 									{

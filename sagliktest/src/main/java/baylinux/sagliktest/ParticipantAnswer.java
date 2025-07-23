@@ -77,9 +77,16 @@ public class ParticipantAnswer
 	private int total_point_over_30;
 	private int    number_of_correct_answers_over_25;
 	private int total_point_over_25;
+	private byte[] test_image;
 	
 	
 	
+	public byte[] getTest_image() {
+		return test_image;
+	}
+	public void setTest_image(byte[] test_image) {
+		this.test_image = test_image;
+	}
 	public int getId() {
 		return id;
 	}

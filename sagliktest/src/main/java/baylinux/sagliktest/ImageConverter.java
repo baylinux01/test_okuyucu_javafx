@@ -14,10 +14,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.metadata.IIOMetadata;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
@@ -26,6 +29,9 @@ import org.opencv.core.Size;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import net.sourceforge.tess4j.ITessAPI;
 import net.sourceforge.tess4j.Tesseract;
@@ -37,7 +43,30 @@ public class ImageConverter {
 //	static {
 //		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 //	}
-	
+	public static byte[] getUserImageBytes(PreferredSettings ps,String imageFullPath)
+	{
+		
+			
+	        
+			
+		  Mat image=null;
+	       try 
+	       {
+	    	   image=Imgcodecs.imread(imageFullPath);
+	       }
+	       catch(Exception ex)
+	       {
+	    	   
+	       }
+	       Mat resizedImage = new Mat();
+	       Size newSize = new Size(image.rows(), image.cols()); 
+	       Imgproc.resize(image, resizedImage, newSize);
+	       
+	       MatOfByte mob= new MatOfByte();
+	       Imgcodecs.imencode(".jpg", resizedImage, mob);
+	       return mob.toArray();
+	       
+	}
 	public static String convertTitlesOfExamToDigitalFormatFromImageToObtainTestType
 	(PreferredSettings ps,String imageFullPath)
 	{
@@ -695,7 +724,6 @@ public class ImageConverter {
 	}
 	
 	
-
 	public static List<List<Point>> applyRowSkew
 			(
 	        List<List<Point>> rows,
@@ -751,6 +779,9 @@ public class ImageConverter {
 	        })
 	        .collect(Collectors.toList());
 	}
+	
+
+	
 	
 	
 	
