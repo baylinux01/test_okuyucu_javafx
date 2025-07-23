@@ -26,11 +26,6 @@
     <artifactId>poi-ooxml</artifactId>
     <version>5.4.1</version>
 </dependency>
-<dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-core</artifactId>
-    <version>2.25.0</version>
-</dependency>
 
  	<dependency>
     <groupId>org.openjfx</groupId>
@@ -186,13 +181,7 @@
     <version>4.6.0-0</version>
 </dependency>
 
-<!--<dependency>-->
-<!--    <groupId>org.bytedeco</groupId>-->
-<!--    <artifactId>opencv</artifactId>-->
-<!--    <version>4.7.0-1.5.9</version>-->
-<!--</dependency>-->
 
-<!-- https://mvnrepository.com/artifact/com.github.waffle/waffle-jna -->
 <dependency>
     <groupId>com.github.waffle</groupId>
     <artifactId>waffle-jna</artifactId>
@@ -200,12 +189,16 @@
 </dependency>
   </dependencies>
   <build>
+  
   <resources>
       <resource>
         <directory>src/main/resources</directory>
       </resource>
     </resources>
+    
 	<plugins>
+	
+
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-shade-plugin</artifactId>
@@ -232,6 +225,7 @@
 				</execution>
 			</executions>
 		</plugin>
+		
 	</plugins>
   </build>
   

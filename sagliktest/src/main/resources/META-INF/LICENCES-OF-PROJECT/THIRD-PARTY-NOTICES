@@ -1,0 +1,8 @@
+This application bundles the following third-party components:
+
+- Application source code: MIT License (see LICENSE)
+- JavaFX runtime: GPL-2.0 with Classpath Exception (see LICENSE-javafx)
+- OpenCV native libraries 4.6.0 (libopencv_*.so, opencv_java460.dll, opencv_world460.dll): Apache-2.0 (see LICENSE-opencv)
+- OpenCV FFmpeg plugin (opencv_videoio_ffmpeg_64.dll): LGPL-2.1-or-later (see LICENSE-ffmpeg-lgpl)
+
+All relevant full license texts are located in the same directory as this file.
