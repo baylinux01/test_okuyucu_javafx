@@ -82,6 +82,7 @@ public class ProgramWindow extends Application {
 	
 	
 	
+	
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -431,9 +432,42 @@ public class ProgramWindow extends Application {
 			    TableRow<ParticipantAnswer> row = new TableRow<>();
 			    row.setOnMouseClicked(e -> 
 			    {
-			        if (e.getClickCount() == 2 && !row.isEmpty()) {
-			            int index = row.getIndex();
-			            ONTESTTableView.edit(index, colONTEST3);   
+			        if (e.getClickCount() == 2 && !row.isEmpty()) 
+			        {
+//			            int index = row.getIndex();
+//			            ONTESTTableView.edit(index, colONTEST3);
+			        	
+			        	if(ONTESTTableView.getSelectionModel().getSelectedItem()!=null)
+						{
+							Group root2=new Group();
+							Scene scene2=new Scene(root2);
+							Stage stage2=new Stage();
+							stage2.setScene(scene2);
+							stage2.getIcons().add(
+									new Image(UpdatingParticipantAnswerWindow.class
+									.getResourceAsStream(Main.logo)));
+							stage2.setTitle("Cevap Güncelleme Sayfası");
+							UpdatingParticipantAnswerWindow window2=new UpdatingParticipantAnswerWindow();
+							
+							try 
+							{
+								window2.paToBeUpdated=ONTESTTableView.getSelectionModel().getSelectedItem();
+								window2.start(stage2);
+								primaryStage.hide();
+							} 
+							catch (InterruptedException e1) 
+							{
+								e1.printStackTrace();
+							}
+						}
+						else
+						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Dikkat");
+							alert.setHeaderText("Uyarı");
+							alert.setContentText("Bunu yapmak için önce bir ön test cevabı seçmeniz gerekir");
+							alert.showAndWait().orElse(null);
+						}
 			        }
 			    });
 			    
@@ -725,9 +759,42 @@ public class ProgramWindow extends Application {
 			    TableRow<ParticipantAnswer> row = new TableRow<>();
 			    row.setOnMouseClicked(e -> 
 			    {
-			        if (e.getClickCount() == 2 && !row.isEmpty()) {
-			            int index = row.getIndex();
-			            SONTESTTableView.edit(index, colSONTEST3);   
+			        if (e.getClickCount() == 2 && !row.isEmpty()) 
+			        {
+//			            int index = row.getIndex();
+//			            SONTESTTableView.edit(index, colSONTEST3);   
+			        	
+			        	if(SONTESTTableView.getSelectionModel().getSelectedItem()!=null)
+						{
+							Group root3=new Group();
+							Scene scene3=new Scene(root3);
+							Stage stage3=new Stage();
+							stage3.setScene(scene3);
+							stage3.getIcons().add(
+									new Image(UpdatingParticipantAnswerWindow.class
+									.getResourceAsStream(Main.logo)));
+							stage3.setTitle("Cevap Güncelleme Sayfası");
+							UpdatingParticipantAnswerWindow window3=new UpdatingParticipantAnswerWindow();
+							
+							try 
+							{
+								window3.paToBeUpdated=SONTESTTableView.getSelectionModel().getSelectedItem();
+								window3.start(stage3);
+								primaryStage.hide();
+							} 
+							catch (InterruptedException e2) 
+							{
+								e2.printStackTrace();
+							}
+						}
+						else
+						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Dikkat");
+							alert.setHeaderText("Uyarı");
+							alert.setContentText("Bunu yapmak için önce bir son test cevabı seçmeniz gerekir");
+							alert.showAndWait().orElse(null);
+						}
 			        }
 			    });
 			    return row;
@@ -1013,9 +1080,42 @@ public class ProgramWindow extends Application {
 			    TableRow<ParticipantAnswer> row = new TableRow<>();
 			    row.setOnMouseClicked(e -> 
 			    {
-			        if (e.getClickCount() == 2 && !row.isEmpty()) {
-			            int index = row.getIndex();
-			            TESTTableView.edit(index, colTEST3);  
+			        if (e.getClickCount() == 2 && !row.isEmpty()) 
+			        {
+//			            int index = row.getIndex();
+//			            TESTTableView.edit(index, colTEST3);  
+			        	
+			        	if(TESTTableView.getSelectionModel().getSelectedItem()!=null)
+						{
+							Group root4=new Group();
+							Scene scene4=new Scene(root4);
+							Stage stage4=new Stage();
+							stage4.setScene(scene4);
+							stage4.getIcons().add(
+									new Image(UpdatingParticipantAnswerWindow.class
+									.getResourceAsStream(Main.logo)));
+							stage4.setTitle("Cevap Güncelleme Sayfası");
+							UpdatingParticipantAnswerWindow window4=new UpdatingParticipantAnswerWindow();
+							
+							try 
+							{
+								window4.paToBeUpdated=TESTTableView.getSelectionModel().getSelectedItem();
+								window4.start(stage4);
+								primaryStage.hide();
+							} 
+							catch (InterruptedException e3) 
+							{
+								e3.printStackTrace();
+							}
+						}
+						else
+						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Dikkat");
+							alert.setHeaderText("Uyarı");
+							alert.setContentText("Bunu yapmak için önce bir test cevabı seçmeniz gerekir");
+							alert.showAndWait().orElse(null);
+						}
 			        }
 			    });
 			    return row;
@@ -1117,8 +1217,34 @@ public class ProgramWindow extends Application {
 			if(examList!=null)
 			{
 				cb_exams.getItems().addAll(examList);
+				
 			}
 			pane.getChildren().add(cb_exams);
+			if(selectedExam!=null)
+			{
+				cb_exams.getSelectionModel().select(selectedExam);
+				try 
+				{
+					if(listOfONTESTS!=null) listOfONTESTS.clear();
+					listOfONTESTS=dao.getONTESTParticipantAnswersByExam(selectedExam);
+					ONTESTTableView.getItems().clear();
+					ONTESTTableView.getItems().addAll(listOfONTESTS);
+					
+					if(listOfSONTESTS!=null) listOfSONTESTS.clear();
+					listOfSONTESTS=dao.getSONTESTParticipantAnswersByExam(selectedExam);
+					SONTESTTableView.getItems().clear();
+					SONTESTTableView.getItems().addAll(listOfSONTESTS);
+					
+					if(listOfTESTS!=null) listOfTESTS.clear();
+					listOfTESTS=dao.getTESTParticipantAnswersByExam(selectedExam);
+					TESTTableView.getItems().clear();
+					TESTTableView.getItems().addAll(listOfTESTS);
+				} 
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
+			}
 			cb_exams.setOnAction(changeSelectedExamEventHandler);
 			
 			EventHandler<ActionEvent> openAddingExamWindowEventHandler=new EventHandler<ActionEvent>()

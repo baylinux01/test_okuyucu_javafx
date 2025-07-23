@@ -1134,12 +1134,18 @@ public class UpdatingParticipantAnswerWindow extends Application {
 					stage.setTitle("Ana Sayfa");
 					ProgramWindow window=new ProgramWindow();
 					
-					try {
-						window.selectedExam=null;
+					try 
+					{
+						window.selectedExam=dao.getExamById(paToBeUpdated.getExam_id());
 						window.start(stage);
 						primaryStage.hide();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+					} 
+					catch (InterruptedException e) 
+					{
+						e.printStackTrace();
+					} 
+					catch (SQLException e) 
+					{
 						e.printStackTrace();
 					}
 					
