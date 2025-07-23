@@ -418,38 +418,80 @@ public class ImageConverter {
 //    		int o=0;
 //    		if(ps.getDont_read_first_row()==1) u=1;
 //    		if(ps.getDont_read_first_column()==1) o=1;
-//    		for (int r = u; r < yCoords.size() - 1; r++) 
+//    		for (int r = u; r < yCoords.size(); r++) 
 //    		{ 
 //    		    List<Point> row= new ArrayList<Point>();
-//    		    for (int c = o; c < xCoords.size() - 1; c++) 
+//    		    for (int c = o; c < xCoords.size(); c++) 
 //    		    { 
 //    		    	row.add(new Point(c,r));
 //    		    }
 //    		    pointsByRows.add(row);
 //    		}
 //    		
-//    		List<List<Point>> rowsSkewedPoints=applyRowSkew(pointsByRows, optimumTopLeft, optimumTopRight);
-//    		List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
-//    		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
-//    		{   List<Point> column=new ArrayList<Point>();
-//    			for(int j=0;j<rowsSkewedPoints.size();j++)
-//    			{
-//    				column.add(rowsSkewedPoints.get(j).get(i));
-//    			}
-//    			pointsByColumnsRowsSkewed.add(column);
+//    		boolean calledForRows=false;
+//    		
+//    		List<List<Point>> rowsSkewedPoints=null;
+//    		if(optimumTopLeft!=null&&optimumTopRight!=null)
+//    		{
+//    			rowsSkewedPoints=applyRowSkew(pointsByRows, optimumTopLeft, optimumTopRight);
+//    			calledForRows=true;
 //    		}
-//    		List<List<Point>> columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
-//    		List<Double> skewedRawXCoords=new ArrayList<Double>();
-//    		List<Double> skewedRawYCoords=new ArrayList<Double>();
+//    		else if(optimumBottomLeft!=null&&optimumBottomRight!=null)
+//    		{
+//    			rowsSkewedPoints=applyRowSkew(pointsByRows, optimumBottomLeft, optimumBottomRight);
+//    			calledForRows=true;
+//    		}
+//    			
 //    		
-//    		columnsAndRowsSkewedPoints.stream()
-//    		.forEach(satir-> satir.stream()
-//    				.forEach(p->{if(p.y>=0)skewedRawYCoords.add(p.y);if(p.x>=0)skewedRawXCoords.add(p.x);}));
 //    		
-//    		List<Double> skewedXCoords = removeCloseCoordinates(skewedRawXCoords, 
-//    				ps.getColumn_number(),textOnlyImage.cols());
-//    		List<Double> skewedYCoords = removeCloseCoordinates(skewedRawYCoords, 
-//    				ps.getRow_number(),textOnlyImage.rows());
+//    		boolean calledForColumns=false;
+//    		List<List<Point>> columnsAndRowsSkewedPoints=null;
+//    		if(optimumTopLeft!=null&&optimumBottomLeft!=null&&calledForRows==true)
+//    		{
+//    			List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
+//        		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
+//        		{   List<Point> column=new ArrayList<Point>();
+//        			for(int j=0;j<rowsSkewedPoints.size();j++)
+//        			{
+//        				column.add(rowsSkewedPoints.get(j).get(i));
+//        			}
+//        			pointsByColumnsRowsSkewed.add(column);
+//        		}
+//    			columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopLeft, optimumBottomLeft);
+//    			calledForColumns=true;
+//    		}
+//    		else if(optimumTopRight!=null&&optimumBottomRight!=null&&calledForRows==true)
+//    		{
+//    			List<List<Point>> pointsByColumnsRowsSkewed=new ArrayList<List<Point>>();
+//        		for(int i=0;i<rowsSkewedPoints.get(0).size();i++)
+//        		{   List<Point> column=new ArrayList<Point>();
+//        			for(int j=0;j<rowsSkewedPoints.size();j++)
+//        			{
+//        				column.add(rowsSkewedPoints.get(j).get(i));
+//        			}
+//        			pointsByColumnsRowsSkewed.add(column);
+//        		}
+//    			columnsAndRowsSkewedPoints=applyColSkew(pointsByColumnsRowsSkewed, optimumTopRight, optimumBottomRight);
+//    			calledForColumns=true;
+//    		}
+//    		
+//    		
+//    		if(calledForRows==true&&calledForColumns==true)
+//    		{
+//    			List<Double> skewedRawXCoords=new ArrayList<Double>();
+//        		List<Double> skewedRawYCoords=new ArrayList<Double>();
+//    			columnsAndRowsSkewedPoints.stream()
+//        		.forEach(satir-> satir.stream()
+//        				.forEach(p->{if(p.y>=0)skewedRawYCoords.add(p.y);if(p.x>=0)skewedRawXCoords.add(p.x);}));
+//        		
+//        		List<Double> skewedXCoords = removeCloseCoordinates(skewedRawXCoords, 
+//        				ps.getColumn_number(),textOnlyImage.cols());
+//        		List<Double> skewedYCoords = removeCloseCoordinates(skewedRawYCoords, 
+//        				ps.getRow_number(),textOnlyImage.rows());
+//        		xCoords=skewedXCoords;
+//        		yCoords=skewedYCoords;
+//    		}
+    		
     		
     		int a=0;
     		int b=0;
