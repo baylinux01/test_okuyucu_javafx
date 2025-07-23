@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -29,6 +30,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -54,7 +58,45 @@ public class UpdatingParticipantAnswerWindow extends Application {
 	cb_son11,cb_son12,cb_son13,cb_son14,cb_son15,cb_son16,cb_son17,cb_son18,cb_son19,cb_son20,
 	cb_son21,cb_son22,cb_son23,cb_son24,cb_son25,cb_son26,cb_son27,cb_son28,cb_son29,cb_son30;
 	protected static Button updateExamButton,goBackButton;
-	
+	protected static double dragStartX;
+	protected static double dragStartY;
+	protected static ImageView imageView;
+	protected static Image image;
+    protected static double viewMinX = 0;
+    protected static double viewMinY = 0;
+    protected static double zoom = 1.0;
+    protected static int imageViewWidth=430;
+    protected static int imageViewHeight=610;
+    
+    private void resetViewport() 
+    {
+        zoom = Math.min(imageViewWidth / image.getWidth(), imageViewHeight / image.getHeight());
+        zoom = Math.max(zoom, 0.2);          // küçük resimlerde sıfıra gitmesin
+        viewMinX = 0;
+        viewMinY = 0;
+        clampViewport();
+        updateViewport();
+    }
+
+    private void updateViewport() {
+        double vw = image.getWidth()  / zoom;
+        double vh = image.getHeight() / zoom;
+        imageView.setViewport(new Rectangle2D(viewMinX, viewMinY, vw, vh));
+    }
+
+    private void clampViewport() {
+        double vw = image.getWidth()  / zoom;
+        double vh = image.getHeight() / zoom;
+        viewMinX = clamp(viewMinX, 0, image.getWidth()  - vw);
+        viewMinY = clamp(viewMinY, 0, image.getHeight() - vh);
+    }
+
+    private double clamp(double val, double min, double max) 
+    {
+        return Math.max(min, Math.min(max, val));
+    }
+
+    
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -70,27 +112,31 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			{
 
 				@Override
-				public void handle(Event event) {
-					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
-					Stage stageProgramWindow=new Stage();
-					stageProgramWindow.setScene(sceneProgramWindow);
-					stageProgramWindow.getIcons().add(
-							new Image(ProgramWindow.class
-							.getResourceAsStream("hotelLogo.png")));
+				public void handle(Event event) 
+				{
+					Group root=new Group();
+					Scene scene=new Scene(root);
+					Stage stage=new Stage();
+					stage.setScene(scene);
+					stage.getIcons().add(
+							new Image(AddingExamWindow.class
+							.getResourceAsStream(Main.logo)));
+					stage.setTitle("Ana Sayfa");
+					ProgramWindow window=new ProgramWindow();
 					
-					//stageOpenAidatPayerAddingWindow.show();
-					
-					ProgramWindow programWindow=new ProgramWindow();
-					try {
-						//programWindow.language=language;
-						programWindow.start(stageProgramWindow);
-
-						
+					try 
+					{
+						window.selectedExam=dao.getExamById(paToBeUpdated.getExam_id());
+						window.start(stage);
 						primaryStage.hide();
-					} catch (Exception e) {
-						
-						e.printStackTrace();
+					} 
+					catch (InterruptedException e1) 
+					{
+						e1.printStackTrace();
+					} 
+					catch (SQLException e2) 
+					{
+						e2.printStackTrace();
 					}
 					
 				}
@@ -116,20 +162,73 @@ public class UpdatingParticipantAnswerWindow extends Application {
 			int standard_element_width=180;
 			int lbdif=5;
 			
+			
+			    
+			Pane pane2=new Pane();
+			pane2.setPrefHeight(imageViewHeight);
+			pane2.setPrefWidth(imageViewWidth);
+			pane2.setLayoutX(0);
+			pane2.setLayoutY(base_y+y_dif*0);
+			pane.getChildren().add(pane2);
+			
 			byte[] imgBytes = paToBeUpdated.getTest_image();
-			Image fxImage=null;
+			image=null;
 			if (imgBytes != null && imgBytes.length > 0)
 			{
-				fxImage = new Image(new ByteArrayInputStream(imgBytes));
+				image = new Image(new ByteArrayInputStream(imgBytes));
 			}
-			    
-			ImageView imageView = new ImageView(fxImage);
+			imageView = new ImageView(image);
 			imageView.setLayoutX(0);
-			imageView.setLayoutY(base_y+y_dif*0);
-			imageView.setFitHeight(610);
-			imageView.setFitWidth(430);
-			pane.getChildren().add(imageView);
+			imageView.setLayoutY(0);
+			imageView.setFitHeight(imageViewHeight);
+			imageView.setFitWidth(imageViewWidth);
+			pane2.getChildren().add(imageView);
+			pane2.setPrefSize(imageViewWidth, imageViewHeight);
+
 			
+	        pane2.setOnScroll((ScrollEvent e) -> {
+	            double factor = (e.getDeltaY() > 0) ? 1.1 : 1 / 1.1;
+	            zoom *= factor;
+	            zoom = clamp(zoom, 1, 10);
+
+	            // Zoom merkezini mouse yap
+	            double mx = e.getX();
+	            double my = e.getY();
+
+	            double imgX = viewMinX + mx * (image.getWidth()  / zoom) / imageViewWidth;
+	            double imgY = viewMinY + my * (image.getHeight() / zoom) / imageViewHeight;
+
+	            viewMinX = imgX - mx * (image.getWidth()  / zoom) / imageViewWidth;
+	            viewMinY = imgY - my * (image.getHeight() / zoom) / imageViewHeight;
+
+	            clampViewport();
+	            updateViewport();
+	            e.consume();
+	        });
+	        pane2.setOnMousePressed((MouseEvent e) -> {
+	            if (e.getButton() == MouseButton.PRIMARY) {
+	                dragStartX = e.getX();
+	                dragStartY = e.getY();
+	            }
+	        });
+
+	        pane2.setOnMouseDragged((MouseEvent e) -> {
+	            if (e.getButton() == MouseButton.PRIMARY) {
+	                double dx = (e.getX() - dragStartX) * (image.getWidth()  / zoom) / imageViewWidth;
+	                double dy = (e.getY() - dragStartY) * (image.getHeight() / zoom) / imageViewHeight;
+
+	                viewMinX -= dx;
+	                viewMinY -= dy;
+
+	                clampViewport();
+	                updateViewport();
+
+	                dragStartX = e.getX();
+	                dragStartY = e.getY();
+	            }
+	        });
+
+
 			lb0a=new Label("Dosya Adı:");
 			lb0a.setPrefHeight(standard_element_height);
 			lb0a.setPrefWidth(standard_element_width);
