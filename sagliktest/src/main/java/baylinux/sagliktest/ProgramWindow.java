@@ -164,6 +164,15 @@ public class ProgramWindow extends Application {
 			}
 			try 
 			{
+				dao.createCompositeIndexOnParticipantAnswerTableForName_surnameAndFile_nameFields();
+			} 
+			catch (Exception e) 
+			{
+				
+				e.printStackTrace();
+			}
+			try 
+			{
 				if(examList!=null) examList.clear();
 				examList=dao.getAllExams();
 			} 

@@ -1423,7 +1423,7 @@ public class Dao {
 	
 	public List<Exam> getAllExams() throws SQLException
 	{
-		String query="Select * From ExamTable";
+		String query="Select * From ExamTable order by name;";
 		List<Exam> examsInDb=new ArrayList<Exam>();
 		try {
 //			Class.forName(className);
@@ -1526,7 +1526,8 @@ public class Dao {
 	}
 	public List<ParticipantAnswer> getParticipantAnswersByExam(Exam exam) throws SQLException
 	{
-		String query="Select * From ParticipantAnswerTable where exam_id=?";
+		String query="Select * From ParticipantAnswerTable where exam_id=?"
+				+ "order by name_surname, file_name;";
 		List<ParticipantAnswer> participantAnswersInDb=new ArrayList<ParticipantAnswer>();
 		try {
 //			Class.forName(className);
@@ -1639,7 +1640,8 @@ public class Dao {
 	}
 	public List<ParticipantAnswer> getONTESTParticipantAnswersByExam(Exam exam) throws SQLException
 	{
-		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type=?";
+		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type=?"
+				+ "order by name_surname, file_name;";
 		List<ParticipantAnswer> participantAnswersInDb=new ArrayList<ParticipantAnswer>();
 		try {
 //			Class.forName(className);
@@ -1752,7 +1754,8 @@ public class Dao {
 	}
 	public List<ParticipantAnswer> getSONTESTParticipantAnswersByExam(Exam exam) throws SQLException
 	{
-		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type=?";
+		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type=?"
+				+ "order by name_surname, file_name;";
 		List<ParticipantAnswer> participantAnswersInDb=new ArrayList<ParticipantAnswer>();
 		try {
 //			Class.forName(className);
@@ -1865,7 +1868,8 @@ public class Dao {
 	}
 	public List<ParticipantAnswer> getTESTParticipantAnswersByExam(Exam exam) throws SQLException
 	{
-		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type not in (?,?)";
+		String query="Select * From ParticipantAnswerTable where exam_id=? and test_type not in (?,?) "
+				+ "order by name_surname, file_name;";
 		List<ParticipantAnswer> participantAnswersInDb=new ArrayList<ParticipantAnswer>();
 		try {
 //			Class.forName(className);
@@ -2221,7 +2225,34 @@ public class Dao {
 		}
 		return result;
 	}
-	
+	public void createCompositeIndexOnParticipantAnswerTableForName_surnameAndFile_nameFields() throws SQLException, ClassNotFoundException 
+	{
+		String query1="create index idx_participant_answer on ParticipantAnswerTable(name_surname,file_name); ?";
+				//String query1=" CREATE DATABASE [?]";
+		
+		try {
+			con=getEmptyCon();
+//			Connection con1 = DriverManager.getConnection(emptyUrl,uname,pass);
+			
+			PreparedStatement st1= con.prepareStatement(query1);
+			
+			st1.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		finally {
+			if(con!=null)
+			{
+				con.close();
+			}
+			
+				
+			
+		}
+		
+	}
 	public int insertIntoParticipantAnswerTable(ParticipantAnswer pa) throws SQLException
 	{
 		
