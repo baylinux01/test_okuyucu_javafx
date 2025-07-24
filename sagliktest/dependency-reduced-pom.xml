@@ -14,6 +14,26 @@
     </resources>
     <plugins>
       <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>2.4.0</version>
+        <executions>
+          <execution>
+            <id>add-third-party</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>add-third-party</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputDirectory>src/main/resources/META-INF/Auto Generated 3rd Party Licenses</outputDirectory>
+          <thirdPartyFilename>auto-gen-3rd-party-licenses.txt</thirdPartyFilename>
+          <includeClassifier>true</includeClassifier>
+          <failOnMissing>false</failOnMissing>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.5.3</version>
         <executions>

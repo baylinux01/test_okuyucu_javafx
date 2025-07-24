@@ -198,6 +198,33 @@
     
 	<plugins>
 	
+	 <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>license-maven-plugin</artifactId>
+      <version>2.4.0</version>
+
+      <configuration>
+        <!-- Çıktı klasörü -->
+        <outputDirectory>src/main/resources/META-INF/Auto Generated 3rd Party Licenses</outputDirectory>
+        <!-- Çıktı dosyası adı -->
+        <thirdPartyFilename>auto-gen-3rd-party-licenses.txt</thirdPartyFilename>
+		
+        <!-- Opsiyonel: eksik lisansları fail etme -->
+        <failOnMissing>false</failOnMissing>
+      </configuration>
+
+      <executions>
+        <execution>
+          <id>add-third-party</id>
+          <!-- generate-resources fazında çalışır -->
+          <phase>generate-resources</phase>
+          <goals>
+            <goal>add-third-party</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+	
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-shade-plugin</artifactId>
@@ -227,5 +254,5 @@
 		
 	</plugins>
   </build>
-  
+
 </project>

@@ -45,8 +45,4 @@ Program ayrıca 4 çeşit database'den(sqlite,mysql,mariadb,postgresql) istenile
 başka bir bilgisayardaki veritabanına bağlanmayı da desteklemektedir.
 Fakat bazı databaselerde mesela postgrede bazen database'i elle manuel olarak oluşturmak gerekebilir.
 
-## Licensing
-- Application code: MIT License (see LICENSE)
-- Bundled OpenCV runtime: Apache-2.0 (see LICENSE-opencv)
-- JavaFX runtime: GPL-2.0 with Classpath Exception (see LICENSE-javafx)
-- Additional 3rd-party licenses: see THIRD_PARTY_NOTICES
+
