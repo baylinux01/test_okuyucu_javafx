@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -303,24 +304,35 @@ public class Dao {
 		Dao.con = con;
 	}
 	private static Connection con1=null;
+	
 	public static Connection getEmptyCon() throws ClassNotFoundException, SQLException {
 		Class.forName(className);
 		Connection con;
 		if(className.equals(SqliteDBClassName))
-		 con= DriverManager.getConnection(url);
+		{
+			 con= DriverManager.getConnection(url);
+		}
 		else
+		{
 			con=DriverManager.getConnection(emptyUrl,uname,pass);
-//		Connection con = DriverManager.getConnection(url,uname,pass);
+//			Connection con = DriverManager.getConnection(url,uname,pass);
+		}
 		return con;
+			
 	}
 	public static Connection getCon() throws ClassNotFoundException, SQLException {
 		Class.forName(className);
 		Connection con;
 		if(className.equals(SqliteDBClassName))
-		 con= DriverManager.getConnection(url);
+		{
+			 con= DriverManager.getConnection(url); 
+		}
 		else
+		{
 			con=DriverManager.getConnection(url,uname,pass);
-//		Connection con = DriverManager.getConnection(url,uname,pass);
+//			Connection con = DriverManager.getConnection(url,uname,pass);
+		}
+			
 		return con;
 	}
 	

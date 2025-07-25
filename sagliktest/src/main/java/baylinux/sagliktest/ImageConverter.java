@@ -240,46 +240,48 @@ public class ImageConverter {
     //Imgcodecs.imwrite("/home/baylinux/Desktop/croppedBinary.png",croppedBinary);
     
     
-       int horizontalErodeKernelHeightForTable=ps.getErosion_degree();
-       int horizontalErodeKernelWidthForTable=
-    		   image.cols()/ps.getHorizontal_kernel_length_division_factor();
-       int horizontalDilateKernelHeightForTable=ps.getDilation_degree();
-       int horizontalDilateKernelWidthForTable=ps.getDilation_degree();
+//       int horizontalErodeKernelHeightForTable=ps.getErosion_degree();
+//       int horizontalErodeKernelWidthForTable=
+//    		   image.cols()/ps.getHorizontal_kernel_length_division_factor();
+//       int horizontalDilateKernelHeightForTable=ps.getDilation_degree();
+//       int horizontalDilateKernelWidthForTable=ps.getDilation_degree();
        Mat horizontalLines = new Mat();
        Mat dilatedHorizontalLines=new Mat();
+       Mat verticalLines = new Mat(); 
+		Mat dilatedVerticalLines=new Mat();
+		
     		Mat horizontalErodeKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-    		  new Size(horizontalErodeKernelWidthForTable,horizontalErodeKernelHeightForTable));  
+    		  new Size(croppedBinary.cols()/ps.getHorizontal_kernel_length_division_factor(),1));  
+    		
+    		Imgproc.erode(croppedBinary, horizontalLines, horizontalErodeKernel,
+    				new Point(-1,-1), ps.getHorizontal_erosion_iteration_number()); 
+    		
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/horizontalLines.png", horizontalLines);
     		
     		Mat horizontalDilateKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-    				new Size(horizontalDilateKernelWidthForTable*600,
-    						horizontalDilateKernelHeightForTable)); 
-    		 
-    		Imgproc.erode(croppedBinary, horizontalLines, horizontalErodeKernel,
-    				new Point(-1,-1), ps.getHorizontal_erosion_iteration_number());  
+    				new Size(croppedBinary.cols(),1)); 
     		
     		Imgproc.dilate(horizontalLines, dilatedHorizontalLines, horizontalDilateKernel,
     				new Point(-1,-1),ps.getHorizontal_dilation_iteration_number());
     				
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/dilatedHorizontalLines.png", dilatedHorizontalLines); 
     		
-
-//    		Imgcodecs.imwrite("/home/baylinux/Desktop/horizontalLines.png", dilatedHorizontalLines); 
     		
-    		Mat verticalLines = new Mat(); 
-    		Mat dilatedVerticalLines=new Mat();
-    		int verticalErodeKernelWidthForTable=ps.getErosion_degree();
-    		int verticalErodeKernelHeightForTable=image.rows()/ps.getVertical_kernel_length_division_factor();
-    		int verticalDilateKernelWidthForTable=ps.getDilation_degree();
-    		int verticalDilateKernelHeightForTable=ps.getDilation_degree();
+//    		int verticalErodeKernelWidthForTable=ps.getErosion_degree();
+//    		int verticalErodeKernelHeightForTable=image.rows()/ps.getVertical_kernel_length_division_factor();
+//    		int verticalDilateKernelWidthForTable=ps.getDilation_degree();
+//    		int verticalDilateKernelHeightForTable=ps.getDilation_degree();
+    		
     		Mat verticalErodeKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-    				new Size(verticalErodeKernelWidthForTable, 
-    						verticalErodeKernelHeightForTable));  
+    				new Size(1, croppedBinary.rows()/ps.getVertical_kernel_length_division_factor()));  
     		
     		Imgproc.erode(croppedBinary, verticalLines, verticalErodeKernel,
     				new Point(-1,-1), ps.getVertical_erosion_iteration_number()); 
     		
+//    		Imgcodecs.imwrite("/home/baylinux/Desktop/verticalLines.png",verticalLines);
+    		
     		Mat verticalDilateKernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, 
-    				new Size(verticalDilateKernelWidthForTable, 
-    						verticalDilateKernelHeightForTable*600));
+    				new Size(1,croppedBinary.rows()));
     		
     		Imgproc.dilate(verticalLines, dilatedVerticalLines, verticalDilateKernel,
     				new Point(-1,-1), ps.getVertical_dilation_iteration_number());
